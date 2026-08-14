@@ -1,0 +1,305 @@
+/* Subtract */
+
+position: absolute;
+width: 1167.14px;
+height: 586.82px;
+left: 131.43px;
+top: 113.4px;
+
+background: #F0DCBD;
+border-radius: 2px;
+transform: rotate(180deg);
+
+
+/* Rectangle 98 */
+
+position: absolute;
+width: 1085.52px;
+height: 500.84px;
+left: 170.56px;
+top: 150.56px;
+
+background: #FFFFFF;
+border: 80px solid #FFFFFF;
+border-radius: 6px;
+transform: rotate(180deg);
+
+
+/* Group 23 */
+
+position: absolute;
+width: 1100.95px;
+height: 705.64px;
+left: 111.24px;
+top: 23.85px;
+
+transform: rotate(180deg);
+
+
+/* Vector 32 */
+
+position: absolute;
+width: 60.02px;
+height: 112px;
+left: 1129.93px;
+top: 87.66px;
+
+background: #D20000;
+transform: rotate(180deg);
+
+
+/* Vector 35 */
+
+position: absolute;
+width: 60.02px;
+height: 112px;
+left: 443px;
+top: 593px;
+
+background: #D20000;
+transform: rotate(26.31deg);
+
+
+/* Vector 36 */
+
+position: absolute;
+width: 60.02px;
+height: 112px;
+left: 111.24px;
+top: 377.7px;
+
+background: #D20000;
+transform: rotate(105deg);
+
+
+/* Vector 34 */
+
+position: absolute;
+width: 84.72px;
+height: 112px;
+left: 1080.89px;
+top: 589.59px;
+
+background: #D20000;
+transform: rotate(-32.11deg);
+
+
+/* Vector 33 */
+
+position: absolute;
+width: 373px;
+height: 112px;
+left: 234.91px;
+top: 23.85px;
+
+background: #D20000;
+transform: rotate(171.87deg);
+
+
+/* Vector 22 */
+
+position: absolute;
+width: 383px;
+height: 383px;
+left: 1px;
+top: 455px;
+
+background: #F3CD50;
+
+
+/* Group 20 */
+
+position: absolute;
+width: 242px;
+height: 465.93px;
+left: 71px;
+top: 452px;
+
+
+
+/* Rectangle 95 */
+
+position: absolute;
+width: 242px;
+height: 276.04px;
+left: 71px;
+top: 641.89px;
+
+background: #D9D9D9;
+
+
+/* Ellipse 33 */
+
+position: absolute;
+width: 222.31px;
+height: 222.31px;
+left: 82.12px;
+top: 452px;
+
+background: #CAC2C2;
+
+
+/* Dialog Box/Default */
+
+position: absolute;
+width: 850px;
+height: 268px;
+left: 526px;
+top: 508px;
+
+
+
+/* Rectangle 74 */
+
+position: absolute;
+height: 202px;
+left: 0px;
+right: 0px;
+top: 66px;
+
+background: #D9D9D9;
+border-radius: 47px;
+
+
+/* Miller */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 272px;
+height: 66px;
+left: 0px;
+top: 38px;
+
+
+
+/* Union */
+
+width: 54px;
+height: 66px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 164px;
+height: 66px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Miller */
+
+width: 164px;
+height: 66px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Union */
+
+width: 54px;
+height: 66px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Each room in this building is interlocked. To reach the end of the maze, we must obtain keys. */
+
+position: absolute;
+visibility: hidden;
+width: 779px;
+height: 97px;
+left: 35px;
+top: 298px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 22px;
+
+color: #000000;
+
+
+
+/* Rectangle 107 */
+
+position: absolute;
+width: 425px;
+height: 40px;
+left: 951px;
+top: 701px;
+
+background: #8A38F5;
+border-radius: 28.5px;
+
+
+/* Rectangle 106 */
+
+position: absolute;
+width: 425px;
+height: 41px;
+left: 951px;
+top: 754px;
+
+background: #8A38F5;
+border-radius: 28.5px;
+
+
+/* Rectangle 108 */
+
+position: absolute;
+width: 425px;
+height: 41px;
+left: 951px;
+top: 647px;
+
+background: #8A38F5;
+border-radius: 28.5px;

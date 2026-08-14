@@ -1,0 +1,1004 @@
+/* Maze Tagline */
+
+position: absolute;
+width: 560px;
+height: 130px;
+left: 143px;
+top: 256px;
+
+font-family: 'Cinzel';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 65px;
+
+color: #FFFFFF;
+
+/* Game Tagline */
+
+position: absolute;
+width: 550px;
+height: 52px;
+left: 143px;
+top: 429px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+
+color: #FFFFFF;
+
+
+
+
+/* Purple Bar */
+
+position: absolute;
+width: 561px;
+height: 54px;
+left: 745px;
+top: 34px;
+
+background: rgba(133, 78, 180, 0.54);
+border-radius: 41px;
+
+
+/* Yellow Bar */
+
+position: absolute;
+width: 145px;
+height: 54px;
+left: 845px;
+top: 34px;
+
+background: #F3CD50;
+border-radius: 41px;
+
+
+
+/* Start-Button */
+
+position: absolute;
+width: 289px;
+height: 67px;
+left: 1011px;
+top: 553px;
+
+/* Vector */
+
+position: absolute;
+width: 289px;
+height: 66px;
+left: 0px;
+top: 0px;
+
+background: #F3CD50;
+
+
+/* Ellipse 31 */
+
+position: absolute;
+width: 335px;
+height: 335px;
+left: -24px;
+top: -174px;
+
+background: #F3CD50;
+
+
+/* Ellipse 32 */
+
+position: absolute;
+width: 335px;
+height: 201px;
+left: -18px;
+top: -207px;
+
+background: #2E9E85;
+
+
+/* Start the Test */
+
+position: absolute;
+height: 1px;
+left: 1px;
+right: -1px;
+top: 32px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #16141C;
+
+
+
+/* How-To-Play-Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 623px;
+height: 51px;
+left: 408px;
+top: 711px;
+
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 541px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* How To Play */
+
+width: 212px;
+height: 43px;
+
+font-family: 'Cinzel';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 43px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Steps-Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 332px;
+height: 439.38px;
+left: 0px;
+top: 0px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Rectangle 73 */
+
+width: 332px;
+height: 298px;
+
+background: #FAF8F4;
+border-radius: 13px 13px 0px 0px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Vector 6 */
+
+width: 332px;
+height: 145.8px;
+
+background: #FAF8F4;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 20px 20px 50px;
+gap: 10px;
+isolation: isolate;
+
+width: 332.56px;
+height: 320.23px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame 28 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 332px;
+height: 439.38px;
+left: 0px;
+top: 0px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Rectangle 73 */
+
+width: 332px;
+height: 298px;
+
+background: #FAF8F4;
+border-radius: 13px 13px 0px 0px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Vector 6 */
+
+width: 332px;
+height: 145.8px;
+
+background: #FAF8F4;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 29 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 20px;
+
+width: 294.56px;
+height: 250.23px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Step #1 */
+
+width: 294.56px;
+height: 38px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 38px;
+text-align: center;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Meet Miller, Jen, Aidan and Lizzy They are locked in a maze of papers and pictures Help them escape */
+
+width: 294.56px;
+height: 176px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 22px;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+
+
+/* Triple-Dots-Glowing */
+
+position: absolute;
+width: 93px;
+height: 19px;
+left: 1191px;
+top: 1301px;
+
+
+
+/* Ellipse 6 */
+
+position: absolute;
+width: 19px;
+height: 19px;
+left: 1191px;
+top: 1301px;
+
+background: #F2CC4F;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Ellipse 7 */
+
+position: absolute;
+width: 20px;
+height: 19px;
+left: 1227px;
+top: 1301px;
+
+background: #F2CC4F;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Ellipse 8 */
+
+position: absolute;
+width: 19px;
+height: 19px;
+left: 1265px;
+top: 1301px;
+
+background: #F2CC4F;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Ellipse 9 */
+
+position: absolute;
+width: 19px;
+height: 19px;
+left: 1191px;
+top: 1301px;
+
+background: #F2CC4F;
+filter: blur(10.55px);
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Ellipse 10 */
+
+position: absolute;
+width: 20px;
+height: 19px;
+left: 1227px;
+top: 1301px;
+
+background: #F2CC4F;
+filter: blur(10.55px);
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Ellipse 11 */
+
+position: absolute;
+width: 19px;
+height: 19px;
+left: 1265px;
+top: 1301px;
+
+background: #F2CC4F;
+filter: blur(10.55px);
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+
+/* Game Title */
+
+position: absolute;
+width: 406px;
+height: 58px;
+left: calc(50% - 406px/2 - 313px);
+top: 1492px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+text-align: right;
+
+color: #FFFFFF;
+
+
+
+/* Game Description */
+
+position: absolute;
+width: 478px;
+height: 234px;
+left: 132px;
+top: 1598px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+text-align: right;
+
+color: #FFFFFF;
+
+
+
+
+/* Meet Your Character Match */
+
+position: absolute;
+width: 764px;
+height: 58px;
+left: calc(50% - 764px/2 - 1px);
+top: 2009px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* MilleRace Description */
+
+position: absolute;
+width: 949px;
+height: 78px;
+left: 271px;
+top: 2251px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 32 */
+
+position: absolute;
+width: 229.15px;
+height: 376px;
+left: 162px;
+top: 2407px;
+
+
+
+/* Union */
+
+position: absolute;
+width: 137.97px;
+height: 292.49px;
+left: 45.18px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Ellipse 30 */
+
+position: absolute;
+width: 125.06px;
+height: 125.06px;
+left: 52.45px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 94 */
+
+position: absolute;
+width: 137.97px;
+height: 174.69px;
+left: 45.18px;
+top: 169.44px;
+
+background: #D9D9D9;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #FAF8F4;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #EFC128;
+
+
+/* Frame 36 */
+
+position: absolute;
+width: 229.15px;
+height: 376px;
+left: 749px;
+top: 2407px;
+
+
+
+/* Union */
+
+position: absolute;
+width: 137.97px;
+height: 292.49px;
+left: 45.18px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Ellipse 30 */
+
+position: absolute;
+width: 125.06px;
+height: 125.06px;
+left: 52.45px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 94 */
+
+position: absolute;
+width: 137.97px;
+height: 174.69px;
+left: 45.18px;
+top: 169.44px;
+
+background: #D9D9D9;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #FAF8F4;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #EFC128;
+
+
+/* MILLER */
+
+position: absolute;
+width: 180px;
+height: 58px;
+left: calc(50% - 180px/2 - 192px);
+top: 2415px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* JEN */
+
+position: absolute;
+width: 85px;
+height: 58px;
+left: calc(50% - 85px/2 + 357.5px);
+top: 2415px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* MilleRace Description */
+
+position: absolute;
+width: 270px;
+height: 260px;
+left: 438px;
+top: 2494px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+
+color: #FFFFFF;
+
+
+
+/* MilleRace Description */
+
+position: absolute;
+width: 270px;
+height: 208px;
+left: 1035px;
+top: 2494px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+
+color: #FFFFFF;
+
+
+
+/* Frame 35 */
+
+position: absolute;
+width: 229.15px;
+height: 376px;
+left: 1046px;
+top: 2812px;
+
+
+
+/* Union */
+
+position: absolute;
+width: 137.97px;
+height: 292.49px;
+left: 45.18px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Ellipse 30 */
+
+position: absolute;
+width: 125.06px;
+height: 125.06px;
+left: 52.45px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 94 */
+
+position: absolute;
+width: 137.97px;
+height: 174.69px;
+left: 45.18px;
+top: 169.44px;
+
+background: #D9D9D9;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #FAF8F4;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #EFC128;
+
+
+/* Frame 31 */
+
+position: absolute;
+width: 229.15px;
+height: 376px;
+left: 450px;
+top: 2822px;
+
+
+
+/* Union */
+
+position: absolute;
+width: 137.97px;
+height: 292.49px;
+left: 45.18px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Ellipse 30 */
+
+position: absolute;
+width: 125.06px;
+height: 125.06px;
+left: 52.45px;
+top: 51.64px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 94 */
+
+position: absolute;
+width: 137.97px;
+height: 174.69px;
+left: 45.18px;
+top: 169.44px;
+
+background: #D9D9D9;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #FAF8F4;
+
+
+/* Vector */
+
+position: absolute;
+width: 214.63px;
+height: 359.86px;
+left: 8.07px;
+top: 8.07px;
+
+background: #EFC128;
+
+
+/* LIZZY */
+
+position: absolute;
+width: 128px;
+height: 58px;
+left: calc(50% - 128px/2 + 90px);
+top: 2841px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* AIDAN */
+
+position: absolute;
+width: 153px;
+height: 58px;
+left: calc(50% - 153px/2 - 499.5px);
+top: 2842px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* MilleRace Description */
+
+position: absolute;
+width: 270px;
+height: 208px;
+left: 746px;
+top: 2920px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+
+color: #FFFFFF;
+
+
+
+/* MilleRace Description */
+
+position: absolute;
+width: 270px;
+height: 234px;
+left: 144px;
+top: 2921px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 26px;
+
+color: #FFFFFF;
+
+
+
+/* Take the test Now */
+
+position: absolute;
+width: 560px;
+height: 58px;
+left: calc(50% - 560px/2 - 2px);
+top: 3652px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Footer */
+
+position: absolute;
+width: 1438px;
+height: 465px;
+left: -3px;
+top: 4061px;
+
+background: #854EB4;
+border-radius: 46px;
+

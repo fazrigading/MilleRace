@@ -1,0 +1,888 @@
+/* Untitled159_20260811122633 2 */
+
+position: absolute;
+width: 1440px;
+height: 1060px;
+left: calc(50% - 1440px/2);
+top: calc(50% - 1060px/2);
+
+background: url(Untitled159_20260811122633.png);
+opacity: 0.55;
+
+
+/* Rectangle 98 */
+
+position: absolute;
+width: 1086px;
+height: 243px;
+left: 210px;
+top: 224px;
+
+background: #D9D9D9;
+box-shadow: 17px 13px 24px rgba(0, 0, 0, 0.25);
+border-radius: 41px;
+
+
+/* Rectangle 103 */
+
+position: absolute;
+width: 1086px;
+height: 196px;
+left: 210px;
+top: 518px;
+
+background: #6B21A8;
+box-shadow: 17px 13px 24px rgba(0, 0, 0, 0.25);
+border-radius: 31px;
+
+
+/* Fill The Blank */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 623px;
+height: 51px;
+left: 441px;
+top: 124px;
+
+filter: drop-shadow(17px 13px 24px rgba(0, 0, 0, 0.25));
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 541px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Fill The blank */
+
+width: 282px;
+height: 43px;
+
+font-family: 'Cinzel';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 43px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Answer */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 247px;
+height: 51px;
+left: 629px;
+top: 492px;
+
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 165px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Answer */
+
+width: 282px;
+height: 29px;
+
+font-family: 'Bona Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Union */
+
+width: 41px;
+height: 50px;
+
+background: #F3CD50;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 57 */
+
+position: absolute;
+width: 1046px;
+height: 177px;
+left: 270px;
+top: 258px;
+
+
+
+/* Anne of Green ____ */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 0px;
+top: 0px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 6. The Lion, The Witch & The ____ */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 541px;
+top: 0px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Harry Potter and The ____ of The Phoenix */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 0px;
+top: 39px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 7. The ___ in Our Stars */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 541px;
+top: 39px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* The ____ Runner */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 0px;
+top: 78px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 8. My Year of ___ and Relaxation */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 541px;
+top: 78px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Gulliver’s ____ */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 0px;
+top: 117px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 9. Song of The Open ____ */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 541px;
+top: 117px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* ____ Wood */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 0px;
+top: 156px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 10. A Brief History of */
+
+position: absolute;
+width: 505px;
+height: 21px;
+left: 541px;
+top: 156px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Frame 56 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 33px;
+
+position: absolute;
+width: 278px;
+height: 41px;
+left: 614px;
+top: 638px;
+
+
+
+/* Frame 52 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 67px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Road */
+
+width: 47px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 78px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 56 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 58px;
+height: 21px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Order */
+
+width: 58px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 53 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 67px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Time */
+
+width: 47px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 54 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 33px;
+
+position: absolute;
+width: 838px;
+height: 41px;
+left: 334px;
+top: 574px;
+
+
+
+/* Frame 47 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 101px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Travels */
+
+width: 81px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 44 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 90px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Gables */
+
+width: 70px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 51 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 67px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Rest */
+
+width: 47px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 48 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 124px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Norwegian */
+
+width: 104px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 46 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 67px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Kite */
+
+width: 47px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 49 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 113px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Wardrobe */
+
+width: 93px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 50 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 78px;
+height: 41px;
+
+background: #F3CD50;
+border-radius: 11px;
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Fault */
+
+width: 58px;
+height: 21px;
+
+font-family: 'Cutive Mono';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 21px;
+/* identical to box height */
+
+color: #16141C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;

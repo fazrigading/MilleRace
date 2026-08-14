@@ -1,0 +1,61 @@
+/* MilleRace - Design Tokens & Font Declarations */
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('../ASSETS/Fonts/Cinzel/Cinzel-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cutive Mono';
+  src: url('../ASSETS/Fonts/Cutive_Mono/CutiveMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bona Nova';
+  src: url('../ASSETS/Fonts/Bona_Nova/BonaNova-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bona Nova';
+  src: url('../ASSETS/Fonts/Bona_Nova/BonaNova-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  /* Color Tokens */
+  --color-yellow: #F3CD50;
+  --color-yellow-hover: #e5be3d;
+  --color-purple: rgba(133, 78, 180, 0.9);
+  --color-purple-light: rgba(133, 78, 180, 0.54);
+  --color-teal: #2E9E85;
+  --color-dark-bg: #16141C;
+  --color-card-bg: rgba(30, 24, 45, 0.85);
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #E2E8F0;
+  --color-text-dark: #16141C;
+  --color-accent-pink: #EC4899;
+  --color-accent-blue: #3B82F6;
+  --color-accent-green: #10B981;
+
+  /* Typography */
+  --font-title: 'Cinzel', serif, system-ui;
+  --font-mono: 'Cutive Mono', monospace;
+  --font-body: 'Bona Nova', Georgia, serif;
+
+  /* Shadows & Effects */
+  --shadow-glow-yellow: 0 0 20px rgba(243, 205, 80, 0.5);
+  --shadow-glow-purple: 0 0 20px rgba(133, 78, 180, 0.5);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}

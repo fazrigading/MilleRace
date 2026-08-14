@@ -1,0 +1,5 @@
+Background: Ink Night #16141C
+Arcane Purple: #6B21A8
+Mystic Teal: #2E9E85
+Gilded Gold: #F3CD50
+Parchment: #FAF8F4

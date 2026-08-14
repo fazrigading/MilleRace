@@ -1,0 +1,783 @@
+/* MilleRace - Revamped Landing Page Styles (Figma Web1 & Web2 Reference) */
+
+#screen-landing.landing-scrollable {
+  background-color: #16141C;
+  overflow-y: auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* SECTION 1: HERO SECTION */
+.landing-hero-section {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 660px;
+  padding: 34px 80px 40px 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: radial-gradient(circle at 10% 40%, rgba(117, 39, 181, 0.4) 0%, rgba(22, 20, 28, 0) 60%),
+              radial-gradient(circle at 90% 20%, rgba(46, 158, 133, 0.25) 0%, rgba(22, 20, 28, 0) 50%);
+  box-sizing: border-box;
+}
+
+/* Top Nav Bar */
+.landing-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  gap: 20px;
+}
+
+
+/* Hero Content */
+.hero-content {
+  margin-top: 140px;
+  margin-bottom: 20px;
+  max-width: 650px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  line-height: 1.25;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-family: 'Cutive Mono', monospace;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1.5;
+  color: #E2E8F0;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Start the Test Button (Figma SVG Asset with Ellipse Transition) */
+.start-test-svg-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.hero-start-btn {
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-bottom: 70px;
+  z-index: 10;
+}
+
+.start-test-svg-btn .btn-svg-base {
+  height: 66px;
+  width: auto;
+  display: block;
+}
+
+.start-test-svg-btn .btn-svg-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  clip-path: ellipse(150% 0% at 50% 0%);
+  opacity: 0;
+  transition: clip-path 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.start-test-svg-btn:hover .btn-svg-hover {
+  clip-path: ellipse(150% 150% at 50% 50%);
+  opacity: 1;
+}
+
+.start-test-svg-btn:hover {
+  transform: scale(1.06) translateY(-2px);
+  filter: drop-shadow(0 8px 22px rgba(46, 158, 133, 0.55));
+}
+
+.start-test-svg-btn:active {
+  transform: scale(0.98);
+}
+
+.start-btn-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bona Nova', serif;
+  font-size: 1.25rem;
+  color: #16141C;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  z-index: 5;
+}
+
+.start-test-svg-btn:hover .start-btn-text {
+  color: #FFFFFF;
+}
+
+/* SECTION 2: HOW TO PLAY SECTION */
+.how-to-play-section {
+  width: 100%;
+  background: #854EB4;
+  padding: 30px 20px 0 20px;
+  height: 368px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 160px; /* Space for the overhanging cards */
+}
+
+.how-to-play-banner-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -65px; /* Overlaps hero section boundary */
+  z-index: 20;
+}
+
+.how-to-play-banner-bg {
+  height: 56px;
+  width: auto;
+}
+
+.how-to-play-title {
+  position: absolute;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: #16141C;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* 3 Step Cards Grid */
+.steps-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 32px;
+  width: 100%;
+  max-width: 1180px;
+  margin-top: 50px;
+  z-index: 10;
+}
+
+.step-card {
+  position: relative;
+  width: 332px;
+  max-width: 100%;
+  height: 444px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.32));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.45));
+}
+
+.step-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.step-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 38px 24px 20px 24px;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.step-num {
+  font-family: 'Bona Nova', serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #16141C;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.step-text {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #16141C;
+  margin: 0;
+  max-width: 290px;
+}
+
+/* Triple Dots Glowing Row (Under How To Play, Right-aligned under Step 3) */
+.triple-dots-row {
+  width: 100%;
+  max-width: 1060px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 50px 0 0 0;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.triple-dots-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triple-dots-wrapper img {
+  width: 110px;
+  height: auto;
+  display: block;
+}
+
+/* SECTION 3: WHAT IS MILLERACE? */
+.what-is-section {
+  width: 100%;
+  max-width: 1120px;
+  padding: 80px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.what-is-left {
+  flex: 1;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.what-is-title {
+  font-family: 'Bona Nova', serif;
+  font-size: 2.5rem;
+  color: #FFFFFF;
+  font-weight: 400;
+  text-align: right;
+  margin: 0;
+}
+
+.what-is-text {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  text-align: right;
+  margin: 0;
+}
+
+.what-is-right-frame {
+  width: 500;
+  height: 400px;
+  background: #2E9E85;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-is-right-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SECTION 4: MEET YOUR CHARACTER MATCH */
+.meet-characters-section {
+  width: 100%;
+  max-width: 1120px;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meet-title {
+  font-family: 'Bona Nova', serif;
+  font-size: 2.6rem;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.meet-desc {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  text-align: center;
+  max-width: 850px;
+  margin-bottom: 60px;
+}
+
+/* 4 Characters Intro Grid */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+  width: 100%;
+}
+
+.character-intro-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 28px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.character-intro-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(243, 205, 80, 0.4);
+}
+
+.char-door-wrapper {
+  width: 190px;
+  aspect-ratio: 1 / 2;
+  min-height: 380px;
+  background: #F3CD50;
+  border-radius: 24px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.char-still-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  z-index: 2;
+}
+
+.char-door-img {
+  width: 75%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.char-intro-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.char-intro-name {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.char-intro-quote {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #E2E8F0;
+}
+
+/* SECTION 5: TAKE YOUR TEST NOW */
+.take-test-section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 80px 40px 100px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.take-test-title {
+  font-family: 'Bona Nova', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+.take-test-subtitle {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  max-width: 650px;
+  margin: 0 0 12px 0;
+}
+
+.take-test-section .start-test-svg-btn {
+  align-self: center;
+  margin: 0;
+}
+
+/* FOOTER: PURPLE CONTAINER WITH ROUNDED CORNERS */
+.landing-footer-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 30px 40px 30px;
+  box-sizing: border-box;
+}
+
+.landing-footer-container {
+  width: 100%;
+  background: #854EB4;
+  border-radius: 46px;
+  padding: 48px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-brand .logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-brand .logo-circle img {
+  width: 28px;
+  height: 28px;
+}
+
+.footer-brand .logo-brand-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.footer-brand .logo-brand-text span {
+  color: #F3CD50;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-nav-item {
+  background: none;
+  border: none;
+  color: #FAF8F4;
+  font-family: 'Bona Nova', serif;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 12px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.footer-nav-item:hover {
+  color: #F3CD50;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-desc, .footer-copyright {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* REGISTRATION MODAL USING `Name-and-age-input.svg` DESIGN */
+.reg-modal-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-modal-bg-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.reg-modal-form-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 100px 10px 100px;
+}
+
+.reg-input-name {
+  width: 100%;
+  max-width: 520px;
+  height: 38px;
+  background: rgba(217, 217, 217, 0.95);
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-family: 'Bona Nova', serif;
+  font-size: 1.1rem;
+  color: #16141C;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.reg-input-age {
+  width: 100%;
+  max-width: 520px;
+  height: 38px;
+  background: rgba(217, 217, 217, 0.95);
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-family: 'Bona Nova', serif;
+  font-size: 1.1rem;
+  color: #16141C;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.reg-submit-btn {
+  position: relative;
+  background: #F3CD50;
+  color: #16141C;
+  border: none;
+  padding: 10px 36px;
+  font-family: 'Bona Nova', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.reg-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: -120%;
+  left: -20%;
+  width: 140%;
+  height: 240%;
+  background: #2E9E85;
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0.6);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.reg-submit-btn:hover::before {
+  transform: translateY(28%) scale(1.1);
+  opacity: 1;
+}
+
+.reg-submit-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  color: #FFFFFF;
+  box-shadow: 0 8px 25px rgba(46, 158, 133, 0.6);
+}
+
+.reg-submit-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .triple-dots-row {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-hero-section {
+    padding: 20px;
+    min-height: auto;
+  }
+  .hero-start-btn {
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .how-to-play-section {
+    padding: 20px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .steps-grid {
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .triple-dots-row {
+    justify-content: center;
+    padding-right: 0;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  .characters-grid {
+    grid-template-columns: 1fr;
+  }
+  .character-intro-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .char-door-wrapper {
+    width: 170px;
+    min-height: 340px;
+  }
+  .take-test-section {
+    padding: 60px 20px 80px 20px;
+  }
+  .landing-footer-wrapper {
+    padding: 0 16px 24px 16px;
+  }
+  .landing-footer-container {
+    padding: 32px 24px;
+    border-radius: 28px;
+  }
+  .footer-top, .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .reg-modal-form-overlay {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .char-door-wrapper {
+    width: 140px;
+    min-height: 280px;
+  }
+  .step-card {
+    width: 290px;
+    height: 388px;
+  }
+  .step-card-content {
+    padding: 30px 16px 15px 16px;
+    gap: 14px;
+  }
+  .step-num {
+    font-size: 1.65rem;
+  }
+  .step-text {
+    font-size: 0.92rem;
+    line-height: 1.35;
+  }
+  .triple-dots-wrapper img {
+    width: 95px;
+  }
+}
