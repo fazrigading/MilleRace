@@ -139,7 +139,7 @@ const GameEngine = {
     if (cardsGrid) {
       cardsGrid.innerHTML = q.options.map(opt => `
         <div class="art-card" data-letter="${opt.letter}" tabindex="0" role="button" aria-label="Artwork Option ${opt.letter}">
-          <img src="${opt.img}" alt="Artwork Option ${opt.letter}" onerror="this.src='ASSETS/2-Questions-Page/Level 1/UI-Reference/Question Type 1 with Cards.png'">
+          <img src="${opt.img}" alt="Artwork Option ${opt.letter}" onerror="this.src='docs/design-references/ui-references/Question Type 1 with Cards.png'">
         </div>
       `).join('');
 
@@ -439,7 +439,7 @@ const GameEngine = {
     const charImg = document.getElementById('result-char-img');
     if (charImg) {
       charImg.src = charMatch.avatar;
-      charImg.onerror = () => { charImg.src = 'ASSETS/Characters-stills/Miller.png'; };
+      charImg.onerror = () => { charImg.src = 'assets/images/characters/stills/Miller.png'; };
     }
 
     // Home Activities
