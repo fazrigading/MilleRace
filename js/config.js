@@ -6,8 +6,8 @@ const GAME_CONFIG = {
   // STAGE 1: Miller's Gallery (Visual AIAS Test)
   STAGE_1: {
     character: 'Miller',
-    avatar: 'ASSETS/Characters-stills/Miller-no-bg-square.png',
-    bgImage: 'ASSETS/Background/Level 1.png',
+    avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
+    bgImage: 'assets/images/backgrounds/Level 1.png',
     introDialogue: "Each room in this building is interlocked. To reach the end of the maze, we must obtain keys. The first one is hidden in the gallery. We must first clear up the space and find it. Eliminate decoys and help me find real art works.",
     introSentences: [
       "Each room in this building is interlocked.",
@@ -21,9 +21,9 @@ const GAME_CONFIG = {
         id: 1,
         prompt: "Which one of these framed art pieces is a real human creation?",
         options: [
-          { letter: 'A', img: 'FOTO-SOAL-NO-1/1A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'FOTO-SOAL-NO-1/1B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'FOTO-SOAL-NO-1/1C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/questions/stage-1/1A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/questions/stage-1/1B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/questions/stage-1/1C.jpg', label: 'Option C' }
         ],
         correct: 'B'
       },
@@ -31,9 +31,9 @@ const GAME_CONFIG = {
         id: 2,
         prompt: "Spot the authentic human painting among algorithmic decoys:",
         options: [
-          { letter: 'A', img: 'FOTO-SOAL-NO-1/2A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'FOTO-SOAL-NO-1/2B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'FOTO-SOAL-NO-1/2C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/questions/stage-1/2A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/questions/stage-1/2B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/questions/stage-1/2C.jpg', label: 'Option C' }
         ],
         correct: 'C'
       },
@@ -41,9 +41,9 @@ const GAME_CONFIG = {
         id: 3,
         prompt: "Which photo is a genuine deep space optical capture (Hubble/Webb)?",
         options: [
-          { letter: 'A', img: 'FOTO-SOAL-NO-1/3A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'FOTO-SOAL-NO-1/3B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'FOTO-SOAL-NO-1/3C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/questions/stage-1/3A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/questions/stage-1/3B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/questions/stage-1/3C.jpg', label: 'Option C' }
         ],
         correct: 'C'
       },
@@ -51,9 +51,9 @@ const GAME_CONFIG = {
         id: 4,
         prompt: "Identify the human illustration with natural composition:",
         options: [
-          { letter: 'A', img: 'FOTO-SOAL-NO-1/4A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'FOTO-SOAL-NO-1/4B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'FOTO-SOAL-NO-1/4C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/questions/stage-1/4A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/questions/stage-1/4B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/questions/stage-1/4C.jpg', label: 'Option C' }
         ],
         correct: 'A'
       }
@@ -63,8 +63,8 @@ const GAME_CONFIG = {
   // STAGE 2: Jen's Door Passwords (Literary Knowledge)
   STAGE_2: {
     character: 'Jen',
-    avatar: 'ASSETS/Characters-stills/Jen-no-bg-square.png',
-    bgImage: 'ASSETS/Background/Level 2.png',
+    avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
+    bgImage: 'assets/images/backgrounds/Level 2.png',
     introDialogue: "There are too many doors to unlock! Only one way to find out. Each of these doors contain a password. Fill in the blanks with the correct options.",
     introSentences: [
       "There are too many doors to unlock!",
@@ -89,8 +89,8 @@ const GAME_CONFIG = {
   // STAGE 3: Aidan's Floor of Letters (Textual AIAS Test)
   STAGE_3: {
     character: 'Aidan',
-    avatar: 'ASSETS/Characters-stills/Miller-no-bg-square.png',
-    bgImage: 'ASSETS/Background/Level 1.png',
+    avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
+    bgImage: 'assets/images/backgrounds/Level 1.png',
     introDialogue: "Ah, if this isn't the key to success... I figure these letters have clues to our next key. Help me delete letters that do not sound human.",
     introSentences: [
       "Ah, if this isn't the key to success...",
@@ -130,8 +130,8 @@ const GAME_CONFIG = {
   // STAGE 4: Lizzy's Room of Colors (PISA Reading & Inferential Comprehension)
   STAGE_4: {
     character: 'Lizzy',
-    avatar: 'ASSETS/Characters-stills/Jen-no-bg-square.png',
-    bgImage: 'ASSETS/Background/Level 2.png',
+    avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
+    bgImage: 'assets/images/backgrounds/Level 2.png',
     introDialogue: "This place is bursting its colors! We must escape quickly before it lures us into magic!",
     introSentences: [
       "This place is bursting its colors!",
@@ -184,7 +184,7 @@ const GAME_CONFIG = {
       scoreRange: "1–25 Points",
       pisaLevel: "PISA Reading Level 1–2",
       cefrLevel: "CEFR A1–A2 (Early Reader)",
-      avatar: "ASSETS/Characters-stills/Miller-no-bg-square.png",
+      avatar: "assets/images/characters/stills/Miller-no-bg-square.png",
       quote: "Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why thinking critically is important!",
       bio: "Curious and ready for new chapters! Miller loves finding clues for his adventures, but often gets lost without his keys. He would love to read more, one page at a time. Comic books and fun facts suit his personality.",
       activities: ["Nighttime stories", "Comic books & graphic novels", "Fun facts from encyclopedias", "Word search & crosswords"],
@@ -202,7 +202,7 @@ const GAME_CONFIG = {
       scoreRange: "26–50 Points",
       pisaLevel: "PISA Reading Level 3–4",
       cefrLevel: "CEFR B1 (Young Adult)",
-      avatar: "ASSETS/Characters-stills/Jen-no-bg-square.png",
+      avatar: "assets/images/characters/stills/Jen-no-bg-square.png",
       quote: "Jen knows everything! But she never really knows what to trust. She always checks… factually!",
       bio: "Witty and energetic, Jen is exploring the world! She has imaginary friends and places to be. Short stories and fairy tales are where she goes, inspired by real-life stories and writing in her diary.",
       activities: ["Reading short stories & fairy tales", "Keeping journal/diary logs", "Completing online fact-check challenges"],
@@ -220,7 +220,7 @@ const GAME_CONFIG = {
       scoreRange: "51–75 Points",
       pisaLevel: "PISA Reading Level 5",
       cefrLevel: "CEFR B2 (Advanced Reader)",
-      avatar: "ASSETS/Characters-stills/Miller-no-bg-square.png", // Fallback image
+      avatar: "assets/images/characters/stills/Miller-no-bg-square.png", // Fallback image
       quote: "Aidan loves browsing the internet! But he only accepts legit sources. He sees citations and timelines!",
       bio: "Adventurous and resilient, Aidan is on the move! Books are his window to the world. He reads articles about his favorite characters, loves book series, and watches film adaptations.",
       activities: ["Reading book series & novels", "Comparing book-to-film adaptations", "Mastering academic citations & references"],
@@ -238,7 +238,7 @@ const GAME_CONFIG = {
       scoreRange: "76–100 Points",
       pisaLevel: "PISA Reading Level 6",
       cefrLevel: "CEFR C1 (High Literacy / Wiz)",
-      avatar: "ASSETS/Characters-stills/Jen-no-bg-square.png", // Fallback image
+      avatar: "assets/images/characters/stills/Jen-no-bg-square.png", // Fallback image
       quote: "Lizzy's lies set on lies! She reads graphs like the Egyptian pyramid. Statistics got nothing on her!",
       bio: "Lizzy is the wiz! She reads like there's no tomorrow and is always guarded against misinformation. She creates artwork based on what she reads and reads graphs like Egyptian pyramids.",
       activities: ["Volunteering in reading clubs", "Creating literature-inspired artwork", "Studying data & graphic literacy"],
