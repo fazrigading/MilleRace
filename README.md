@@ -14,7 +14,7 @@
 - [Background & Problem Statement](#-background--problem-statement)
 - [Key Features](#-key-features)
 - [Theoretical Frameworks](#-theoretical-frameworks)
-- [The 4-Stage Relay Journey](#-the-4-stage-relay-journey)
+- [The 4-Stage Relay Journey](#%EF%B8%8F-the-4-stage-relay-journey)
 - [Character Archetypes & Scoring](#-character-archetypes--scoring)
 - [Pages & Navigation](#-pages--navigation)
 - [Project Architecture & Tech Stack](#-project-architecture--tech-stack)
