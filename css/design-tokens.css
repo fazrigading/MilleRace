@@ -2,28 +2,28 @@
 
 @font-face {
   font-family: 'Cinzel';
-  src: url('../ASSETS/Fonts/Cinzel/Cinzel-VariableFont_wght.ttf') format('truetype');
+  src: url('../assets/fonts/cinzel/Cinzel-VariableFont_wght.ttf') format('truetype');
   font-weight: 400 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cutive Mono';
-  src: url('../ASSETS/Fonts/Cutive_Mono/CutiveMono-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/cutive-mono/CutiveMono-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bona Nova';
-  src: url('../ASSETS/Fonts/Bona_Nova/BonaNova-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/bona-nova/BonaNova-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bona Nova';
-  src: url('../ASSETS/Fonts/Bona_Nova/BonaNova-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/bona-nova/BonaNova-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }

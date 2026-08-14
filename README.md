@@ -140,11 +140,20 @@ The Single Page Application (SPA) features a persistent top navigation bar with 
 ```
 MilleRace/
 ├── index.html                    # Single Page Application entry point
-├── PRD.md                        # Product Requirement Document
-├── Character Profile.txt         # Pedagogical character definitions & reading lists
 ├── README.md                     # Project documentation
+├── assets/                       # Unified lowercase asset library
+│   ├── fonts/                    # Local TTF fonts (bona-nova, cinzel, cutive-mono)
+│   └── images/
+│       ├── backgrounds/          # Stage backgrounds (Level 1.png, Level 2.png)
+│       ├── characters/
+│       │   ├── stills/           # Character portraits (Miller, Jen, etc.)
+│       │   └── animations/       # Walk, jump, talk sprite sequences
+│       ├── questions/
+│       │   └── stage-1/          # Stage 1 artwork questions (1A.jpg to 4C.jpg)
+│       ├── ui/                   # Landing, question, and result UI vector elements
+│       └── icons/                # Brand logos and interface icons
 ├── css/
-│   ├── design-tokens.css         # Color palette, font declarations, and CSS variables
+│   ├── design-tokens.css         # Color palette, typography tokens, and CSS variables
 │   ├── main.css                  # Global layout, HUD bar, modal overlay, and buttons
 │   ├── landing.css               # Landing hero, how-to-play cards, character intros
 │   ├── pages.css                 # About Us, Our Team, Our Mission, Leaderboard styles
@@ -157,14 +166,12 @@ MilleRace/
 │   ├── ui.js                     # Screen switcher, dialogue typewriter, leaderboard renderer
 │   ├── gameEngine.js             # Stage transition engine, puzzle validation, and scoring
 │   └── app.js                    # Event listeners, modal controllers, and app bootstrap
-├── FOTO-SOAL-NO-1/               # Stage 1 image puzzle assets
-└── ASSETS/
-    ├── 1-Landing-Page/           # Landing page vectors, SVGs, and card graphics
-    ├── 2-Questions-Page/         # Stage card vectors and question frames
-    ├── 3-Final-Result-Page/      # Result badges, logo SVGs, and recommendation icons
-    ├── Background/               # High-resolution stage background environments
-    ├── Characters-stills/        # Character portrait artwork (Miller, Jen, Aidan, Lizzy)
-    └── Fonts/                    # Local TTF font files (Cinzel, Cutive Mono, Bona Nova)
+└── docs/                         # Project Documentation & Reference Vault
+    ├── prd.md                    # Product Requirement Document
+    ├── character-profiles.txt    # Pedagogical character definitions & reading lists
+    ├── proposal/                 # Proposal Draft (.docx & .pdf)
+    ├── scripts/                  # Final script screenplay (.docx & .pdf)
+    └── design-references/        # Figma CSS dumps, UI reference captures, screenshots
 ```
 
 ---

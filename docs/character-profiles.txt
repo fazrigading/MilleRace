@@ -1,7 +1,4 @@
-﻿FRONT END
-
-
-MILLER
+﻿MILLER
 Miller loves finding clues for his adventures! 
 But he often gets lost without his keys.
 That is why thinking critically is important!
@@ -49,7 +46,7 @@ Statistics got nothing on her!
 See how you can do so to fight misinformation in:
 1. https://ischoolonline.berkeley.edu/blog/beginners-guide-improving-data-literacy/
 2. https://www.dataversity.net/articles/data-literacy-essentials-what-you-need-to-know/
-BACK-END
+
 
 
 OR FINAL RESULTS
