@@ -5,7 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-F3CD50.svg)](LICENSE)
 [![Mulawarman University](https://img.shields.io/badge/Developed_At-Mulawarman_University-2E9E85.svg)](https://unmul.ac.id/)
 [![Framework: AIAS & PISA](https://img.shields.io/badge/Standard-AIAS%20%7C%20PISA%20%7C%20CEFR-16141C.svg)](#-theoretical-frameworks)
-[![Playwright Core](https://img.shields.io/badge/Tested%20With-Playwright--core%20%7C%20Google%20Chrome-4285F4.svg)](#-automated-testing--browser-verification)
+[![Firebase Firestore](https://img.shields.io/badge/Cloud%20Database-Firebase%20Firestore-FFCA28.svg?logo=firebase&logoColor=black)](#-cloud-database--persistence)
+[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel%20Edge%20CDN-000000.svg?logo=vercel&logoColor=white)](#-deployment--cicd-automation)
 
 **MilleRace** is an immersive, gamified Media and Information Literacy (MIL) relay race web game. Built for the **UNESCO Youth Hackathon 2026** under the theme *"Play Your Part: Youth Designing the Future of Media Information and Literacy"*, MilleRace challenges players to race against a 3-minute countdown across 4 interactive puzzle stages to outread generative machine algorithms, collect keys, escape the digital maze, and match with an inspiring literary character archetype.
 
@@ -19,11 +20,13 @@
 - [Point System & Scoring Matrix](#-point-system--scoring-matrix)
 - [Character Archetypes & Matching](#-character-archetypes--matching)
 - [Pages & Navigation](#-pages--navigation)
+- [Cloud Database & Persistence](#-cloud-database--persistence)
+- [Deployment & CI/CD Automation](#-deployment--cicd-automation)
 - [Project Architecture & Tech Stack](#-project-architecture--tech-stack)
 - [Project Structure](#-project-structure)
-- [Developer Mode & Debug Toolbar](#-developer-mode--debug-toolbar)
+- [Developer Mode & Debug Controls](#-developer-mode--debug-controls)
 - [Getting Started](#-getting-started)
-- [Automated Testing & Browser Verification](#-automated-testing--browser-verification)
+- [Automated Testing & Verification](#-automated-testing--verification)
 - [Project Team](#-project-team)
 - [3-Year Strategic Roadmap](#-3-year-strategic-roadmap)
 - [License](#-license)
@@ -51,10 +54,19 @@ MilleRace gamifies media discernment, teaching users how to detect AI-generated 
 - 📚 **Literary Title Reconstruction:** Fill missing words from world classics and modern literature to unlock door passwords.
 - 🔍 **Textual Authenticity Classification:** Grade text excerpts on a 4-point graduated human-to-synthetic scale.
 - 🧠 **High-Order PISA Inferential Reading:** Multi-layered reading comprehension questions with weighted scoring.
-- 🏆 **Dynamic Local Leaderboard:** Real-time Hall of Fame with demographic category filtering (All, 6–12, 13–17, 18+), live search, and top 3 podium highlights.
+- 🏆 **Global Leaderboard & "Your Results" History:**
+  - **Global Leaderboard:** Demographic filtering (All, 6–12, 13–17, 18+), live search with automatic top 3 podium collapse.
+  - **Your Results:** Persistent local history of every test completed on the browser, featuring full score breakdowns and direct **"View Final Result ➔"** interactive lookups.
+- 📜 **Redesigned Serif Final Result Screen:**
+  - **MIL Score** with AIAS & PISA reading standards descriptions.
+  - Golden ribbon banner badge (`Result-with-name.svg`) with character archetype.
+  - Separate, styled **PISA Reading Level** and **CEFR Level** pill badges.
+  - Character quotes, bios, and dynamic character-specific misinformation research links.
+  - Animated score counter and gold progress meter with stage points chips (Visual AIAS, Literary, Textual AIAS, Critical Inferencing).
+  - Dedicated purple footer container housing the Personalized Recommendations & Toolkit.
 - 🎁 **Tailored Post-Game Recommendations:** Direct access to digitized public libraries (*Perpustakaan Nasional Digital*, *Bank Indonesia*), open archives (*Project Gutenberg*, *Internet Archive*), and critical thinking toolkits.
-- 🧭 **Responsive Navigation Bar:** Sleek top-right glassmorphism navbar with a dynamic golden yellow rounded rectangular indicator.
-- 🛠️ **Developer Debug Panel:** Built-in dev panel (`Ctrl+Shift+D`) for rapid stage jumping, dialogue skipping, timer toggling, and score simulation.
+- 🧭 **Universal Navigation Bar:** Sleek top-right glassmorphic navbar with a dynamic golden yellow active indicator across all screens.
+- 🛠️ **Developer Debug Panel:** Built-in dev panel (`Ctrl+Shift+D`, `Alt+D`, or `~`) for rapid stage jumping, dialogue skipping, timer toggling, and score simulation.
 
 ---
 
@@ -82,7 +94,7 @@ flowchart LR
     C -->|Key #2| D[Stage 3: Aidan<br/>Room of Letters<br/>20 Pts]
     D -->|Key #3| E[Stage 4: Lizzy<br/>Room of Colors<br/>20 Pts]
     E -->|Final Key| F[🎉 Escape & Character Match<br/>Max 100 Pts]
-    F --> G[🏆 Dynamic Leaderboard & Toolkits]
+    F --> G[🏆 Global Leaderboard & Your Results]
 ```
 
 1. **Stage 1 — Miller's Gallery (Visual AIAS):**
@@ -153,20 +165,32 @@ The Single Page Application (SPA) features a persistent top navigation bar with 
 - **About Us (`screen-about`):** Detailed breakdown of the Indonesian Literacy Paradox, UNESCO hackathon alignment, AIAS 5 parameters, and stage overviews.
 - **Our Team (`screen-team`):** Mulawarman University student team members, academic backgrounds, roles, and skill tags.
 - **Our Mission (`screen-mission`):** 5 Strategic Pillars, 3-Year Strategic Roadmap (2026–2028), and community call to action.
-- **Leaderboard (`screen-leaderboard`):** Top 3 podium showcase, demographic filters, live search, and automatic recording of completed game results.
+- **Leaderboard (`screen-leaderboard`):**
+  - **Global Leaderboard:** Demographic tabs, live search with auto-hiding podium, and live top scores.
+  - **Your Results:** Personal test history list with full score breakdowns and one-click Final Result inspection.
+- **Final Result (`screen-result`):** Complete analytical performance profile, MIL score progress meter, character ribbon, bio, quote, and recommendation toolkit in a purple footer.
 
 ---
 
-## 🛠️ Developer Mode & Debug Toolbar
+## 🔥 Cloud Database & Persistence
 
-MilleRace includes a built-in Developer Mode for testing, demonstrations, and rapid stage inspection:
+MilleRace uses an **offline-first hybrid architecture**:
+1. **Google Firebase Firestore:** Synchronizes real-time scores across devices for the global UNESCO Hackathon Leaderboard.
+2. **Web Storage API (`localStorage`):** Caches leaderboard scores and stores the player's personal test run history (`mille_user_history`) locally on their browser.
+3. **Security Rules (`firestore.rules`):** Enforces strict document schema validation on the cloud (string length $\le$ 25, score range 0–100, age group enum, and disallowing updates/deletes).
+4. **Composite Indexes (`firestore.indexes.json`):** Ensures optimized sorting by `score` DESC and `timestamp` ASC for fair tie-breaking.
 
-- **Toggle Shortcut:** Press `Ctrl + Shift + D` or `` ` `` (backtick), or click the floating **🛠️ DEV MODE** button in the bottom corner.
-- **Quick Jump:** Navigate directly to any screen (Landing, About, Team, Mission, Stages 1–4, Result, Leaderboard, Register Modal).
-- **Timer Control:** Toggle the 3-minute countdown timer on or off (paused).
-- **Dialogue Toggle:** Instantly skip intro narrative dialogues for fast gameplay testing.
-- **Score Simulator:** Simulate scores (20% Miller, 45% Jen, 70% Aidan, 95% Lizzy) with proportional 20/40/20/20 stage distributions.
-- **Key Slots:** Manually unlock or lock keys 1 through 4.
+---
+
+## 🚀 Deployment & CI/CD Automation
+
+MilleRace is configured for automated Edge CDN deployment:
+
+- **Edge CDN Hosting:** Configured via `vercel.json` with immutable asset caching (`Cache-Control: max-age=31536000`), clean URLs, and HTTP security headers (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`).
+- **GitHub Actions (`.github/workflows/deploy.yml`):**
+  - **Pre-flight Validation:** Automatically checks for required HTML entry files, CSS stylesheets, JavaScript modules, and asset integrity.
+  - **Automated Deployment:** Deploys directly to Vercel on every push to the `main` branch.
+  - **Safe Secret Injection:** Injects production Firebase configuration dynamically during deployment, preventing API key exposure in Git history.
 
 ---
 
@@ -174,9 +198,9 @@ MilleRace includes a built-in Developer Mode for testing, demonstrations, and ra
 
 - **Frontend Core:** HTML5 Semantic Structure, Vanilla JavaScript (ES6+ Modules)
 - **Styling Architecture:** Vanilla CSS3 with Design Tokens (`design-tokens.css`), responsive Flexbox/Grid, Glassmorphism, and keyframe micro-animations
-- **Typography:** Google Fonts (`Cinzel` for headings, `Bona Nova` for body copy, `Cutive Mono` for metrics & data)
+- **Typography:** Google Fonts (`Cinzel` for headings, `Bona Nova` for body and results, `Cutive Mono` for metrics & data)
 - **State Management:** Custom reactive state store (`state.js`) with stage progression, point ceilings, and key tracking
-- **Persistence:** Browser `localStorage` for offline-capable leaderboard rankings and racer history
+- **Persistence & Cloud:** Google Firebase Firestore + Browser `localStorage` hybrid service (`leaderboardService.js`)
 - **Testing & Verification:** `playwright-core` and `@playwright/test` wired directly to **Google Chrome** (`channel: 'chrome'`)
 - **Zero Heavy Frameworks:** Zero external UI framework dependencies for instant loading speed, clean maintainability, and cross-browser accessibility
 
@@ -189,13 +213,20 @@ MilleRace/
 ├── index.html                    # Single Page Application entry point
 ├── package.json                  # Dependencies and test/verification scripts
 ├── playwright.config.js          # Playwright test config wired to Google Chrome
+├── firestore.rules               # Production Firebase Firestore security rules
+├── firestore.indexes.json        # Firestore composite query index definitions
+├── vercel.json                   # Vercel Edge CDN configuration & security headers
+├── Deployment-Plan.md            # Comprehensive production deployment & runbook guide
 ├── README.md                     # Comprehensive project documentation
+├── .github/
+│   └── workflows/
+│       └── deploy.yml            # GitHub Actions CI/CD automated deployment workflow
 ├── assets/                       # Unified asset library
 │   ├── fonts/                    # Local TTF fonts (bona-nova, cinzel, cutive-mono)
 │   └── images/
 │       ├── backgrounds/          # Stage backgrounds (Level 1.png, Level 2.png)
 │       ├── characters/
-│       │   ├── stills/           # Character portraits (Miller, Jen, etc.)
+│       │   ├── stills/           # Transparent character portraits (Miller-no-bg, Jen-no-bg, etc.)
 │       │   └── animations/       # Walk, jump, talk sprite sequences
 │       ├── questions/
 │       │   └── stage-1/          # Stage 1 artwork questions (1A.jpg to 4C.jpg)
@@ -205,16 +236,18 @@ MilleRace/
 │   ├── design-tokens.css         # Color palette, typography tokens, and CSS variables
 │   ├── main.css                  # Global layout, HUD bar, modal overlay, and buttons
 │   ├── landing.css               # Landing hero, how-to-play cards, character intros
-│   ├── pages.css                 # About Us, Our Team, Our Mission, Leaderboard styles
+│   ├── pages.css                 # About Us, Our Team, Our Mission, Leaderboard & History styles
 │   ├── game-stages.css           # Puzzle layouts for Stages 1 to 4
-│   ├── result.css                # Final results card and recommendation toolkit
-│   └── dev-mode.css              # Dev mode bar & debug toolbar styling
+│   ├── result.css                # Final results card, serif styling, and recommendation toolkit
+│   └── dev-mode.css              # Developer panel styling
 ├── js/
-│   ├── config.js                 # Stage question matrices, dialogue, scoring matrix, and characters
+│   ├── config.js                 # Stage question matrices, dialogue, scoring matrix, and character profiles
+│   ├── firebaseConfig.js         # Firebase configuration template & detection
+│   ├── leaderboardService.js     # Hybrid Cloud Firestore + localStorage leaderboard & history service
 │   ├── state.js                  # Player profile, stage scores (20/40/20/20), and key tracking
 │   ├── timer.js                  # 3-minute global countdown timer component
-│   ├── ui.js                     # Screen switcher, dialogue typewriter, leaderboard renderer
-│   ├── gameEngine.js             # Stage transition engine, puzzle validation, and scoring handlers
+│   ├── ui.js                     # Screen switcher, dialogue typewriter, leaderboard & history renderer
+│   ├── gameEngine.js             # Stage transition engine, puzzle validation, and result renderer
 │   ├── devMode.js                # Developer quick-stage navigation and state inspector
 │   └── app.js                    # Event listeners, modal controllers, and app bootstrap
 ├── scripts/
@@ -229,6 +262,19 @@ MilleRace/
     ├── scripts/                  # Final script screenplay (.docx & .pdf)
     └── design-references/        # Figma CSS dumps, UI reference captures, screenshots
 ```
+
+---
+
+## 🛠️ Developer Mode & Debug Controls
+
+MilleRace includes a built-in Developer Mode for testing, demonstrations, and rapid stage inspection:
+
+- **Toggle Shortcuts:** Press `Ctrl + Shift + D`, `Alt + D`, or `~` (tilde) on your keyboard.
+- **Quick Jump:** Navigate directly to any screen (Landing, About, Team, Mission, Stages 1–4, Result, Leaderboard, Register Modal).
+- **Timer Control:** Toggle the 3-minute countdown timer on or off (paused).
+- **Dialogue Toggle:** Instantly skip intro narrative dialogues for fast gameplay testing.
+- **Score Simulator:** Simulate scores (20% Miller, 45% Jen, 70% Aidan, 95% Lizzy) with proportional 20/40/20/20 stage distributions.
+- **Key Slots:** Manually unlock or lock keys 1 through 4.
 
 ---
 
@@ -262,7 +308,7 @@ Then navigate to `http://localhost:8000` in your browser.
 
 ---
 
-## 🧪 Automated Testing & Browser Verification
+## 🧪 Automated Testing & Verification
 
 MilleRace uses **`playwright-core`** wired directly to the system-installed **Google Chrome** browser (`channel: 'chrome'`), eliminating the need for bulky Chromium bundle downloads.
 
