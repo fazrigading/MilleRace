@@ -19,7 +19,7 @@ const GameEngine = {
       stageScreen.classList.add('dialogue-active');
     }
 
-    const sentences = stageConfig.introSentences || [stageConfig.introDialogue];
+    const sentences = stageConfig.introSentences;
     this.activeSentenceIndex = 0;
     this.isDialogueActive = true;
 
@@ -166,8 +166,7 @@ const GameEngine = {
     this.isAnswering = true;
     const isCorrect = (selectedLetter === q.correct);
     if (isCorrect) {
-      const ptsPerQ = 25 / GAME_CONFIG.STAGE_1.questions.length;
-      GameState.addStageScore(1, ptsPerQ);
+      GameState.addStageScore(1, 5); // 4 questions x 5 points = 20 max
     }
 
     // Visual selection feedback
@@ -204,7 +203,7 @@ const GameEngine = {
     }
 
     const q = stageConfig.questions[qIndex];
-    
+
     // Format title with blank
     const titleEl = document.getElementById('stage2-title-display');
     if (titleEl) {
@@ -236,7 +235,7 @@ const GameEngine = {
     this.isAnswering = true;
     if (btnEl) btnEl.classList.add('selected-choice');
     if (chosenWord === q.answer) {
-      GameState.addStageScore(2, 2.5); // 10 questions * 2.5 = 25 max
+      GameState.addStageScore(2, 4); // 10 questions x 4 points = 40 max
     }
 
     setTimeout(() => {
@@ -276,18 +275,29 @@ const GameEngine = {
     // Progress Dots
     UI.renderProgressDots('stage3-progress-dots', stageConfig.passages.length, qIndex);
 
-    // Rating Buttons
+    // Rating Buttons: Empty Circles with Bold Yellow Stroke & Tooltips
     const buttonsGroup = document.getElementById('stage3-rating-buttons');
     if (buttonsGroup) {
       buttonsGroup.innerHTML = stageConfig.ratingOptions.map(opt => `
-        <button class="rating-btn" data-rating="${UI.escapeHtml(opt)}">[${UI.escapeHtml(opt)}]</button>
+        <button class="rating-circle-btn rating-btn" data-rating="${UI.escapeHtml(opt)}" aria-label="${UI.escapeHtml(opt)}" tabindex="0">
+          <span class="rating-tooltip">${UI.escapeHtml(opt)}</span>
+          <span class="rating-check-icon">✓</span>
+        </button>
       `).join('');
 
-      buttonsGroup.querySelectorAll('.rating-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+      buttonsGroup.querySelectorAll('.rating-circle-btn').forEach(btn => {
+        const chooseRating = () => {
           if (this.isDialogueActive || this.isAnswering) return;
           const selectedRating = btn.getAttribute('data-rating');
           this.handleStage3Answer(p, selectedRating, btn);
+        };
+
+        btn.addEventListener('click', chooseRating);
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            chooseRating();
+          }
         });
       });
     }
@@ -296,9 +306,27 @@ const GameEngine = {
   handleStage3Answer(p, selectedRating, btnEl) {
     this.isAnswering = true;
     if (btnEl) btnEl.classList.add('selected-choice');
-    if (selectedRating === p.target) {
-      GameState.addStageScore(3, 5); // 5 passages * 5 = 25 max
+
+    let pts = 0;
+    if (p.scores && p.scores[selectedRating] !== undefined) {
+      pts = p.scores[selectedRating];
+    } else {
+      const normalizedRating = (selectedRating || '').toLowerCase().trim();
+      const isHumanTarget = (p.id === 1 || p.id === 2 || p.id === 5 || p.target === 'Human');
+      if (isHumanTarget) {
+        if (normalizedRating === 'human') pts = 5;
+        else if (normalizedRating === 'somewhat human') pts = 3;
+        else if (normalizedRating === 'barely human') pts = 1;
+        else if (normalizedRating === 'not human') pts = 0;
+      } else {
+        if (normalizedRating === 'human') pts = 0;
+        else if (normalizedRating === 'somewhat human') pts = 1;
+        else if (normalizedRating === 'barely human') pts = 3;
+        else if (normalizedRating === 'not human') pts = 5;
+      }
     }
+
+    GameState.addStageScore(3, pts);
 
     setTimeout(() => {
       this.isAnswering = false;
@@ -412,9 +440,17 @@ const GameEngine = {
 
     if (!charMatch) return;
 
-    // Render Score
+    // Render Score Percentage & Animate Progress Bar
     const scoreEl = document.getElementById('result-score-num');
     if (scoreEl) scoreEl.textContent = `${totalScore}%`;
+
+    const progressFill = document.getElementById('result-progress-fill');
+    if (progressFill) {
+      progressFill.style.width = '0%';
+      setTimeout(() => {
+        progressFill.style.width = `${totalScore}%`;
+      }, 150);
+    }
 
     // Save to Leaderboard automatically
     UI.saveRaceToLeaderboard(
@@ -426,15 +462,20 @@ const GameEngine = {
     );
 
     // Render Character Details
-    const nameEl = document.getElementById('result-char-name');
-    const levelEl = document.getElementById('result-char-level');
-    const quoteEl = document.getElementById('result-char-quote');
+    // backup:
+    // const nameEl = document.getElementById('result-char-name');
+    // const levelEl = document.getElementById('result-char-level');
+    // const quoteEl = document.getElementById('result-char-quote');
+    const badgeEl = document.getElementById('result-char-badge');
+    if (badgeEl) badgeEl.textContent = `YOU ARE ${charMatch.name.toUpperCase()}!`;
     const bioEl = document.getElementById('result-char-bio');
 
-    if (nameEl) nameEl.textContent = charMatch.name;
-    if (levelEl) levelEl.textContent = `${charMatch.pisaLevel} | ${charMatch.cefrLevel}`;
-    if (quoteEl) quoteEl.textContent = `"${charMatch.quote}"`;
-    if (bioEl) bioEl.textContent = charMatch.bio;
+    // backup:
+    // if (nameEl) nameEl.textContent = charMatch.name;
+    // if (levelEl) levelEl.textContent = `${charMatch.pisaLevel} | ${charMatch.cefrLevel}`;
+    // if (quoteEl) quoteEl.textContent = `"${charMatch.quote}"`;
+    // if (bioEl) bioEl.textContent = charMatch.bio;
+    if (bioEl) bioEl.textContent = charMatch.bio || charMatch.quote;
 
     const charImg = document.getElementById('result-char-img');
     if (charImg) {
