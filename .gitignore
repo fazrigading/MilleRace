@@ -7,5 +7,9 @@ verification-*.png
 # Local secrets & credentials
 .env
 .env.local
+.vercel/
 js/firebaseConfig.local.js
 serviceAccountKey.json
+
+.vercel
+.env*
