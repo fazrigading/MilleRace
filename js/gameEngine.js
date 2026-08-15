@@ -440,19 +440,51 @@ const GameEngine = {
 
     if (!charMatch) return;
 
-    // Render Score Percentage & Animate Progress Bar
+    // 1. Animate MIL Score Number (Count up from 0 to totalScore)
     const scoreEl = document.getElementById('result-score-num');
-    if (scoreEl) scoreEl.textContent = `${totalScore}%`;
+    if (scoreEl) {
+      scoreEl.textContent = '0%';
+      let startScore = 0;
+      const duration = 1200;
+      const startTime = performance.now();
 
+      const animateScore = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentVal = Math.round(easeOut * totalScore);
+        scoreEl.textContent = `${currentVal}%`;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScore);
+        } else {
+          scoreEl.textContent = `${totalScore}%`;
+        }
+      };
+      requestAnimationFrame(animateScore);
+    }
+
+    // 2. Animate Progress Track Fill
     const progressFill = document.getElementById('result-progress-fill');
     if (progressFill) {
       progressFill.style.width = '0%';
       setTimeout(() => {
         progressFill.style.width = `${totalScore}%`;
-      }, 150);
+      }, 100);
     }
 
-    // Save to Leaderboard automatically
+    // 3. Populate Stage Score Milestones Breakdown
+    const s1El = document.getElementById('result-stage1-score');
+    const s2El = document.getElementById('result-stage2-score');
+    const s3El = document.getElementById('result-stage3-score');
+    const s4El = document.getElementById('result-stage4-score');
+    if (s1El) s1El.textContent = `${GameState.stageScores[1] || 0}/20`;
+    if (s2El) s2El.textContent = `${GameState.stageScores[2] || 0}/40`;
+    if (s3El) s3El.textContent = `${GameState.stageScores[3] || 0}/20`;
+    if (s4El) s4El.textContent = `${GameState.stageScores[4] || 0}/20`;
+
+    // 4. Save to Leaderboard automatically
     UI.saveRaceToLeaderboard(
       GameState.player.nickname || 'Racer',
       GameState.player.ageGroup || '13-17',
@@ -461,47 +493,55 @@ const GameEngine = {
       charMatch.name
     );
 
-    // Render Character Details
-    // backup:
-    // const nameEl = document.getElementById('result-char-name');
-    // const levelEl = document.getElementById('result-char-level');
-    // const quoteEl = document.getElementById('result-char-quote');
+    // 5. Render Character Details
     const badgeEl = document.getElementById('result-char-badge');
     if (badgeEl) badgeEl.textContent = `YOU ARE ${charMatch.name.toUpperCase()}!`;
-    const bioEl = document.getElementById('result-char-bio');
 
-    // backup:
-    // if (nameEl) nameEl.textContent = charMatch.name;
-    // if (levelEl) levelEl.textContent = `${charMatch.pisaLevel} | ${charMatch.cefrLevel}`;
-    // if (quoteEl) quoteEl.textContent = `"${charMatch.quote}"`;
-    // if (bioEl) bioEl.textContent = charMatch.bio;
-    if (bioEl) bioEl.textContent = charMatch.bio || charMatch.quote;
+    const pisaPill = document.getElementById('result-pisa-pill');
+    if (pisaPill) pisaPill.textContent = charMatch.pisaLevel;
+
+    const cefrPill = document.getElementById('result-cefr-pill');
+    if (cefrPill) cefrPill.textContent = charMatch.cefrLevel;
+
+    const quoteEl = document.getElementById('result-char-quote');
+    if (quoteEl) quoteEl.textContent = `“${charMatch.quote}”`;
+
+    const bioEl = document.getElementById('result-char-bio');
+    if (bioEl) bioEl.textContent = charMatch.bio;
 
     const charImg = document.getElementById('result-char-img');
     if (charImg) {
       charImg.src = charMatch.avatar;
-      charImg.onerror = () => { charImg.src = 'assets/images/characters/stills/Miller.png'; };
+      charImg.onerror = () => { charImg.src = 'assets/images/characters/stills/Miller-no-bg.png'; };
     }
 
-    // Home Activities
+    // 6. Misinformation Resources from character-profiles.txt
+    const misinfoList = document.getElementById('result-misinfo-links');
+    if (misinfoList && Array.isArray(charMatch.misinfoLinks)) {
+      misinfoList.innerHTML = charMatch.misinfoLinks.map(item => `
+        <li><a href="${UI.escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${UI.escapeHtml(item.url)}</a></li>
+      `).join('');
+    }
+
+    // 7. Home Activities
     const actList = document.getElementById('result-activities-list');
     if (actList && Array.isArray(charMatch.activities)) {
       actList.innerHTML = charMatch.activities.map(act => `<li>✨ ${UI.escapeHtml(act)}</li>`).join('');
     }
 
-    // Books List
+    // 8. Curated Books List
     const booksList = document.getElementById('result-books-list');
     if (booksList && Array.isArray(charMatch.books)) {
       booksList.innerHTML = charMatch.books.map(b => `
-        <li>📖 <strong>${UI.escapeHtml(b.title)}</strong> by ${UI.escapeHtml(b.author)} - <a href="${UI.escapeHtml(b.link)}" target="_blank" rel="noopener noreferrer">Access Book</a></li>
+        <li>📖 <strong>${UI.escapeHtml(b.title)}</strong> by ${UI.escapeHtml(b.author)}${b.note ? ` (${UI.escapeHtml(b.note)})` : ''} - <a href="${UI.escapeHtml(b.link)}" target="_blank" rel="noopener noreferrer">Access Book</a></li>
       `).join('');
     }
 
-    // Critical Thinking Resources
+    // 9. Critical Thinking & Fact-Check Toolkit Resources
     const resList = document.getElementById('result-resources-list');
     if (resList && Array.isArray(charMatch.resources)) {
       resList.innerHTML = charMatch.resources.map(r => `
-        <li>🔗 <a href="${UI.escapeHtml(r.link)}" target="_blank" rel="noopener noreferrer">${UI.escapeHtml(r.title)}</a></li>
+        <li>💡 <a href="${UI.escapeHtml(r.link)}" target="_blank" rel="noopener noreferrer">${UI.escapeHtml(r.title)}</a></li>
       `).join('');
     }
   }

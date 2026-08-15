@@ -209,14 +209,18 @@ const GAME_CONFIG = {
       name: "Miller",
       scoreRange: "1–25 Points",
       pisaLevel: "PISA Reading Level 1–2",
-      cefrLevel: "CEFR A1–A2 (Early Reader)",
-      avatar: "assets/images/characters/stills/Miller-no-bg-square.png",
+      cefrLevel: "Cambridge Reading A1–A2",
+      avatar: "assets/images/characters/stills/Miller-no-bg.png",
       quote: "Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why thinking critically is important!",
-      bio: "Curious and ready for new chapters! Miller loves finding clues for his adventures, but often gets lost without his keys. He would love to read more, one page at a time. Comic books and fun facts suit his personality.",
-      activities: ["Nighttime stories", "Comic books & graphic novels", "Fun facts from encyclopedias", "Word search & crosswords"],
+      bio: "Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page at a time. Comic books suit his personality, and so do fun facts!",
+      activities: ["Reading nighttime stories", "Doing crosswords & word searches", "Reading comic books & graphic novels", "Exploring fun facts from encyclopedias"],
       books: [
-        { title: "Charlotte's Web", author: "E. B. White", link: "https://archive.org/details/CharlottesWeb" },
-        { title: "Keluarga Cemara", author: "Arswendo Atmowiloto", link: "https://kios-perpustakaan.jakarta.go.id/catalogue/detail/99218" }
+        { title: "Charlotte's Web", author: "E. B. White", link: "https://archive.org/details/CharlottesWeb", note: "Internet Archive" },
+        { title: "Keluarga Cemara", author: "Arswendo Atmowiloto", link: "https://kios-perpustakaan.jakarta.go.id/catalogue/detail/99218", note: "Perpustakaan Nasional Digital" }
+      ],
+      misinfoLinks: [
+        { title: "University of Sheffield Critical Thinking Approaches", url: "https://sheffield.ac.uk/study-skills/research/approaches/thinking-critically" },
+        { title: "Bookrclass Critical Thinking Activities for Kids", url: "https://bookrclass.com/blog/critical-thinking-activities-for-kids/" }
       ],
       resources: [
         { title: "University of Sheffield Critical Thinking Guide", link: "https://sheffield.ac.uk/study-skills/research/approaches/thinking-critically" },
@@ -227,14 +231,18 @@ const GAME_CONFIG = {
       name: "Jen",
       scoreRange: "26–50 Points",
       pisaLevel: "PISA Reading Level 3–4",
-      cefrLevel: "CEFR B1 (Young Adult)",
-      avatar: "assets/images/characters/stills/Jen-no-bg-square.png",
+      cefrLevel: "Cambridge Reading B1",
+      avatar: "assets/images/characters/stills/Jen-no-bg.png",
       quote: "Jen knows everything! But she never really knows what to trust. She always checks… factually!",
-      bio: "Witty and energetic, Jen is exploring the world! She has imaginary friends and places to be. Short stories and fairy tales are where she goes, inspired by real-life stories and writing in her diary.",
-      activities: ["Reading short stories & fairy tales", "Keeping journal/diary logs", "Completing online fact-check challenges"],
+      bio: "Witty and energetic, Jen is exploring the world! She has imaginary friends and places to be! Short stories and fairy tales are where she goes! She is inspired by real-life stories and writing in her diary!",
+      activities: ["Writing in personal diary / journals", "Reading short stories & fairy tales", "Online fact-checking challenges", "Comparing multiple news sources"],
       books: [
-        { title: "The Fault in Our Stars", author: "John Green", link: "https://books.google.co.id/books/about/The_Fault_in_Our_Stars.html?hl=id&id=Qk8n0olOX5MC&redir_esc=y" },
-        { title: "Laskar Pelangi", author: "Andrea Hirata", link: "https://kios-perpustakaan.jakarta.go.id" }
+        { title: "The Fault in Our Stars", author: "John Green", link: "https://books.google.co.id/books/about/The_Fault_in_Our_Stars.html?hl=id&id=Qk8n0olOX5MC&redir_esc=y", note: "Google Books" },
+        { title: "Laskar Pelangi", author: "Andrea Hirata", link: "https://kios-perpustakaan.jakarta.go.id", note: "Available in local libraries" }
+      ],
+      misinfoLinks: [
+        { title: "Reuters Fact-Check", url: "https://www.reuters.com/fact-check/" },
+        { title: "MediaSmarts: Break the Fake", url: "https://mediasmarts.ca/break-fake" }
       ],
       resources: [
         { title: "Reuters Fact-Check Guide", link: "https://www.reuters.com/fact-check/" },
@@ -245,14 +253,18 @@ const GAME_CONFIG = {
       name: "Aidan",
       scoreRange: "51–75 Points",
       pisaLevel: "PISA Reading Level 5",
-      cefrLevel: "CEFR B2 (Advanced Reader)",
-      avatar: "assets/images/characters/stills/Miller-no-bg-square.png", // Fallback image
+      cefrLevel: "Cambridge Reading B2",
+      avatar: "assets/images/characters/stills/Miller-no-bg.png",
       quote: "Aidan loves browsing the internet! But he only accepts legit sources. He sees citations and timelines!",
-      bio: "Adventurous and resilient, Aidan is on the move! Books are his window to the world. He reads articles about his favorite characters, loves book series, and watches film adaptations.",
-      activities: ["Reading book series & novels", "Comparing book-to-film adaptations", "Mastering academic citations & references"],
+      bio: "Adventurous and resilient, Aidan is on the moves! Books are his window to the world. He reads articles about his favorite characters. He loves reading series and watching films from it!",
+      activities: ["Reading book series & novels", "Comparing book-to-film adaptations", "Evaluating bibliography & citations", "Investigating publication timelines"],
       books: [
-        { title: "1984", author: "George Orwell", link: "https://dn790002.ca.archive.org/0/items/NineteenEightyFour-Novel-GeorgeOrwell/orwell1984.pdf" },
-        { title: "Gadis Kretek", author: "Ratih Kumala", link: "https://bi.go.id/id/layanan/perpustakaan" }
+        { title: "1984", author: "George Orwell", link: "https://dn790002.ca.archive.org/0/items/NineteenEightyFour-Novel-GeorgeOrwell/orwell1984.pdf", note: "Internet Archive" },
+        { title: "Gadis Kretek", author: "Ratih Kumala", link: "https://bi.go.id/id/layanan/perpustakaan", note: "Available at Bank Indonesia Library" }
+      ],
+      misinfoLinks: [
+        { title: "PSU Library Citation Searching Guide", url: "https://guides.libraries.psu.edu/bibliometrics/citationsearching" },
+        { title: "Academic References & Citations in Academic Writing", url: "https://medium.com/@kichu.josef/all-you-need-to-know-about-references-citations-in-academic-writing-9174922d5f9e" }
       ],
       resources: [
         { title: "PSU Library Citation Searching Guide", link: "https://guides.libraries.psu.edu/bibliometrics/citationsearching" },
@@ -263,14 +275,18 @@ const GAME_CONFIG = {
       name: "Lizzy",
       scoreRange: "76–100 Points",
       pisaLevel: "PISA Reading Level 6",
-      cefrLevel: "CEFR C1 (High Literacy / Wiz)",
-      avatar: "assets/images/characters/stills/Jen-no-bg-square.png", // Fallback image
-      quote: "Lizzy's lies set on lies! She reads graphs like the Egyptian pyramid. Statistics got nothing on her!",
-      bio: "Lizzy is the wiz! She reads like there's no tomorrow and is always guarded against misinformation. She creates artwork based on what she reads and reads graphs like Egyptian pyramids.",
-      activities: ["Volunteering in reading clubs", "Creating literature-inspired artwork", "Studying data & graphic literacy"],
+      cefrLevel: "Cambridge Reading C1",
+      avatar: "assets/images/characters/stills/Jen-no-bg.png",
+      quote: "Lizzy’s lies set on lies! She reads graphs like the Egyptian pyramid. Statistics got nothing on her!",
+      bio: "Lizzy is the wiz! She reads like there’s no tomorrow. She’s always all guarded! The library and book stores need her. She makes art works from what she reads!",
+      activities: ["Creating literature-inspired artwork", "Analyzing infographics & complex data", "Leading book discussions & clubs", "Decoding scientific & statistical claims"],
       books: [
-        { title: "The Strange Case of Dr Jekyll and Mr Hyde", author: "Robert Louis Stevenson", link: "https://www.gutenberg.org/files/43/43-h/43-h.htm" },
-        { title: "Bumi Manusia", author: "Pramoedya Ananta Toer", link: "https://kios-perpustakaan.jakarta.go.id" }
+        { title: "The Strange Case of Dr Jekyll and Mr Hyde", author: "Robert Louis Stevenson", link: "https://www.gutenberg.org/files/43/43-h/43-h.htm", note: "Project Gutenberg" },
+        { title: "Bumi Manusia", author: "Pramoedya Ananta Toer", link: "https://kios-perpustakaan.jakarta.go.id", note: "Available in local libraries" }
+      ],
+      misinfoLinks: [
+        { title: "UC Berkeley Beginner's Guide to Improving Data Literacy", url: "https://ischoolonline.berkeley.edu/blog/beginners-guide-improving-data-literacy/" },
+        { title: "Dataversity: Data Literacy Essentials", url: "https://www.dataversity.net/articles/data-literacy-essentials-what-you-need-to-know/" }
       ],
       resources: [
         { title: "UC Berkeley Beginner's Guide to Reading Graphics", link: "https://ischoolonline.berkeley.edu/blog/beginners-guide-improving-data-literacy/" },

@@ -1290,22 +1290,25 @@
       </div>
     </section>
 
-    <!-- SCREEN 6: FINAL RESULT PAGE (Aligned with Figma Reference Final-Result.png) -->
+    <!-- SCREEN 6: FINAL RESULT PAGE (Aligned with Figma Reference & Revised Specs) -->
     <section id="screen-result" class="screen">
       <div class="result-page-wrapper">
 
-        <!-- 1. Top Status & Branding Bar -->
-        <header class="result-top-bar">
-          <a class="result-logo-group logo-link" data-nav="screen-landing" title="Back to Home">
-            <div class="result-logo-circle">
+        <!-- 1. Universal Top Navigation Bar matching Landing/About/Team/Mission -->
+        <header class="landing-top-bar result-top-nav">
+          <a class="logo-link" data-nav="screen-landing" title="MilleRace Home">
+            <div class="logo-circle">
               <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
             </div>
-            <span class="result-brand-text">Mille<span>Race</span></span>
+            <span class="logo-brand-text">Mille<span>Race</span></span>
           </a>
-
-          <div class="result-top-capsule" aria-hidden="true">
-            <div class="result-top-capsule-fill"></div>
-          </div>
+          <nav class="top-nav-bar" aria-label="Main Navigation">
+            <button class="nav-item" data-nav="screen-landing">Home</button>
+            <button class="nav-item" data-nav="screen-about">About Us</button>
+            <button class="nav-item" data-nav="screen-team">Our Team</button>
+            <button class="nav-item" data-nav="screen-mission">Our Mission</button>
+            <button class="nav-item" data-nav="screen-leaderboard">Leaderboard</button>
+          </nav>
         </header>
 
         <!-- 2. Hero Purple Band with Ornate Character Showcase Card -->
@@ -1314,13 +1317,26 @@
 
             <!-- Scalloped Parchment Card (Vector.svg) -->
             <div class="result-parchment-card">
-              <!-- Gold Scalloped Header Badge -->
-              <div id="result-char-badge" class="result-gold-badge">YOU ARE MILLER!</div>
+              <!-- Gold Ribbon Header Badge (Result-with-name.svg) -->
+              <div class="result-name-banner-wrapper">
+                <img src="assets/images/ui/result/Result-with-name.svg" class="result-name-banner-bg" alt="" aria-hidden="true">
+                <div id="result-char-badge" class="result-name-banner-text">YOU ARE MILLER!</div>
+              </div>
 
-              <!-- Character Bio / Description in Cutive Mono -->
+              <!-- PISA & CEFR Levels in Separate Distinct Pills -->
+              <div class="result-levels-pills">
+                <span id="result-pisa-pill" class="result-level-pill pisa-pill">PISA Reading Level 1–2</span>
+                <span id="result-cefr-pill" class="result-level-pill cefr-pill">Cambridge Reading A1–A2</span>
+              </div>
+
+              <!-- Character Quote Callout -->
+              <blockquote id="result-char-quote" class="result-char-quote">
+                “Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why thinking critically is important!”
+              </blockquote>
+
+              <!-- Character Bio / Description in Serif font -->
               <p id="result-char-bio" class="result-parchment-bio">
-                Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page
-                at a time. Comic books suit his personality, and so do fun facts!
+                Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page at a time. Comic books suit his personality, and so do fun facts!
               </p>
 
               <!-- Share Result Action Button -->
@@ -1330,71 +1346,102 @@
               </button>
             </div>
 
-            <!-- Keyhole Portrait Frame (Group 20.svg) -->
-            <div class="result-keyhole-avatar">
-              <img src="assets/images/ui/result/Group 20.svg" class="result-keyhole-bg" alt="" aria-hidden="true">
-              <img id="result-char-img" class="result-char-portrait" src="assets/images/characters/stills/Miller.png"
+            <!-- Full Size Transparent Avatar Illustration (No keyhole silhouette) -->
+            <div class="result-character-hero">
+              <img id="result-char-img" class="result-hero-avatar-img" src="assets/images/characters/stills/Miller-no-bg.png"
                 alt="Matched Character">
             </div>
 
           </div>
         </div>
 
-        <!-- 3. Score Track & Progress Section -->
+        <!-- 3. MIL Score & Animated Progress Meter Section -->
         <div class="result-score-section">
-          <div class="result-score-header">
-            <h2 class="result-score-title">Your right answer</h2>
-            <span id="result-score-num" class="result-score-percent">0%</span>
+          <div class="result-score-header-wrap">
+            <div class="result-score-titles">
+              <h2 class="result-score-title">MIL Score</h2>
+              <p class="result-score-description">Based on the Artificial Intelligence Assessment Scale (AIAS) and PISA Reading Standards.</p>
+            </div>
+            <div class="result-score-badge-box">
+              <span id="result-score-num" class="result-score-percent">0%</span>
+            </div>
           </div>
 
-          <!-- Horizontal Progress Track with Gold Fill -->
-          <div class="result-progress-track">
-            <div id="result-progress-fill" class="result-progress-fill" style="width: 0%;"></div>
+          <!-- Animated Gold Progress Meter with Segment Milestones -->
+          <div class="result-progress-container">
+            <div class="result-progress-track">
+              <div id="result-progress-fill" class="result-progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="result-stage-milestones">
+              <div class="stage-milestone" id="milestone-stage-1">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Visual AIAS</span>
+                <span class="milestone-score" id="result-stage1-score">0/20</span>
+              </div>
+              <div class="stage-milestone" id="milestone-stage-2">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Literary</span>
+                <span class="milestone-score" id="result-stage2-score">0/40</span>
+              </div>
+              <div class="stage-milestone" id="milestone-stage-3">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Textual AIAS</span>
+                <span class="milestone-score" id="result-stage3-score">0/20</span>
+              </div>
+              <div class="stage-milestone" id="milestone-stage-4">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Critical Inferencing</span>
+                <span class="milestone-score" id="result-stage4-score">0/20</span>
+              </div>
+            </div>
           </div>
 
           <!-- Critical Thinking Resource Blurb & Glowing Triple Dots -->
           <div class="result-blurb-row">
-            <p class="result-blurb-text">
-              See how you can fight misinformation and strengthen analytical discernment at:
-              <br>1. <a href="https://sheffield.ac.uk/study-skills/research/approaches/thinking-critically"
-                target="_blank" rel="noopener noreferrer"
-                style="color: var(--color-yellow);">sheffield.ac.uk/study-skills/research/thinking-critically</a>
-              <br>2. <a href="https://bookrclass.com/blog/critical-thinking-activities-for-kids/" target="_blank"
-                rel="noopener noreferrer"
-                style="color: var(--color-yellow);">bookrclass.com/blog/critical-thinking-activities-for-kids/</a>
-            </p>
+            <div class="result-blurb-content">
+              <p class="result-blurb-heading">See how you can fight misinformation and strengthen analytical discernment at:</p>
+              <ol id="result-misinfo-links" class="result-misinfo-list">
+                <!-- Dynamically populated from docs/character-profiles.txt -->
+              </ol>
+            </div>
             <img src="assets/images/ui/result/YELLOW GOWING TITIK.svg" class="result-glowing-dots-img"
               alt="Glowing Dots" aria-hidden="true">
           </div>
         </div>
 
-        <!-- 4. Recommendations Container (Rectangle 78) -->
-        <div class="result-recommendations-wrapper">
-          <h3 class="rec-section-title">Personalized Recommendations & Toolkit</h3>
+        <!-- 4. Purple Footer Container for Recommendations & Actions (Rectangle 78) -->
+        <footer class="result-footer-section">
+          <div class="result-footer-inner">
+            <h3 class="rec-section-title">Personalized Recommendations & Toolkit</h3>
 
-          <div class="rec-grid">
-            <div class="rec-card">
-              <div class="rec-card-header">🏠 Home Activities</div>
-              <ul id="result-activities-list" class="rec-list"></ul>
+            <div class="rec-grid">
+              <div class="rec-card">
+                <div class="rec-card-header">🏠 Home Activities</div>
+                <ul id="result-activities-list" class="rec-list"></ul>
+              </div>
+
+              <div class="rec-card">
+                <div class="rec-card-header">📚 Curated Reading List</div>
+                <ul id="result-books-list" class="rec-list"></ul>
+              </div>
+
+              <div class="rec-card">
+                <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
+                <ul id="result-resources-list" class="rec-list"></ul>
+              </div>
             </div>
 
-            <div class="rec-card">
-              <div class="rec-card-header">📚 Curated Reading List</div>
-              <ul id="result-books-list" class="rec-list"></ul>
+            <!-- Action Buttons -->
+            <div class="result-actions">
+              <button id="btn-play-again" class="result-btn-gold">PLAY AGAIN 🔄</button>
+              <button id="btn-result-leaderboard" class="result-btn-purple">VIEW LEADERBOARD 🏆</button>
             </div>
 
-            <div class="rec-card">
-              <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
-              <ul id="result-resources-list" class="rec-list"></ul>
+            <div class="result-footer-copy">
+              <p>MilleRace — Gamified Media & Information Literacy Platform</p>
             </div>
           </div>
-
-          <!-- Action Buttons -->
-          <div class="result-actions">
-            <button id="btn-play-again" class="result-btn-gold">PLAY AGAIN 🔄</button>
-            <button id="btn-result-leaderboard" class="result-btn-purple">VIEW LEADERBOARD 🏆</button>
-          </div>
-        </div>
+        </footer>
 
       </div>
     </section>
