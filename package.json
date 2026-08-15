@@ -1,0 +1,16 @@
+{
+  "name": "mille-race",
+  "version": "1.0.0",
+  "description": "Media & Information Literacy Web Game",
+  "scripts": {
+    "start": "node scripts/server.js",
+    "test": "playwright test",
+    "test:chrome": "playwright test --project=\"Google Chrome\"",
+    "test:ui": "playwright test --ui",
+    "verify": "node scripts/verify.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "playwright-core": "^1.62.1"
+  }
+}
