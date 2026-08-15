@@ -513,7 +513,28 @@ const GameEngine = {
       );
     }
 
-    // 5. Render Character Details
+    // 5. Calculate and Render Leaderboard Placement Rank
+    let playerRank = 1;
+    if (typeof UI !== 'undefined' && typeof UI.getLeaderboardData === 'function') {
+      const allEntries = UI.getLeaderboardData('all');
+      if (allEntries && allEntries.length > 0) {
+        const nickname = GameState.player.nickname || 'Racer';
+        const foundIdx = allEntries.findIndex(e => e.name === nickname && Number(e.score) === totalScore);
+        if (foundIdx !== -1) {
+          playerRank = allEntries[foundIdx].rank;
+        } else {
+          const higherCount = allEntries.filter(e => Number(e.score) > totalScore).length;
+          playerRank = higherCount + 1;
+        }
+      }
+    }
+
+    const rankEl = document.getElementById('result-leaderboard-rank');
+    if (rankEl) {
+      rankEl.textContent = `#${playerRank}`;
+    }
+
+    // 6. Render Character Details
     const badgeEl = document.getElementById('result-char-badge');
     if (badgeEl) badgeEl.textContent = `YOU ARE ${charMatch.name.toUpperCase()}!`;
 

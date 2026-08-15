@@ -359,8 +359,8 @@ Developed by six students from **Mulawarman University**, Samarinda, East Kalima
 1. **Syahna Maryam** — *Project Manager 1, Scriptwriter, UX Writer, Character Designer & Researcher* (Senior-year, English Literature).
 2. **Chairil Aminullah** — *Project Manager 2, Creative Director, UI/UX Designer & Marketer* (Junior-year, English Literature).
 3. **Syema Chaelint Joshepine Karundaeng** — *Illustrator, Animator, Motion Graphic Artist & Visual Artist* (Junior-year, International Relations).
-4. **Fazri Rahmad Nor Gading** — *Front-End & Back-End Programmer* (Penultimate, Computer Science).
-5. **Muhammad Farrel Sirah** — *Web Developer* (Senior-year, Computer Science).
+4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Penultimate, Computer Science).
+5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Senior-year, Computer Science).
 6. **Muhammad Fahrezy Al Faris** — *Researcher, Pitch Presenter & Report Writer* (Senior-year, International Relations).
 
 ---

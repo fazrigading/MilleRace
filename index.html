@@ -245,6 +245,14 @@
         </button>
       </div>
 
+      <!-- Back to Top Button -->
+      <div class="back-to-top-wrapper">
+        <button class="btn-back-to-top" aria-label="Back to Top">
+          <span class="back-to-top-arrow">↑</span>
+          <span class="back-to-top-text">Back to Top</span>
+        </button>
+      </div>
+
       <!-- FOOTER: ROUNDED PURPLE CONTAINER -->
       <footer class="landing-footer-wrapper">
         <div class="landing-footer-container">
@@ -427,6 +435,14 @@
           </div>
           <button class="btn-primary btn-trigger-reg">Start the Race 🏁</button>
         </div>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top-wrapper">
+          <button class="btn-back-to-top" aria-label="Back to Top">
+            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-text">Back to Top</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -544,15 +560,14 @@
                 <span class="team-member-major">Penultimate, Computer Science</span>
               </div>
             </div>
-            <div class="team-role-badge">Front-End & Back-End Programmer</div>
+            <div class="team-role-badge">Lead Software Engineer & Full-Stack Developer</div>
             <p class="team-member-bio">
-              Engineered the core SPA engine, dynamic 3-minute race timer, reactive character dialogue typing system,
-              state machine, and modular CSS design tokens.
+              Architected and built the entire web game application end-to-end—engineering the SPA framework, all 4 interactive puzzle stages, UI/UX design implementation, cloud & local leaderboard synchronization, timer engine, animations, and deployment pipeline.
             </p>
             <div class="team-skills-chips">
-              <span class="skill-chip">SPA Architecture</span>
-              <span class="skill-chip">JavaScript ES6+</span>
-              <span class="skill-chip">State Engine</span>
+              <span class="skill-chip">Full-Stack Architecture</span>
+              <span class="skill-chip">Game Engine</span>
+              <span class="skill-chip">UI/UX Implementation</span>
             </div>
           </div>
 
@@ -565,15 +580,14 @@
                 <span class="team-member-major">Senior, Computer Science</span>
               </div>
             </div>
-            <div class="team-role-badge">Web Developer</div>
+            <div class="team-role-badge">Game Logic & Project Planner</div>
             <p class="team-member-bio">
-              Constructed the interactive puzzle mechanics for book title matching, leaderboard storage calculations,
-              and responsive cross-device layout optimization.
+              Formulated the foundational game logic mechanisms, stage scoring rules, and structured the initial coding project planning roadmap.
             </p>
             <div class="team-skills-chips">
-              <span class="skill-chip">Puzzle Mechanics</span>
-              <span class="skill-chip">Scoring Algorithms</span>
-              <span class="skill-chip">Leaderboard DB</span>
+              <span class="skill-chip">Game Logic</span>
+              <span class="skill-chip">Project Planning</span>
+              <span class="skill-chip">Scoring Systems</span>
             </div>
           </div>
 
@@ -608,6 +622,14 @@
             </p>
           </div>
           <button class="btn-primary btn-trigger-reg">Join the Race 🏁</button>
+        </div>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top-wrapper">
+          <button class="btn-back-to-top" aria-label="Back to Top">
+            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-text">Back to Top</span>
+          </button>
         </div>
       </div>
     </section>
@@ -1053,6 +1075,14 @@
           </div>
           <button class="btn-primary btn-trigger-reg">Start the Race 🏁</button>
         </div>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top-wrapper">
+          <button class="btn-back-to-top" aria-label="Back to Top">
+            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-text">Back to Top</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1147,7 +1177,8 @@
         <div id="leaderboard-history-section" class="leaderboard-view-content" style="display: none;">
           <div class="history-view-header">
             <h2 class="history-view-title">Your Race History & Completed Tests</h2>
-            <p class="history-view-subtitle">Saved on this browser. Click "View Final Result" on any test to inspect its complete profile and recommendations.</p>
+            <p class="history-view-subtitle">Saved on this browser. Click "View Final Result" on any test to inspect its
+              complete profile and recommendations.</p>
           </div>
 
           <div id="user-history-list" class="user-history-grid">
@@ -1162,6 +1193,14 @@
             <p class="page-cta-desc">Take the test now and score your spot on the<br>MilleRace Hall of Fame.</p>
           </div>
           <button class="btn-primary btn-trigger-reg">Enter the Race 🏁</button>
+        </div>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top-wrapper">
+          <button class="btn-back-to-top" aria-label="Back to Top">
+            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-text">Back to Top</span>
+          </button>
         </div>
       </div>
     </section>
@@ -1321,65 +1360,76 @@
     </section>
 
     <!-- SCREEN 6: FINAL RESULT PAGE (Aligned with Figma Reference & Revised Specs) -->
-    <section id="screen-result" class="screen">
+    <section id="screen-result" class="screen content-page">
+      <header class="page-header-nav">
+        <a class="logo-link" data-nav="screen-landing" title="Back to Home">
+          <div class="logo-circle">
+            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          </div>
+          <span class="logo-brand-text">Mille<span>Race</span></span>
+        </a>
+        <nav class="top-nav-bar" aria-label="Main Navigation">
+          <button class="nav-item" data-nav="screen-landing">Home</button>
+          <button class="nav-item" data-nav="screen-about">About Us</button>
+          <button class="nav-item" data-nav="screen-team">Our Team</button>
+          <button class="nav-item" data-nav="screen-mission">Our Mission</button>
+          <button class="nav-item" data-nav="screen-leaderboard">Leaderboard</button>
+        </nav>
+      </header>
+
       <div class="result-page-wrapper">
 
-        <!-- 1. Universal Top Navigation Bar matching Landing/About/Team/Mission -->
-        <header class="landing-top-bar result-top-nav">
-          <a class="logo-link" data-nav="screen-landing" title="MilleRace Home">
-            <div class="logo-circle">
-              <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
-            </div>
-            <span class="logo-brand-text">Mille<span>Race</span></span>
-          </a>
-          <nav class="top-nav-bar" aria-label="Main Navigation">
-            <button class="nav-item" data-nav="screen-landing">Home</button>
-            <button class="nav-item" data-nav="screen-about">About Us</button>
-            <button class="nav-item" data-nav="screen-team">Our Team</button>
-            <button class="nav-item" data-nav="screen-mission">Our Mission</button>
-            <button class="nav-item" data-nav="screen-leaderboard">Leaderboard</button>
-          </nav>
-        </header>
+        <!-- 2. Hero Showcase Section & 1/4 Purple Rectangle Anchored at Bottom -->
+        <div class="result-showcase-section">
+          <!-- 65% Height Purple Rectangle anchored at the bottom -->
+          <div class="result-purple-band"></div>
 
-        <!-- 2. Hero Purple Band with Ornate Character Showcase Card -->
-        <div class="result-purple-band">
           <div class="result-showcase-container">
-
-            <!-- Scalloped Parchment Card (Vector.svg) -->
-            <div class="result-parchment-card">
-              <!-- Gold Ribbon Header Badge (Result-with-name.svg) -->
-              <div class="result-name-banner-wrapper">
-                <img src="assets/images/ui/result/Result-with-name.svg" class="result-name-banner-bg" alt="" aria-hidden="true">
-                <div id="result-char-badge" class="result-name-banner-text">YOU ARE MILLER!</div>
-              </div>
-
-              <!-- PISA & CEFR Levels in Separate Distinct Pills -->
-              <div class="result-levels-pills">
-                <span id="result-pisa-pill" class="result-level-pill pisa-pill">PISA Reading Level 1–2</span>
-                <span id="result-cefr-pill" class="result-level-pill cefr-pill">Cambridge Reading A1–A2</span>
-              </div>
-
-              <!-- Character Quote Callout -->
-              <blockquote id="result-char-quote" class="result-char-quote">
-                “Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why thinking critically is important!”
-              </blockquote>
-
-              <!-- Character Bio / Description in Serif font -->
-              <p id="result-char-bio" class="result-parchment-bio">
-                Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page at a time. Comic books suit his personality, and so do fun facts!
+            <div class="result-card-column">
+              <p class="result-congrats-text" id="result-congrats-text">
+                Congratulations for finishing the maze!<br>
+                You placed in <span id="result-leaderboard-rank" class="result-congrats-rank">#1</span> 🎉
               </p>
 
-              <!-- Share Result Action Button -->
-              <button id="btn-share-result" class="result-share-btn" aria-label="Share your result">
-                <span>Share your result!</span>
-                <span aria-hidden="true">↪</span>
-              </button>
+              <!-- Scalloped Parchment Card (Vector.svg) -->
+              <div class="result-parchment-card">
+                <!-- Gold Ribbon Header Badge (Result-with-name.svg) -->
+                <div class="result-name-banner-wrapper">
+                  <img src="assets/images/ui/result/Result-with-name.svg" class="result-name-banner-bg" alt=""
+                    aria-hidden="true">
+                  <div id="result-char-badge" class="result-name-banner-text">YOU ARE MILLER!</div>
+                </div>
+
+                <!-- PISA & CEFR Levels in Separate Distinct Pills -->
+                <div class="result-levels-pills">
+                  <span id="result-pisa-pill" class="result-level-pill pisa-pill">PISA Reading Level 1-2</span>
+                  <span id="result-cefr-pill" class="result-level-pill cefr-pill">Cambridge Reading A1-A2</span>
+                </div>
+
+                <!-- Character Quote Callout -->
+                <blockquote id="result-char-quote" class="result-char-quote">
+                  “Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why
+                  thinking critically is important!”
+                </blockquote>
+
+                <!-- Character Bio / Description in Serif font -->
+                <p id="result-char-bio" class="result-parchment-bio">
+                  Curious and ready for new chapters! Miller has a long way ahead to go. He'd love to read more, one
+                  page at a time. Comic books suit his personality, and so do fun facts!
+                </p>
+
+                <!-- Share Result Action Button -->
+                <button id="btn-share-result" class="result-share-btn" aria-label="Share your result">
+                  <span>Share your result!</span>
+                  <span aria-hidden="true">↪</span>
+                </button>
+              </div>
             </div>
 
-            <!-- Full Size Transparent Avatar Illustration (No keyhole silhouette) -->
+            <!-- Full Size Transparent Avatar Illustration (at least 50% taller than result card) -->
             <div class="result-character-hero">
-              <img id="result-char-img" class="result-hero-avatar-img" src="assets/images/characters/stills/Miller-no-bg.png"
-                alt="Matched Character">
+              <img id="result-char-img" class="result-hero-avatar-img"
+                src="assets/images/characters/stills/Miller-no-bg.png" alt="Matched Character">
             </div>
 
           </div>
@@ -1390,7 +1440,8 @@
           <div class="result-score-header-wrap">
             <div class="result-score-titles">
               <h2 class="result-score-title">MIL Score</h2>
-              <p class="result-score-description">Based on the Artificial Intelligence Assessment Scale (AIAS) and PISA Reading Standards.</p>
+              <p class="result-score-description">Based on the Artificial Intelligence Assessment Scale (AIAS) and PISA
+                Reading Standards.</p>
             </div>
             <div class="result-score-badge-box">
               <span id="result-score-num" class="result-score-percent">0%</span>
@@ -1429,7 +1480,8 @@
           <!-- Critical Thinking Resource Blurb & Glowing Triple Dots -->
           <div class="result-blurb-row">
             <div class="result-blurb-content">
-              <p class="result-blurb-heading">See how you can fight misinformation and strengthen analytical discernment at:</p>
+              <p class="result-blurb-heading">See how you can fight misinformation and strengthen analytical discernment
+                at:</p>
               <ol id="result-misinfo-links" class="result-misinfo-list">
                 <!-- Dynamically populated from docs/character-profiles.txt -->
               </ol>
@@ -1439,36 +1491,70 @@
           </div>
         </div>
 
-        <!-- 4. Purple Footer Container for Recommendations & Actions (Rectangle 78) -->
-        <footer class="result-footer-section">
-          <div class="result-footer-inner">
-            <h3 class="rec-section-title">Personalized Recommendations & Toolkit</h3>
+        <!-- 4. Personalized Recommendations & Toolkit (No container background) -->
+        <div class="result-recommendations-section">
+          <h3 class="rec-section-title">Personalized Recommendations & Toolkit</h3>
 
-            <div class="rec-grid">
-              <div class="rec-card">
-                <div class="rec-card-header">🏠 Home Activities</div>
-                <ul id="result-activities-list" class="rec-list"></ul>
-              </div>
-
-              <div class="rec-card">
-                <div class="rec-card-header">📚 Curated Reading List</div>
-                <ul id="result-books-list" class="rec-list"></ul>
-              </div>
-
-              <div class="rec-card">
-                <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
-                <ul id="result-resources-list" class="rec-list"></ul>
-              </div>
+          <div class="rec-grid">
+            <div class="rec-card">
+              <div class="rec-card-header">🏠 Home Activities</div>
+              <ul id="result-activities-list" class="rec-list"></ul>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="result-actions">
-              <button id="btn-play-again" class="result-btn-gold">PLAY AGAIN 🔄</button>
-              <button id="btn-result-leaderboard" class="result-btn-purple">VIEW LEADERBOARD 🏆</button>
+            <div class="rec-card">
+              <div class="rec-card-header">📚 Curated Reading List</div>
+              <ul id="result-books-list" class="rec-list"></ul>
             </div>
 
-            <div class="result-footer-copy">
-              <p>MilleRace — Gamified Media & Information Literacy Platform</p>
+            <div class="rec-card">
+              <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
+              <ul id="result-resources-list" class="rec-list"></ul>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="result-actions">
+            <button id="btn-play-again" class="result-btn-gold">PLAY AGAIN 🔄</button>
+            <button id="btn-result-leaderboard" class="result-btn-purple">VIEW LEADERBOARD 🏆</button>
+          </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top-wrapper">
+          <button class="btn-back-to-top" aria-label="Back to Top">
+            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-text">Back to Top</span>
+          </button>
+        </div>
+
+        <!-- FOOTER: ROUNDED PURPLE CONTAINER -->
+        <footer class="landing-footer-wrapper">
+          <div class="landing-footer-container">
+            <div class="footer-top">
+              <div class="footer-brand">
+                <div class="logo-circle">
+                  <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+                </div>
+                <span class="logo-brand-text">Mille<span>Race</span></span>
+              </div>
+              <nav class="footer-nav" aria-label="Footer Navigation">
+                <button class="nav-item footer-nav-item" data-nav="screen-landing">Home</button>
+                <button class="nav-item footer-nav-item" data-nav="screen-about">About Us</button>
+                <button class="nav-item footer-nav-item" data-nav="screen-team">Our Team</button>
+                <button class="nav-item footer-nav-item" data-nav="screen-mission">Our Mission</button>
+                <button class="nav-item footer-nav-item" data-nav="screen-leaderboard">Leaderboard</button>
+              </nav>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+              <p class="footer-desc">
+                Decoding the AI Horizon through gamified media & information literacy.
+              </p>
+              <p class="footer-copyright">
+                © 2026 MilleRace. UNESCO Youth Hackathon Project.
+              </p>
             </div>
           </div>
         </footer>

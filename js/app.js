@@ -64,6 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
       openRegistrationModal();
       return;
     }
+
+    // 4. Back to Top buttons (.btn-back-to-top)
+    const backToTopBtn = e.target.closest('.btn-back-to-top');
+    if (backToTopBtn) {
+      e.preventDefault();
+      const activeScreen = document.querySelector('.screen.active');
+      if (activeScreen) {
+        activeScreen.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
   });
 
   // 5 Strategic Pillars: Interactive Mission Dossier Tab Switching

@@ -3,16 +3,23 @@
    ========================================================================== */
 
 #screen-result {
-  background: radial-gradient(circle at 50% 30%, rgba(138, 56, 245, 0.15) 0%, #16141C 75%), #16141C !important;
+  background-color: #16141C;
+  background-image:
+    radial-gradient(circle at 10% 30%, rgba(117, 39, 181, 0.4) 0%, rgba(22, 20, 28, 0) 60%),
+    radial-gradient(circle at 90% 20%, rgba(46, 158, 133, 0.25) 0%, rgba(22, 20, 28, 0) 50%),
+    radial-gradient(circle at 50% 85%, rgba(117, 39, 181, 0.2) 0%, rgba(22, 20, 28, 0) 60%);
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   font-family: var(--font-body), 'Bona Nova', Georgia, serif;
+  scroll-behavior: smooth;
+  position: relative;
 }
 
 .result-page-wrapper {
@@ -24,41 +31,68 @@
   box-sizing: border-box;
 }
 
-/* 1. TOP STATUS & NAVIGATION BAR (Follows Landing/About/Team/Mission design) */
-.result-top-nav {
+/* 2. HERO SHOWCASE SECTION & 1/4 PURPLE RECTANGLE ANCHORED AT BOTTOM */
+.result-showcase-section {
   width: 100%;
-  max-width: 1280px;
-  padding: 24px 32px 16px 32px;
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px 24px 0 24px;
   box-sizing: border-box;
-  z-index: 20;
+  min-height: 520px;
 }
 
-/* 2. HERO PURPLE BAND & CHARACTER SHOWCASE */
 .result-purple-band {
-  width: 100vw;
-  min-height: 480px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65%;
   background: #854EB4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 50px 24px 40px 24px;
-  box-sizing: border-box;
-  box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.4);
+  /* box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.4); */
+  z-index: 1;
 }
 
 .result-showcase-container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  gap: clamp(24px, 5vw, 60px);
+  gap: clamp(24px, 4vw, 50px);
   position: relative;
+  z-index: 2;
   flex-wrap: wrap;
+}
+
+/* Result Card Column & Congratulations Text */
+.result-card-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 640px;
+  width: 100%;
+  gap: 18px;
+  z-index: 2;
+}
+
+.result-congrats-text {
+  font-family: var(--font-title), 'Cinzel', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.result-congrats-rank {
+  color: var(--color-yellow);
+  font-weight: 700;
+  text-shadow: 0 0 16px rgba(243, 205, 80, 0.85);
 }
 
 /* Scalloped Ivory Parchment Card (Vector.svg) */
@@ -205,19 +239,19 @@
   transform: scale(0.96);
 }
 
-/* Full Size Transparent Avatar Hero */
+/* Full Size Transparent Avatar Hero (at least 50% taller than result card) */
 .result-character-hero {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  max-height: 440px;
   flex-shrink: 0;
 }
 
 .result-hero-avatar-img {
-  max-height: clamp(320px, 44vh, 460px);
+  height: 580px;
+  max-height: 620px;
   width: auto;
-  max-width: 320px;
+  max-width: none;
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.65));
@@ -401,22 +435,12 @@
   flex-shrink: 0;
 }
 
-/* 4. PURPLE FOOTER CONTAINER (Rectangle 78) */
-.result-footer-section {
-  width: 100vw;
-  background: #854EB4;
-  border-radius: 46px 46px 0 0;
-  padding: 50px 24px 40px 24px;
-  box-sizing: border-box;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
-}
-
-.result-footer-inner {
+/* 4. RECOMMENDATIONS & TOOLKIT (NO CONTAINER BACKGROUND) */
+.result-recommendations-section {
   width: 100%;
   max-width: 1100px;
+  padding: 40px 24px 30px 24px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -541,18 +565,11 @@
   box-shadow: var(--shadow-glow-yellow);
 }
 
-.result-footer-copy {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: var(--font-body), 'Bona Nova', serif;
-  font-size: 0.9rem;
-  margin-top: 8px;
-}
-
 /* Responsive Styles */
 @media (max-width: 900px) {
   .result-showcase-container {
     flex-direction: column-reverse;
+    align-items: center;
   }
 
   .result-parchment-card {
@@ -564,7 +581,8 @@
   }
 
   .result-hero-avatar-img {
-    max-height: 280px;
+    height: 400px;
+    max-height: 440px;
   }
 }
 
@@ -583,8 +601,8 @@
     font-size: 3rem;
   }
 
-  .result-footer-section {
-    border-radius: 28px 28px 0 0;
-    padding: 36px 16px 24px 16px;
+  .result-hero-avatar-img {
+    height: 320px;
+    max-height: 360px;
   }
 }

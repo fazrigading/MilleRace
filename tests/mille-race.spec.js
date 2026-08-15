@@ -326,5 +326,134 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     await clearSearchBtn.click();
     await expect(tableBody).toContainText('CyberRunner');
   });
+
+  test('Final Result Page: should verify top bar, background, 1/4 purple band, character height, and containerless recommendations', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined' && typeof GameEngine !== 'undefined');
+
+    // Simulate final result
+    await page.evaluate(() => {
+      GameState.reset();
+      GameState.setPlayer('TestRacer', '13-17');
+      GameState.stageScores = { 1: 20, 2: 40, 3: 20, 4: 20 };
+      GameEngine.renderResultPage(true);
+    });
+
+    const resultScreen = page.locator('#screen-result');
+    await expect(resultScreen).toBeVisible();
+
+    // 1. Top bar: verify standard page-header-nav
+    const headerNav = resultScreen.locator('header.page-header-nav');
+    await expect(headerNav).toBeVisible();
+    const logoBrand = headerNav.locator('.logo-brand-text');
+    await expect(logoBrand).toBeVisible();
+    const navButtons = headerNav.locator('.top-nav-bar .nav-item');
+    expect(await navButtons.count()).toBe(5);
+
+    // Verify congratulations banner and rank text above result card
+    const congratsText = resultScreen.locator('#result-congrats-text');
+    await expect(congratsText).toBeVisible();
+    await expect(congratsText).toContainText(/Congratulations, you have finished the maze!/i);
+    const rankSpan = resultScreen.locator('#result-leaderboard-rank');
+    await expect(rankSpan).toBeVisible();
+
+    // 2. Character Image Height vs Result Box Height
+    const parchmentCard = page.locator('.result-parchment-card');
+    const charImg = page.locator('#result-char-img');
+    await expect(parchmentCard).toBeVisible();
+    await expect(charImg).toBeVisible();
+
+    const heights = await page.evaluate(() => {
+      const card = document.querySelector('.result-parchment-card');
+      const img = document.querySelector('#result-char-img');
+      const cardRect = card.getBoundingClientRect();
+      const imgRect = img.getBoundingClientRect();
+      return {
+        cardHeight: cardRect.height,
+        imgHeight: imgRect.height,
+        ratio: imgRect.height / cardRect.height
+      };
+    });
+
+    // Character image must be at least 1.4x - 1.5x taller than the result box
+    expect(heights.imgHeight).toBeGreaterThanOrEqual(heights.cardHeight * 1.45);
+
+    // 3. Purple rectangle: 1/4 (25%) height of showcase section and anchored to bottom
+    const bandInfo = await page.evaluate(() => {
+      const section = document.querySelector('.result-showcase-section');
+      const band = document.querySelector('.result-purple-band');
+      const sectionRect = section.getBoundingClientRect();
+      const bandRect = band.getBoundingClientRect();
+      const bandStyle = window.getComputedStyle(band);
+      return {
+        sectionHeight: sectionRect.height,
+        bandHeight: bandRect.height,
+        ratio: bandRect.height / sectionRect.height,
+        bottomPos: bandStyle.bottom,
+        bgColor: bandStyle.backgroundColor
+      };
+    });
+
+    expect(bandInfo.ratio).toBeCloseTo(0.25, 1);
+    expect(bandInfo.bottomPos).toBe('0px');
+
+    // 4. Personalized Recommendations: No purple container background
+    const recSection = page.locator('.result-recommendations-section');
+    await expect(recSection).toBeVisible();
+    const recBg = await recSection.evaluate(el => window.getComputedStyle(el).backgroundColor);
+    // Should be transparent / rgba(0, 0, 0, 0)
+    expect(recBg).toBe('rgba(0, 0, 0, 0)');
+
+    // Result Footer: Matching landing footer
+    const footer = resultScreen.locator('footer.landing-footer-wrapper');
+    await expect(footer).toBeVisible();
+    const footerContainer = footer.locator('.landing-footer-container');
+    await expect(footerContainer).toBeVisible();
+  });
+
+  test('Back to Top: should exist on all content pages, be centered, and trigger smooth scrolling', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined');
+
+    const screens = [
+      'screen-landing',
+      'screen-about',
+      'screen-team',
+      'screen-mission',
+      'screen-leaderboard',
+      'screen-result'
+    ];
+
+    for (const screenId of screens) {
+      await page.evaluate((id) => UI.showScreen(id), screenId);
+      const screenEl = page.locator(`#${screenId}`);
+      await expect(screenEl).toBeVisible();
+
+      const backToTopBtn = screenEl.locator('.btn-back-to-top');
+      await expect(backToTopBtn).toBeVisible();
+
+      // Check centering
+      const wrapperDisplay = await screenEl.locator('.back-to-top-wrapper').evaluate(el => {
+        const style = window.getComputedStyle(el);
+        return {
+          display: style.display,
+          justifyContent: style.justifyContent
+        };
+      });
+      expect(wrapperDisplay.display).toBe('flex');
+      expect(wrapperDisplay.justifyContent).toBe('center');
+
+      // Click button and verify it doesn't error
+      await backToTopBtn.click();
+    }
+
+    // Verify game stage screens do NOT have back to top buttons
+    const stageScreens = ['screen-stage1', 'screen-stage2', 'screen-stage3', 'screen-stage4'];
+    for (const stageId of stageScreens) {
+      const stageBtn = page.locator(`#${stageId} .btn-back-to-top`);
+      expect(await stageBtn.count()).toBe(0);
+    }
+  });
 });
+
 

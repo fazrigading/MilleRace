@@ -58,14 +58,17 @@ MilleRace gamifies media discernment, teaching users how to detect AI-generated 
   - **Global Leaderboard:** Demographic filtering (All, 6–12, 13–17, 18+), live search with automatic top 3 podium collapse.
   - **Your Results:** Persistent local history of every test completed on the browser, featuring full score breakdowns and direct **"View Final Result ➔"** interactive lookups.
 - 📜 **Redesigned Serif Final Result Screen:**
-  - **MIL Score** with AIAS & PISA reading standards descriptions.
-  - Golden ribbon banner badge (`Result-with-name.svg`) with character archetype.
-  - Separate, styled **PISA Reading Level** and **CEFR Level** pill badges.
-  - Character quotes, bios, and dynamic character-specific misinformation research links.
-  - Animated score counter and gold progress meter with stage points chips (Visual AIAS, Literary, Textual AIAS, Critical Inferencing).
-  - Dedicated purple footer container housing the Personalized Recommendations & Toolkit.
+  - **Celebratory Rank Banner:** Dynamic header (`"Congratulations for finishing the maze! You placed in #{leaderboard-rank} 🎉"`) computing real-time leaderboard placement.
+  - **Unified Navigation & Background:** Standardized top navigation bar and rich radial-gradient dark background matching the entire platform.
+  - **Enhanced Character Showcase:** Scaled character avatar standing over 50% taller than the parchment card with a bottom-anchored purple accent band.
+  - **MIL Score & Progress Breakdown:** AIAS & PISA reading standards descriptions, animated score counter, and stage milestone chips (Visual AIAS, Literary, Textual AIAS, Critical Inferencing).
+  - **Golden Ribbon Banner & Level Pills:** `Result-with-name.svg` badge with separate PISA and Cambridge Reading level badges.
+  - **Character Lore & Misinformation Defense:** Character quotes, bios, and dynamic misinformation research links.
+  - **Containerless Recommendations & Toolkit:** Clean, open presentation for curated home activities, book lists, and critical thinking resources.
+  - **Standardized Site Footer:** Unified rounded purple container footer matching the Home page.
+- ⬆️ **Global "Back to Top" Functionality:** Centered, accessible smooth-scroll button located above footers and at the base of every content screen.
 - 🎁 **Tailored Post-Game Recommendations:** Direct access to digitized public libraries (*Perpustakaan Nasional Digital*, *Bank Indonesia*), open archives (*Project Gutenberg*, *Internet Archive*), and critical thinking toolkits.
-- 🧭 **Universal Navigation Bar:** Sleek top-right glassmorphic navbar with a dynamic golden yellow active indicator across all screens.
+- 🧭 **Universal Navigation Bar:** Sleek top glassmorphic navbar with a dynamic golden yellow active indicator across all screens.
 - 🛠️ **Developer Debug Panel:** Built-in dev panel (`Ctrl+Shift+D`, `Alt+D`, or `~`) for rapid stage jumping, dialogue skipping, timer toggling, and score simulation.
 
 ---
@@ -159,16 +162,17 @@ Based on the total score across all stages (0–100%), players match with a peda
 
 ## 🌐 Pages & Navigation
 
-The Single Page Application (SPA) features a persistent top navigation bar with a golden yellow pill active indicator:
+The Single Page Application (SPA) features a persistent top navigation bar with a golden yellow pill active indicator, paired with a centered "Back to Top" button on all content pages:
 
-- **Home (`screen-landing`):** Hero showcase, How to Play cards, What is MilleRace section, Character intros, and registration modal.
-- **About Us (`screen-about`):** Detailed breakdown of the Indonesian Literacy Paradox, UNESCO hackathon alignment, AIAS 5 parameters, and stage overviews.
-- **Our Team (`screen-team`):** Mulawarman University student team members, academic backgrounds, roles, and skill tags.
-- **Our Mission (`screen-mission`):** 5 Strategic Pillars, 3-Year Strategic Roadmap (2026–2028), and community call to action.
+- **Home (`screen-landing`):** Hero showcase, How to Play cards, What is MilleRace section, Character intros, Back to Top button, and rounded purple site footer.
+- **About Us (`screen-about`):** Detailed breakdown of the Indonesian Literacy Paradox, UNESCO hackathon alignment, AIAS 5 parameters, stage overviews, and Back to Top button.
+- **Our Team (`screen-team`):** Mulawarman University student team members, academic backgrounds, roles, skill tags, and Back to Top button.
+- **Our Mission (`screen-mission`):** 5 Strategic Pillars, 3-Year Strategic Roadmap (2026–2028), interactive dossier console, and Back to Top button.
 - **Leaderboard (`screen-leaderboard`):**
   - **Global Leaderboard:** Demographic tabs, live search with auto-hiding podium, and live top scores.
   - **Your Results:** Personal test history list with full score breakdowns and one-click Final Result inspection.
-- **Final Result (`screen-result`):** Complete analytical performance profile, MIL score progress meter, character ribbon, bio, quote, and recommendation toolkit in a purple footer.
+  - **Back to Top:** Centered smooth-scroll button at the base of the page container.
+- **Final Result (`screen-result`):** Complete analytical performance profile with celebratory leaderboard rank banner, enlarged character avatar hero, MIL score progress meter, containerless recommendations & toolkit, centered Back to Top button, and rounded purple footer.
 
 ---
 
@@ -338,8 +342,8 @@ Developed with pride by students of **Mulawarman University**, Samarinda, East K
 1. **Syahna Maryam** — *Project Manager 1, Lead UX Writer & Character Designer* (Senior-year, English Literature)
 2. **Chairil Aminullah** — *Project Manager 2, Creative Director & UI/UX Designer* (Junior-year, English Literature)
 3. **Syema Chaelint Joshepine Karundaeng** — *Lead Illustrator & Visual Artist* (Junior-year, International Relations)
-4. **Fazri Rahmad Nor Gading** — *Front-End & Back-End Programmer* (Penultimate, Computer Science)
-5. **Muhammad Farrel Sirah** — *Web Developer* (Senior-year, Computer Science)
+4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Penultimate, Computer Science) — Architected and built the entire web game application end-to-end (SPA framework, all 4 game stages, UI/UX implementation, cloud & local leaderboard synchronization, timer engine, and deployment pipeline).
+5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Senior-year, Computer Science) — Formulated foundational game logic, scoring distribution rules, and coding project planning.
 6. **Muhammad Fahrezy Al Faris** — *Lead Researcher & Pitch Presenter* (Senior-year, International Relations)
 
 ---
