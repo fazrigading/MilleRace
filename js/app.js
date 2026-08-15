@@ -145,6 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Leaderboard View Switcher (Global Leaderboard vs Your Results)
+  const btnGlobalLeaderboard = document.getElementById('btn-view-global-leaderboard');
+  const btnUserHistory = document.getElementById('btn-view-user-history');
+  if (btnGlobalLeaderboard) {
+    btnGlobalLeaderboard.addEventListener('click', () => {
+      UI.switchLeaderboardView('global');
+    });
+  }
+  if (btnUserHistory) {
+    btnUserHistory.addEventListener('click', () => {
+      UI.switchLeaderboardView('history');
+    });
+  }
+
   // Result Page "View Leaderboard" Button
   const resultLeaderboardBtn = document.getElementById('btn-result-leaderboard');
   if (resultLeaderboardBtn) {
@@ -221,6 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
       GameState.reset();
       UI.showScreen('screen-landing');
     });
+  }
+
+  // Initialize Cloud Leaderboard Service
+  if (typeof LeaderboardService !== 'undefined') {
+    LeaderboardService.init();
   }
 
   // Initialize Dev Mode Toolbar & Quick Navigator

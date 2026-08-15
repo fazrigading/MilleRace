@@ -430,8 +430,26 @@ const GameEngine = {
     });
   },
 
+  // Render a saved historical run from "Your Results"
+  renderHistoricalResult(runSnapshot) {
+    if (!runSnapshot) return;
+
+    // Restore player state and scores from snapshot
+    GameState.player.nickname = runSnapshot.nickname || 'Racer';
+    GameState.player.ageGroup = runSnapshot.ageGroup || '13-17';
+    GameState.stageScores = {
+      1: Number(runSnapshot.stageScores?.[1]) || 0,
+      2: Number(runSnapshot.stageScores?.[2]) || 0,
+      3: Number(runSnapshot.stageScores?.[3]) || 0,
+      4: Number(runSnapshot.stageScores?.[4]) || 0
+    };
+
+    // Render result page with historical flag to avoid duplicate saving
+    this.renderResultPage(true);
+  },
+
   // Render Final Result Page
-  renderResultPage() {
+  renderResultPage(isHistorical = false) {
     GameTimer.stop();
     UI.showScreen('screen-result');
 
@@ -484,14 +502,16 @@ const GameEngine = {
     if (s3El) s3El.textContent = `${GameState.stageScores[3] || 0}/20`;
     if (s4El) s4El.textContent = `${GameState.stageScores[4] || 0}/20`;
 
-    // 4. Save to Leaderboard automatically
-    UI.saveRaceToLeaderboard(
-      GameState.player.nickname || 'Racer',
-      GameState.player.ageGroup || '13-17',
-      totalScore,
-      GameTimer.getFormattedTime(),
-      charMatch.name
-    );
+    // 4. Save to Leaderboard and History only for fresh completions
+    if (!isHistorical) {
+      UI.saveRaceToLeaderboard(
+        GameState.player.nickname || 'Racer',
+        GameState.player.ageGroup || '13-17',
+        totalScore,
+        GameTimer.getFormattedTime(),
+        charMatch.name
+      );
+    }
 
     // 5. Render Character Details
     const badgeEl = document.getElementById('result-char-badge');

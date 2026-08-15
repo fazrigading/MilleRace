@@ -1084,45 +1084,70 @@
           </p>
         </div>
 
-        <!-- Controls: Filters & Search -->
-        <div class="leaderboard-controls">
-          <div class="leaderboard-tabs" id="leaderboard-demographic-tabs">
-            <button class="tab-btn active" data-filter="all">All Racers</button>
-            <button class="tab-btn" data-filter="6-12">Early Readers (6-12)</button>
-            <button class="tab-btn" data-filter="13-17">Young Adults (13-17)</button>
-            <button class="tab-btn" data-filter="18+">Advanced Readers (18+)</button>
+        <!-- View Switcher: Global Leaderboard vs Your Results -->
+        <div class="leaderboard-view-switch">
+          <button id="btn-view-global-leaderboard" class="view-toggle-btn active" data-view="global">
+            <span>🏆 Global Leaderboard</span>
+          </button>
+          <button id="btn-view-user-history" class="view-toggle-btn" data-view="history">
+            <span>👤 Your Results</span>
+          </button>
+        </div>
+
+        <!-- 1. Global Leaderboard View Container -->
+        <div id="leaderboard-global-section" class="leaderboard-view-content active">
+          <!-- Controls: Filters & Search -->
+          <div class="leaderboard-controls">
+            <div class="leaderboard-tabs" id="leaderboard-demographic-tabs">
+              <button class="tab-btn active" data-filter="all">All Racers</button>
+              <button class="tab-btn" data-filter="6-12">Early Readers (6-12)</button>
+              <button class="tab-btn" data-filter="13-17">Young Adults (13-17)</button>
+              <button class="tab-btn" data-filter="18+">Advanced Readers (18+)</button>
+            </div>
+
+            <div class="leaderboard-search">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="leaderboard-search-input" class="search-input"
+                placeholder="Search racer nickname...">
+            </div>
           </div>
 
-          <div class="leaderboard-search">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="leaderboard-search-input" class="search-input"
-              placeholder="Search racer nickname...">
+          <!-- Top 3 Podium Cards -->
+          <div class="podium-grid" id="leaderboard-podium">
+            <!-- Dynamically Rendered by JS -->
+          </div>
+
+          <!-- Leaderboard Table -->
+          <div class="leaderboard-table-wrapper">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th style="width: 80px;">Rank</th>
+                  <th>Racer Nickname</th>
+                  <th>Age Category</th>
+                  <th>MIL Score</th>
+                  <th>Escape Time</th>
+                  <th>Character Match</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-table-body">
+                <!-- Dynamically Rendered by JS -->
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Top 3 Podium Cards -->
-        <div class="podium-grid" id="leaderboard-podium">
-          <!-- Dynamically Rendered by JS -->
-        </div>
+        <!-- 2. Your Results History View Container -->
+        <div id="leaderboard-history-section" class="leaderboard-view-content" style="display: none;">
+          <div class="history-view-header">
+            <h2 class="history-view-title">Your Race History & Completed Tests</h2>
+            <p class="history-view-subtitle">Saved on this browser. Click "View Final Result" on any test to inspect its complete profile and recommendations.</p>
+          </div>
 
-        <!-- Leaderboard Table -->
-        <div class="leaderboard-table-wrapper">
-          <table class="leaderboard-table">
-            <thead>
-              <tr>
-                <th style="width: 80px;">Rank</th>
-                <th>Racer Nickname</th>
-                <th>Age Category</th>
-                <th>MIL Score</th>
-                <th>Escape Time</th>
-                <th>Character Match</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-table-body">
-              <!-- Dynamically Rendered by JS -->
-            </tbody>
-          </table>
+          <div id="user-history-list" class="user-history-grid">
+            <!-- Dynamically Rendered by JS -->
+          </div>
         </div>
 
         <!-- CTA -->
@@ -1481,6 +1506,8 @@
   <script src="js/config.js?v=1.1"></script>
   <script src="js/state.js?v=1.1"></script>
   <script src="js/timer.js?v=1.1"></script>
+  <script src="js/firebaseConfig.js?v=1.1"></script>
+  <script src="js/leaderboardService.js?v=1.1"></script>
   <script src="js/ui.js?v=1.1"></script>
   <script src="js/gameEngine.js?v=1.1"></script>
   <script src="js/devMode.js?v=1.0"></script>

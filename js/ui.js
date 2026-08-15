@@ -228,7 +228,7 @@ const UI = {
   },
 
   // Retrieve & aggregate leaderboard entries from localStorage + defaults
-  getLeaderboardData() {
+  getLeaderboardData(filter = 'all') {
     let customEntries = [];
     try {
       const stored = localStorage.getItem('mille_leaderboard');
@@ -242,7 +242,10 @@ const UI = {
       console.warn("Could not read local leaderboard:", e);
     }
 
-    const combined = [...customEntries, ...DEFAULT_LEADERBOARD];
+    let combined = [...customEntries, ...DEFAULT_LEADERBOARD];
+    if (filter !== 'all') {
+      combined = combined.filter(item => item.ageGroup === filter);
+    }
     // Sort descending by score
     combined.sort((a, b) => (Number(b.score) || 0) - (Number(a.score) || 0));
 
@@ -253,83 +256,204 @@ const UI = {
     }));
   },
 
-  // Save a completed race result to localStorage leaderboard
-  saveRaceToLeaderboard(nickname, ageGroup, score, timeFormatted, characterName) {
+  // Save to local storage cache
+  saveRaceToLocalLeaderboard(entry) {
     try {
       const stored = localStorage.getItem('mille_leaderboard');
       let entries = stored ? JSON.parse(stored) : [];
       if (!Array.isArray(entries)) entries = [];
       
       const newEntry = {
-        name: (nickname || 'Racer').trim(),
-        ageGroup: ageGroup || '13-17',
-        score: score,
-        time: `${timeFormatted} remaining`,
-        character: characterName || 'Miller',
+        name: (entry.nickname || 'Racer').trim().slice(0, 25),
+        ageGroup: entry.ageGroup || '13-17',
+        score: Number(entry.totalScore) || 0,
+        time: entry.timeFormatted ? `${entry.timeFormatted} remaining` : 'Completed',
+        character: entry.characterName || 'Miller',
         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
       };
 
       entries.unshift(newEntry);
       localStorage.setItem('mille_leaderboard', JSON.stringify(entries.slice(0, 50)));
     } catch (e) {
-      console.warn("Could not save to leaderboard:", e);
+      console.warn("Could not save to local leaderboard:", e);
     }
   },
 
-  // Render Leaderboard Podium & Table
+  // Save a completed race result (Hybrid Cloud + Local + History)
+  saveRaceToLeaderboard(nickname, ageGroup, score, timeFormatted, characterName) {
+    const runData = {
+      nickname: nickname || GameState.player.nickname || 'Racer',
+      ageGroup: ageGroup || GameState.player.ageGroup || '13-17',
+      totalScore: score,
+      stageScores: { ...GameState.stageScores },
+      characterName: characterName || 'Miller',
+      characterKey: (characterName || 'miller').toLowerCase(),
+      timeFormatted: timeFormatted || GameTimer.getFormattedTime()
+    };
+
+    if (typeof LeaderboardService !== 'undefined' && LeaderboardService.submitScore) {
+      LeaderboardService.submitScore(runData);
+    } else {
+      this.saveRaceToLocalLeaderboard(runData);
+    }
+  },
+
+  // Switch between "Global Leaderboard" and "Your Results" views
+  switchLeaderboardView(viewName) {
+    const globalBtn = document.getElementById('btn-view-global-leaderboard');
+    const historyBtn = document.getElementById('btn-view-user-history');
+    const globalSec = document.getElementById('leaderboard-global-section');
+    const historySec = document.getElementById('leaderboard-history-section');
+
+    if (viewName === 'history') {
+      if (globalBtn) globalBtn.classList.remove('active');
+      if (historyBtn) historyBtn.classList.add('active');
+      if (globalSec) globalSec.style.display = 'none';
+      if (historySec) historySec.style.display = 'flex';
+      this.renderUserHistory();
+    } else {
+      if (historyBtn) historyBtn.classList.remove('active');
+      if (globalBtn) globalBtn.classList.add('active');
+      if (historySec) historySec.style.display = 'none';
+      if (globalSec) globalSec.style.display = 'flex';
+      this.renderLeaderboard(this.activeLeaderboardFilter || 'all', this.activeLeaderboardSearch || '');
+    }
+  },
+
+  // Render User's Persistent Race History
+  renderUserHistory() {
+    const container = document.getElementById('user-history-list');
+    if (!container) return;
+
+    const history = (typeof LeaderboardService !== 'undefined' && LeaderboardService.getUserHistory) 
+      ? LeaderboardService.getUserHistory() 
+      : [];
+
+    if (history.length === 0) {
+      container.innerHTML = `
+        <div class="history-empty-state">
+          <div class="history-empty-icon">🏁</div>
+          <div class="history-empty-text">
+            <strong>No race results recorded yet!</strong><br>
+            Conquer the maze, collect all 4 keys, and your full analytical performance will be saved right here.
+          </div>
+          <button class="btn-primary btn-trigger-reg" style="margin-top: 10px;">Take the Test Now 🚀</button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = history.map(run => {
+      const charKey = (run.characterName || 'Miller').toLowerCase();
+      let badgeClass = 'char-badge-miller';
+      if (charKey.includes('lizzy')) badgeClass = 'char-badge-lizzy';
+      else if (charKey.includes('aidan')) badgeClass = 'char-badge-aidan';
+      else if (charKey.includes('jen')) badgeClass = 'char-badge-jen';
+
+      const s1 = run.stageScores?.[1] ?? 0;
+      const s2 = run.stageScores?.[2] ?? 0;
+      const s3 = run.stageScores?.[3] ?? 0;
+      const s4 = run.stageScores?.[4] ?? 0;
+
+      return `
+        <div class="history-card" data-run-id="${run.id}">
+          <div class="history-card-top">
+            <div>
+              <span class="history-date">📅 ${this.escapeHtml(run.dateFormatted || 'Recently')}</span>
+              <h3 class="history-player-name">${this.escapeHtml(run.nickname)} <span style="font-size: 0.85rem; color: #CBD5E1; font-weight: normal;">(${this.escapeHtml(run.ageGroup)})</span></h3>
+            </div>
+            <div class="history-score-chip">${run.totalScore}%</div>
+          </div>
+
+          <div class="history-stages-row">
+            <span>V-AIAS: <strong>${s1}/20</strong></span>
+            <span>Lit: <strong>${s2}/40</strong></span>
+            <span>T-AIAS: <strong>${s3}/20</strong></span>
+            <span>Crit: <strong>${s4}/20</strong></span>
+          </div>
+
+          <div class="history-card-footer">
+            <span class="char-badge-small ${badgeClass}">✦ ${this.escapeHtml(run.characterName || 'Miller')}</span>
+            <button class="btn-history-lookup" data-run-id="${run.id}">
+              <span>View Final Result</span>
+              <span aria-hidden="true">➔</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Attach click listeners to "View Final Result" buttons
+    container.querySelectorAll('.btn-history-lookup').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const runId = btn.getAttribute('data-run-id');
+        const runSnapshot = history.find(r => r.id === runId);
+        if (runSnapshot && typeof GameEngine !== 'undefined' && GameEngine.renderHistoricalResult) {
+          GameEngine.renderHistoricalResult(runSnapshot);
+        }
+      });
+    });
+  },
+
+  // Render Leaderboard Podium & Table (Hiding podium when search query is active)
   renderLeaderboard(filter = 'all', searchQuery = '') {
     this.activeLeaderboardFilter = filter;
     this.activeLeaderboardSearch = searchQuery;
 
-    const data = this.getLeaderboardData();
+    const data = this.getLeaderboardData(filter);
     let filtered = data;
 
-    if (filter !== 'all') {
-      filtered = filtered.filter(item => item.ageGroup === filter);
-    }
+    const isSearching = searchQuery && searchQuery.trim() !== '';
 
-    if (searchQuery.trim() !== '') {
+    if (isSearching) {
       const q = searchQuery.toLowerCase().trim();
       filtered = filtered.filter(item => (item.name || '').toLowerCase().includes(q));
     }
 
-    // Render Podium (top 3 from filtered)
+    // Render / Hide Podium based on search query
     const podiumEl = document.getElementById('leaderboard-podium');
     if (podiumEl) {
-      const first = filtered[0];
-      const second = filtered[1];
-      const third = filtered[2];
+      if (isSearching) {
+        // HIDE 1st, 2nd, and 3rd place podium when searching
+        podiumEl.style.display = 'none';
+      } else {
+        // SHOW 1st, 2nd, and 3rd place podium when not searching
+        podiumEl.style.display = 'grid';
+        const first = filtered[0];
+        const second = filtered[1];
+        const third = filtered[2];
 
-      const renderPodiumCard = (entry, rankNumber, rankBadge, cardClass) => {
-        if (!entry) {
+        const renderPodiumCard = (entry, rankNumber, rankBadge, cardClass) => {
+          if (!entry) {
+            return `
+              <div class="podium-card ${cardClass}">
+                <div class="podium-rank-badge">${rankBadge}</div>
+                <h3 class="podium-name">—</h3>
+                <div class="podium-score">—</div>
+                <div class="podium-archetype">No Racer</div>
+              </div>
+            `;
+          }
           return `
             <div class="podium-card ${cardClass}">
               <div class="podium-rank-badge">${rankBadge}</div>
-              <h3 class="podium-name">—</h3>
-              <div class="podium-score">—</div>
-              <div class="podium-archetype">No Racer</div>
+              <h3 class="podium-name">${this.escapeHtml(entry.name)}</h3>
+              <div class="podium-score">${entry.score}%</div>
+              <div class="podium-archetype">Matched: ${this.escapeHtml(entry.character)}</div>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #CBD5E1;">${this.escapeHtml(entry.time)}</div>
             </div>
           `;
-        }
-        return `
-          <div class="podium-card ${cardClass}">
-            <div class="podium-rank-badge">${rankBadge}</div>
-            <h3 class="podium-name">${this.escapeHtml(entry.name)}</h3>
-            <div class="podium-score">${entry.score}%</div>
-            <div class="podium-archetype">Matched: ${this.escapeHtml(entry.character)}</div>
-            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #CBD5E1;">${this.escapeHtml(entry.time)}</div>
-          </div>
-        `;
-      };
+        };
 
-      podiumEl.innerHTML = `
-        <!-- 2nd Place -->
-        ${renderPodiumCard(second, 2, '2', 'second')}
-        <!-- 1st Place -->
-        ${renderPodiumCard(first, 1, '👑 1', 'first')}
-        <!-- 3rd Place -->
-        ${renderPodiumCard(third, 3, '3', 'third')}
-      `;
+        podiumEl.innerHTML = `
+          <!-- 2nd Place -->
+          ${renderPodiumCard(second, 2, '2', 'second')}
+          <!-- 1st Place -->
+          ${renderPodiumCard(first, 1, '👑 1', 'first')}
+          <!-- 3rd Place -->
+          ${renderPodiumCard(third, 3, '3', 'third')}
+        `;
+      }
     }
 
     // Render Table Rows

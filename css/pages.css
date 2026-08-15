@@ -1017,9 +1017,200 @@
   color: var(--color-yellow);
 }
 
-/* ==========================================================================
-   4. LEADERBOARD PAGE STYLES
-   ========================================================================== */
+/* LEADERBOARD VIEW SWITCHER (Global vs Your Results) */
+.leaderboard-view-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: rgba(22, 20, 28, 0.7);
+  padding: 6px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(133, 78, 180, 0.4);
+  width: fit-content;
+  margin: 0 auto 10px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.view-toggle-btn {
+  background: transparent;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  color: #CBD5E1;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-toggle-btn:hover {
+  color: var(--color-yellow);
+}
+
+.view-toggle-btn.active {
+  background: var(--color-yellow);
+  color: #16141C;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(243, 205, 80, 0.45);
+}
+
+.leaderboard-view-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* YOUR RESULTS HISTORY VIEW */
+.history-view-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.history-view-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.history-view-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #CBD5E1;
+  margin: 0;
+}
+
+.user-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.history-card {
+  background: rgba(30, 24, 45, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-yellow);
+  box-shadow: var(--shadow-glow-yellow);
+}
+
+.history-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.history-date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #94A3B8;
+}
+
+.history-player-name {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.history-score-chip {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-yellow);
+  text-shadow: 0 0 15px rgba(243, 205, 80, 0.6);
+  line-height: 1;
+}
+
+.history-stages-row {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(22, 20, 28, 0.6);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #CBD5E1;
+}
+
+.history-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-history-lookup {
+  background: var(--color-yellow);
+  color: #16141C;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-history-lookup:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 205, 80, 0.4);
+}
+
+.history-empty-state {
+  grid-column: 1 / -1;
+  background: rgba(30, 24, 45, 0.6);
+  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.history-empty-icon {
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+.history-empty-text {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: #CBD5E1;
+  max-width: 500px;
+}
 
 /* Leaderboard Controls (Tabs & Search) */
 .leaderboard-controls {
