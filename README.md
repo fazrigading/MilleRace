@@ -54,6 +54,7 @@ MilleRace gamifies media discernment, teaching users how to detect AI-generated 
 - 📚 **Literary Title Reconstruction:** Fill missing words from world classics and modern literature to unlock door passwords.
 - 🔍 **Textual Authenticity Classification:** Grade text excerpts on a 4-point graduated human-to-synthetic scale.
 - 🧠 **High-Order PISA Inferential Reading:** Multi-layered reading comprehension questions with weighted scoring.
+- 🖼️ **Interactive Game Preview Slideshow:** Automatic 5-slide preview with manual navigation (Stage 1 Visual AIAS, Stage 2 Literary Reconstruction, Stage 3 Textual AIAS, Stage 4 Critical Inferencing, and Final Result Profile) featuring indicator dots, navigation arrows, hover-pause, and click-to-enlarge lightbox preview.
 - 🏆 **Global Leaderboard & "Your Results" History:**
   - **Global Leaderboard:** Demographic filtering (All, 6–12, 13–17, 18+), live search with automatic top 3 podium collapse.
   - **Your Results:** Persistent local history of every test completed on the browser, featuring full score breakdowns and direct **"View Final Result ➔"** interactive lookups.

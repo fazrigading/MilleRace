@@ -151,9 +151,42 @@
             Players sort odd-one-outs<br>through four stages
           </p>
         </div>
-        <div class="what-is-right-frame">
-          <img src="docs/design-references/brand-guidelines/Brand Guideline.png" alt="MilleRace Artwork"
-            onerror="this.style.display='none'">
+        <div class="what-is-right-frame" id="what-is-slideshow" aria-label="Game Preview Slideshow" role="region">
+          <div class="slideshow-track" id="slideshow-track">
+            <!-- Slide 1: Stage 1 -->
+            <div class="slideshow-slide active" data-slide="0">
+              <img src="assets/images/ui/slideshow/stage-1-visual-aias-gameplay.png" alt="Stage 1 Visual AIAS Gameplay">
+            </div>
+            <!-- Slide 2: Stage 2 -->
+            <div class="slideshow-slide" data-slide="1">
+              <img src="assets/images/ui/slideshow/stage-2-literary-reconstruction-gameplay.png" alt="Stage 2 Literary Reconstruction Gameplay">
+            </div>
+            <!-- Slide 3: Stage 3 -->
+            <div class="slideshow-slide" data-slide="2">
+              <img src="assets/images/ui/slideshow/stage-3-textual-authenticity-gameplay.png" alt="Stage 3 Textual AIAS Gameplay">
+            </div>
+            <!-- Slide 4: Stage 4 -->
+            <div class="slideshow-slide" data-slide="3">
+              <img src="assets/images/ui/slideshow/stage-4-pisa-comprehension-gameplay.png" alt="Stage 4 PISA Comprehension Gameplay">
+            </div>
+            <!-- Slide 5: Final Result -->
+            <div class="slideshow-slide" data-slide="4">
+              <img src="assets/images/ui/slideshow/final-result-archetype-match.png" alt="Final Result Analytical Profile">
+            </div>
+          </div>
+
+          <!-- Manual Navigation Arrows -->
+          <button class="slideshow-arrow prev" id="slideshow-prev" aria-label="Previous Slide">‹</button>
+          <button class="slideshow-arrow next" id="slideshow-next" aria-label="Next Slide">›</button>
+
+          <!-- Navigation Indicator Dots -->
+          <div class="slideshow-dots" id="slideshow-dots">
+            <button class="slideshow-dot active" data-index="0" aria-label="Go to slide 1"></button>
+            <button class="slideshow-dot" data-index="1" aria-label="Go to slide 2"></button>
+            <button class="slideshow-dot" data-index="2" aria-label="Go to slide 3"></button>
+            <button class="slideshow-dot" data-index="3" aria-label="Go to slide 4"></button>
+            <button class="slideshow-dot" data-index="4" aria-label="Go to slide 5"></button>
+          </div>
         </div>
       </div>
 
@@ -1588,6 +1621,17 @@
         <h2 id="modal-title-text" class="modal-title">Modal Title</h2>
         <div id="modal-body-content" class="modal-body"></div>
         <button id="modal-confirm-btn" class="btn-primary">Continue</button>
+      </div>
+    </div>
+
+    <!-- SLIDESHOW IMAGE ENLARGE LIGHTBOX MODAL -->
+    <div id="slideshow-lightbox-modal" class="slideshow-lightbox-modal" aria-hidden="true" role="dialog" aria-label="Enlarged Image Preview">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-content-wrap">
+        <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close enlarged preview">✕</button>
+        <button id="lightbox-prev" class="lightbox-nav-btn prev" aria-label="Previous image">‹</button>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged Gameplay Screenshot">
+        <button id="lightbox-next" class="lightbox-nav-btn next" aria-label="Next image">›</button>
       </div>
     </div>
 

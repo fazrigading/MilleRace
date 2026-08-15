@@ -321,22 +321,260 @@
   margin: 0;
 }
 
+/* Interactive Game Preview Slideshow */
 .what-is-right-frame {
-  width: 500;
-  height: 400px;
-  background: #2E9E85;
-  border-radius: 28px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  width: 540px;
+  max-width: 100%;
+  height: 350px;
+  background: #16141C;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: block;
 }
 
-.what-is-right-frame img {
+.slideshow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
+  transform: scale(1.03);
+  z-index: 1;
+  cursor: zoom-in;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.slideshow-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(22, 20, 28, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.slideshow-arrow:hover {
+  background: rgba(133, 78, 180, 0.85);
+  color: var(--color-yellow);
+  border-color: var(--color-yellow);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 12px rgba(243, 205, 80, 0.4);
+}
+
+.slideshow-arrow.prev {
+  left: 14px;
+}
+
+.slideshow-arrow.next {
+  right: 14px;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slideshow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.slideshow-dot:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.2);
+}
+
+.slideshow-dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--color-yellow);
+  box-shadow: 0 0 10px rgba(243, 205, 80, 0.8);
+}
+
+/* Slideshow Lightbox Modal (Enlarge Image Feature) */
+.slideshow-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.slideshow-lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: zoom-out;
+}
+
+.lightbox-content-wrap {
+  position: relative;
+  max-width: 92vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.18);
+  object-fit: contain;
+  transform: scale(0.94);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+.slideshow-lightbox-modal.active .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #16141C;
+  border: 2px solid var(--color-yellow);
+  color: var(--color-yellow);
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.lightbox-close-btn:hover {
+  transform: scale(1.12);
+  background: var(--color-yellow);
+  color: #16141C;
+  box-shadow: 0 0 20px rgba(243, 205, 80, 0.6);
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(22, 20, 28, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(133, 78, 180, 0.95);
+  color: var(--color-yellow);
+  border-color: var(--color-yellow);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 0 16px rgba(243, 205, 80, 0.5);
+}
+
+.lightbox-nav-btn.prev {
+  left: -24px;
+}
+
+.lightbox-nav-btn.next {
+  right: -24px;
+}
+
+@media (max-width: 768px) {
+  .lightbox-close-btn {
+    top: 8px;
+    right: 8px;
+  }
+  .lightbox-nav-btn.prev {
+    left: 8px;
+  }
+  .lightbox-nav-btn.next {
+    right: 8px;
+  }
 }
 
 /* SECTION 4: MEET YOUR CHARACTER MATCH */

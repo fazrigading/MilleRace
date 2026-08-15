@@ -242,6 +242,168 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Interactive Game Preview Slideshow Controller (Auto + Manual)
+  const slideshowEl = document.getElementById('what-is-slideshow');
+  if (slideshowEl) {
+    const slides = Array.from(slideshowEl.querySelectorAll('.slideshow-slide'));
+    const dots = Array.from(slideshowEl.querySelectorAll('.slideshow-dot'));
+    const prevBtn = document.getElementById('slideshow-prev');
+    const nextBtn = document.getElementById('slideshow-next');
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    const intervalMs = 4000;
+
+    function goToSlide(index) {
+      if (slides.length === 0) return;
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        if (i === currentIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, intervalMs);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+        startAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+        startAutoPlay();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(i);
+        startAutoPlay();
+      });
+    });
+
+    // Lightbox modal elements
+    const lightboxModal = document.getElementById('slideshow-lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+
+    function openLightbox(index) {
+      if (!lightboxModal || !lightboxImg || slides.length === 0) return;
+      goToSlide(index);
+      stopAutoPlay();
+      const currentImg = slides[currentIndex].querySelector('img');
+      if (currentImg) {
+        lightboxImg.src = currentImg.src;
+        lightboxImg.alt = currentImg.alt || 'Enlarged Gameplay Screenshot';
+      }
+      lightboxModal.classList.add('active');
+      lightboxModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      if (!lightboxModal) return;
+      lightboxModal.classList.remove('active');
+      lightboxModal.setAttribute('aria-hidden', 'true');
+      startAutoPlay();
+    }
+
+    function updateLightboxImage() {
+      if (!lightboxModal || !lightboxModal.classList.contains('active') || !lightboxImg) return;
+      const currentImg = slides[currentIndex].querySelector('img');
+      if (currentImg) {
+        lightboxImg.src = currentImg.src;
+        lightboxImg.alt = currentImg.alt || 'Enlarged Gameplay Screenshot';
+      }
+    }
+
+    // Click slide to enlarge image
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', (e) => {
+        // Prevent trigger if clicking arrows/dots
+        if (e.target.closest('.slideshow-arrow') || e.target.closest('.slideshow-dots')) return;
+        openLightbox(i);
+      });
+    });
+
+    // Lightbox Controls
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeLightbox();
+      });
+    }
+
+    if (lightboxBackdrop) {
+      lightboxBackdrop.addEventListener('click', closeLightbox);
+    }
+
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+        updateLightboxImage();
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+        updateLightboxImage();
+      });
+    }
+
+    // Keyboard support (Escape to close lightbox, Left/Right arrows to cycle)
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+        updateLightboxImage();
+      } else if (e.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+        updateLightboxImage();
+      }
+    });
+
+    // Start initial autoplay
+    startAutoPlay();
+  }
+
   // Play Again Button Listener
   const playAgainBtn = document.getElementById('btn-play-again');
   if (playAgainBtn) {
