@@ -8,7 +8,6 @@ const GAME_CONFIG = {
     character: 'Miller',
     avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
     bgImage: 'assets/images/backgrounds/Level 1.png',
-    introDialogue: "Each room in this building is interlocked. To reach the end of the maze, we must obtain keys. The first one is hidden in the gallery. We must first clear up the space and find it. Eliminate decoys and help me find real art works.",
     introSentences: [
       "Each room in this building is interlocked.",
       "To reach the end of the maze, we must obtain keys.",
@@ -19,7 +18,7 @@ const GAME_CONFIG = {
     questions: [
       {
         id: 1,
-        prompt: "Which one of these framed art pieces is a real human creation?",
+        prompt: "Which one of these framed art pieces is NOT a real human creation?",
         options: [
           { letter: 'A', img: 'assets/images/questions/stage-1/1A.jpg', label: 'Option A' },
           { letter: 'B', img: 'assets/images/questions/stage-1/1B.jpg', label: 'Option B' },
@@ -29,7 +28,7 @@ const GAME_CONFIG = {
       },
       {
         id: 2,
-        prompt: "Spot the authentic human painting among algorithmic decoys:",
+        prompt: "Which one of these framed art pieces is NOT a real human creation?",
         options: [
           { letter: 'A', img: 'assets/images/questions/stage-1/2A.jpg', label: 'Option A' },
           { letter: 'B', img: 'assets/images/questions/stage-1/2B.jpg', label: 'Option B' },
@@ -39,7 +38,7 @@ const GAME_CONFIG = {
       },
       {
         id: 3,
-        prompt: "Which photo is a genuine deep space optical capture (Hubble/Webb)?",
+        prompt: "Which one of these photos is NOT a genuine deep space optical capture?",
         options: [
           { letter: 'A', img: 'assets/images/questions/stage-1/3A.jpg', label: 'Option A' },
           { letter: 'B', img: 'assets/images/questions/stage-1/3B.jpg', label: 'Option B' },
@@ -49,7 +48,7 @@ const GAME_CONFIG = {
       },
       {
         id: 4,
-        prompt: "Identify the human illustration with natural composition:",
+        prompt: "Which one of these illustrations is NOT a real human creation?",
         options: [
           { letter: 'A', img: 'assets/images/questions/stage-1/4A.jpg', label: 'Option A' },
           { letter: 'B', img: 'assets/images/questions/stage-1/4B.jpg', label: 'Option B' },
@@ -65,7 +64,6 @@ const GAME_CONFIG = {
     character: 'Jen',
     avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
     bgImage: 'assets/images/backgrounds/Level 2.png',
-    introDialogue: "There are too many doors to unlock! Only one way to find out. Each of these doors contain a password. Fill in the blanks with the correct options.",
     introSentences: [
       "There are too many doors to unlock!",
       "Only one way to find out.",
@@ -90,8 +88,7 @@ const GAME_CONFIG = {
   STAGE_3: {
     character: 'Aidan',
     avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
-    bgImage: 'assets/images/backgrounds/Level 1.png',
-    introDialogue: "Ah, if this isn't the key to success... I figure these letters have clues to our next key. Help me delete letters that do not sound human.",
+    bgImage: null,
     introSentences: [
       "Ah, if this isn't the key to success...",
       "I figure these letters have clues to our next key.",
@@ -101,27 +98,57 @@ const GAME_CONFIG = {
       {
         id: 1,
         text: "Axolotls derive from the same species as salamanders. Whilst being amphibians, their external gills remain aquatic. They reach maturity without significant metamorphosis.",
-        target: "Human"
+        target: "Human",
+        scores: {
+          "Human": 5,
+          "Somewhat Human": 3,
+          "Barely Human": 1,
+          "Not Human": 0
+        }
       },
       {
         id: 2,
         text: "British foods revolve around proteins. A full-on English breakfast have fried egg, bacons, beans and Yorkshire pudding. For lunch, scotched eggs are a common favorite, in a donut shape with breaded sausage.",
-        target: "Somewhat Human"
+        target: "Human",
+        scores: {
+          "Human": 5,
+          "Somewhat Human": 3,
+          "Barely Human": 1,
+          "Not Human": 0
+        }
       },
       {
         id: 3,
         text: "Valentine's Day is celebrated every February 14th and is named after Saint Valentine, a Roman priest associated with love and romance. People around the world celebrate their love by exchanging billions of chocolates, flowers, and cards with their loved ones.",
-        target: "Not Human"
+        target: "Not Human",
+        scores: {
+          "Human": 0,
+          "Somewhat Human": 1,
+          "Barely Human": 3,
+          "Not Human": 5
+        }
       },
       {
         id: 4,
         text: "In the 1920s, uniforms were often formal and practical, reflecting the fashion and social standards of the time. Many people wore uniforms for work, school, sports, and military service, and these outfits were usually designed to look neat and professional. Uniforms from this era often included structured jackets, skirts or trousers, hats, and polished shoes.",
-        target: "Not Human"
+        target: "Not Human",
+        scores: {
+          "Human": 0,
+          "Somewhat Human": 1,
+          "Barely Human": 3,
+          "Not Human": 5
+        }
       },
       {
         id: 5,
         text: "Chopsticks are made around 1200 BCE. Historically, firework became on demand during the Shang dynasty where people had to work quickly. The utensil is made to shorten time when chopping and stirring.",
-        target: "Human"
+        target: "Human",
+        scores: {
+          "Human": 5,
+          "Somewhat Human": 3,
+          "Barely Human": 1,
+          "Not Human": 0
+        }
       }
     ],
     ratingOptions: ["Human", "Somewhat Human", "Barely Human", "Not Human"]
@@ -131,8 +158,7 @@ const GAME_CONFIG = {
   STAGE_4: {
     character: 'Lizzy',
     avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
-    bgImage: 'assets/images/backgrounds/Level 2.png',
-    introDialogue: "This place is bursting its colors! We must escape quickly before it lures us into magic!",
+    bgImage: null,
     introSentences: [
       "This place is bursting its colors!",
       "We must escape quickly before it lures us into magic!"
