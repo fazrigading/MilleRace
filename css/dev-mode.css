@@ -1,0 +1,239 @@
+/* ==========================================================================
+   MilleRace Developer Mode & Quick Page Navigation Toolbar
+   ========================================================================== */
+
+/* Dev Mode Panel Overlay (Opened via Ctrl+Shift+D, Alt+D, or ~) */
+.dev-mode-panel {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: min(380px, 92vw);
+  max-height: 84vh;
+  overflow-y: auto;
+  background: rgba(22, 20, 28, 0.96);
+  border: 2px solid #8A38F5;
+  border-radius: 20px;
+  padding: 18px;
+  box-sizing: border-box;
+  z-index: 999999;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  animation: devFadeIn 0.25s ease-out;
+}
+
+.dev-mode-panel.active {
+  display: flex;
+}
+
+@keyframes devFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.dev-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(243, 205, 80, 0.25);
+  padding-bottom: 10px;
+}
+
+.dev-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--color-yellow);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dev-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.dev-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.dev-close-btn:hover {
+  background: #E53E3E;
+  border-color: #E53E3E;
+}
+
+/* Sections */
+.dev-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dev-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+/* Quick Page Navigation Grid */
+.dev-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.dev-nav-btn {
+  background: rgba(138, 56, 245, 0.25);
+  border: 1.5px solid rgba(138, 56, 245, 0.6);
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dev-nav-btn:hover {
+  background: #8A38F5;
+  border-color: var(--color-yellow);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 10px rgba(138, 56, 245, 0.4);
+}
+
+.dev-nav-btn.active-screen {
+  background: var(--color-yellow);
+  color: #16141C;
+  border-color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* Controls & Toggles */
+.dev-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.dev-switch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-switch input {
+  accent-color: var(--color-yellow);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Character & Score Simulator */
+.dev-score-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.dev-score-btn {
+  background: rgba(46, 158, 133, 0.25);
+  border: 1.5px solid rgba(46, 158, 133, 0.6);
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-score-btn:hover {
+  background: var(--color-teal);
+  border-color: #FFFFFF;
+}
+
+/* Key Slots Bar */
+.dev-keys-row {
+  display: flex;
+  gap: 6px;
+}
+
+.dev-key-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.dev-key-btn.unlocked {
+  background: var(--color-yellow);
+  color: #16141C;
+  border-color: #FFFFFF;
+}
+
+/* Custom Scrollbar for Panel */
+.dev-mode-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dev-mode-panel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.dev-mode-panel::-webkit-scrollbar-thumb {
+  background: rgba(243, 205, 80, 0.4);
+  border-radius: 10px;
+}
+
+.dev-mode-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--color-yellow);
+}

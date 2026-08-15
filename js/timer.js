@@ -15,6 +15,14 @@ const GameTimer = {
   start(onTick, onComplete) {
     this.stop(); // Clear any existing timer
 
+    // Check if DevMode has disabled timer
+    if (typeof DevMode !== 'undefined' && DevMode.isTimerDisabled) {
+      if (typeof onTick === 'function') {
+        onTick('DEV (PAUSED)', GameState.timerSecondsRemaining);
+      }
+      return;
+    }
+
     this._intervalId = setInterval(() => {
       if (GameState.timerSecondsRemaining > 0) {
         GameState.timerSecondsRemaining--;
