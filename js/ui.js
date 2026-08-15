@@ -61,7 +61,7 @@ const UI = {
     const hud = document.getElementById('game-hud');
     if (hud) {
       if (screenId.startsWith('screen-stage')) {
-        hud.style.display = 'flex';
+        hud.style.display = 'grid';
         this.updateHUD();
       } else {
         hud.style.display = 'none';
@@ -128,12 +128,18 @@ const UI = {
       }
     }
 
-    // Update keys slots
+    // Update keys pill active stage & key slots
+    const keysPill = document.getElementById('hud-keys-pill');
+    if (keysPill) {
+      keysPill.setAttribute('data-stage', stageNum);
+    }
+
     for (let i = 1; i <= 4; i++) {
       const slot = document.getElementById(`key-slot-${i}`);
       if (slot) {
         const hasKey = GameState.hasKey(i);
         slot.classList.toggle('collected', hasKey);
+        slot.classList.toggle('current-stage', i === stageNum && !hasKey);
         slot.innerHTML = hasKey ? '🔑' : i;
       }
     }
