@@ -4,9 +4,9 @@ This document tracks upcoming UI/UX refinements, container asset integrations, a
 
 ---
 
-## 📋 Task Checklist
+## 📋 Task Checklist (15/08/2026)
 
-- [ ] **1. Question Text Container Assets for Stage 3 & Stage 4**
+- [x] **1. Question Text Container Assets for Stage 3 & Stage 4**
   - **Stage 3 (Aidan's Room of Letters - Textual AIAS)**:
     - Replace the generic text container with [`assets/images/ui/questions/level-3/Paper.svg`](file:///e:/Downloads/MilleRace/assets/images/ui/questions/level-3/Paper.svg) as the background paper frame for the passage text.
     - Ensure dynamic text scaling, proper padding/margins, and typography alignment within the paper container.
@@ -14,13 +14,13 @@ This document tracks upcoming UI/UX refinements, container asset integrations, a
     - Replace the current passage box with [`assets/images/ui/questions/level-4/Paper.svg`](file:///e:/Downloads/MilleRace/assets/images/ui/questions/level-4/Paper.svg) as the background parchment container for the comprehension questions.
     - Preserve responsiveness and text legibility across desktop and mobile viewports.
 
-- [ ] **2. Background Fallback for Stage 3 & Stage 4**
+- [x] **2. Background Fallback for Stage 3 & Stage 4**
   - Due to lack of dedicated background environment artwork for Stages 3 & 4:
     - Remove placeholder/reused background images (`Level 1.png` / `Level 2.png`) from Stage 3 and Stage 4.
     - Apply default background color directly from the brand guidelines: **Ink Night (`#16141C`)**.
     - Retain ambient glow effects or subtle radial gradients consistent with the design tokens.
 
-- [ ] **3. Button Styling Alignment for Stage 3 & Stage 4**
+- [x] **3. Button Styling Alignment for Stage 3 & Stage 4**
   - **Stage 3 (Question Type 3)**:
     - Refactor rating buttons (`[Human]`, `[Somewhat Human]`, `[Barely Human]`, `[Not Human]`) to match the visual styling in [`docs/design-references/ui-references/Question Type 3.png`](file:///e:/Downloads/MilleRace/docs/design-references/ui-references/Question Type 3.png).
     - Align button dimensions, borders, hover/focus states, and selected state animations.
@@ -28,7 +28,7 @@ This document tracks upcoming UI/UX refinements, container asset integrations, a
     - Refactor multiple-choice option buttons (`A`, `B`, `C`) to follow the UI reference layout in [`docs/design-references/ui-references/Question Type 4.png`](file:///e:/Downloads/MilleRace/docs/design-references/ui-references/Question Type 4.png).
     - Align option card typography, letter badges, borders, spacing, and selection highlighting.
 
-- [ ] **4. Final Result Page UI Alignment**
+- [x] **4. Final Result Page UI Alignment**
   - Align the scorecard layout, score display, and character profile cards to match [`docs/design-references/ui-references/Final-Result.png`](file:///e:/Downloads/MilleRace/docs/design-references/ui-references/Final-Result.png).
   - Use result UI vector components from [`assets/images/ui/result/`](file:///e:/Downloads/MilleRace/assets/images/ui/result/):
     - Score badge & glow dots (`YELLOW GOWING TITIK.svg`, `Group 20.svg`, `Rectangle 80.svg`)
