@@ -1,18 +1,5 @@
 /* MilleRace - UI Rendering & Screen Transition Engine */
 
-const DEFAULT_LEADERBOARD = [
-  { rank: 1, name: "Aurelia S.", ageGroup: "18+", score: 100, time: "01:14 remaining", character: "Lizzy", date: "Aug 14, 2026" },
-  { rank: 2, name: "Reza Pratama", ageGroup: "13-17", score: 96, time: "00:52 remaining", character: "Lizzy", date: "Aug 14, 2026" },
-  { rank: 3, name: "Nadia K.", ageGroup: "18+", score: 92, time: "00:45 remaining", character: "Aidan", date: "Aug 13, 2026" },
-  { rank: 4, name: "Bima Arya", ageGroup: "13-17", score: 88, time: "00:38 remaining", character: "Aidan", date: "Aug 13, 2026" },
-  { rank: 5, name: "Siti Rahma", ageGroup: "6-12", score: 84, time: "00:30 remaining", character: "Aidan", date: "Aug 12, 2026" },
-  { rank: 6, name: "Kevin Chandra", ageGroup: "18+", score: 76, time: "00:25 remaining", character: "Aidan", date: "Aug 12, 2026" },
-  { rank: 7, name: "Dewi Lestari", ageGroup: "13-17", score: 72, time: "00:20 remaining", character: "Jen", date: "Aug 11, 2026" },
-  { rank: 8, name: "Dimas Nugroho", ageGroup: "6-12", score: 68, time: "00:15 remaining", character: "Jen", date: "Aug 11, 2026" },
-  { rank: 9, name: "Maya Putri", ageGroup: "13-17", score: 60, time: "00:10 remaining", character: "Jen", date: "Aug 10, 2026" },
-  { rank: 10, name: "Farhan A.", ageGroup: "6-12", score: 52, time: "00:05 remaining", character: "Miller", date: "Aug 10, 2026" }
-];
-
 const UI = {
   activeLeaderboardFilter: 'all',
   activeLeaderboardSearch: '',
@@ -227,7 +214,7 @@ const UI = {
     modal.classList.add('active');
   },
 
-  // Retrieve & aggregate leaderboard entries from localStorage + defaults
+  // Retrieve & aggregate leaderboard entries from localStorage
   getLeaderboardData(filter = 'all') {
     let customEntries = [];
     try {
@@ -242,7 +229,7 @@ const UI = {
       console.warn("Could not read local leaderboard:", e);
     }
 
-    let combined = [...customEntries, ...DEFAULT_LEADERBOARD];
+    let combined = [...customEntries];
     if (filter !== 'all') {
       combined = combined.filter(item => item.ageGroup === filter);
     }
@@ -395,29 +382,88 @@ const UI = {
     });
   },
 
-  // Render Leaderboard Podium & Table (Hiding podium when search query is active)
-  renderLeaderboard(filter = 'all', searchQuery = '') {
-    this.activeLeaderboardFilter = filter;
-    this.activeLeaderboardSearch = searchQuery;
-
-    const data = this.getLeaderboardData(filter);
-    let filtered = data;
+  // Internal renderer for leaderboard podium, empty view, and table
+  renderLeaderboardData(data, filter = 'all', searchQuery = '') {
+    const podiumEl = document.getElementById('leaderboard-podium');
+    const tableWrapper = document.getElementById('leaderboard-table-wrapper');
+    const emptyStateEl = document.getElementById('leaderboard-empty-state');
+    const tbody = document.getElementById('leaderboard-table-body');
 
     const isSearching = searchQuery && searchQuery.trim() !== '';
+    let filtered = data;
 
     if (isSearching) {
       const q = searchQuery.toLowerCase().trim();
       filtered = filtered.filter(item => (item.name || '').toLowerCase().includes(q));
     }
 
-    // Render / Hide Podium based on search query
-    const podiumEl = document.getElementById('leaderboard-podium');
+    // 1. Overall Empty State: When no racers exist for this demographic filter
+    if (data.length === 0) {
+      if (podiumEl) podiumEl.style.display = 'none';
+      if (tableWrapper) tableWrapper.style.display = 'none';
+      if (emptyStateEl) {
+        const filterNames = {
+          '6-12': 'Early Readers (6-12)',
+          '13-17': 'Young Adults (13-17)',
+          '18+': 'Advanced Readers (18+)'
+        };
+        const categoryLabel = filter !== 'all' ? ` in the ${filterNames[filter] || filter} category` : '';
+        emptyStateEl.style.display = 'flex';
+        emptyStateEl.innerHTML = `
+          <div class="leaderboard-empty-icon-wrap">🏆</div>
+          <h2 class="leaderboard-empty-title">No Racers on the Leaderboard <span>Yet!</span></h2>
+          <p class="leaderboard-empty-desc">
+            The race track is open, but no one has claimed the throne${categoryLabel}. 
+            Be the first to escape the maze, master Media & Information Literacy, and claim the #1 spot in the Hall of Fame!
+          </p>
+          <div class="leaderboard-empty-perks">
+            <span class="leaderboard-perk-item">👑 #1 Spot Open</span>
+            <span class="leaderboard-perk-item">📜 UNESCO MIL Pioneer</span>
+            <span class="leaderboard-perk-item">⚡ Set High Score Record</span>
+          </div>
+          <button class="btn-primary btn-trigger-reg" style="margin-top: 6px;">Be the First Champion 🚀</button>
+        `;
+      }
+      return;
+    }
+
+    // 2. Data exists: hide full empty state view
+    if (emptyStateEl) emptyStateEl.style.display = 'none';
+
+    // 3. Search yields 0 results
+    if (isSearching && filtered.length === 0) {
+      if (podiumEl) podiumEl.style.display = 'none';
+      if (tableWrapper) tableWrapper.style.display = 'block';
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="search-empty-box">
+              🔍 No racers found matching "<strong>${this.escapeHtml(searchQuery)}</strong>".
+              <br>
+              <button class="btn-clear-search" id="btn-clear-leaderboard-search">Clear Search</button>
+            </td>
+          </tr>
+        `;
+        const clearBtn = document.getElementById('btn-clear-leaderboard-search');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            const searchInput = document.getElementById('leaderboard-search-input');
+            if (searchInput) searchInput.value = '';
+            this.renderLeaderboard(filter, '');
+          });
+        }
+      }
+      return;
+    }
+
+    // 4. Render Table Wrapper & Podium
+    if (tableWrapper) tableWrapper.style.display = 'block';
+
     if (podiumEl) {
       if (isSearching) {
-        // HIDE 1st, 2nd, and 3rd place podium when searching
+        // HIDE podium when searching
         podiumEl.style.display = 'none';
       } else {
-        // SHOW 1st, 2nd, and 3rd place podium when not searching
         podiumEl.style.display = 'grid';
         const first = filtered[0];
         const second = filtered[1];
@@ -426,11 +472,11 @@ const UI = {
         const renderPodiumCard = (entry, rankNumber, rankBadge, cardClass) => {
           if (!entry) {
             return `
-              <div class="podium-card ${cardClass}">
+              <div class="podium-card awaiting ${cardClass}">
                 <div class="podium-rank-badge">${rankBadge}</div>
-                <h3 class="podium-name">—</h3>
+                <h3 class="podium-name">Awaiting Challenger</h3>
                 <div class="podium-score">—</div>
-                <div class="podium-archetype">No Racer</div>
+                <div class="podium-archetype">Rank #${rankNumber} Open</div>
               </div>
             `;
           }
@@ -456,20 +502,8 @@ const UI = {
       }
     }
 
-    // Render Table Rows
-    const tbody = document.getElementById('leaderboard-table-body');
+    // 5. Render Table Rows
     if (tbody) {
-      if (filtered.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="7" style="text-align: center; padding: 30px; color: #CBD5E1;">
-              No racers found matching criteria. Be the first to race!
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
       tbody.innerHTML = filtered.map(item => {
         const charLower = (item.character || 'miller').toLowerCase();
         let badgeClass = 'char-badge-miller';
@@ -489,6 +523,28 @@ const UI = {
           </tr>
         `;
       }).join('');
+    }
+  },
+
+  // Render Leaderboard Podium & Table (Hybrid Cloud & Local Fast-render)
+  async renderLeaderboard(filter = 'all', searchQuery = '') {
+    this.activeLeaderboardFilter = filter;
+    this.activeLeaderboardSearch = searchQuery;
+
+    // Instant local render
+    const localData = this.getLeaderboardData(filter);
+    this.renderLeaderboardData(localData, filter, searchQuery);
+
+    // If online Firestore is active, fetch cloud data and update seamlessly
+    if (typeof LeaderboardService !== 'undefined' && LeaderboardService.isOnline) {
+      try {
+        const cloudData = await LeaderboardService.fetchTopScores(filter);
+        if (this.activeLeaderboardFilter === filter && this.activeLeaderboardSearch === searchQuery) {
+          this.renderLeaderboardData(cloudData, filter, searchQuery);
+        }
+      } catch (err) {
+        console.warn("Could not fetch cloud leaderboard:", err);
+      }
     }
   }
 };

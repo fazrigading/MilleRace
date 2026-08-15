@@ -63,9 +63,7 @@ const LeaderboardService = {
           };
         });
 
-        if (cloudEntries.length > 0) {
-          return cloudEntries;
-        }
+        return cloudEntries;
       } catch (err) {
         console.warn("⚠️ Error fetching cloud leaderboard, falling back to local:", err);
       }

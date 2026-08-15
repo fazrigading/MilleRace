@@ -263,5 +263,68 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     // Total Score = 100
     expect(scoreResults.totalScore).toBe(100);
   });
+
+  test('Leaderboard: should display empty state view when no records exist and transition cleanly when score is submitted', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined');
+
+    // 1. Clear any local storage leaderboard entries
+    await page.evaluate(() => {
+      localStorage.removeItem('mille_leaderboard');
+      localStorage.removeItem('mille_user_history');
+      UI.showScreen('screen-leaderboard');
+    });
+
+    // Verify empty state is visible and podium/table are hidden
+    const emptyState = page.locator('#leaderboard-empty-state');
+    await expect(emptyState).toBeVisible();
+    await expect(emptyState).toContainText(/No Racers on the Leaderboard/i);
+    await expect(emptyState).toContainText(/UNESCO MIL Pioneer/i);
+
+    const podium = page.locator('#leaderboard-podium');
+    await expect(podium).toBeHidden();
+
+    const tableWrapper = page.locator('#leaderboard-table-wrapper');
+    await expect(tableWrapper).toBeHidden();
+
+    // 2. Click the empty state CTA button -> opens registration modal
+    const emptyCta = emptyState.locator('.btn-trigger-reg');
+    await expect(emptyCta).toBeVisible();
+    await emptyCta.click();
+
+    const regModal = page.locator('#reg-modal');
+    await expect(regModal).toBeVisible();
+
+    // Close modal for next test
+    await page.evaluate(() => document.getElementById('reg-modal').classList.remove('active'));
+
+    // 3. Save a score and verify leaderboard renders podium and table
+    await page.evaluate(() => {
+      UI.saveRaceToLeaderboard('CyberRunner', '13-17', 95, '01:30', 'Lizzy');
+      UI.renderLeaderboard('all', '');
+    });
+
+    await expect(emptyState).toBeHidden();
+    await expect(podium).toBeVisible();
+    await expect(podium).toContainText('CyberRunner');
+    await expect(podium).toContainText('95%');
+    await expect(podium).toContainText('Awaiting Challenger');
+
+    await expect(tableWrapper).toBeVisible();
+    const tableBody = page.locator('#leaderboard-table-body');
+    await expect(tableBody).toContainText('CyberRunner');
+    await expect(tableBody).toContainText('95%');
+
+    // 4. Test search empty state
+    await page.evaluate(() => {
+      UI.renderLeaderboard('all', 'NonExistentRacerXYZ');
+    });
+
+    await expect(tableBody).toContainText(/No racers found matching/i);
+    const clearSearchBtn = page.locator('#btn-clear-leaderboard-search');
+    await expect(clearSearchBtn).toBeVisible();
+    await clearSearchBtn.click();
+    await expect(tableBody).toContainText('CyberRunner');
+  });
 });
 
