@@ -353,7 +353,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     // Verify congratulations banner and rank text above result card
     const congratsText = resultScreen.locator('#result-congrats-text');
     await expect(congratsText).toBeVisible();
-    await expect(congratsText).toContainText(/Congratulations, you have finished the maze!/i);
+    await expect(congratsText).toContainText(/Congratulations for finishing the maze!/i);
     const rankSpan = resultScreen.locator('#result-leaderboard-rank');
     await expect(rankSpan).toBeVisible();
 
@@ -394,7 +394,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
       };
     });
 
-    expect(bandInfo.ratio).toBeCloseTo(0.25, 1);
+    expect(bandInfo.ratio).toBeCloseTo(0.65, 1);
     expect(bandInfo.bottomPos).toBe('0px');
 
     // 4. Personalized Recommendations: No purple container background

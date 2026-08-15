@@ -343,8 +343,8 @@ Developed with pride by students of **Mulawarman University**, Samarinda, East K
 1. **Syahna Maryam** — *Project Manager 1, Lead UX Writer & Character Designer* (Senior-year, English Literature)
 2. **Chairil Aminullah** — *Project Manager 2, Creative Director & UI/UX Designer* (Junior-year, English Literature)
 3. **Syema Chaelint Joshepine Karundaeng** — *Lead Illustrator & Visual Artist* (Junior-year, International Relations)
-4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Penultimate, Computer Science) — Architected and built the entire web game application end-to-end (SPA framework, all 4 game stages, UI/UX implementation, cloud & local leaderboard synchronization, timer engine, and deployment pipeline).
-5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Senior-year, Computer Science) — Formulated foundational game logic, scoring distribution rules, and coding project planning.
+4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Postgraduate, Computer Science) — Architected and built the entire web game application end-to-end (SPA framework, all 4 game stages, UI/UX implementation, cloud & local leaderboard synchronization, timer engine, and deployment pipeline).
+5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Penultimate, Computer Science) — Formulated foundational game logic, scoring distribution rules, and coding project planning.
 6. **Muhammad Fahrezy Al Faris** — *Lead Researcher & Pitch Presenter* (Senior-year, International Relations)
 
 ---
