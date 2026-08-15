@@ -1,0 +1,51 @@
+name: 🚀 MilleRace CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  # STEP 1: Pre-deployment Code & Asset Validation
+  validate:
+    name: 🔍 Pre-flight Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🧪 Verify HTML & Core Entry Files
+        run: |
+          echo "Checking essential files..."
+          test -f index.html || (echo "❌ index.html is missing!" && exit 1)
+          test -f css/main.css || (echo "❌ css/main.css is missing!" && exit 1)
+          test -f js/app.js || (echo "❌ js/app.js is missing!" && exit 1)
+          test -d assets/images || (echo "❌ assets/images directory missing!" && exit 1)
+          echo "✅ All core entry files verified."
+
+  # STEP 2: Deploy to Production (Vercel)
+  deploy-vercel:
+    name: 🌐 Deploy to Vercel Edge
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚡ Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
