@@ -296,7 +296,7 @@
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.6;
   color: #D9D9D9;
-  max-width: 780px;
+  max-width: 850px;
   margin: 0;
 }
 
@@ -468,4 +468,3 @@
     padding: 28px 20px;
   }
 }
-
