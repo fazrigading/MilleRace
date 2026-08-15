@@ -41,6 +41,13 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
+      - name: 🔐 Inject Production Firebase Config
+        if: env.FIREBASE_API_KEY != ''
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+        run: |
+          sed -i "s|__FIREBASE_API_KEY__|$FIREBASE_API_KEY|g" js/firebaseConfig.js
+
       - name: ⚡ Deploy to Vercel Production
         uses: amondnet/vercel-action@v25
         with:

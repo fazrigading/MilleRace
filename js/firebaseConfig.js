@@ -2,9 +2,9 @@
    MilleRace - Firebase Configuration & Initialization
    ========================================================================== */
 
-// Place your Firebase Project credentials here (from Firebase Console)
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBg_YUSum_JQlJyg62m5eKYWKczQJdGS_E",
+// Placeholders for Git repository (Injected by CI/CD or overridden by local config)
+const FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
+  apiKey: "__FIREBASE_API_KEY__",
   authDomain: "millerace-unesco2026.firebaseapp.com",
   projectId: "millerace-unesco2026",
   storageBucket: "millerace-unesco2026.firebasestorage.app",
@@ -14,7 +14,7 @@ const FIREBASE_CONFIG = {
 
 // Check if credentials have been set (not default placeholders)
 const isFirebaseConfigured = () => {
-  return FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.includes("YOUR_API_KEY");
+  return FIREBASE_CONFIG.apiKey && 
+         !FIREBASE_CONFIG.apiKey.includes("YOUR_API_KEY") && 
+         !FIREBASE_CONFIG.apiKey.includes("__FIREBASE_API_KEY__");
 };
-
-
