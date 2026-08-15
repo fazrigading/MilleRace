@@ -184,6 +184,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Result Page "Share your result!" Button Listener
+  const shareBtn = document.getElementById('btn-share-result');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      const totalScore = GameState.getTotalScore();
+      const charMatch = GameState.getMatchedCharacter();
+      const charName = charMatch ? charMatch.name : 'Miller';
+      const shareText = `🏁 I scored ${totalScore}% in MilleRace and escaped the maze! My Character Match is ${charName}. Can you outread the machine? Play now!`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareText).then(() => {
+          const originalContent = shareBtn.innerHTML;
+          shareBtn.innerHTML = `<span>Copied to Clipboard!</span> <span aria-hidden="true">✓</span>`;
+          shareBtn.style.background = '#2E9E85';
+          shareBtn.style.color = '#FFFFFF';
+          setTimeout(() => {
+            shareBtn.innerHTML = originalContent;
+            shareBtn.style.background = '';
+            shareBtn.style.color = '';
+          }, 2400);
+        }).catch(err => {
+          console.warn('Clipboard write failed:', err);
+          alert(shareText);
+        });
+      } else {
+        alert(shareText);
+      }
+    });
+  }
+
   // Play Again Button Listener
   const playAgainBtn = document.getElementById('btn-play-again');
   if (playAgainBtn) {
@@ -191,6 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
       GameState.reset();
       UI.showScreen('screen-landing');
     });
+  }
+
+  // Initialize Dev Mode Toolbar & Quick Navigator
+  if (typeof DevMode !== 'undefined') {
+    DevMode.init();
   }
 
   // Initial Screen Display
