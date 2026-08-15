@@ -12,5 +12,12 @@
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "playwright-core": "^1.62.1"
+  },
+  "dependencies": {
+    "firebase": "^12.17.1"
+  },
+  "allowScripts": {
+    "@firebase/util@1.15.2": true,
+    "protobufjs@7.6.5": true
   }
 }

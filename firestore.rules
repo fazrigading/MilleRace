@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // MilleRace Global Leaderboard Collection Rules
+    match /leaderboard/{entryId} {
+      // Anyone can read top scores
+      allow read: if true;
+      
+      // Strict validation for score write
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() > 0 
+                    && request.resource.data.name.size() <= 25
+                    && request.resource.data.score is number
+                    && request.resource.data.score >= 0 
+                    && request.resource.data.score <= 100
+                    && request.resource.data.ageGroup in ['6-12', '13-17', '18+']
+                    && request.resource.data.character in ['Miller', 'Jen', 'Aidan', 'Lizzy']
+                    && request.resource.data.timestamp is timestamp;
+                    
+      // Prevent updating or deleting existing records by public clients
+      allow update, delete: if false;
+    }
+  }
+}

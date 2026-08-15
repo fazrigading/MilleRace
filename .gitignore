@@ -3,3 +3,9 @@ playwright-report/
 test-results/
 verification-*.png
 .system_generated/
+
+# Local secrets & credentials
+.env
+.env.local
+js/firebaseConfig.local.js
+serviceAccountKey.json

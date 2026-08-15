@@ -82,9 +82,9 @@ Before initiating deployment, verify and ensure all file paths and references co
 
 ---
 
-## 4. Phase 1: Real-Time Global Leaderboard (Firebase Firestore)
+## 4. Phase 1: Real-Time Global Leaderboard (Firebase Firestore) & User History
 
-To upgrade the standalone `localStorage` leaderboard into a live, shared global Hall of Fame for the UNESCO Hackathon racers, Firebase Firestore is integrated with an offline-first hybrid pattern.
+To upgrade the standalone `localStorage` leaderboard into a live, shared global Hall of Fame for the UNESCO Hackathon racers while giving users personal persistent access to past tests, Firebase Firestore is integrated with an offline-first hybrid pattern and persistent local history tracking.
 
 ### 4.1 Firebase Setup & Project Provisioning
 1. Open the [Firebase Console](https://console.firebase.google.com/).
@@ -92,17 +92,17 @@ To upgrade the standalone `localStorage` leaderboard into a live, shared global 
 3. Under **Build**, select **Firestore Database** -> **Create Database**.
 4. Select a region close to your primary audience (e.g., `asia-southeast1` / Singapore or `asia-east1`).
 5. Choose **Start in production mode**.
-6. Register a Web App (`MilleRace Web`) and copy the `firebaseConfig` object.
+6. Register a Web App (`MilleRace Web`) and copy the configuration credentials into `js/firebaseConfig.js`.
 
 ### 4.2 Firestore Security Rules (`firestore.rules`)
-To prevent score tampering and enforce legitimate submissions, deploy the following security rules:
+Deploy `firestore.rules` via Firebase CLI (`firebase deploy --only firestore:rules`) or the Firebase Console Rules editor:
 
 ```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // Leaderboard Collection Rules
+    // MilleRace Global Leaderboard Collection Rules
     match /leaderboard/{entryId} {
       // Anyone can read top scores
       allow read: if true;
@@ -110,7 +110,7 @@ service cloud.firestore {
       // Strict validation for score write
       allow create: if request.resource.data.name is string
                     && request.resource.data.name.size() > 0 
-                    && request.resource.data.name.size() <= 20
+                    && request.resource.data.name.size() <= 25
                     && request.resource.data.score is number
                     && request.resource.data.score >= 0 
                     && request.resource.data.score <= 100
@@ -118,115 +118,54 @@ service cloud.firestore {
                     && request.resource.data.character in ['Miller', 'Jen', 'Aidan', 'Lizzy']
                     && request.resource.data.timestamp is timestamp;
                     
-      // Prevent updating or deleting existing records by clients
+      // Prevent updating or deleting existing records by public clients
       allow update, delete: if false;
     }
   }
 }
 ```
 
-### 4.3 Client-Side Service Architecture (`js/firebase-service.js`)
-Create a modular adapter `js/firebase-service.js` that connects Firestore while preserving local fallback:
+### 4.3 Firestore Composite Indexes (`firestore.indexes.json`)
+Deploy `firestore.indexes.json` via Firebase CLI (`firebase deploy --only firestore:indexes`) to support composite queries:
 
-```javascript
-/* MilleRace - Cloud & Local Hybrid Leaderboard Service */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { 
-  getFirestore, 
-  collection, 
-  addDoc, 
-  getDocs, 
-  query, 
-  orderBy, 
-  limit, 
-  serverTimestamp 
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-// REPLACE WITH YOUR FIREBASE PROJECT CONFIG
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "millerace-unesco-2026.firebaseapp.com",
-  projectId: "millerace-unesco-2026",
-  storageBucket: "millerace-unesco-2026.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-let db = null;
-let isFirebaseOnline = false;
-
-try {
-  const app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-  isFirebaseOnline = true;
-  console.log("🔥 Firebase Firestore connected successfully.");
-} catch (e) {
-  console.warn("⚠️ Firebase connection unavailable, using offline localStorage fallback.", e);
+```json
+{
+  "indexes": [
+    {
+      "collectionGroup": "leaderboard",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "score", "order": "DESCENDING" },
+        { "fieldPath": "timestamp", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "leaderboard",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "ageGroup", "order": "ASCENDING" },
+        { "fieldPath": "score", "order": "DESCENDING" },
+        { "fieldPath": "timestamp", "order": "ASCENDING" }
+      ]
+    }
+  ]
 }
-
-export const LeaderboardService = {
-  // Fetch top 50 scores from Cloud or fallback to localStorage
-  async fetchTopScores(category = 'all') {
-    if (isFirebaseOnline && db) {
-      try {
-        const q = query(
-          collection(db, "leaderboard"),
-          orderBy("score", "desc"),
-          orderBy("timestamp", "asc"),
-          limit(50)
-        );
-        const snapshot = await getDocs(q);
-        const cloudEntries = snapshot.docs.map((doc, idx) => ({
-          id: doc.id,
-          rank: idx + 1,
-          name: doc.data().name,
-          ageGroup: doc.data().ageGroup,
-          score: doc.data().score,
-          character: doc.data().character,
-          timestamp: doc.data().timestamp ? doc.data().timestamp.toDate().toLocaleDateString() : 'Just now'
-        }));
-
-        if (cloudEntries.length > 0) {
-          return cloudEntries;
-        }
-      } catch (err) {
-        console.warn("Error fetching cloud leaderboard, falling back to local:", err);
-      }
-    }
-    // Offline / LocalStorage Fallback
-    return UI.getLeaderboardData();
-  },
-
-  // Record a completed race
-  async submitScore(entry) {
-    // 1. Always save to local storage first
-    UI.saveLeaderboardResult(entry.name, entry.ageGroup, entry.score, entry.character);
-
-    // 2. Sync to Cloud Firestore if online
-    if (isFirebaseOnline && db) {
-      try {
-        await addDoc(collection(db, "leaderboard"), {
-          name: entry.name,
-          ageGroup: entry.ageGroup,
-          score: Number(entry.score),
-          character: entry.character,
-          timestamp: serverTimestamp()
-        });
-        console.log("✅ Score synced to Firebase Firestore!");
-      } catch (err) {
-        console.error("Failed to sync score to cloud:", err);
-      }
-    }
-  }
-};
 ```
+
+### 4.4 Client-Side Service Architecture (`js/leaderboardService.js` & `js/firebaseConfig.js`)
+The application utilizes an offline-first architecture:
+1. **`js/firebaseConfig.js`**: Contains API keys and environment status helper `isFirebaseConfigured()`.
+2. **`js/leaderboardService.js`**:
+   - `fetchTopScores(ageFilter)`: Cloud-first query with fallback to local leaderboard aggregate.
+   - `submitScore(entry)`: Writes score to Firestore while caching in local storage.
+   - `saveUserHistoryRun(runData)` & `getUserHistory()`: Manages browser-persistent `mille_user_history` containing stage-by-stage scores, timestamp, matched character, and lookup capability.
 
 ---
 
 ## 5. Phase 2: Hosting Configuration (Vercel & Cloudflare Pages)
 
 ### Option A: Vercel Configuration (`vercel.json`)
-Create `vercel.json` in the root directory to enforce caching, asset optimization, and security headers:
+`vercel.json` is configured in the root directory to enforce caching, asset optimization, and security headers:
 
 ```json
 {
