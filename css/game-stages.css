@@ -324,6 +324,22 @@
   transform: translateY(40px);
 }
 
+/* Stage 3 Corner Character: Visible during dialogue, disappears when answering options show */
+#stage3-corner-char {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  transform: translateY(20px);
+}
+
+#screen-stage3.dialogue-active #stage3-corner-char {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0);
+}
+
 /* Avatars stick to bottom-left and bottom-right corners covering the empty 4/4 space */
 .stage3-strip-avatar {
   position: fixed;
