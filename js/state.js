@@ -10,12 +10,20 @@ const GameState = {
   timerSecondsRemaining: 180, // 3 Minutes countdown
   timerInterval: null, // Maintained for backwards compatibility with external references
   
-  // Scores per stage (0 - 25 points each)
+  // Scores per stage (Stage 1: 20 max, Stage 2: 40 max, Stage 3: 20 max, Stage 4: 20 max)
   stageScores: {
     1: 0,
     2: 0,
     3: 0,
     4: 0
+  },
+
+  // Max score limits per stage
+  stageMaxScores: {
+    1: 20,
+    2: 40,
+    3: 20,
+    4: 20
   },
 
   // Collected keys
@@ -27,10 +35,11 @@ const GameState = {
     this.player.ageGroup = ageGroup;
   },
 
-  // Increment stage score safely with ceiling of 25 pts per stage
+  // Increment stage score safely with ceiling per stage
   addStageScore(stageNum, points) {
     if (this.stageScores[stageNum] !== undefined) {
-      this.stageScores[stageNum] = Math.min(25, this.stageScores[stageNum] + points);
+      const maxPts = (this.stageMaxScores && this.stageMaxScores[stageNum] !== undefined) ? this.stageMaxScores[stageNum] : 20;
+      this.stageScores[stageNum] = Math.min(maxPts, this.stageScores[stageNum] + points);
     }
   },
 
