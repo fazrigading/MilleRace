@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MilleRace - Media & Information Literacy Web Game</title>
-  
+
   <!-- CSS Design Tokens & Layouts -->
   <link rel="stylesheet" href="css/design-tokens.css?v=1.1">
   <link rel="stylesheet" href="css/main.css?v=1.1">
@@ -12,11 +13,13 @@
   <link rel="stylesheet" href="css/pages.css?v=1.2">
   <link rel="stylesheet" href="css/game-stages.css?v=1.1">
   <link rel="stylesheet" href="css/result.css?v=1.1">
+  <link rel="stylesheet" href="css/dev-mode.css?v=1.0">
 </head>
+
 <body>
 
   <div id="app">
-    
+
     <!-- GLOBAL TOP HUD BAR -->
     <header id="game-hud" class="game-hud" style="display: none;">
       <!-- LEFT PILL: Stage Key Indicator -->
@@ -42,7 +45,7 @@
 
     <!-- SCREEN 1: CONTINUOUS SCROLLABLE LANDING PAGE (Web1 & Web2 References) -->
     <section id="screen-landing" class="screen active landing-scrollable">
-      
+
       <!-- SECTION 1: HERO SECTION -->
       <div class="landing-hero-section">
         <!-- Top Nav Bar -->
@@ -69,8 +72,10 @@
         </div>
 
         <!-- Start the Test Button (SVG Asset with Ellipse Hover) -->
-        <button id="btn-open-reg-modal" class="start-test-svg-btn hero-start-btn btn-trigger-reg" aria-label="Start the Test">
-          <img src="assets/images/ui/landing/Start-Button-Variant1.svg" class="btn-svg-base" alt="Start the Test Button">
+        <button id="btn-open-reg-modal" class="start-test-svg-btn hero-start-btn btn-trigger-reg"
+          aria-label="Start the Test">
+          <img src="assets/images/ui/landing/Start-Button-Variant1.svg" class="btn-svg-base"
+            alt="Start the Test Button">
           <img src="assets/images/ui/landing/Start-Button-Variant2.svg" class="btn-svg-hover" alt="" aria-hidden="true">
           <span class="start-btn-text">Start the Test</span>
         </button>
@@ -79,13 +84,14 @@
       <!-- SECTION 2: HOW TO PLAY BANNER & 3 STEP CARDS -->
       <div class="how-to-play-section">
         <div class="how-to-play-banner-wrapper">
-          <img src="assets/images/ui/landing/How-To-Play-Card.svg" class="how-to-play-banner-bg" alt="How to Play Banner">
+          <img src="assets/images/ui/landing/How-To-Play-Card.svg" class="how-to-play-banner-bg"
+            alt="How to Play Banner">
           <h2 class="how-to-play-title">How To Play</h2>
         </div>
 
         <!-- 3 Step Cards Grid -->
         <div class="steps-grid">
-          
+
           <!-- Step #1 -->
           <div class="step-card">
             <img src="assets/images/ui/landing/Steps-Card.svg" class="step-card-bg" alt="" aria-hidden="true">
@@ -146,7 +152,8 @@
           </p>
         </div>
         <div class="what-is-right-frame">
-          <img src="docs/design-references/brand-guidelines/Brand Guideline.png" alt="MilleRace Artwork" onerror="this.style.display='none'">
+          <img src="docs/design-references/brand-guidelines/Brand Guideline.png" alt="MilleRace Artwork"
+            onerror="this.style.display='none'">
         </div>
       </div>
 
@@ -154,12 +161,13 @@
       <div class="meet-characters-section">
         <h2 class="meet-title">Meet Your Character Match</h2>
         <p class="meet-desc">
-          MilleRace has four unique characters at every stage. <br>Inspired by OECD Scale and Cambridge Reading Grade. <br>Players get compatible matches based on the score
+          MilleRace has four unique characters at every stage. <br>Inspired by OECD Scale and Cambridge Reading Grade.
+          <br>Players get compatible matches based on the score
         </p>
 
         <!-- 4 Characters Grid -->
         <div class="characters-grid">
-          
+
           <!-- MILLER -->
           <div class="character-intro-card">
             <div class="char-door-wrapper">
@@ -230,7 +238,8 @@
           Race through four stages, outread the machine, and discover your character match.
         </p>
         <button class="start-test-svg-btn btn-trigger-reg" aria-label="Start the Test">
-          <img src="assets/images/ui/landing/Start-Button-Variant1.svg" class="btn-svg-base" alt="Start the Test Button">
+          <img src="assets/images/ui/landing/Start-Button-Variant1.svg" class="btn-svg-base"
+            alt="Start the Test Button">
           <img src="assets/images/ui/landing/Start-Button-Variant2.svg" class="btn-svg-hover" alt="" aria-hidden="true">
           <span class="start-btn-text">Start the Test</span>
         </button>
@@ -254,9 +263,9 @@
               <button class="nav-item footer-nav-item" data-nav="screen-leaderboard">Leaderboard</button>
             </nav>
           </div>
-          
+
           <div class="footer-divider"></div>
-          
+
           <div class="footer-bottom">
             <p class="footer-desc">
               Decoding the AI Horizon through gamified media & information literacy.
@@ -294,7 +303,8 @@
           <div class="page-badge">UNESCO Youth Hackathon 2026</div>
           <h1 class="page-title">Decoding the AI Horizon with <span>MilleRace</span></h1>
           <p class="page-subtitle">
-            A gamified relay race developed to address the Indonesian literacy paradox, train critical reading, and cultivate discernment in an era of generative AI.
+            A gamified relay race developed to address the Indonesian literacy paradox, train critical reading, and
+            cultivate discernment in an era of generative AI.
           </p>
         </div>
 
@@ -303,20 +313,26 @@
           <div class="about-card">
             <h2 class="about-card-title">📖 The Indonesian Literacy Paradox</h2>
             <p class="about-card-text">
-              Data from Badan Pusat Statistik (2024) indicates that only 14 out of 34 provinces in Indonesia have established public libraries with accessible catalog data. With average library borrowing of just 2 items per year and low triennial PISA scores, access has historically been a bottleneck.
+              Data from Badan Pusat Statistik (2024) indicates that only 14 out of 34 provinces in Indonesia have
+              established public libraries with accessible catalog data. With average library borrowing of just 2 items
+              per year and low triennial PISA scores, access has historically been a bottleneck.
             </p>
             <p class="about-card-text">
-              Yet, seasonal book exhibitions such as <em>Semesta Buku</em> and <em>Big Bad Wolf</em> witness over 5 million new books purchased annually. The curiosity exists—what readers need is an accessible, engaging, and modern entry point.
+              Yet, seasonal book exhibitions such as <em>Semesta Buku</em> and <em>Big Bad Wolf</em> witness over 5
+              million new books purchased annually. The curiosity exists—what readers need is an accessible, engaging,
+              and modern entry point.
             </p>
           </div>
 
           <div class="about-card">
             <h2 class="about-card-title">🤖 The Rise of Generative AI</h2>
             <p class="about-card-text">
-              As AI tools synthesize realistic art and hallucinated articles in seconds, distinguishing human intentionality from algorithmic output has become a foundational 21st-century survival skill.
+              As AI tools synthesize realistic art and hallucinated articles in seconds, distinguishing human
+              intentionality from algorithmic output has become a foundational 21st-century survival skill.
             </p>
             <p class="about-card-text">
-              MilleRace translates academic media literacy frameworks into an immersive 3-minute challenge that encourages analytical thinking without punitive grades.
+              MilleRace translates academic media literacy frameworks into an immersive 3-minute challenge that
+              encourages analytical thinking without punitive grades.
             </p>
           </div>
         </div>
@@ -327,7 +343,8 @@
           <div class="param-card">
             <div class="param-icon">⚖️</div>
             <div class="param-name">Symmetry</div>
-            <div class="param-desc">Evaluating synthetic geometric perfection versus human balance and natural asymmetry.</div>
+            <div class="param-desc">Evaluating synthetic geometric perfection versus human balance and natural
+              asymmetry.</div>
           </div>
           <div class="param-card">
             <div class="param-icon">🎭</div>
@@ -337,17 +354,20 @@
           <div class="param-card">
             <div class="param-icon">🔍</div>
             <div class="param-name">Distinctions</div>
-            <div class="param-desc">Identifying unique human stylistic strokes and quirks vs repetitive model artifacts.</div>
+            <div class="param-desc">Identifying unique human stylistic strokes and quirks vs repetitive model artifacts.
+            </div>
           </div>
           <div class="param-card">
             <div class="param-icon">📐</div>
             <div class="param-name">Proportionality</div>
-            <div class="param-desc">Spotting anatomical anomalies, unnatural tangents, and spatial logic errors in artwork.</div>
+            <div class="param-desc">Spotting anatomical anomalies, unnatural tangents, and spatial logic errors in
+              artwork.</div>
           </div>
           <div class="param-card">
             <div class="param-icon">💡</div>
             <div class="param-name">Memorability</div>
-            <div class="param-desc">Distinguishing original conceptual storytelling from generic vocabulary templates.</div>
+            <div class="param-desc">Distinguishing original conceptual storytelling from generic vocabulary templates.
+            </div>
           </div>
         </div>
 
@@ -360,7 +380,8 @@
               <span class="stage-step-tag">Stage 1</span>
             </div>
             <div class="stage-step-desc">
-              <strong>Visual Art AIAS:</strong> Eliminate decoy images and identify genuine human paintings and original sketches.
+              <strong>Visual Art AIAS:</strong> Eliminate decoy images and identify genuine human paintings and original
+              sketches.
             </div>
           </div>
 
@@ -370,7 +391,8 @@
               <span class="stage-step-tag">Stage 2</span>
             </div>
             <div class="stage-step-desc">
-              <strong>Literary Passwords:</strong> Unlock door passwords by completing classic and contemporary world literature titles.
+              <strong>Literary Passwords:</strong> Unlock door passwords by completing classic and contemporary world
+              literature titles.
             </div>
           </div>
 
@@ -390,7 +412,8 @@
               <span class="stage-step-tag">Stage 4</span>
             </div>
             <div class="stage-step-desc">
-              <strong>PISA Reading Scale:</strong> Test high-order inferential comprehension and multi-layered analytical deduction.
+              <strong>PISA Reading Scale:</strong> Test high-order inferential comprehension and multi-layered
+              analytical deduction.
             </div>
           </div>
         </div>
@@ -399,7 +422,8 @@
         <div class="page-cta-banner">
           <div class="page-cta-content">
             <h3 class="page-cta-title">Ready to Test Your Media Literacy?</h3>
-            <p class="page-cta-desc">Race the clock, earn the 4 keys, and find your literary character match in under 3 minutes.</p>
+            <p class="page-cta-desc">Race the clock, earn the 4 keys, and find your literary character match in under 3
+              minutes.</p>
           </div>
           <button class="btn-primary btn-trigger-reg">Start the Race 🏁</button>
         </div>
@@ -430,7 +454,8 @@
           <div class="page-badge">Youth Innovators</div>
           <h1 class="page-title">Meet the Minds Behind <span>MilleRace</span></h1>
           <p class="page-subtitle">
-            An interdisciplinary team of students from Mulawarman University, uniting literature, design, computing, and international diplomacy.
+            An interdisciplinary team of students from Mulawarman University, uniting literature, design, computing, and
+            international diplomacy.
           </p>
         </div>
 
@@ -438,13 +463,15 @@
         <div class="team-univ-banner">
           <span style="font-size: 1.6rem;">🎓</span>
           <div class="team-univ-text">
-            Developed with pride at <strong>Mulawarman University</strong> for the <strong>UNESCO Youth Hackathon 2026</strong><br>under the sub-theme <em>"Youth Designing the Future of Media Information and Literacy"</em>.
+            Developed with pride at <strong>Mulawarman University</strong> for the <strong>UNESCO Youth Hackathon
+              2026</strong><br>under the sub-theme <em>"Youth Designing the Future of Media Information and
+              Literacy"</em>.
           </div>
         </div>
 
         <!-- 6 Team Members Grid -->
         <div class="team-grid">
-          
+
           <!-- 1. Syahna Maryam -->
           <div class="team-card">
             <div class="team-card-top">
@@ -456,7 +483,8 @@
             </div>
             <div class="team-role-badge">Project Manager 1 & Lead UX Writer</div>
             <p class="team-member-bio">
-              Orchestrates overall project scope, character backstories, and stage scripts. Researched the pedagogical alignment with CEFR and PISA standards to build Miller, Jen, Aidan, and Lizzy.
+              Orchestrates overall project scope, character backstories, and stage scripts. Researched the pedagogical
+              alignment with CEFR and PISA standards to build Miller, Jen, Aidan, and Lizzy.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">Narrative Design</span>
@@ -476,7 +504,8 @@
             </div>
             <div class="team-role-badge">Project Manager 2 & Creative Director</div>
             <p class="team-member-bio">
-              Spearheads brand aesthetics, Figma interactive UI/UX architecture, visual style guidelines, and the regional outreach campaign across East Kalimantan schools.
+              Spearheads brand aesthetics, Figma interactive UI/UX architecture, visual style guidelines, and the
+              regional outreach campaign across East Kalimantan schools.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">UI/UX Design</span>
@@ -496,7 +525,8 @@
             </div>
             <div class="team-role-badge">Lead Illustrator & Visual Artist</div>
             <p class="team-member-bio">
-              Hand-illustrated the iconic character designs, stage backgrounds, and original sketch assets used in Stage 1 to challenge AI-generated decoys.
+              Hand-illustrated the iconic character designs, stage backgrounds, and original sketch assets used in Stage
+              1 to challenge AI-generated decoys.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">Character Illustration</span>
@@ -516,7 +546,8 @@
             </div>
             <div class="team-role-badge">Front-End & Back-End Programmer</div>
             <p class="team-member-bio">
-              Engineered the core SPA engine, dynamic 3-minute race timer, reactive character dialogue typing system, state machine, and modular CSS design tokens.
+              Engineered the core SPA engine, dynamic 3-minute race timer, reactive character dialogue typing system,
+              state machine, and modular CSS design tokens.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">SPA Architecture</span>
@@ -536,7 +567,8 @@
             </div>
             <div class="team-role-badge">Web Developer</div>
             <p class="team-member-bio">
-              Constructed the interactive puzzle mechanics for book title matching, leaderboard storage calculations, and responsive cross-device layout optimization.
+              Constructed the interactive puzzle mechanics for book title matching, leaderboard storage calculations,
+              and responsive cross-device layout optimization.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">Puzzle Mechanics</span>
@@ -556,7 +588,8 @@
             </div>
             <div class="team-role-badge">Lead Researcher & Pitch Presenter</div>
             <p class="team-member-bio">
-              Authored academic syntheses connecting MilleRace to the UNESCO MIL 2024 Framework and global literacy metrics, leading strategic competition pitches and research reports.
+              Authored academic syntheses connecting MilleRace to the UNESCO MIL 2024 Framework and global literacy
+              metrics, leading strategic competition pitches and research reports.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">UNESCO MIL Policy</span>
@@ -571,7 +604,8 @@
         <div class="page-cta-banner">
           <div class="page-cta-content">
             <h3 class="page-cta-title">Collaborate with UNMUL Team</h3>
-            <p class="page-cta-desc">Interested in partnering with us for educational workshops or library integration?</p>
+            <p class="page-cta-desc">Interested in partnering with us for educational workshops or library integration?
+            </p>
           </div>
           <button class="btn-primary btn-trigger-reg">Join the Race 🏁</button>
         </div>
@@ -602,7 +636,8 @@
           <div class="page-badge">Vision & Strategic Plan</div>
           <h1 class="page-title">Empowering Readers in a<br><span>Synthetic Age</span></h1>
           <p class="page-subtitle">
-            Our mission is to transform standardized literacy evaluation into a delightful, empowering journey that connects readers with real public libraries and digital repositories.
+            Our mission is to transform standardized literacy evaluation into a delightful, empowering journey that
+            connects readers with real public libraries and digital repositories.
           </p>
         </div>
 
@@ -612,8 +647,9 @@
         <div class="mission-dossier-wrapper" id="mission-dossier-console">
           <!-- Left: Interactive Pillar Selector List -->
           <div class="dossier-nav-list" role="tablist" aria-label="Strategic Pillars Selector">
-            
-            <button class="dossier-nav-item active" role="tab" aria-selected="true" aria-controls="dossier-panel-1" id="dossier-tab-1" data-pillar="1">
+
+            <button class="dossier-nav-item active" role="tab" aria-selected="true" aria-controls="dossier-panel-1"
+              id="dossier-tab-1" data-pillar="1">
               <div class="dossier-nav-num">01</div>
               <div class="dossier-nav-meta">
                 <span class="dossier-nav-tag">CORE ENGINE</span>
@@ -622,7 +658,8 @@
               <div class="dossier-nav-arrow" aria-hidden="true">→</div>
             </button>
 
-            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-2" id="dossier-tab-2" data-pillar="2">
+            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-2"
+              id="dossier-tab-2" data-pillar="2">
               <div class="dossier-nav-num">02</div>
               <div class="dossier-nav-meta">
                 <span class="dossier-nav-tag">AI DEFENSE</span>
@@ -631,7 +668,8 @@
               <div class="dossier-nav-arrow" aria-hidden="true">→</div>
             </button>
 
-            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-3" id="dossier-tab-3" data-pillar="3">
+            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-3"
+              id="dossier-tab-3" data-pillar="3">
               <div class="dossier-nav-num">03</div>
               <div class="dossier-nav-meta">
                 <span class="dossier-nav-tag">PUBLIC ACCESS</span>
@@ -640,7 +678,8 @@
               <div class="dossier-nav-arrow" aria-hidden="true">→</div>
             </button>
 
-            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-4" id="dossier-tab-4" data-pillar="4">
+            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-4"
+              id="dossier-tab-4" data-pillar="4">
               <div class="dossier-nav-num">04</div>
               <div class="dossier-nav-meta">
                 <span class="dossier-nav-tag">HUMAN GROWTH</span>
@@ -649,7 +688,8 @@
               <div class="dossier-nav-arrow" aria-hidden="true">→</div>
             </button>
 
-            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-5" id="dossier-tab-5" data-pillar="5">
+            <button class="dossier-nav-item" role="tab" aria-selected="false" aria-controls="dossier-panel-5"
+              id="dossier-tab-5" data-pillar="5">
               <div class="dossier-nav-num">05</div>
               <div class="dossier-nav-meta">
                 <span class="dossier-nav-tag">FACT INTEGRITY</span>
@@ -662,9 +702,10 @@
 
           <!-- Right: Active Showcase Display Panel -->
           <div class="dossier-display-container">
-            
+
             <!-- Panel 1 -->
-            <div class="dossier-panel active" id="dossier-panel-1" role="tabpanel" aria-labelledby="dossier-tab-1" data-panel="1">
+            <div class="dossier-panel active" id="dossier-panel-1" role="tabpanel" aria-labelledby="dossier-tab-1"
+              data-panel="1">
               <div class="dossier-watermark" aria-hidden="true">01</div>
               <div class="dossier-panel-header">
                 <div class="dossier-header-badges">
@@ -675,9 +716,11 @@
               </div>
               <h3 class="dossier-panel-title">Gamify Standardized MIL Testing</h3>
               <p class="dossier-panel-desc">
-                Transforming complex PISA, Cambridge, and TOEFL literacy frameworks into an intuitive, non-intimidating 3-minute timed relay maze. Players navigate adaptive challenges that test speed, analytical deduction, and deep contextual comprehension without diagnostic fatigue.
+                Transforming complex PISA, Cambridge, and TOEFL literacy frameworks into an intuitive, non-intimidating
+                3-minute timed relay maze. Players navigate adaptive challenges that test speed, analytical deduction,
+                and deep contextual comprehension without diagnostic fatigue.
               </p>
-              
+
               <div class="dossier-feature-grid">
                 <div class="dossier-feature-item">
                   <div class="dossier-feature-icon">🎯</div>
@@ -713,13 +756,15 @@
                 <div class="dossier-impact-icon">💡</div>
                 <div class="dossier-impact-content">
                   <div class="dossier-impact-label">STRATEGIC OUTCOME</div>
-                  <div class="dossier-impact-desc">Reduces diagnostic anxiety while providing educators and learners with objective, actionable literacy metrics within 180 seconds.</div>
+                  <div class="dossier-impact-desc">Reduces diagnostic anxiety while providing educators and learners
+                    with objective, actionable literacy metrics within 180 seconds.</div>
                 </div>
               </div>
             </div>
 
             <!-- Panel 2 -->
-            <div class="dossier-panel" id="dossier-panel-2" role="tabpanel" aria-labelledby="dossier-tab-2" data-panel="2">
+            <div class="dossier-panel" id="dossier-panel-2" role="tabpanel" aria-labelledby="dossier-tab-2"
+              data-panel="2">
               <div class="dossier-watermark" aria-hidden="true">02</div>
               <div class="dossier-panel-header">
                 <div class="dossier-header-badges">
@@ -730,9 +775,10 @@
               </div>
               <h3 class="dossier-panel-title">Raise AI Literacy & Awareness</h3>
               <p class="dossier-panel-desc">
-                Utilizing the Artificial Intelligence Assessment Scale (AIAS) to train readers in spotting synthetic imagery, repetitive prompt patterns, and generative AI hallucinations in contemporary media feeds.
+                Utilizing the Artificial Intelligence Assessment Scale (AIAS) to train readers in spotting synthetic
+                imagery, repetitive prompt patterns, and generative AI hallucinations in contemporary media feeds.
               </p>
-              
+
               <div class="dossier-feature-grid">
                 <div class="dossier-feature-item">
                   <div class="dossier-feature-icon">🔬</div>
@@ -768,13 +814,15 @@
                 <div class="dossier-impact-icon">💡</div>
                 <div class="dossier-impact-content">
                   <div class="dossier-impact-label">STRATEGIC OUTCOME</div>
-                  <div class="dossier-impact-desc">Inoculates youth against automated disinformation campaigns and deceptive synthetic generative content.</div>
+                  <div class="dossier-impact-desc">Inoculates youth against automated disinformation campaigns and
+                    deceptive synthetic generative content.</div>
                 </div>
               </div>
             </div>
 
             <!-- Panel 3 -->
-            <div class="dossier-panel" id="dossier-panel-3" role="tabpanel" aria-labelledby="dossier-tab-3" data-panel="3">
+            <div class="dossier-panel" id="dossier-panel-3" role="tabpanel" aria-labelledby="dossier-tab-3"
+              data-panel="3">
               <div class="dossier-watermark" aria-hidden="true">03</div>
               <div class="dossier-panel-header">
                 <div class="dossier-header-badges">
@@ -785,9 +833,10 @@
               </div>
               <h3 class="dossier-panel-title">Bridge Local & Digital Libraries</h3>
               <p class="dossier-panel-desc">
-                Directly connecting game outcomes to Indonesia's premier public library networks (Perpustakaan Nasional Digital, Bank Indonesia Library) and global open repositories (Project Gutenberg, Internet Archive).
+                Directly connecting game outcomes to Indonesia's premier public library networks (Perpustakaan Nasional
+                Digital, Bank Indonesia Library) and global open repositories (Project Gutenberg, Internet Archive).
               </p>
-              
+
               <div class="dossier-feature-grid">
                 <div class="dossier-feature-item">
                   <div class="dossier-feature-icon">📖</div>
@@ -823,13 +872,15 @@
                 <div class="dossier-impact-icon">💡</div>
                 <div class="dossier-impact-content">
                   <div class="dossier-impact-label">STRATEGIC OUTCOME</div>
-                  <div class="dossier-impact-desc">Converts momentary gameplay excitement into enduring, tangible engagement with public educational institutions.</div>
+                  <div class="dossier-impact-desc">Converts momentary gameplay excitement into enduring, tangible
+                    engagement with public educational institutions.</div>
                 </div>
               </div>
             </div>
 
             <!-- Panel 4 -->
-            <div class="dossier-panel" id="dossier-panel-4" role="tabpanel" aria-labelledby="dossier-tab-4" data-panel="4">
+            <div class="dossier-panel" id="dossier-panel-4" role="tabpanel" aria-labelledby="dossier-tab-4"
+              data-panel="4">
               <div class="dossier-watermark" aria-hidden="true">04</div>
               <div class="dossier-panel-header">
                 <div class="dossier-header-badges">
@@ -840,9 +891,10 @@
               </div>
               <h3 class="dossier-panel-title">Promote Graded Reading Without Stigma</h3>
               <p class="dossier-panel-desc">
-                Matching reader proficiencies to supportive character archetypes (Miller, Jen, Aidan, Lizzy) with personalized reading roadmaps, encouraging progress rather than punitive scoring.
+                Matching reader proficiencies to supportive character archetypes (Miller, Jen, Aidan, Lizzy) with
+                personalized reading roadmaps, encouraging progress rather than punitive scoring.
               </p>
-              
+
               <div class="dossier-feature-grid">
                 <div class="dossier-feature-item">
                   <div class="dossier-feature-icon">🎭</div>
@@ -878,13 +930,15 @@
                 <div class="dossier-impact-icon">💡</div>
                 <div class="dossier-impact-content">
                   <div class="dossier-impact-label">STRATEGIC OUTCOME</div>
-                  <div class="dossier-impact-desc">Builds lifelong reading confidence and intrinsic motivation across all demographic tiers.</div>
+                  <div class="dossier-impact-desc">Builds lifelong reading confidence and intrinsic motivation across
+                    all demographic tiers.</div>
                 </div>
               </div>
             </div>
 
             <!-- Panel 5 -->
-            <div class="dossier-panel" id="dossier-panel-5" role="tabpanel" aria-labelledby="dossier-tab-5" data-panel="5">
+            <div class="dossier-panel" id="dossier-panel-5" role="tabpanel" aria-labelledby="dossier-tab-5"
+              data-panel="5">
               <div class="dossier-watermark" aria-hidden="true">05</div>
               <div class="dossier-panel-header">
                 <div class="dossier-header-badges">
@@ -895,9 +949,10 @@
               </div>
               <h3 class="dossier-panel-title">Mitigate Digital Misinformation</h3>
               <p class="dossier-panel-desc">
-                Instilling reflexive verification habits: citation cross-checking, timeline reconstruction, author credential audit, and graphical distortion detection in fast-paced media feeds.
+                Instilling reflexive verification habits: citation cross-checking, timeline reconstruction, author
+                credential audit, and graphical distortion detection in fast-paced media feeds.
               </p>
-              
+
               <div class="dossier-feature-grid">
                 <div class="dossier-feature-item">
                   <div class="dossier-feature-icon">🔎</div>
@@ -933,7 +988,8 @@
                 <div class="dossier-impact-icon">💡</div>
                 <div class="dossier-impact-content">
                   <div class="dossier-impact-label">STRATEGIC OUTCOME</div>
-                  <div class="dossier-impact-desc">Creates a generation of resilient, critical-thinking digital citizens capable of navigating complex information landscapes.</div>
+                  <div class="dossier-impact-desc">Creates a generation of resilient, critical-thinking digital citizens
+                    capable of navigating complex information landscapes.</div>
                 </div>
               </div>
             </div>
@@ -944,7 +1000,7 @@
         <!-- 3-Year Strategic Roadmap -->
         <h2 class="framework-section-title">3-Year Strategic Roadmap (2026 – 2028)</h2>
         <div class="roadmap-timeline">
-          
+
           <div class="roadmap-item">
             <div class="roadmap-node"></div>
             <div class="roadmap-content">
@@ -1024,7 +1080,7 @@
           <div class="page-badge">Hall of Fame</div>
           <h1 class="page-title">MilleRace <span>Leaderboard</span></h1>
           <p class="page-subtitle">
-            Celebrating the sharpest minds who outread the machine, collected all 4 keys, and conquered the maze.
+            Celebrating the sharpest minds who outread the machine,<br>collected all 4 keys, and conquered the maze.
           </p>
         </div>
 
@@ -1039,7 +1095,8 @@
 
           <div class="leaderboard-search">
             <span class="search-icon">🔍</span>
-            <input type="text" id="leaderboard-search-input" class="search-input" placeholder="Search racer nickname...">
+            <input type="text" id="leaderboard-search-input" class="search-input"
+              placeholder="Search racer nickname...">
           </div>
         </div>
 
@@ -1072,7 +1129,7 @@
         <div class="page-cta-banner">
           <div class="page-cta-content">
             <h3 class="page-cta-title">Want to see your name on the Leaderboard?</h3>
-            <p class="page-cta-desc">Take the test now and score your spot on the MilleRace Hall of Fame.</p>
+            <p class="page-cta-desc">Take the test now and score your spot on the<br>MilleRace Hall of Fame.</p>
           </div>
           <button class="btn-primary btn-trigger-reg">Enter the Race 🏁</button>
         </div>
@@ -1080,7 +1137,8 @@
     </section>
 
     <!-- SCREEN 2: STAGE 1 (MILLER - VISUAL AIAS) -->
-    <section id="screen-stage1" class="screen stage-screen dialogue-active" style="background-image: url('assets/images/backgrounds/Level 1.png');">
+    <section id="screen-stage1" class="screen stage-screen dialogue-active"
+      style="background-image: url('assets/images/backgrounds/Level 1.png');">
       <!-- Lower Left Corner Anchor: Vector 22 (50% opaque) + Character Still (1.25x) -->
       <div class="stage-corner-character" id="stage1-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
@@ -1097,7 +1155,8 @@
       </div>
 
       <!-- Bottom Right Dialogue Box (Fixed to bottom-right corner) -->
-      <div class="dialog-box-container stage-dialog-bottom" id="stage1-dialog-box-wrap" tabindex="0" role="button" aria-label="Advance dialogue">
+      <div class="dialog-box-container stage-dialog-bottom" id="stage1-dialog-box-wrap" tabindex="0" role="button"
+        aria-label="Advance dialogue">
         <div class="dialog-box">
           <div class="dialog-header-badge">MILLER</div>
           <div id="stage1-dialogue-text" class="dialog-text"></div>
@@ -1110,7 +1169,8 @@
     </section>
 
     <!-- SCREEN 3: STAGE 2 (JEN - LITERARY KNOWLEDGE) -->
-    <section id="screen-stage2" class="screen stage-screen dialogue-active" style="background-image: url('assets/images/backgrounds/Level 2.png');">
+    <section id="screen-stage2" class="screen stage-screen dialogue-active"
+      style="background-image: url('assets/images/backgrounds/Level 2.png');">
       <!-- Lower Left Corner Anchor -->
       <div class="stage-corner-character" id="stage2-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
@@ -1129,7 +1189,8 @@
       </div>
 
       <!-- Bottom Right Dialogue Box -->
-      <div class="dialog-box-container stage-dialog-bottom" id="stage2-dialog-box-wrap" tabindex="0" role="button" aria-label="Advance dialogue">
+      <div class="dialog-box-container stage-dialog-bottom" id="stage2-dialog-box-wrap" tabindex="0" role="button"
+        aria-label="Advance dialogue">
         <div class="dialog-box">
           <div class="dialog-header-badge">JEN</div>
           <div id="stage2-dialogue-text" class="dialog-text"></div>
@@ -1142,26 +1203,40 @@
     </section>
 
     <!-- SCREEN 4: STAGE 3 (AIDAN - ROOM OF LETTERS) -->
-    <section id="screen-stage3" class="screen stage-screen dialogue-active" style="background-image: url('assets/images/backgrounds/Level 1.png');">
-      <!-- Lower Left Corner Anchor -->
-      <div class="stage-corner-character" id="stage3-corner-char">
-        <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
-        <img src="assets/images/characters/stills/Miller-no-bg-square.png" class="corner-char-img" alt="Aidan">
-      </div>
-
+    <section id="screen-stage3" class="screen stage-screen dialogue-active">
       <div class="stage-container">
         <!-- Stage Gameplay Area -->
-        <div class="stage-gameplay-area" id="stage3-gameplay-area">
-          <div id="stage3-progress-dots" class="question-progress"></div>
-          <div class="stage3-passage-card">
+        <div class="stage-gameplay-area stage3-gameplay-wrap" id="stage3-gameplay-area">
+          <!-- Question Progress Dots Centered Above Paper Container -->
+          <div id="stage3-progress-dots" class="question-progress stage3-progress-dots"></div>
+
+          <!-- Stage 3 Parchment Container (Paper.svg) Anchored at Bottom -->
+          <div class="stage3-paper-card">
             <div id="stage3-passage-text" class="passage-text"></div>
-            <div id="stage3-rating-buttons" class="rating-buttons-group"></div>
           </div>
         </div>
       </div>
 
+      <!-- Full-Width Bottom Purple Rating Strip -->
+      <div class="stage3-rating-strip" id="stage3-rating-strip">
+        <!-- Left Character Avatar in front of purple bar -->
+        <div class="stage3-strip-avatar stage3-left-avatar">
+          <img src="assets/images/characters/stills/Miller-no-bg-square.png" alt="Aidan" class="strip-char-img">
+        </div>
+
+        <span class="rating-scale-label">Very Certain</span>
+        <div id="stage3-rating-buttons" class="rating-buttons-group"></div>
+        <span class="rating-scale-label">Very Uncertain</span>
+
+        <!-- Right Character Avatar in front of purple bar -->
+        <div class="stage3-strip-avatar stage3-right-avatar">
+          <img src="assets/images/characters/stills/Jen-no-bg-square.png" alt="Character" class="strip-char-img">
+        </div>
+      </div>
+
       <!-- Bottom Right Dialogue Box -->
-      <div class="dialog-box-container stage-dialog-bottom" id="stage3-dialog-box-wrap" tabindex="0" role="button" aria-label="Advance dialogue">
+      <div class="dialog-box-container stage-dialog-bottom" id="stage3-dialog-box-wrap" tabindex="0" role="button"
+        aria-label="Advance dialogue">
         <div class="dialog-box">
           <div class="dialog-header-badge">AIDAN</div>
           <div id="stage3-dialogue-text" class="dialog-text"></div>
@@ -1174,7 +1249,7 @@
     </section>
 
     <!-- SCREEN 5: STAGE 4 (LIZZY - ROOM OF COLORS) -->
-    <section id="screen-stage4" class="screen stage-screen dialogue-active" style="background-image: url('assets/images/backgrounds/Level 2.png');">
+    <section id="screen-stage4" class="screen stage-screen dialogue-active">
       <!-- Lower Left Corner Anchor -->
       <div class="stage-corner-character" id="stage4-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
@@ -1183,17 +1258,23 @@
 
       <div class="stage-container">
         <!-- Stage Gameplay Area -->
-        <div class="stage-gameplay-area" id="stage4-gameplay-area">
-          <div id="stage4-progress-dots" class="question-progress"></div>
-          <div class="stage4-comprehension-card">
+        <div class="stage-gameplay-area stage4-gameplay-wrap" id="stage4-gameplay-area">
+          <!-- Question Progress Dots Centered Above Paper Container -->
+          <div id="stage4-progress-dots" class="question-progress stage4-progress-dots"></div>
+
+          <!-- Stage 4 Horizontal Parchment Container (Paper.svg) Centered in Middle -->
+          <div class="stage4-paper-card">
             <div id="stage4-passage-box" class="passage-box"></div>
-            <div id="stage4-options-list" class="options-list"></div>
           </div>
         </div>
+
+        <!-- Stage 4 Floating Multiple-Choice Pill Options (Bottom-Right) -->
+        <div id="stage4-options-list" class="stage4-floating-options-list options-list"></div>
       </div>
 
       <!-- Bottom Right Dialogue Box -->
-      <div class="dialog-box-container stage-dialog-bottom" id="stage4-dialog-box-wrap" tabindex="0" role="button" aria-label="Advance dialogue">
+      <div class="dialog-box-container stage-dialog-bottom" id="stage4-dialog-box-wrap" tabindex="0" role="button"
+        aria-label="Advance dialogue">
         <div class="dialog-box">
           <div class="dialog-header-badge">LIZZY</div>
           <div id="stage4-dialogue-text" class="dialog-text"></div>
@@ -1205,70 +1286,110 @@
       </div>
     </section>
 
-    <!-- SCREEN 6: FINAL RESULT PAGE -->
+    <!-- SCREEN 6: FINAL RESULT PAGE (Aligned with Figma Reference Final-Result.png) -->
     <section id="screen-result" class="screen">
-      <div class="result-container">
-        
-        <header class="result-header">
-          <h1 class="result-title">MAZE ESCAPED! 🎉</h1>
-          <p class="result-subtitle">Your Media & Information Literacy Match Result</p>
+      <div class="result-page-wrapper">
+
+        <!-- 1. Top Status & Branding Bar -->
+        <header class="result-top-bar">
+          <a class="result-logo-group logo-link" data-nav="screen-landing" title="Back to Home">
+            <div class="result-logo-circle">
+              <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+            </div>
+            <span class="result-brand-text">Mille<span>Race</span></span>
+          </a>
+
+          <div class="result-top-capsule" aria-hidden="true">
+            <div class="result-top-capsule-fill"></div>
+          </div>
         </header>
 
-        <div class="score-badge-card">
-          <div class="score-circle">
-            <span id="result-score-num" class="score-num">0%</span>
-            <span class="score-label">MIL SCORE</span>
+        <!-- 2. Hero Purple Band with Ornate Character Showcase Card -->
+        <div class="result-purple-band">
+          <div class="result-showcase-container">
+
+            <!-- Scalloped Parchment Card (Vector.svg) -->
+            <div class="result-parchment-card">
+              <!-- Gold Scalloped Header Badge -->
+              <div id="result-char-badge" class="result-gold-badge">YOU ARE MILLER!</div>
+
+              <!-- Character Bio / Description in Cutive Mono -->
+              <p id="result-char-bio" class="result-parchment-bio">
+                Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page
+                at a time. Comic books suit his personality, and so do fun facts!
+              </p>
+
+              <!-- Share Result Action Button -->
+              <button id="btn-share-result" class="result-share-btn" aria-label="Share your result">
+                <span>Share your result!</span>
+                <span aria-hidden="true">↪</span>
+              </button>
+            </div>
+
+            <!-- Keyhole Portrait Frame (Group 20.svg) -->
+            <div class="result-keyhole-avatar">
+              <img src="assets/images/ui/result/Group 20.svg" class="result-keyhole-bg" alt="" aria-hidden="true">
+              <img id="result-char-img" class="result-char-portrait" src="assets/images/characters/stills/Miller.png"
+                alt="Matched Character">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. Score Track & Progress Section -->
+        <div class="result-score-section">
+          <div class="result-score-header">
+            <h2 class="result-score-title">Your right answer</h2>
+            <span id="result-score-num" class="result-score-percent">0%</span>
           </div>
 
-          <div style="text-align: left; max-width: 500px;">
-            <h3 style="font-family: var(--font-title); font-size: 1.4rem; color: var(--color-yellow); margin-bottom: 6px;">
-              Race Completed in Timed Loop
-            </h3>
-            <p style="font-family: var(--font-body); font-size: 1.05rem; color: var(--color-text-muted);">
-              Based on the Artificial Intelligence Assessment Scale (AIAS) and PISA Reading Standards.
+          <!-- Horizontal Progress Track with Gold Fill -->
+          <div class="result-progress-track">
+            <div id="result-progress-fill" class="result-progress-fill" style="width: 0%;"></div>
+          </div>
+
+          <!-- Critical Thinking Resource Blurb & Glowing Triple Dots -->
+          <div class="result-blurb-row">
+            <p class="result-blurb-text">
+              See how you can fight misinformation and strengthen analytical discernment at:
+              <br>1. <a href="https://sheffield.ac.uk/study-skills/research/approaches/thinking-critically"
+                target="_blank" rel="noopener noreferrer"
+                style="color: var(--color-yellow);">sheffield.ac.uk/study-skills/research/thinking-critically</a>
+              <br>2. <a href="https://bookrclass.com/blog/critical-thinking-activities-for-kids/" target="_blank"
+                rel="noopener noreferrer"
+                style="color: var(--color-yellow);">bookrclass.com/blog/critical-thinking-activities-for-kids/</a>
             </p>
+            <img src="assets/images/ui/result/YELLOW GOWING TITIK.svg" class="result-glowing-dots-img"
+              alt="Glowing Dots" aria-hidden="true">
           </div>
         </div>
 
-        <!-- CHARACTER MATCH CARD -->
-        <div class="character-match-card">
-          <div class="char-portrait-frame">
-            <img id="result-char-img" src="assets/images/characters/stills/Miller.png" alt="Matched Character">
+        <!-- 4. Recommendations Container (Rectangle 78) -->
+        <div class="result-recommendations-wrapper">
+          <h3 class="rec-section-title">Personalized Recommendations & Toolkit</h3>
+
+          <div class="rec-grid">
+            <div class="rec-card">
+              <div class="rec-card-header">🏠 Home Activities</div>
+              <ul id="result-activities-list" class="rec-list"></ul>
+            </div>
+
+            <div class="rec-card">
+              <div class="rec-card-header">📚 Curated Reading List</div>
+              <ul id="result-books-list" class="rec-list"></ul>
+            </div>
+
+            <div class="rec-card">
+              <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
+              <ul id="result-resources-list" class="rec-list"></ul>
+            </div>
           </div>
 
-          <div class="char-details">
-            <h2 id="result-char-name" class="char-name">Character Name</h2>
-            <div id="result-char-level" class="char-level-badge">PISA Level | CEFR Level</div>
-            <p id="result-char-quote" class="char-quote">"Quote here..."</p>
-            <p id="result-char-bio" class="char-bio">Bio here...</p>
+          <!-- Action Buttons -->
+          <div class="result-actions">
+            <button id="btn-play-again" class="result-btn-gold">PLAY AGAIN 🔄</button>
+            <button id="btn-result-leaderboard" class="result-btn-purple">VIEW LEADERBOARD 🏆</button>
           </div>
-        </div>
-
-        <!-- RECOMMENDATIONS SECTION -->
-        <h2 class="rec-section-title">Personalized Recommendations & Toolkit</h2>
-
-        <div class="rec-grid">
-          
-          <div class="rec-card">
-            <div class="rec-card-header">🏠 Home Activities</div>
-            <ul id="result-activities-list" class="rec-list"></ul>
-          </div>
-
-          <div class="rec-card">
-            <div class="rec-card-header">📚 Curated Reading List</div>
-            <ul id="result-books-list" class="rec-list"></ul>
-          </div>
-
-          <div class="rec-card">
-            <div class="rec-card-header">💡 Critical Thinking & Fact-Check</div>
-            <ul id="result-resources-list" class="rec-list"></ul>
-          </div>
-
-        </div>
-
-        <div class="result-actions" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <button id="btn-play-again" class="btn-primary">PLAY AGAIN 🔄</button>
-          <button id="btn-result-leaderboard" class="btn-primary" style="background: rgba(133, 78, 180, 0.85); color: #fff; border: 1.5px solid var(--color-yellow);">VIEW LEADERBOARD 🏆</button>
         </div>
 
       </div>
@@ -1278,10 +1399,11 @@
     <div id="reg-modal" class="modal-overlay">
       <div class="reg-modal-wrapper">
         <img src="assets/images/ui/landing/Name-and-age-input.svg" class="reg-modal-bg-svg" alt="Registration Frame">
-        
+
         <form id="form-registration-modal" class="reg-modal-form-overlay">
-          <input type="text" id="input-modal-nickname" class="reg-input-name" placeholder="Enter Nickname" required maxlength="15">
-          
+          <input type="text" id="input-modal-nickname" class="reg-input-name" placeholder="Enter Nickname" required
+            maxlength="15">
+
           <select id="select-modal-age" class="reg-input-age">
             <option value="6-12">Early Reader (6 - 12 yrs)</option>
             <option value="13-17" selected>Young Adult (13 - 17 yrs)</option>
@@ -1310,6 +1432,8 @@
   <script src="js/timer.js?v=1.1"></script>
   <script src="js/ui.js?v=1.1"></script>
   <script src="js/gameEngine.js?v=1.1"></script>
+  <script src="js/devMode.js?v=1.0"></script>
   <script src="js/app.js?v=1.1"></script>
 </body>
+
 </html>
