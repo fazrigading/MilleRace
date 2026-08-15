@@ -4,7 +4,8 @@
 [![UNESCO Youth Hackathon 2026](https://img.shields.io/badge/UNESCO_Hackathon-2026_Submission-854EB4.svg)](https://en.unesco.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F3CD50.svg)](LICENSE)
 [![Mulawarman University](https://img.shields.io/badge/Developed_At-Mulawarman_University-2E9E85.svg)](https://unmul.ac.id/)
-[![Framework: AIAS & PISA](https://img.shields.io/badge/Standard-AIAS%20%7C%20PISA%20%7C%20CEFR-16141C.svg)](#theoretical-frameworks)
+[![Framework: AIAS & PISA](https://img.shields.io/badge/Standard-AIAS%20%7C%20PISA%20%7C%20CEFR-16141C.svg)](#-theoretical-frameworks)
+[![Playwright Core](https://img.shields.io/badge/Tested%20With-Playwright--core%20%7C%20Google%20Chrome-4285F4.svg)](#-automated-testing--browser-verification)
 
 **MilleRace** is an immersive, gamified Media and Information Literacy (MIL) relay race web game. Built for the **UNESCO Youth Hackathon 2026** under the theme *"Play Your Part: Youth Designing the Future of Media Information and Literacy"*, MilleRace challenges players to race against a 3-minute countdown across 4 interactive puzzle stages to outread generative machine algorithms, collect keys, escape the digital maze, and match with an inspiring literary character archetype.
 
@@ -15,11 +16,14 @@
 - [Key Features](#-key-features)
 - [Theoretical Frameworks](#-theoretical-frameworks)
 - [The 4-Stage Relay Journey](#%EF%B8%8F-the-4-stage-relay-journey)
-- [Character Archetypes & Scoring](#-character-archetypes--scoring)
+- [Point System & Scoring Matrix](#-point-system--scoring-matrix)
+- [Character Archetypes & Matching](#-character-archetypes--matching)
 - [Pages & Navigation](#-pages--navigation)
 - [Project Architecture & Tech Stack](#-project-architecture--tech-stack)
 - [Project Structure](#-project-structure)
+- [Developer Mode & Debug Toolbar](#-developer-mode--debug-toolbar)
 - [Getting Started](#-getting-started)
+- [Automated Testing & Browser Verification](#-automated-testing--browser-verification)
 - [Project Team](#-project-team)
 - [3-Year Strategic Roadmap](#-3-year-strategic-roadmap)
 - [License](#-license)
@@ -42,14 +46,15 @@ MilleRace gamifies media discernment, teaching users how to detect AI-generated 
 
 ## ✨ Key Features
 
-- ⏱️ **Shared 3-Minute Relay Timer:** Fast-paced countdown engine keeping racers engaged across all 4 stages.
+- ⏱️ **Shared 3-Minute Relay Timer:** Fast-paced countdown engine keeping racers engaged across all 4 stages with pauses during narrative dialogues.
 - 🎨 **Visual AIAS Discrimination:** Spot subtle prompt artifacts, spatial anomalies, and synthetic symmetry vs. authentic human masterpieces.
 - 📚 **Literary Title Reconstruction:** Fill missing words from world classics and modern literature to unlock door passwords.
-- 🔍 **Textual Authenticity Classification:** Grade text excerpts on a 4-point human-to-synthetic scale.
+- 🔍 **Textual Authenticity Classification:** Grade text excerpts on a 4-point graduated human-to-synthetic scale.
 - 🧠 **High-Order PISA Inferential Reading:** Multi-layered reading comprehension questions with weighted scoring.
 - 🏆 **Dynamic Local Leaderboard:** Real-time Hall of Fame with demographic category filtering (All, 6–12, 13–17, 18+), live search, and top 3 podium highlights.
 - 🎁 **Tailored Post-Game Recommendations:** Direct access to digitized public libraries (*Perpustakaan Nasional Digital*, *Bank Indonesia*), open archives (*Project Gutenberg*, *Internet Archive*), and critical thinking toolkits.
 - 🧭 **Responsive Navigation Bar:** Sleek top-right glassmorphism navbar with a dynamic golden yellow rounded rectangular indicator.
+- 🛠️ **Developer Debug Panel:** Built-in dev panel (`Ctrl+Shift+D`) for rapid stage jumping, dialogue skipping, timer toggling, and score simulation.
 
 ---
 
@@ -72,38 +77,66 @@ Mapped into non-punitive character archetypes across PISA Levels 1–6 and CEFR 
 
 ```mermaid
 flowchart LR
-    A[🏁 Registration & Maze Entry] --> B[Stage 1: Miller<br/>Visual AIAS Gallery]
-    B -->|Key #1| C[Stage 2: Jen<br/>Door Passwords]
-    C -->|Key #2| D[Stage 3: Aidan<br/>Room of Letters]
-    D -->|Key #3| E[Stage 4: Lizzy<br/>Room of Colors]
-    E -->|Final Key| F[🎉 Escape & Character Match]
+    A[🏁 Registration & Maze Entry] --> B[Stage 1: Miller<br/>Visual AIAS Gallery<br/>20 Pts]
+    B -->|Key #1| C[Stage 2: Jen<br/>Door Passwords<br/>40 Pts]
+    C -->|Key #2| D[Stage 3: Aidan<br/>Room of Letters<br/>20 Pts]
+    D -->|Key #3| E[Stage 4: Lizzy<br/>Room of Colors<br/>20 Pts]
+    E -->|Final Key| F[🎉 Escape & Character Match<br/>Max 100 Pts]
     F --> G[🏆 Dynamic Leaderboard & Toolkits]
 ```
 
 1. **Stage 1 — Miller's Gallery (Visual AIAS):**
    - *Setting:* Warm-toned art gallery.
-   - *Challenge:* Eliminate AI-generated decoy paintings and select genuine human artwork.
+   - *Challenge:* Eliminate AI-generated decoy paintings and select genuine human artwork (4 questions $\times$ 5 pts = 20 pts).
    - *Reward:* Key #1.
 2. **Stage 2 — Jen's Door Passwords (Literary Knowledge):**
    - *Setting:* Playground wonderland with interlocked doors.
-   - *Challenge:* Complete 10 famous book titles (*Anne of Green Gables*, *The Kite Runner*, *Norwegian Wood*, etc.).
+   - *Challenge:* Complete 10 famous book titles (*Anne of Green Gables*, *The Kite Runner*, *Norwegian Wood*, etc.; 10 questions $\times$ 4 pts = 40 pts).
    - *Reward:* Key #2 (*"Old ways won't open new doors!"*).
 3. **Stage 3 — Aidan's Room of Letters (Textual AIAS):**
    - *Setting:* Newspaper floor chamber with hanging key mobiles.
-   - *Challenge:* Evaluate 5 text excerpts and classify them as `[Human]`, `[Somewhat Human]`, `[Barely Human]`, or `[Not Human]`.
-   - *Reward:* Key #3.
+   - *Challenge:* Evaluate text excerpts on a 4-point rating scale (`Human`, `Somewhat Human`, `Barely Human`, `Not Human`; max 20 pts).
+   - *Reward:* Key #3 (*"You've been reading!"*).
 4. **Stage 4 — Lizzy's Room of Colors (PISA Reading Scale):**
    - *Setting:* Vibrant room bursting with surreal colors and floating books.
-   - *Challenge:* Answer 4 deep inferential comprehension questions with weighted point values (0, 3, or 5 points).
+   - *Challenge:* Answer 4 deep inferential comprehension questions with weighted point values (0, 3, or 5 pts per question; 4 questions $\times$ 5 pts = 20 pts).
    - *Reward:* Final Key & Maze Exit.
 
 ---
 
-## 🎭 Character Archetypes & Scoring
+## 🎯 Point System & Scoring Matrix
 
-Based on the total score across all stages (0–100%), players match with a character archetype:
+The scoring system calculates performance across all 4 stages up to a total of **100 points**:
 
-| Character | Points | PISA Level | CEFR Level | Archetype Profile & Focus |
+| Stage | Domain & Focus | Question Count | Points Per Question | Stage Max Points |
+|---|---|---|---|---|
+| **Stage 1** | Visual AIAS Discrimination | 4 questions | 5 pts (correct answer) | **20 pts** |
+| **Stage 2** | Literary Title Reconstruction | 10 questions | 4 pts (correct answer) | **40 pts** |
+| **Stage 3** | Textual Authenticity Rating | 5 passages | Graduated scale (see below) | **20 pts** |
+| **Stage 4** | PISA Inferential Comprehension | 4 questions | 0, 3, or 5 pts (weighted) | **20 pts** |
+| **Total** | **Full Game Relay Score** | — | — | **100 pts** |
+
+### Stage 3 Graduated Scoring Matrix
+
+Stage 3 tests the ability to distinguish authentic human-written excerpts from AI-generated text:
+
+| Question / Passage | Target Origin | Human | Somewhat Human | Barely Human | Not Human |
+|---|---|---|---|---|---|
+| **Q1 (Axolotls)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+| **Q2 (English Breakfast)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+| **Q3 (Valentine's Day)** | AI Generated | 0 pts | 1 pt | 3 pts | **5 pts** |
+| **Q4 (1920s Uniforms)** | AI Generated | 0 pts | 1 pt | 3 pts | **5 pts** |
+| **Q5 (Chopsticks History)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+
+*Note: Stage 3 total score is capped at 20 points, preserving the balanced 100-point total.*
+
+---
+
+## 🎭 Character Archetypes & Matching
+
+Based on the total score across all stages (0–100%), players match with a pedagogical character archetype:
+
+| Character | Score Range | PISA Level | CEFR Level | Archetype Profile & Focus |
 |---|---|---|---|---|
 | **Miller** | 1 – 25 pts | Level 1–2 | A1–A2 | *Curious Explorer:* Loves adventures and clues; benefits from comics, nighttime stories, and fun facts. |
 | **Jen** | 26 – 50 pts | Level 3–4 | B1 | *Energetic Fact-Checker:* Exploring the world with imagination; builds habits through diaries and fact-checking. |
@@ -124,14 +157,28 @@ The Single Page Application (SPA) features a persistent top navigation bar with 
 
 ---
 
+## 🛠️ Developer Mode & Debug Toolbar
+
+MilleRace includes a built-in Developer Mode for testing, demonstrations, and rapid stage inspection:
+
+- **Toggle Shortcut:** Press `Ctrl + Shift + D` or `` ` `` (backtick), or click the floating **🛠️ DEV MODE** button in the bottom corner.
+- **Quick Jump:** Navigate directly to any screen (Landing, About, Team, Mission, Stages 1–4, Result, Leaderboard, Register Modal).
+- **Timer Control:** Toggle the 3-minute countdown timer on or off (paused).
+- **Dialogue Toggle:** Instantly skip intro narrative dialogues for fast gameplay testing.
+- **Score Simulator:** Simulate scores (20% Miller, 45% Jen, 70% Aidan, 95% Lizzy) with proportional 20/40/20/20 stage distributions.
+- **Key Slots:** Manually unlock or lock keys 1 through 4.
+
+---
+
 ## 💻 Project Architecture & Tech Stack
 
 - **Frontend Core:** HTML5 Semantic Structure, Vanilla JavaScript (ES6+ Modules)
 - **Styling Architecture:** Vanilla CSS3 with Design Tokens (`design-tokens.css`), responsive Flexbox/Grid, Glassmorphism, and keyframe micro-animations
 - **Typography:** Google Fonts (`Cinzel` for headings, `Bona Nova` for body copy, `Cutive Mono` for metrics & data)
-- **State Management:** Custom reactive state store (`state.js`) with stage progression and key collection
+- **State Management:** Custom reactive state store (`state.js`) with stage progression, point ceilings, and key tracking
 - **Persistence:** Browser `localStorage` for offline-capable leaderboard rankings and racer history
-- **No Heavy Framework Overhead:** Zero external UI framework dependencies for instant loading speed and cross-browser accessibility
+- **Testing & Verification:** `playwright-core` and `@playwright/test` wired directly to **Google Chrome** (`channel: 'chrome'`)
+- **Zero Heavy Frameworks:** Zero external UI framework dependencies for instant loading speed, clean maintainability, and cross-browser accessibility
 
 ---
 
@@ -140,8 +187,10 @@ The Single Page Application (SPA) features a persistent top navigation bar with 
 ```
 MilleRace/
 ├── index.html                    # Single Page Application entry point
-├── README.md                     # Project documentation
-├── assets/                       # Unified lowercase asset library
+├── package.json                  # Dependencies and test/verification scripts
+├── playwright.config.js          # Playwright test config wired to Google Chrome
+├── README.md                     # Comprehensive project documentation
+├── assets/                       # Unified asset library
 │   ├── fonts/                    # Local TTF fonts (bona-nova, cinzel, cutive-mono)
 │   └── images/
 │       ├── backgrounds/          # Stage backgrounds (Level 1.png, Level 2.png)
@@ -158,14 +207,21 @@ MilleRace/
 │   ├── landing.css               # Landing hero, how-to-play cards, character intros
 │   ├── pages.css                 # About Us, Our Team, Our Mission, Leaderboard styles
 │   ├── game-stages.css           # Puzzle layouts for Stages 1 to 4
-│   └── result.css                # Final results card and recommendation toolkit
+│   ├── result.css                # Final results card and recommendation toolkit
+│   └── dev-mode.css              # Dev mode bar & debug toolbar styling
 ├── js/
-│   ├── config.js                 # Stage question matrices, dialogue, and character data
-│   ├── state.js                  # Player profile, stage scores, and key tracking
+│   ├── config.js                 # Stage question matrices, dialogue, scoring matrix, and characters
+│   ├── state.js                  # Player profile, stage scores (20/40/20/20), and key tracking
 │   ├── timer.js                  # 3-minute global countdown timer component
 │   ├── ui.js                     # Screen switcher, dialogue typewriter, leaderboard renderer
-│   ├── gameEngine.js             # Stage transition engine, puzzle validation, and scoring
+│   ├── gameEngine.js             # Stage transition engine, puzzle validation, and scoring handlers
+│   ├── devMode.js                # Developer quick-stage navigation and state inspector
 │   └── app.js                    # Event listeners, modal controllers, and app bootstrap
+├── scripts/
+│   ├── server.js                 # Zero-dependency local static HTTP server (port 8080)
+│   └── verify.js                 # Standalone playwright-core Google Chrome test runner
+├── tests/
+│   └── mille-race.spec.js        # Playwright test suite for UI flows and Point System
 └── docs/                         # Project Documentation & Reference Vault
     ├── prd.md                    # Product Requirement Document
     ├── character-profiles.txt    # Pedagogical character definitions & reading lists
@@ -178,10 +234,8 @@ MilleRace/
 
 ## 🚀 Getting Started
 
-No build tools or Node.js installations are required. MilleRace runs natively in any modern web browser.
-
 ### Option 1: Direct Browser Launch
-Simply open `index.html` in your favorite web browser (Chrome, Firefox, Safari, Edge):
+Simply open `index.html` in your favorite web browser (Chrome, Edge, Firefox, Safari):
 ```bash
 # Windows
 start index.html
@@ -193,13 +247,41 @@ open index.html
 xdg-open index.html
 ```
 
-### Option 2: Local HTTP Server (Python)
-To test with a local server:
+### Option 2: Local HTTP Server (Node.js)
+Start the built-in zero-dependency static server on `http://localhost:8080`:
+```bash
+npm start
+```
+
+### Option 3: Local HTTP Server (Python)
 ```bash
 # Python 3
 python -m http.server 8000
 ```
 Then navigate to `http://localhost:8000` in your browser.
+
+---
+
+## 🧪 Automated Testing & Browser Verification
+
+MilleRace uses **`playwright-core`** wired directly to the system-installed **Google Chrome** browser (`channel: 'chrome'`), eliminating the need for bulky Chromium bundle downloads.
+
+### 1. Prerequisites
+Ensure you have **Node.js** and **Google Chrome** installed on your system.
+
+Install project dependencies:
+```bash
+npm install
+```
+
+### 2. Running Tests & Verifications
+
+| Command | Description |
+|---|---|
+| `npm test` | Runs the full Playwright test suite headlessly in Google Chrome with automatic local web server management. |
+| `npm run verify` | Runs a standalone `playwright-core` diagnostic script that starts a local server, navigates to the game in Google Chrome, checks DOM elements, and captures a full-page verification screenshot. |
+| `npm run test:chrome` | Explicitly targets the Google Chrome test configuration. |
+| `npm run test:ui` | Launches the interactive Playwright UI mode for visual debugging, time-travel inspection, and step-by-step tracing. |
 
 ---
 
