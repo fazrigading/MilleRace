@@ -1,11 +1,10 @@
-# 🚀 MilleRace — Production Deployment & Cloud Architecture Plan
+# Production Deployment & Cloud Architecture Guide 🚀
 
 > **Project:** MilleRace — Media & Information Literacy (MIL) Gamified Relay Race Web App  
 > **Event:** UNESCO Youth Hackathon 2026  
 > **Team:** Mulawarman University (Samarinda, East Kalimantan, Indonesia)  
-> **Target Environment:** Global Edge CDN (Vercel / Cloudflare Pages) + Firebase Firestore Real-Time Cloud Leaderboard  
+> **Target Environment:** Global Edge CDN (Vercel) + Firebase Firestore Real-Time Cloud Leaderboard  
 > **Pipeline:** Automated GitHub Actions CI/CD (`main` branch)  
-> **Status:** Ready for Implementation  
 
 ---
 
@@ -14,7 +13,7 @@
 2. [Infrastructure & Service Matrix](#2-infrastructure--service-matrix)
 3. [Pre-Deployment Codebase & Asset Verification](#3-pre-deployment-codebase--asset-verification)
 4. [Phase 1: Real-Time Global Leaderboard (Firebase Firestore)](#4-phase-1-real-time-global-leaderboard-firebase-firestore)
-5. [Phase 2: Hosting Configuration (Vercel & Cloudflare Pages)](#5-phase-2-hosting-configuration-vercel--cloudflare-pages)
+5. [Phase 2: Hosting Configuration (Vercel & Edge CDN)](#5-phase-2-hosting-configuration-vercel--edge-cdn)
 6. [Phase 3: GitHub Actions Automated CI/CD Pipeline](#6-phase-3-github-actions-automated-cicd-pipeline)
 7. [Phase 4: Production Security Hardening & Edge Optimizations](#7-phase-4-production-security-hardening--edge-optimizations)
 8. [Phase 5: Step-by-Step Execution Runbook](#8-phase-5-step-by-step-execution-runbook)
@@ -38,7 +37,7 @@ flowchart TD
         LINT --> DEPLOY_EDGE[Deploy to Edge Hosting]
     end
 
-    subgraph Hosting ["🌐 Edge CDN Infrastructure (Vercel / Cloudflare Pages)"]
+    subgraph Hosting ["🌐 Edge CDN Infrastructure (Vercel)"]
         DEPLOY_EDGE --> EDGE_NODE[Global Anycast Edge CDN]
         EDGE_NODE --> USER_CLIENT[Player Browser / Mobile Device]
     end
@@ -50,10 +49,10 @@ flowchart TD
 ```
 
 ### Key Deployment Objectives:
-- **Zero-Friction Global Delivery:** Sub-second asset delivery worldwide via Edge Anycast CDN.
+- **Zero-Friction Global Delivery:** Sub-second asset delivery worldwide via Edge Anycast CDN (`https://millerace.vercel.app`).
 - **Shared Live Leaderboard:** Cross-device competition and demographic rankings powered by Google Cloud Firestore.
 - **Offline Resilience:** If offline or Firestore connection fails, gracefully fallback to `localStorage` without interrupting gameplay.
-- **Continuous Delivery:** Automatic deployment triggered by every push to `main` branch with preview capabilities on pull requests.
+- **Continuous Delivery:** Automatic deployment triggered by every push to `main` branch.
 
 ---
 
@@ -61,10 +60,10 @@ flowchart TD
 
 | Service Area | Selected Provider / Standard | Specification / Free Tier Allocation |
 |---|---|---|
-| **Hosting & Edge CDN** | **Vercel** *(or Cloudflare Pages)* | Global Edge CDN, automated SSL, custom headers, DDoS protection |
-| **Domain / URL** | **Platform Subdomain** | `https://millerace.vercel.app` *(or `https://millerace.pages.dev`)* |
+| **Hosting & Edge CDN** | **Vercel** | Global Edge CDN, automated SSL, custom headers, DDoS protection |
+| **Domain / URL** | **Production Domain** | `https://millerace.vercel.app` |
 | **Cloud Database** | **Google Firebase Firestore** | 50,000 reads/day, 20,000 writes/day, 1GB storage (Spark Plan - Free) |
-| **Authentication / Security** | **Anonymous / Nickname-based** | Rules-enforced sanitized schema validation in Firestore |
+| **Authentication / Security** | **Anonymous / Nickname-based** | Strict schema validation rules in Firestore |
 | **CI/CD Automation** | **GitHub Actions** | `.github/workflows/deploy.yml` with automated edge sync |
 | **Local Fallback** | **Web Storage API** | Browser `localStorage` cache for disconnected environments |
 
@@ -82,15 +81,15 @@ Before initiating deployment, verify and ensure all file paths and references co
 
 ---
 
-## 4. Phase 1: Real-Time Global Leaderboard (Firebase Firestore) & User History
+## 4. Phase 1: Real-Time Global Leaderboard (Firebase Firestore)
 
-To upgrade the standalone `localStorage` leaderboard into a live, shared global Hall of Fame for the UNESCO Hackathon racers while giving users personal persistent access to past tests, Firebase Firestore is integrated with an offline-first hybrid pattern and persistent local history tracking.
+To provide a shared global Hall of Fame for the UNESCO Hackathon racers while giving users personal persistent access to past tests, Firebase Firestore is integrated with an offline-first hybrid pattern and persistent local history tracking.
 
 ### 4.1 Firebase Setup & Project Provisioning
 1. Open the [Firebase Console](https://console.firebase.google.com/).
-2. Click **Add Project** and name it `millerace-unesco-2026` (disable Google Analytics or enable as desired).
+2. Click **Add Project** and name it `millerace-unesco-2026`.
 3. Under **Build**, select **Firestore Database** -> **Create Database**.
-4. Select a region close to your primary audience (e.g., `asia-southeast1` / Singapore or `asia-east1`).
+4. Select a region close to your primary audience (e.g., `asia-southeast1`).
 5. Choose **Start in production mode**.
 6. Register a Web App (`MilleRace Web`) and copy the configuration credentials into `js/firebaseConfig.js`.
 
@@ -162,9 +161,8 @@ The application utilizes an offline-first architecture:
 
 ---
 
-## 5. Phase 2: Hosting Configuration (Vercel & Cloudflare Pages)
+## 5. Phase 2: Hosting Configuration (Vercel & Edge CDN)
 
-### Option A: Vercel Configuration (`vercel.json`)
 `vercel.json` is configured in the root directory to enforce caching, asset optimization, and security headers:
 
 ```json
@@ -225,29 +223,11 @@ The application utilizes an offline-first architecture:
 }
 ```
 
-### Option B: Cloudflare Pages Configuration
-If deploying via Cloudflare Pages:
-1. Create `_headers` in root:
-```text
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-/css/*
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-/js/*
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-```
-
 ---
 
 ## 6. Phase 3: GitHub Actions Automated CI/CD Pipeline
 
-Create `.github/workflows/deploy.yml` to automatically build, validate, and deploy changes whenever code is pushed to `main` branch or a PR is created.
-
-### 6.1 GitHub Workflow File: `.github/workflows/deploy.yml`
+The `.github/workflows/deploy.yml` file automatically builds, validates, and deploys changes whenever code is pushed to the `main` branch.
 
 ```yaml
 name: 🚀 MilleRace CI/CD Deployment
@@ -266,7 +246,6 @@ permissions:
   deployments: write
 
 jobs:
-  # STEP 1: Pre-deployment Code & Asset Linting
   validate:
     name: 🔍 Pre-flight Validation
     runs-on: ubuntu-latest
@@ -283,20 +262,6 @@ jobs:
           test -d assets/images || (echo "❌ assets/images directory missing!" && exit 1)
           echo "✅ All core entry files verified."
 
-      - name: 🔎 Scan for Broken Internal Links
-        run: |
-          echo "Scanning index.html asset references..."
-          grep -o 'src="[^"]*"' index.html | cut -d'"' -f2 | while read file; do
-            if [[ "$file" != http* ]] && [[ "$file" != *'#'* ]] && [[ ! -z "$file" ]]; then
-              clean_file=$(echo "$file" | cut -d'?' -f1)
-              if [ ! -f "$clean_file" ]; then
-                echo "⚠️ Warning: Missing asset reference: $clean_file"
-              fi
-            fi
-          done
-          echo "✅ Asset scan completed."
-
-  # STEP 2: Deploy to Production (Vercel)
   deploy-vercel:
     name: 🌐 Deploy to Vercel Edge
     needs: validate
@@ -315,12 +280,6 @@ jobs:
           vercel-args: '--prod'
           working-directory: ./
 ```
-
-### 6.2 Required GitHub Repository Secrets
-Navigate to **GitHub Repository -> Settings -> Secrets and variables -> Actions** and add:
-- `VERCEL_TOKEN`: Vercel Personal Access Token ([Generate here](https://vercel.com/account/tokens))
-- `VERCEL_ORG_ID`: Found in `.vercel/project.json` or team settings
-- `VERCEL_PROJECT_ID`: Found in project General Settings on Vercel
 
 ---
 
@@ -343,71 +302,40 @@ function escapeHTML(str) {
 - Enforce ceiling validation: Total score must never exceed 100 points (`Math.min(100, Math.max(0, score))`).
 - Validate completion timestamp: Reject scores completed in less than 10 seconds to prevent bot spamming.
 
-### 7.3 Core Web Vitals Optimization Targets
-- **Largest Contentful Paint (LCP):** < 1.8s (SVG hero assets optimized)
-- **Cumulative Layout Shift (CLS):** < 0.05 (explicit `width` and `height` on all stage containers)
-- **Interaction to Next Paint (INP):** < 100ms (zero blocking heavy framework overhead)
-
 ---
 
 ## 8. Phase 5: Step-by-Step Execution Runbook
-
-Follow these sequential steps to complete the production deployment:
 
 ### ⚙️ Step 1: Connect Vercel Project
 1. Log in to [Vercel Dashboard](https://vercel.com).
 2. Click **Add New...** -> **Project**.
 3. Import the GitHub repository: `fazrigading/MilleRace`.
-4. Configure Project:
-   - **Framework Preset**: `Other`
-   - **Root Directory**: `./`
-   - **Build Command**: *Leave blank (static)*
-   - **Output Directory**: *Leave blank (root)*
-5. Click **Deploy**. Vercel will assign a production URL: `https://millerace.vercel.app`.
+4. Configure Project (Root: `./`, Build: none).
+5. Click **Deploy**. Production URL assigned: `https://millerace.vercel.app`.
 
 ### ⚙️ Step 2: Configure Firebase Project & Credentials
-1. Create a Firebase Web Project as detailed in [Section 4.1](#41-firebase-setup--project-provisioning).
-2. Paste Firebase credentials into `js/firebase-service.js`.
+1. Create a Firebase Web Project as detailed in Section 4.1.
+2. Verify credentials in `js/firebaseConfig.js`.
 3. Deploy Firestore Security Rules via Firebase Console -> Firestore -> Rules.
-
-### ⚙️ Step 3: Setup GitHub Actions Automation
-1. Generate a Vercel Token from Vercel Account Settings.
-2. Link the repository secrets in GitHub Actions (`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`).
-3. Commit and push the `.github/workflows/deploy.yml` file to `main`.
-4. Check the **Actions** tab in GitHub to observe the live green deployment build.
 
 ---
 
 ## 9. Phase 6: Quality Assurance, Smoke Testing & Rollback Plan
 
 ### 9.1 End-to-End Smoke Test Checklist
-After deployment, run through this verification test on both desktop and mobile devices:
 
-| Test Item | Verification Procedure | Expected Outcome | Pass/Fail |
-|---|---|---|---|
-| **1. Landing & Navigation** | Click all nav links (`Home`, `About Us`, `Our Team`, `Our Mission`, `Leaderboard`) | Smooth transitions with active golden yellow pill indicator | ⬜ |
-| **2. Registration Modal** | Enter nickname and select age group | Profile stored in `GameState.player`, Stage 1 starts | ⬜ |
-| **3. Global Timer Engine** | Check countdown across all 4 stages | 3-minute timer ticks down consistently without resetting | ⬜ |
-| **4. Stage 1 (Miller)** | Select artwork cards | Real artworks accepted, decoys prompt feedback, Key #1 awarded | ⬜ |
-| **5. Stage 2 (Jen)** | Complete book titles | Missing words validate correctly, Key #2 awarded | ⬜ |
-| **6. Stage 3 (Aidan)** | Rate 5 text excerpts | AIAS classification advances properly, Key #3 awarded | ⬜ |
-| **7. Stage 4 (Lizzy)** | Answer 4 PISA questions | Weighted points calculate, Final Key unlocks exit | ⬜ |
-| **8. Final Results Card** | Verify score calculation and character match | Accurate score display (0-100), personalized archetype shown | ⬜ |
-| **9. Live Leaderboard Sync** | Check leaderboard page after game completion | Racer's name appears with correct rank, score, and badge | ⬜ |
-| **10. Responsive Layout** | Test viewport sizes from 360px (mobile) to 1920px (desktop) | Fluid glassmorphism layout with no horizontal clipping | ⬜ |
-
-### 9.2 Instant Rollback Procedure
-If a breaking issue occurs in production:
-1. **Instant Vercel Rollback:**
-   - Open Vercel Dashboard -> `MilleRace` -> **Deployments**.
-   - Locate the previous stable deployment and click **Instant Rollback**.
-2. **Git Revert:**
-   ```bash
-   git revert HEAD
-   git push origin main
-   ```
-   GitHub Actions will automatically trigger and redeploy the previous working commit within 30 seconds.
+| Test Item | Verification Procedure | Expected Outcome |
+|---|---|---|
+| **1. Landing & Navigation** | Click all nav links (`Home`, `About Us`, `Our Team`, `Our Mission`, `Leaderboard`) | Smooth transitions with active golden yellow pill indicator |
+| **2. Registration Modal** | Enter nickname and select age group | Profile stored in `GameState.player`, Stage 1 starts |
+| **3. Global Timer Engine** | Check countdown across all 4 stages | 3-minute timer ticks down consistently without resetting |
+| **4. Stage 1 (Miller)** | Select artwork cards | Real artworks preserved, AI decoys eliminated, Key #1 awarded |
+| **5. Stage 2 (Jen)** | Complete book titles | Missing words validate correctly, Key #2 awarded |
+| **6. Stage 3 (Aidan)** | Rate 5 text excerpts | AIAS classification advances properly, Key #3 awarded |
+| **7. Stage 4 (Lizzy)** | Answer 4 PISA questions | Weighted points calculate, Final Key unlocks exit |
+| **8. Final Results Card** | Verify score calculation and character match | Accurate score display (0-100), personalized archetype shown |
+| **9. Live Leaderboard Sync** | Check leaderboard page after game completion | Racer's name appears with correct rank, score, and badge |
 
 ---
 
-*Plan prepared for **UNESCO Youth Hackathon 2026** submission by **Fazri Gading & Mulawarman University Web Development Team**.*
+[⬅️ Automated Testing & Verification](testing.md) | [Back to README ➔](../README.md)

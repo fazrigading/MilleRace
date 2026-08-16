@@ -83,7 +83,7 @@ Initial prototype testing targets 30–50 beta users across three key demographi
 
 ## 6. Character Profiles & Scoring Mapping
 
-Users accumulate points across all 4 stages (0–100 points total). At the end of the race, users match with one of four character archetypes based on their final score:
+Users accumulate points across all 4 stages (0–100 points total). At the end of the race, users match with one of four character archetypes based on their final score (for full lore and recommendation specs, see [Character Profiles & Lore](character-profiles.md) and [Character Archetypes](character-archetypes.md)):
 
 ```mermaid
 gantt
@@ -162,17 +162,17 @@ gantt
 | **B** | Instructions & Intro | User scrolls down to view game instructions and lore context. | Warm-toned, crayon-styled art overview. |
 | **C** | Registration Landing | User inputs nickname and age into data collection modal. | Clean form submission for analytics DB. |
 | **D** | Character Intro: Miller | Miller greets user via dialogue text box, establishing maze lore. | Starry ambience, warm-toned lighting. |
-| **E** | Stage 1 (Game 1) | User identifies human artwork vs. AI-generated decoys (6 items). | Gallery room setting; 3-min timer. |
-| **F** | Stage 1 Clear | System awards Key #1, tallies temporary points, triggers transition. | Character transformation animation. |
+| **E** | Stage 1 (Game 1) | User eliminates AI-generated decoys across 4 artwork questions (20 pts). | Gallery room setting; 3-min timer. |
+| **F** | Stage 1 Clear | System awards Key #1, tallies temporary points (max 20 pts), triggers transition. | Character transformation animation. |
 | **G** | Character Intro: Jen | Jen greets user and introduces the door password challenge. | Wonderland playground interior cue. |
-| **H** | Stage 2 (Game 2) | User fills in missing words for 10 famous book titles. | Interactive keyboard / door selection. |
-| **I** | Stage 2 Clear | Key #2 obtained; "Old ways won't open new doors!"; points added. | Key unlock sound & transformation. |
+| **H** | Stage 2 (Game 2) | User fills in missing words for 10 famous book titles (40 pts). | Interactive keyboard / door selection. |
+| **I** | Stage 2 Clear | Key #2 obtained; "Old ways won't open new doors!"; points added (max 40 pts). | Key unlock sound & transformation. |
 | **J** | Character Intro: Aidan | Aidan welcomes user to the Room of Letters & Keys. | Room with newspaper floors & hanging keys. |
-| **K** | Stage 3 (Game 3) | User evaluates 5 text passages to identify AI vs Human writing. | 4-option rating scale ([Human]..[Not Human]). |
-| **L** | Stage 3 Clear | Key #3 obtained; points updated. | Transformation sequence. |
+| **K** | Stage 3 (Game 3) | User evaluates 5 text passages on a 4-point graduated authenticity scale (20 pts). | 4-option rating scale ([Human]..[Not Human]). |
+| **L** | Stage 3 Clear | Key #3 obtained; points updated (max 20 pts). | Transformation sequence. |
 | **M** | Character Intro: Lizzy | Lizzy greets user in the Room of Bursting Colors. | Vibrant, colorful library illustration. |
-| **N** | Stage 4 (Game 4) | User answers 4 reading comprehension & inferential questions. | Weighted options (0, 3, or 5 points). |
-| **O** | Stage 4 Clear | Final Key unlocked; player completes the maze. | Door unlocking graphic & loading screen. |
+| **N** | Stage 4 (Game 4) | User answers 4 high-order inferential comprehension questions (20 pts). | Weighted options (0, 3, or 5 points). |
+| **O** | Stage 4 Clear | Final Key unlocked; player completes the maze (total max 100 pts). | Door unlocking graphic & loading screen. |
 | **P** | Results End Page | System calculates total score, reveals matched character profile. | Interactive slideshow with books & MIL links. |
 
 ---
@@ -182,73 +182,80 @@ gantt
 ### 8.1 Stage 1: Miller's Gallery (Visual Art AIAS Test)
 - **Setting:** Warm-toned art gallery with framed paintings.
 - **Lore Dialogue:** *"Each room in this building is interlocked. To reach the end of the maze, we must obtain keys. The first one is hidden in the gallery. We must first clear up the space and find it. Eliminate decoys and help me find real art works."*
-- **Timer:** 3 Minutes countdown (`03:00`).
+- **Timer:** 3 Minutes countdown (`03:00`), shared across all stages and paused during narrative dialogue.
+- **Scoring:** 4 questions $\times$ 5 points = **20 points maximum**.
 - **Questions Specification:**
-  - **Q1:** Image set. **Correct Answer: B** (*A: Woman with Her Parasol by Claude Monet, C: The Swing by Jean-Honore Fragonard*).
-  - **Q2:** Image set. **Correct Answer: C** (*A: The Yellow Wallpaper by Charlotte Perkins Gilman, B: The Metamorphosis by Franz Kafka*).
-  - **Q3:** Image set. **Correct Answer: C** (*A: NASA Hubble Collections, B: NASA Webb Collections*).
-  - **Q4:** Image set. **Correct Answer: A**.
-  - **Q5:** Chaelint's original hand drawing vs 2 AI-generated pictures.
-  - **Q6:** Additional Chaelint drawing vs 2 AI-generated pictures.
-- **Clear Condition:** Key #1 Obtained. Temporary points accumulated. Miller transforms into the next character.
+  - **Q1:** Image set. **Correct Answer: B** (AI-generated artwork; *A: Woman with Her Parasol by Claude Monet, C: The Swing by Jean-Honore Fragonard*).
+  - **Q2:** Image set. **Correct Answer: C** (AI-generated artwork; *A: The Yellow Wallpaper by Charlotte Perkins Gilman, B: The Metamorphosis by Franz Kafka*).
+  - **Q3:** Image set. **Correct Answer: C** (AI-generated space image; *A: NASA Hubble Collections, B: NASA Webb Collections*).
+  - **Q4:** Image set. **Correct Answer: A** (AI-generated art of horse with motion blur; *B: Girl running on the hill with motion blur, C: Long exposure shot of a rose in the dark with soft lighting*).
+- **Clear Condition:** Key #1 Obtained (20 pts). Temporary points accumulated. Miller transforms into Jen.
 
 ### 8.2 Stage 2: Jen's Door Passwords (Literary General Knowledge)
 - **Setting:** Wonderland, playground-style interior with colorful interlocked doors.
 - **Lore Dialogue:** *"There are too many doors to unlock. Only one way to find out. Each of these doors contain a password. Fill in the blanks with the correct options."*
+- **Scoring:** 10 questions $\times$ 4 points = **40 points maximum**.
 - **Gameplay Mechanics:** 10 fill-in-the-blank book title puzzles.
 - **Questions & Correct Answers:**
-  1. Anne of Green **[Gables]**
-  2. Harry Potter and The **[Order]** of The Phoenix
-  3. The **[Kite]** Runner
-  4. Gulliver's **[Travels]**
-  5. **[Norwegian]** Wood
-  6. The Lion, The Witch & The **[Wardrobe]**
-  7. The **[Fault]** in Our Stars
-  8. My Year of **[Rest]** and Relaxation
-  9. Song of The Open **[Road]**
-  10. A Brief History of **[Time]**
+  1. Anne of Green **[Gables]** (4 pts)
+  2. Harry Potter and The **[Order]** of The Phoenix (4 pts)
+  3. The **[Kite]** Runner (4 pts)
+  4. Gulliver's **[Travels]** (4 pts)
+  5. **[Norwegian]** Wood (4 pts)
+  6. The Lion, The Witch & The **[Wardrobe]** (4 pts)
+  7. The **[Fault]** in Our Stars (4 pts)
+  8. My Year of **[Rest]** and Relaxation (4 pts)
+  9. Song of The Open **[Road]** (4 pts)
+  10. A Brief History of **[Time]** (4 pts)
 - **Clear Dialogue:** *"You got it! Old ways won't open new doors! Congratulations for your key!"*
-- **Clear Condition:** Key #2 Obtained. Jen transforms into Aidan.
+- **Clear Condition:** Key #2 Obtained (40 pts). Jen transforms into Aidan.
 
-### 8.3 Stage 3: Aidan's Floor of Letters (Textual AIAS Test)
+### 8.3 Stage 3: Aidan's Room of Letters (Textual AIAS Test)
 - **Setting:** Room with floors covered in newspaper text and hanging key mobiles.
 - **Lore Dialogue:** *"Ah, if this isn't the key to success... I figure these letters have clues to our next key. Help me delete letters that do not sound human."*
-- **Gameplay Mechanics:** User evaluates 5 text passages and classifies them under: `[Human]`, `[Somewhat Human]`, `[Barely Human]`, or `[Not Human]`.
-- **Text Content Matrix:**
-  - **Text 1:** *"Axolotls derive from the same species as salamanders. Whilst being amphibians, their external gills remain aquatic. They reach maturity without significant metamorphosis."*  
-    -> **Target Classification:** `[Human]`
-  - **Text 2:** *"British foods revolve around proteins. A full-on English breakfast have fried egg, bacons, beans and Yorkshire pudding. For lunch, scotched eggs are a common favorite, in a donut shape with breaded sausage."*  
-    -> **Target Classification:** `[Somewhat Human]` *(AI grammatical flaws/odd phrasing)*
-  - **Text 3:** *"Valentine's Day is celebrated every February 14th and is named after Saint Valentine, a Roman priest associated with love and romance. People around the world celebrate their love by exchanging billions of chocolates, flowers, and cards with their loved ones."*  
-    -> **Target Classification:** `[Not Human]` *(Generic AI synthesis)*
-  - **Text 4:** *"In the 1920s, uniforms were often formal and practical, reflecting the fashion and social standards of the time. Many people wore uniforms for work, school, sports, and military service, and these outfits were usually designed to look neat and professional. Uniforms from this era often included structured jackets, skirts or trousers, hats, and polished shoes."*  
-    -> **Target Classification:** `[Not Human]` *(Algorithmic text template)*
-  - **Text 5:** *"Chopsticks are made around 1200 BCE. Historically, firework became on demand during the Shang dynasty where people had to work quickly. The utensil is made to shorten time when chopping and stirring."*  
-    -> **Target Classification:** `[Human]`
-- **Clear Condition:** Key #3 Obtained. Dialogue: *"I see you've been reading! You might be the key player. The end of the maze is near!"* Aidan transforms into Lizzy.
+- **Gameplay Mechanics:** User evaluates 5 text passages on a 4-point graduated rating scale (`[Human]`, `[Somewhat Human]`, `[Barely Human]`, `[Not Human]`).
+- **Scoring:** Graduated point allocation per passage, capped at **20 points maximum**.
+- **Graduated Scoring Matrix:**
 
-### 8.4 Stage 4: Lizzy's Bursting Room (PISA Reading & Inferential Comprehension)
-- **Setting:** Surreal room bursting with vibrant colors, flying letters, and books.
+| Passage / Item | Target Origin | Human | Somewhat Human | Barely Human | Not Human |
+|---|---|:---:|:---:|:---:|:---:|
+| **Q1 (Axolotls)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+| **Q2 (English Breakfast)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+| **Q3 (Valentine's Day)** | AI Generated | 0 pts | 1 pt | 3 pts | **5 pts** |
+| **Q4 (1920s Uniforms)** | AI Generated | 0 pts | 1 pt | 3 pts | **5 pts** |
+| **Q5 (Chopsticks History)** | Authentic Human | **5 pts** | 3 pts | 1 pt | 0 pts |
+
+- **Passage Text Content:**
+  - **Text 1 (Axolotls):** *"Axolotls derive from the same species as salamanders. Whilst being amphibians, their external gills remain aquatic. They reach maturity without significant metamorphosis."* (Authentic Human)
+  - **Text 2 (English Breakfast):** *"British foods revolve around proteins. A full-on English breakfast have fried egg, bacons, beans and Yorkshire pudding. For lunch, scotched eggs are a common favorite, in a donut shape with breaded sausage."* (Authentic Human)
+  - **Text 3 (Valentine's Day):** *"Valentine's Day is celebrated every February 14th and is named after Saint Valentine, a Roman priest associated with love and romance. People around the world celebrate their love by exchanging billions of chocolates, flowers, and cards with their loved ones."* (AI Generated)
+  - **Text 4 (1920s Uniforms):** *"In the 1920s, uniforms were often formal and practical, reflecting the fashion and social standards of the time. Many people wore uniforms for work, school, sports, and military service, and these outfits were usually designed to look neat and professional. Uniforms from this era often included structured jackets, skirts or trousers, hats, and polished shoes."* (AI Generated)
+  - **Text 5 (Chopsticks History):** *"Chopsticks are made around 1200 BCE. Historically, firework became on demand during the Shang dynasty where people had to work quickly. The utensil is made to shorten time when chopping and stirring."* (Authentic Human)
+- **Clear Condition:** Key #3 Obtained (20 pts). Dialogue: *"I see you've been reading! You might be the key player. The end of the maze is near!"* Aidan transforms into Lizzy.
+
+### 8.4 Stage 4: Lizzy's Room of Colors (PISA Reading & Inferential Comprehension)
+- **Setting:** Surreal room bursting with vibrant colors, flying letters, and floating books.
 - **Lore Dialogue:** *"This place is bursting its colors! We must escape quickly before it lures us into magic!"*
 - **Gameplay Mechanics:** 4 reading comprehension questions with weighted point allocations based on inference quality.
-- **Question Matrix:**
+- **Scoring:** Weighted points (0, 3, or 5 points per question) across 4 questions = **20 points maximum**.
+- **Question & Weighted Option Matrix:**
   1. *Charlie searches for the Golden Ticket on the edge of a gutter. It has been his only wish, but he could not afford an expensive bar of Wonka chocolate.*  
-     - A. The Golden Ticket is hidden in a bar of Wonka chocolate **(3 pts)**
-     - B. Charlie comes from a poor family **(5 pts - Highest Inference)**
-     - C. A Wonka chocolate bar comes in limited edition **(0 pts)**
+     - **A:** The Golden Ticket is hidden in a bar of Wonka chocolate **(3 pts - Literal Reading)**  
+     - **B:** Charlie comes from a poor family **(5 pts - Highest Critical Inference)**  
+     - **C:** A Wonka chocolate bar comes in limited edition **(0 pts - Distractor)**  
   2. *Mrs Honey's house is the only place where Matilda can read freely. At home, her parents think of it as bizarre; they would be on tantrums.*  
-     - A. Mrs Honey is a relative of Matilda's **(0 pts)**
-     - B. Matilda's parents do not share her intelligence **(5 pts - Highest Inference)**
-     - C. Matilda performs above average at school **(3 pts)**
+     - **A:** Mrs Honey is a relative of Matilda's **(0 pts - Distractor)**  
+     - **B:** Matilda's parents do not share her intelligence **(5 pts - Highest Critical Inference)**  
+     - **C:** Matilda performs above average at school **(3 pts - Partial Reading)**  
   3. *There has been discourses on the IELTS test. Some say it is a form of discrimination to third world countries as the certification expires in two years. It is studied in the theory of Postcolonialism.*  
-     - A. The IELTS exam is in the expensive side **(0 pts)**
-     - B. One person's English language skill is seen as interchangeable **(3 pts)**
-     - C. The study of Postcolonialism studies power dominance between countries **(5 pts - Highest Inference)**
+     - **A:** The IELTS exam is in the expensive side **(0 pts - Distractor)**  
+     - **B:** One person's English language skill is seen as interchangeable **(3 pts - Partial Reading)**  
+     - **C:** The study of Postcolonialism studies power dominance between countries **(5 pts - Highest Critical Inference)**  
   4. *Gastrodiplomacy presents itself in food similarities. For example, Mexican elotes and Indonesian jagung susu keju share the same concept of shredded corn with cheese as dessert.*  
-     - A. Gastrodiplomacy connects countries through culinary knowledge **(5 pts - Highest Inference)**
-     - B. Mexican foods share similar culture to Indonesian foods **(0 pts)**
-     - C. Gastrodiplomacy means food similarities **(0 pts)**
-- **Clear Condition:** Final Key unlocked. Door unlocks. Loading screen transitions to Test Results Page.
+     - **A:** Gastrodiplomacy connects countries through culinary knowledge **(5 pts - Highest Critical Inference)**  
+     - **B:** Mexican foods share similar culture to Indonesian foods **(0 pts - Distractor)**  
+     - **C:** Gastrodiplomacy means food similarities **(0 pts - Distractor)**  
+- **Clear Condition:** Final Key unlocked (20 pts). Cumulative score ($0 \dots 100$) calculated. Loading screen transitions to Test Results Page.
 
 ---
 
@@ -356,12 +363,12 @@ All figures are presented in USD ($).
 
 Developed by six students from **Mulawarman University**, Samarinda, East Kalimantan, Indonesia:
 
-1. **Syahna Maryam** — *Project Manager 1, Scriptwriter, UX Writer, Character Designer & Researcher* (Senior-year, English Literature).
-2. **Chairil Aminullah** — *Project Manager 2, Creative Director, UI/UX Designer & Marketer* (Junior-year, English Literature).
-3. **Syema Chaelint Joshepine Karundaeng** — *Illustrator, Animator, Motion Graphic Artist & Visual Artist* (Junior-year, International Relations).
-4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Postgraduate, Computer Science).
-5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Penultimate, Computer Science).
-6. **Muhammad Fahrezy Al Faris** — *Researcher, Pitch Presenter & Report Writer* (Senior-year, International Relations).
+1. **Syahna Maryam** — *Project Manager 1 & Lead UX Writer* (Senior-year, English Literature) — Orchestrates overall project scope, character backstories, and stage scripts. Researched the pedagogical alignment with CEFR and PISA standards to build Miller, Jen, Aidan, and Lizzy.
+2. **Chairil Aminullah** — *Project Manager 2 & Creative Director* (Junior-year, English Literature) — Spearheads brand aesthetics, Figma interactive UI/UX architecture, visual style guidelines, and the regional outreach campaign across East Kalimantan schools.
+3. **Syema Chaelint Joshepine Karundaeng** — *Lead Illustrator & Visual Artist* (Junior-year, International Relations) — Hand-illustrated the iconic character designs, stage backgrounds, and original sketch assets used in Stage 1 to challenge AI-generated decoys.
+4. **Fazri Rahmad Nor Gading** — *Lead Software Engineer & Full-Stack Developer* (Postgraduate, Computer Science) — Architected and built the entire web game application end-to-end (SPA framework, all 4 game stages, UI/UX implementation, cloud & local leaderboard synchronization, timer engine, animations, and deployment pipeline).
+5. **Muhammad Farrel Sirah** — *Game Logic & Project Planner* (Penultimate, Computer Science) — Formulated foundational game logic mechanisms, stage scoring rules, and structured the initial coding project planning roadmap.
+6. **Muhammad Fahrezy Al Faris** — *Lead Researcher & Pitch Presenter* (Senior-year, International Relations) — Authored academic syntheses connecting MilleRace to the UNESCO MIL 2024 Framework and global literacy metrics, leading strategic competition pitches and research reports.
 
 ---
 
@@ -376,4 +383,4 @@ Developed by six students from **Mulawarman University**, Samarinda, East Kalima
 
 ---
 
-*End of Product Requirement Document.*
+[⬅️ 3-Year Strategic Roadmap](roadmap.md) | [Next: Developer Guide ➔](developer-guide.md)
