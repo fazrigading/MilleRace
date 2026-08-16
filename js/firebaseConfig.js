@@ -2,9 +2,8 @@
    MilleRace - Firebase Configuration & Initialization
    ========================================================================== */
 
-// Firebase Web App Configuration for MilleRace (UNESCO Hackathon 2026)
-// Injected by CI/CD (Vercel) at build-time or overridden locally via window.__FIREBASE_CONFIG__
-const FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
+// Base Firebase config (injected by Vercel build or falling back to local/overrides)
+const DEFAULT_FIREBASE_CONFIG = {
   apiKey: "__FIREBASE_API_KEY__",
   authDomain: "millerace-unesco2026.firebaseapp.com",
   projectId: "millerace-unesco2026",
@@ -13,11 +12,24 @@ const FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
   appId: "1:864802505502:web:7099e4e2ee4be734193f0f"
 };
 
+const getFirebaseConfig = () => {
+  return window.__FIREBASE_CONFIG__ || DEFAULT_FIREBASE_CONFIG;
+};
+
+// Dynamic proxy so FIREBASE_CONFIG always reads window.__FIREBASE_CONFIG__ if available
+const FIREBASE_CONFIG = new Proxy(DEFAULT_FIREBASE_CONFIG, {
+  get(target, prop) {
+    const active = getFirebaseConfig();
+    return active[prop];
+  }
+});
+
 // Check if credentials have been set (not default placeholders)
 const isFirebaseConfigured = () => {
+  const config = getFirebaseConfig();
   return !!(
-    FIREBASE_CONFIG.apiKey && 
-    !FIREBASE_CONFIG.apiKey.includes("YOUR_API_KEY") && 
-    !FIREBASE_CONFIG.apiKey.includes("__FIREBASE_API_KEY__")
+    config.apiKey && 
+    !config.apiKey.includes("YOUR_API_KEY") && 
+    !config.apiKey.includes("__FIREBASE_API_KEY__")
   );
 };

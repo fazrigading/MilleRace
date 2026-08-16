@@ -1745,7 +1745,12 @@
   <script src="js/state.js?v=1.1"></script>
   <script src="js/timer.js?v=1.1"></script>
   <script>
-    if (['localhost', '127.0.0.1'].includes(window.location.hostname) || window.location.protocol === 'file:') {
+    const isLocalEnv = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].includes(window.location.hostname)
+      || window.location.hostname.endsWith('.local')
+      || window.location.hostname.startsWith('192.168.')
+      || window.location.hostname.startsWith('10.')
+      || window.location.protocol === 'file:';
+    if (isLocalEnv) {
       document.write('<script src="js/firebaseConfig.local.js"><\/script>');
     }
   </script>
