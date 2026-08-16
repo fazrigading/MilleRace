@@ -160,10 +160,7 @@ Open the built-in developer debug panel at any time by pressing `Ctrl + Shift + 
 This allows you to jump to any stage, pause the countdown timer, skip narrative dialogues, or simulate archetype scores.
 
 ### 6. Automated Testing
-Run the automated Playwright test suite wired to Google Chrome:
-```bash
-npm test
-```
+Run the automated Playwright test suite wired to Google Chrome: `npm test`.
 Check [docs/testing.md](docs/testing.md) for full testing workflows and diagnostics.
 
 ---

@@ -25,41 +25,72 @@ const LeaderboardService = {
     }
   },
 
-  // Fetch top leaderboard scores (Cloud first, localStorage fallback)
+  // Fetch top leaderboard scores (Cloud first with graceful index fallback, localStorage fallback)
   async fetchTopScores(ageFilter = 'all') {
     if (this.isOnline && this.db) {
       try {
         const { collection, getDocs, query, orderBy, limit, where } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
-        let q;
-        if (ageFilter !== 'all') {
-          q = query(
+        let snapshot;
+
+        try {
+          // Primary query (composite index optimized)
+          let q;
+          if (ageFilter !== 'all') {
+            q = query(
+              collection(this.db, "leaderboard"),
+              where("ageGroup", "==", ageFilter),
+              orderBy("score", "desc"),
+              orderBy("timestamp", "asc"),
+              limit(50)
+            );
+          } else {
+            q = query(
+              collection(this.db, "leaderboard"),
+              orderBy("score", "desc"),
+              orderBy("timestamp", "asc"),
+              limit(50)
+            );
+          }
+          snapshot = await getDocs(q);
+        } catch (indexErr) {
+          console.warn("⚠️ Composite index query pending or unavailable, falling back to simple query:", indexErr);
+          // Fallback query: single-field order (always works out of the box without manual indexes)
+          const fallbackQ = query(
             collection(this.db, "leaderboard"),
-            where("ageGroup", "==", ageFilter),
             orderBy("score", "desc"),
-            orderBy("timestamp", "asc"),
-            limit(50)
+            limit(100)
           );
-        } else {
-          q = query(
-            collection(this.db, "leaderboard"),
-            orderBy("score", "desc"),
-            orderBy("timestamp", "asc"),
-            limit(50)
-          );
+          snapshot = await getDocs(fallbackQ);
         }
 
-        const snapshot = await getDocs(q);
-        const cloudEntries = snapshot.docs.map((doc, idx) => {
-          const data = doc.data();
+        let rawDocs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        // If simple fallback query was used, apply in-memory filter & secondary sort
+        if (ageFilter !== 'all') {
+          rawDocs = rawDocs.filter(d => d.ageGroup === ageFilter);
+        }
+
+        // Sort by score DESC, then timestamp ASC
+        rawDocs.sort((a, b) => {
+          const scoreDiff = (Number(b.score) || 0) - (Number(a.score) || 0);
+          if (scoreDiff !== 0) return scoreDiff;
+          const aTime = a.timestamp?.toMillis ? a.timestamp.toMillis() : (a.timestamp || 0);
+          const bTime = b.timestamp?.toMillis ? b.timestamp.toMillis() : (b.timestamp || 0);
+          return aTime - bTime;
+        });
+
+        const cloudEntries = rawDocs.slice(0, 50).map((data, idx) => {
           return {
-            id: doc.id,
+            id: data.id,
             rank: idx + 1,
             name: data.name || 'Anonymous',
             ageGroup: data.ageGroup || '13-17',
             score: Number(data.score) || 0,
             time: data.time || 'Completed',
             character: data.character || 'Miller',
-            date: data.timestamp ? data.timestamp.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently'
+            date: data.timestamp && typeof data.timestamp.toDate === 'function' 
+              ? data.timestamp.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) 
+              : 'Recently'
           };
         });
 
@@ -83,12 +114,27 @@ const LeaderboardService = {
     if (this.isOnline && this.db) {
       try {
         const { collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+        
+        const VALID_AGE_GROUPS = ['6-12', '13-17', '18+'];
+        const VALID_CHARACTERS = ['Miller', 'Jen', 'Aidan', 'Lizzy'];
+
+        const rawName = (entry.nickname || '').trim().slice(0, 25);
+        const safeName = rawName.length > 0 ? rawName : 'Racer';
+        const safeScore = Math.max(0, Math.min(100, Math.round(Number(entry.totalScore) || 0)));
+        const safeAgeGroup = VALID_AGE_GROUPS.includes(entry.ageGroup) ? entry.ageGroup : '13-17';
+        
+        let safeCharacter = 'Miller';
+        if (entry.characterName) {
+          const matched = VALID_CHARACTERS.find(c => c.toLowerCase() === entry.characterName.toLowerCase());
+          if (matched) safeCharacter = matched;
+        }
+
         await addDoc(collection(this.db, "leaderboard"), {
-          name: (entry.nickname || 'Racer').trim().slice(0, 25),
-          ageGroup: entry.ageGroup || '13-17',
-          score: Number(entry.totalScore) || 0,
+          name: safeName,
+          ageGroup: safeAgeGroup,
+          score: safeScore,
           time: entry.timeFormatted ? `${entry.timeFormatted} remaining` : 'Completed',
-          character: entry.characterName || 'Miller',
+          character: safeCharacter,
           timestamp: serverTimestamp()
         });
         console.log("✅ Score synced to Firebase Firestore!");

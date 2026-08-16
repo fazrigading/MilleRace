@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Media & Information Literacy Web Game",
   "scripts": {
+    "build": "node scripts/inject-env.js",
     "start": "node scripts/server.js",
     "test": "playwright test",
     "test:chrome": "playwright test --project=\"Google Chrome\"",

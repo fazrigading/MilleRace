@@ -2,7 +2,8 @@
    MilleRace - Firebase Configuration & Initialization
    ========================================================================== */
 
-// Placeholders for Git repository (Injected by CI/CD or overridden by local config)
+// Firebase Web App Configuration for MilleRace (UNESCO Hackathon 2026)
+// Injected by CI/CD (Vercel) at build-time or overridden locally via window.__FIREBASE_CONFIG__
 const FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
   apiKey: "__FIREBASE_API_KEY__",
   authDomain: "millerace-unesco2026.firebaseapp.com",
@@ -14,7 +15,9 @@ const FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
 
 // Check if credentials have been set (not default placeholders)
 const isFirebaseConfigured = () => {
-  return FIREBASE_CONFIG.apiKey && 
-         !FIREBASE_CONFIG.apiKey.includes("YOUR_API_KEY") && 
-         !FIREBASE_CONFIG.apiKey.includes("__FIREBASE_API_KEY__");
+  return !!(
+    FIREBASE_CONFIG.apiKey && 
+    !FIREBASE_CONFIG.apiKey.includes("YOUR_API_KEY") && 
+    !FIREBASE_CONFIG.apiKey.includes("__FIREBASE_API_KEY__")
+  );
 };

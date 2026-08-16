@@ -306,16 +306,17 @@ function escapeHTML(str) {
 
 ## 8. Phase 5: Step-by-Step Execution Runbook
 
-### ⚙️ Step 1: Connect Vercel Project
+### ⚙️ Step 1: Connect Vercel Project & Environment Variables
 1. Log in to [Vercel Dashboard](https://vercel.com).
 2. Click **Add New...** -> **Project**.
 3. Import the GitHub repository: `fazrigading/MilleRace`.
-4. Configure Project (Root: `./`, Build: none).
-5. Click **Deploy**. Production URL assigned: `https://millerace.vercel.app`.
+4. Under **Environment Variables**, add:
+   - `FIREBASE_API_KEY`: Your Firebase Web App API key (e.g. `AIzaSy...`).
+5. Click **Deploy**. Vercel will automatically run `npm run build` (`node scripts/inject-env.js`) to inject the key securely into production without committing it to GitHub.
 
 ### ⚙️ Step 2: Configure Firebase Project & Credentials
 1. Create a Firebase Web Project as detailed in Section 4.1.
-2. Verify credentials in `js/firebaseConfig.js`.
+2. For local testing, store credentials in `js/firebaseConfig.local.js` (gitignored).
 3. Deploy Firestore Security Rules via Firebase Console -> Firestore -> Rules.
 
 ---
