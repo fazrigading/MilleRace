@@ -752,20 +752,25 @@
   gap: 14px;
 }
 
+.footer-brand .logo-square,
 .footer-brand .logo-circle {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background: #FFFFFF;
+  border-radius: 10px;
+  background: var(--color-dark-bg);
+  border: 1.5px solid var(--color-yellow);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
+.footer-brand .logo-square img,
 .footer-brand .logo-circle img {
-  width: 28px;
-  height: 28px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .footer-brand .logo-brand-text {

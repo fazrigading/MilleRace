@@ -41,7 +41,7 @@ graph TD
   - Nighttime bedtime stories and comic book reading.
   - Solving picture crosswords, riddle games, and clue hunts.
 * **Curated Book Recommendations:**
-  1. *Charlotte’s Web* by E. B. White ([Internet Archive](https://archive.org/details/CharlottesWeb))
+  1. *Charlotte's Web* by E. B. White ([Internet Archive](https://archive.org/details/CharlottesWeb))
   2. *Keluarga Cemara* by Arswendo Atmowiloto ([Perpustakaan Nasional Digital](https://kios-perpustakaan.jakarta.go.id/catalogue/detail/99218))
 * **Critical Thinking Resources:**
   - [University of Sheffield: Approaches to Thinking Critically](https://sheffield.ac.uk/study-skills/research/approaches/thinking-critically)
@@ -84,7 +84,7 @@ graph TD
 ### 4. Lizzy — *The Literary Wiz*
 * **Score Band:** 76 – 100 points
 * **PISA / Cambridge Rating:** Level 6 (CEFR C1)
-* **Persona:** *"Lizzy is the wiz! She reads like there’s no tomorrow. She reads charts and complex data structures like an open book, transforming literature into art while actively defending against deception."*
+* **Persona:** *"Lizzy is the wiz! She reads like there's no tomorrow. She reads charts and complex data structures like an open book, transforming literature into art while actively defending against deception."*
 * **Recommended Home Activities:**
   - Creating thematic art or essays inspired by literary works.
   - Participating in community book discussions and mentoring junior readers.

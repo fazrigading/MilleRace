@@ -18,10 +18,10 @@ That is why thinking critically is important!
 
 ### Final Result Profile & Recommendations (Score: 1–25 Points)
 * **Proficiency Rating:** PISA Reading Level 1–2 | Cambridge Reading A1–A2
-* **Persona:** Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page at a time. Comic books suit his personality, and so do fun facts!
+* **Persona:** Curious and ready for new chapters! Miller has a long way ahead to go. He'd love to read more, one page at a time. Comic books suit his personality, and so do fun facts!
 * **Recommended Activities:** Reading nighttime bedtime stories and doing crosswords.
 * **Curated Book Recommendations:**
-  1. *Charlotte’s Web* by E. B. White ([Internet Archive](https://archive.org/details/CharlottesWeb))
+  1. *Charlotte's Web* by E. B. White ([Internet Archive](https://archive.org/details/CharlottesWeb))
   2. *Keluarga Cemara* by Arswendo Atmowiloto ([Perpustakaan Nasional Digital](https://kios-perpustakaan.jakarta.go.id/catalogue/detail/99218))
 
 ---
@@ -73,7 +73,7 @@ He sees citations and timelines!
 ## 🎨 Lizzy
 
 ```
-Lizzy’s lies set on lies!
+Lizzy's lies set on lies!
 She reads graphs like the Egyptian pyramid.
 Statistics got nothing on her!
 She makes art works from what she reads!
@@ -85,7 +85,7 @@ She makes art works from what she reads!
 
 ### Final Result Profile & Recommendations (Score: 76–100 Points)
 * **Proficiency Rating:** PISA Reading Level 6 | Cambridge Reading C1
-* **Persona:** Lizzy is the wiz! She reads like there’s no tomorrow. She’s always all guarded! The library and bookstores need her. She makes artworks from what she reads!
+* **Persona:** Lizzy is the wiz! She reads like there's no tomorrow. She's always all guarded! The library and bookstores need her. She makes artworks from what she reads!
 * **Recommended Activities:** Creating literature-inspired artwork, data visualization critique, leading community reading discussions.
 * **Curated Book Recommendations:**
   1. *The Strange Case of Dr Jekyll and Mr Hyde* by Robert Louis Stevenson ([Project Gutenberg](https://www.gutenberg.org/files/43/43-h/43-h.htm))

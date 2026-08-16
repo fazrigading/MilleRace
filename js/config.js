@@ -6,7 +6,7 @@ const GAME_CONFIG = {
   // STAGE 1: Miller's Gallery (Visual AIAS Test)
   STAGE_1: {
     character: 'Miller',
-    avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
+    avatar: 'assets/images/characters/stills/Miller-square.png',
     bgImage: 'assets/images/backgrounds/Level 1.png',
     introSentences: [
       "Each room in this building is interlocked.",
@@ -62,7 +62,7 @@ const GAME_CONFIG = {
   // STAGE 2: Jen's Door Passwords (Literary Knowledge)
   STAGE_2: {
     character: 'Jen',
-    avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
+    avatar: 'assets/images/characters/stills/Jen-square.png',
     bgImage: 'assets/images/backgrounds/Level 2.png',
     introSentences: [
       "There are too many doors to unlock!",
@@ -87,7 +87,7 @@ const GAME_CONFIG = {
   // STAGE 3: Aidan's Floor of Letters (Textual AIAS Test)
   STAGE_3: {
     character: 'Aidan',
-    avatar: 'assets/images/characters/stills/Miller-no-bg-square.png',
+    avatar: 'assets/images/characters/stills/Aidan-square.png',
     bgImage: null,
     introSentences: [
       "Ah, if this isn't the key to success...",
@@ -157,7 +157,7 @@ const GAME_CONFIG = {
   // STAGE 4: Lizzy's Room of Colors (PISA Reading & Inferential Comprehension)
   STAGE_4: {
     character: 'Lizzy',
-    avatar: 'assets/images/characters/stills/Jen-no-bg-square.png',
+    avatar: 'assets/images/characters/stills/Lizzy-square.png',
     bgImage: null,
     introSentences: [
       "This place is bursting its colors!",
@@ -207,12 +207,12 @@ const GAME_CONFIG = {
   CHARACTERS: {
     miller: {
       name: "Miller",
-      scoreRange: "1–25 Points",
-      pisaLevel: "PISA Reading Level 1–2",
-      cefrLevel: "Cambridge Reading A1–A2",
-      avatar: "assets/images/characters/stills/Miller-no-bg.png",
+      scoreRange: "1-25 Points",
+      pisaLevel: "PISA Reading Level 1-2",
+      cefrLevel: "Cambridge Reading A1-A2",
+      avatar: "assets/images/characters/stills/Miller.png",
       quote: "Miller loves finding clues for his adventures! But he often gets lost without his keys. That is why thinking critically is important!",
-      bio: "Curious and ready for new chapters! Miller has a long way ahead to go. He’d love to read more, one page at a time. Comic books suit his personality, and so do fun facts!",
+      bio: "Curious and ready for new chapters! Miller has a long way ahead to go. He'd love to read more, one page at a time. Comic books suit his personality, and so do fun facts!",
       activities: ["Reading nighttime stories", "Doing crosswords & word searches", "Reading comic books & graphic novels", "Exploring fun facts from encyclopedias"],
       books: [
         { title: "Charlotte's Web", author: "E. B. White", link: "https://archive.org/details/CharlottesWeb", note: "Internet Archive" },
@@ -229,10 +229,10 @@ const GAME_CONFIG = {
     },
     jen: {
       name: "Jen",
-      scoreRange: "26–50 Points",
-      pisaLevel: "PISA Reading Level 3–4",
+      scoreRange: "26-50 Points",
+      pisaLevel: "PISA Reading Level 3-4",
       cefrLevel: "Cambridge Reading B1",
-      avatar: "assets/images/characters/stills/Jen-no-bg.png",
+      avatar: "assets/images/characters/stills/Jen.png",
       quote: "Jen knows everything! But she never really knows what to trust. She always checks… factually!",
       bio: "Witty and energetic, Jen is exploring the world! She has imaginary friends and places to be! Short stories and fairy tales are where she goes! She is inspired by real-life stories and writing in her diary!",
       activities: ["Writing in personal diary / journals", "Reading short stories & fairy tales", "Online fact-checking challenges", "Comparing multiple news sources"],
@@ -251,10 +251,10 @@ const GAME_CONFIG = {
     },
     aidan: {
       name: "Aidan",
-      scoreRange: "51–75 Points",
+      scoreRange: "51-75 Points",
       pisaLevel: "PISA Reading Level 5",
       cefrLevel: "Cambridge Reading B2",
-      avatar: "assets/images/characters/stills/Miller-no-bg.png",
+      avatar: "assets/images/characters/stills/Aidan.png",
       quote: "Aidan loves browsing the internet! But he only accepts legit sources. He sees citations and timelines!",
       bio: "Adventurous and resilient, Aidan is on the moves! Books are his window to the world. He reads articles about his favorite characters. He loves reading series and watching films from it!",
       activities: ["Reading book series & novels", "Comparing book-to-film adaptations", "Evaluating bibliography & citations", "Investigating publication timelines"],
@@ -273,12 +273,12 @@ const GAME_CONFIG = {
     },
     lizzy: {
       name: "Lizzy",
-      scoreRange: "76–100 Points",
+      scoreRange: "76-100 Points",
       pisaLevel: "PISA Reading Level 6",
       cefrLevel: "Cambridge Reading C1",
-      avatar: "assets/images/characters/stills/Jen-no-bg.png",
-      quote: "Lizzy’s lies set on lies! She reads graphs like the Egyptian pyramid. Statistics got nothing on her!",
-      bio: "Lizzy is the wiz! She reads like there’s no tomorrow. She’s always all guarded! The library and book stores need her. She makes art works from what she reads!",
+      avatar: "assets/images/characters/stills/Lizzy.png",
+      quote: "Lizzy's lies set on lies! She reads graphs like the Egyptian pyramid. Statistics got nothing on her!",
+      bio: "Lizzy is the wiz! She reads like there's no tomorrow. She's always all guarded! The library and book stores need her. She makes art works from what she reads!",
       activities: ["Creating literature-inspired artwork", "Analyzing infographics & complex data", "Leading book discussions & clubs", "Decoding scientific & statistical claims"],
       books: [
         { title: "The Strange Case of Dr Jekyll and Mr Hyde", author: "Robert Louis Stevenson", link: "https://www.gutenberg.org/files/43/43-h/43-h.htm", note: "Project Gutenberg" },

@@ -454,6 +454,39 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
       expect(await stageBtn.count()).toBe(0);
     }
   });
+
+  test('Our Team: should have Contact Us mailto link inside Collaborate container', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined');
+    await page.evaluate(() => UI.showScreen('screen-team'));
+
+    const teamScreen = page.locator('#screen-team');
+    await expect(teamScreen).toBeVisible();
+
+    const contactBtn = teamScreen.locator('.btn-contact-team');
+    await expect(contactBtn).toBeVisible();
+    await expect(contactBtn).toHaveText(/Contact Us/i);
+    await expect(contactBtn).toHaveAttribute('href', /^mailto:/);
+    await expect(contactBtn).toHaveAttribute('target', '_blank');
+  });
+
+  test('About Us: should render 5 AIAS rubric cards and 4-Stage Relay journey cards', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined');
+    await page.evaluate(() => UI.showScreen('screen-about'));
+
+    const aboutScreen = page.locator('#screen-about');
+    await expect(aboutScreen).toBeVisible();
+
+    // 5 AIAS parameter cards
+    const aiasCards = aboutScreen.locator('.aias-params-grid .param-card');
+    expect(await aiasCards.count()).toBe(5);
+
+    // 4 Stage Relay journey cards
+    const stageCards = aboutScreen.locator('.stages-flow-grid .stage-step-card');
+    expect(await stageCards.count()).toBe(4);
+  });
 });
+
 
 

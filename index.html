@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MilleRace - Media & Information Literacy Web Game</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/icons/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MilleRace" />
+  <link rel="manifest" href="/assets/images/icons/site.webmanifest" />
+
   <!-- CSS Design Tokens & Layouts -->
   <link rel="stylesheet" href="css/design-tokens.css?v=1.1">
   <link rel="stylesheet" href="css/main.css?v=1.1">
@@ -51,8 +59,8 @@
         <!-- Top Nav Bar -->
         <div class="landing-top-bar">
           <a class="logo-link" data-nav="screen-landing" title="MilleRace Home">
-            <div class="logo-circle">
-              <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+            <div class="logo-square">
+              <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
             </div>
             <span class="logo-brand-text">Mille<span>Race</span></span>
           </a>
@@ -67,8 +75,8 @@
 
         <!-- Hero Content -->
         <div class="hero-content">
-          <h1 class="hero-title">ESCAPE THE MAZE AI<br>WOVE FOR YOU</h1>
-          <p class="hero-subtitle">MilleRace: race four stages, outread the machine, find your match</p>
+          <h1 class="hero-title">Escape the Maze AI<br>Wove for You</h1>
+          <p class="hero-subtitle">Race four stages, outread the machine, find your match.</p>
         </div>
 
         <!-- Start the Test Button (SVG Asset with Ellipse Hover) -->
@@ -159,19 +167,23 @@
             </div>
             <!-- Slide 2: Stage 2 -->
             <div class="slideshow-slide" data-slide="1">
-              <img src="assets/images/ui/slideshow/stage-2-literary-reconstruction-gameplay.png" alt="Stage 2 Literary Reconstruction Gameplay">
+              <img src="assets/images/ui/slideshow/stage-2-literary-reconstruction-gameplay.png"
+                alt="Stage 2 Literary Reconstruction Gameplay">
             </div>
             <!-- Slide 3: Stage 3 -->
             <div class="slideshow-slide" data-slide="2">
-              <img src="assets/images/ui/slideshow/stage-3-textual-authenticity-gameplay.png" alt="Stage 3 Textual AIAS Gameplay">
+              <img src="assets/images/ui/slideshow/stage-3-textual-authenticity-gameplay.png"
+                alt="Stage 3 Textual AIAS Gameplay">
             </div>
             <!-- Slide 4: Stage 4 -->
             <div class="slideshow-slide" data-slide="3">
-              <img src="assets/images/ui/slideshow/stage-4-pisa-comprehension-gameplay.png" alt="Stage 4 PISA Comprehension Gameplay">
+              <img src="assets/images/ui/slideshow/stage-4-pisa-comprehension-gameplay.png"
+                alt="Stage 4 PISA Comprehension Gameplay">
             </div>
             <!-- Slide 5: Final Result -->
             <div class="slideshow-slide" data-slide="4">
-              <img src="assets/images/ui/slideshow/final-result-archetype-match.png" alt="Final Result Analytical Profile">
+              <img src="assets/images/ui/slideshow/final-result-archetype-match.png"
+                alt="Final Result Analytical Profile">
             </div>
           </div>
 
@@ -242,7 +254,7 @@
               </p>
             </div>
             <div class="char-door-wrapper">
-              <img src="assets/images/ui/landing/Door-Closed.png" class="char-door-img" alt="Aidan Door">
+              <img src="assets/images/characters/stills/Aidan.png" class="char-still-img" alt="Aidan Portrait">
             </div>
           </div>
 
@@ -251,13 +263,13 @@
             <div class="char-intro-info">
               <h3 class="char-intro-name">LIZZY</h3>
               <p class="char-intro-quote">
-                Lizzy’s lies set on lies!<br>
+                Lizzy's lies set on lies!<br>
                 She reads graphs like the Egyptian pyramid.<br>
                 Statistics got nothing on her!
               </p>
             </div>
             <div class="char-door-wrapper">
-              <img src="assets/images/ui/landing/Door-Closed.png" class="char-door-img" alt="Lizzy Door">
+              <img src="assets/images/characters/stills/Lizzy.png" class="char-still-img" alt="Lizzy Portrait">
             </div>
           </div>
 
@@ -291,8 +303,8 @@
         <div class="landing-footer-container">
           <div class="footer-top">
             <div class="footer-brand">
-              <div class="logo-circle">
-                <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+              <div class="logo-square">
+                <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
               </div>
               <span class="logo-brand-text">Mille<span>Race</span></span>
             </div>
@@ -324,8 +336,8 @@
     <section id="screen-about" class="screen content-page">
       <header class="page-header-nav">
         <a class="logo-link" data-nav="screen-landing" title="Back to Home">
-          <div class="logo-circle">
-            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          <div class="logo-square">
+            <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
           </div>
           <span class="logo-brand-text">Mille<span>Race</span></span>
         </a>
@@ -379,82 +391,168 @@
         </div>
 
         <!-- Framework Parameters Grid -->
-        <h2 class="framework-section-title">The Artificial Intelligence Assessment Scale (AIAS)</h2>
+        <div class="framework-header-group">
+          <h2 class="framework-section-title">The Artificial Intelligence Assessment Scale (AIAS)</h2>
+          <p class="framework-subtitle">A standardized diagnostic framework developed to distinguish human
+            intentionality from generative algorithmic outputs.</p>
+        </div>
+
         <div class="aias-params-grid">
+          <!-- 01. Symmetry -->
           <div class="param-card">
-            <div class="param-icon">⚖️</div>
-            <div class="param-name">Symmetry</div>
-            <div class="param-desc">Evaluating synthetic geometric perfection versus human balance and natural
-              asymmetry.</div>
-          </div>
-          <div class="param-card">
-            <div class="param-icon">🎭</div>
-            <div class="param-name">Expressionalism</div>
-            <div class="param-desc">Measuring genuine emotional nuance versus superficial prompt replication.</div>
-          </div>
-          <div class="param-card">
-            <div class="param-icon">🔍</div>
-            <div class="param-name">Distinctions</div>
-            <div class="param-desc">Identifying unique human stylistic strokes and quirks vs repetitive model artifacts.
+            <div class="param-card-header">
+              <span class="param-number">01</span>
+              <div class="param-icon" aria-hidden="true">⚖️</div>
             </div>
+            <h3 class="param-name">Symmetry</h3>
+            <p class="param-desc">
+              Evaluating unnatural geometric perfection and mirror symmetries versus genuine human balance and organic
+              asymmetry.
+            </p>
           </div>
+
+          <!-- 02. Expressionalism -->
           <div class="param-card">
-            <div class="param-icon">📐</div>
-            <div class="param-name">Proportionality</div>
-            <div class="param-desc">Spotting anatomical anomalies, unnatural tangents, and spatial logic errors in
-              artwork.</div>
-          </div>
-          <div class="param-card">
-            <div class="param-icon">💡</div>
-            <div class="param-name">Memorability</div>
-            <div class="param-desc">Distinguishing original conceptual storytelling from generic vocabulary templates.
+            <div class="param-card-header">
+              <span class="param-number">02</span>
+              <div class="param-icon" aria-hidden="true">🎭</div>
             </div>
+            <h3 class="param-name">Expressionalism</h3>
+            <p class="param-desc">
+              Measuring genuine emotive resonance, subtext, and vulnerability versus superficial prompt mimicry and
+              aesthetic sheen.
+            </p>
+          </div>
+
+          <!-- 03. Distinctions -->
+          <div class="param-card">
+            <div class="param-card-header">
+              <span class="param-number">03</span>
+              <div class="param-icon" aria-hidden="true">🔍</div>
+            </div>
+            <h3 class="param-name">Distinctions</h3>
+            <p class="param-desc">
+              Identifying unique human stylistic strokes, quirks, and purposeful flaws vs. latent-space blending
+              artifacts.
+            </p>
+          </div>
+
+          <!-- 04. Proportionality -->
+          <div class="param-card">
+            <div class="param-card-header">
+              <span class="param-number">04</span>
+              <div class="param-icon" aria-hidden="true">📐</div>
+            </div>
+            <h3 class="param-name">Proportionality</h3>
+            <p class="param-desc">
+              Spotting anatomical anomalies, impossible physical geometry, tangents, and spatial logic failures in
+              synthesized media.
+            </p>
+          </div>
+
+          <!-- 05. Memorability -->
+          <div class="param-card">
+            <div class="param-card-header">
+              <span class="param-number">05</span>
+              <div class="param-icon" aria-hidden="true">💡</div>
+            </div>
+            <h3 class="param-name">Memorability</h3>
+            <p class="param-desc">
+              Distinguishing original authorial voice and profound conceptual storytelling from repetitive, generic
+              template outputs.
+            </p>
           </div>
         </div>
 
         <!-- Four Stages Overview -->
-        <h2 class="framework-section-title">The 4-Stage Relay Journey</h2>
+        <div class="framework-header-group">
+          <h2 class="framework-section-title">The 4-Stage Relay Journey</h2>
+          <p class="framework-subtitle">Four high-intensity stages designed around UNESCO MIL & PISA frameworks. Earn
+            all 4 keys before the timer runs out!</p>
+        </div>
+
         <div class="stages-flow-grid">
-          <div class="stage-step-card">
-            <div class="stage-step-header">
-              <span class="stage-step-char">Miller</span>
-              <span class="stage-step-tag">Stage 1</span>
+          <!-- Stage 1: Miller -->
+          <div class="stage-step-card stage-1-card">
+            <div class="stage-card-bg-avatar" aria-hidden="true"></div>
+            <span class="stage-card-watermark-number" aria-hidden="true">01</span>
+            <div class="stage-step-top">
+              <span class="stage-step-tag stage-tag-1">Miller</span>
             </div>
-            <div class="stage-step-desc">
-              <strong>Visual Art AIAS:</strong> Eliminate decoy images and identify genuine human paintings and original
-              sketches.
+            <div class="stage-step-body">
+              <h3 class="stage-step-char">Visual Gallery</h3>
+              <div class="stage-domain-chip">Visual Literacy & AIAS</div>
+              <p class="stage-step-desc">
+                Analyze 4 side-by-side artworks. Eliminate generative decoys by spotting anatomical artifacts and
+                geometric anomalies to rescue real human masterworks.
+              </p>
             </div>
-          </div>
-
-          <div class="stage-step-card">
-            <div class="stage-step-header">
-              <span class="stage-step-char">Jen</span>
-              <span class="stage-step-tag">Stage 2</span>
-            </div>
-            <div class="stage-step-desc">
-              <strong>Literary Passwords:</strong> Unlock door passwords by completing classic and contemporary world
-              literature titles.
-            </div>
-          </div>
-
-          <div class="stage-step-card">
-            <div class="stage-step-header">
-              <span class="stage-step-char">Aidan</span>
-              <span class="stage-step-tag">Stage 3</span>
-            </div>
-            <div class="stage-step-desc">
-              <strong>Textual AIAS:</strong> Evaluate text excerpts on a 4-point human-to-synthetic authenticity scale.
+            <div class="stage-step-footer">
+              <span class="stage-stat-pill">4 Decoy Targets</span>
+              <span class="stage-stat-pill">Gold Key</span>
             </div>
           </div>
 
-          <div class="stage-step-card">
-            <div class="stage-step-header">
-              <span class="stage-step-char">Lizzy</span>
-              <span class="stage-step-tag">Stage 4</span>
+          <!-- Stage 2: Jen -->
+          <div class="stage-step-card stage-2-card">
+            <div class="stage-card-bg-avatar" aria-hidden="true"></div>
+            <span class="stage-card-watermark-number" aria-hidden="true">02</span>
+            <div class="stage-step-top">
+              <span class="stage-step-tag stage-tag-2">Jen</span>
             </div>
-            <div class="stage-step-desc">
-              <strong>PISA Reading Scale:</strong> Test high-order inferential comprehension and multi-layered
-              analytical deduction.
+            <div class="stage-step-body">
+              <h3 class="stage-step-char">Literary Passwords</h3>
+              <div class="stage-domain-chip">Literary Access & Knowledge</div>
+              <p class="stage-step-desc">
+                Crack ten archival security doors by filling in missing keywords from world classics and modern
+                masterpieces to restore library access.
+              </p>
+            </div>
+            <div class="stage-step-footer">
+              <span class="stage-stat-pill">10 Door Passwords</span>
+              <span class="stage-stat-pill">Purple Key</span>
+            </div>
+          </div>
+
+          <!-- Stage 3: Aidan -->
+          <div class="stage-step-card stage-3-card">
+            <div class="stage-card-bg-avatar" aria-hidden="true"></div>
+            <span class="stage-card-watermark-number" aria-hidden="true">03</span>
+            <div class="stage-step-top">
+              <span class="stage-step-tag stage-tag-3">Aidan</span>
+            </div>
+            <div class="stage-step-body">
+              <h3 class="stage-step-char">Textual AIAS</h3>
+              <div class="stage-domain-chip">Critical Text Verification</div>
+              <p class="stage-step-desc">
+                Calibrate a 4-point rating bar evaluating text passages on synthetic vs. human authenticity, detecting
+                statistical clichés and fabricated content.
+              </p>
+            </div>
+            <div class="stage-step-footer">
+              <span class="stage-stat-pill">5 Text Excerpts</span>
+              <span class="stage-stat-pill">Violet Key</span>
+            </div>
+          </div>
+
+          <!-- Stage 4: Lizzy -->
+          <div class="stage-step-card stage-4-card">
+            <div class="stage-card-bg-avatar" aria-hidden="true"></div>
+            <span class="stage-card-watermark-number" aria-hidden="true">04</span>
+            <div class="stage-step-top">
+              <span class="stage-step-tag stage-tag-4">Lizzy</span>
+            </div>
+            <div class="stage-step-body">
+              <h3 class="stage-step-char">PISA Scale</h3>
+              <div class="stage-domain-chip">Higher-Order Deduction</div>
+              <p class="stage-step-desc">
+                Tackle complex PISA-calibrated reading comprehension items requiring deep multi-layered reasoning,
+                nuance extraction, and critical evaluation.
+              </p>
+            </div>
+            <div class="stage-step-footer">
+              <span class="stage-stat-pill">4 Analytical Items</span>
+              <span class="stage-stat-pill">Maze Exit Key</span>
             </div>
           </div>
         </div>
@@ -483,8 +581,8 @@
     <section id="screen-team" class="screen content-page">
       <header class="page-header-nav">
         <a class="logo-link" data-nav="screen-landing" title="Back to Home">
-          <div class="logo-circle">
-            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          <div class="logo-square">
+            <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
           </div>
           <span class="logo-brand-text">Mille<span>Race</span></span>
         </a>
@@ -595,7 +693,9 @@
             </div>
             <div class="team-role-badge">Lead Software Engineer & Full-Stack Developer</div>
             <p class="team-member-bio">
-              Architected and built the entire web game application end-to-end—engineering the SPA framework, all 4 interactive puzzle stages, UI/UX design implementation, cloud & local leaderboard synchronization, timer engine, animations, and deployment pipeline.
+              Architected and built the entire web game application end-to-end—engineering the SPA framework, all 4
+              interactive puzzle stages, UI/UX design implementation, cloud & local leaderboard synchronization, timer
+              engine, animations, and deployment pipeline.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">Full-Stack Architecture</span>
@@ -615,7 +715,8 @@
             </div>
             <div class="team-role-badge">Game Logic & Project Planner</div>
             <p class="team-member-bio">
-              Formulated the foundational game logic mechanisms, stage scoring rules, and structured the initial coding project planning roadmap.
+              Formulated the foundational game logic mechanisms, stage scoring rules, and structured the initial coding
+              project planning roadmap.
             </p>
             <div class="team-skills-chips">
               <span class="skill-chip">Game Logic</span>
@@ -654,7 +755,8 @@
             <p class="page-cta-desc">Interested in partnering with us for educational workshops or library integration?
             </p>
           </div>
-          <button class="btn-primary btn-trigger-reg">Join the Race 🏁</button>
+          <a href="mailto:millerace.unmul@gmail.com" target="_blank" rel="noopener noreferrer"
+            class="btn-primary btn-contact-team">Contact Us ✉️</a>
         </div>
 
         <!-- Back to Top Button -->
@@ -671,8 +773,8 @@
     <section id="screen-mission" class="screen content-page">
       <header class="page-header-nav">
         <a class="logo-link" data-nav="screen-landing" title="Back to Home">
-          <div class="logo-circle">
-            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          <div class="logo-square">
+            <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
           </div>
           <span class="logo-brand-text">Mille<span>Race</span></span>
         </a>
@@ -1123,8 +1225,8 @@
     <section id="screen-leaderboard" class="screen content-page">
       <header class="page-header-nav">
         <a class="logo-link" data-nav="screen-landing" title="Back to Home">
-          <div class="logo-circle">
-            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          <div class="logo-square">
+            <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
           </div>
           <span class="logo-brand-text">Mille<span>Race</span></span>
         </a>
@@ -1244,7 +1346,7 @@
       <!-- Lower Left Corner Anchor: Vector 22 (50% opaque) + Character Still (1.25x) -->
       <div class="stage-corner-character" id="stage1-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
-        <img src="assets/images/characters/stills/Miller-no-bg-square.png" class="corner-char-img" alt="Miller">
+        <img src="assets/images/characters/stills/Miller-square.png" class="corner-char-img" alt="Miller">
       </div>
 
       <div class="stage-container">
@@ -1276,7 +1378,7 @@
       <!-- Lower Left Corner Anchor -->
       <div class="stage-corner-character" id="stage2-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
-        <img src="assets/images/characters/stills/Jen-no-bg-square.png" class="corner-char-img" alt="Jen">
+        <img src="assets/images/characters/stills/Jen-square.png" class="corner-char-img" alt="Jen">
       </div>
 
       <div class="stage-container">
@@ -1309,7 +1411,7 @@
       <!-- Lower Left Corner Anchor (Visible during dialogue, disappears when answer options show) -->
       <div class="stage-corner-character" id="stage3-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
-        <img src="assets/images/characters/stills/Miller-no-bg-square.png" class="corner-char-img" alt="Aidan">
+        <img src="assets/images/characters/stills/Aidan-square.png" class="corner-char-img" alt="Aidan">
       </div>
 
       <div class="stage-container">
@@ -1327,10 +1429,10 @@
 
       <!-- Stage 3 Left & Right Corner Avatars (Anchored directly to bottom corners of the viewport) -->
       <div class="stage3-strip-avatar stage3-left-avatar">
-        <img src="assets/images/characters/stills/Miller-no-bg-square.png" alt="Aidan" class="strip-char-img">
+        <img src="assets/images/characters/stills/Aidan-square.png" alt="Aidan" class="strip-char-img">
       </div>
       <div class="stage3-strip-avatar stage3-right-avatar">
-        <img src="assets/images/characters/stills/Jen-no-bg-square.png" alt="Character" class="strip-char-img">
+        <img src="assets/images/characters/stills/Miller-square.png" alt="Character" class="strip-char-img">
       </div>
 
       <!-- Full-Width Bottom Purple Rating Strip -->
@@ -1359,7 +1461,7 @@
       <!-- Lower Left Corner Anchor -->
       <div class="stage-corner-character" id="stage4-corner-char">
         <img src="assets/images/ui/questions/level-1/Vector 22.svg" class="corner-vector-bg" alt="" aria-hidden="true">
-        <img src="assets/images/characters/stills/Jen-no-bg-square.png" class="corner-char-img" alt="Lizzy">
+        <img src="assets/images/characters/stills/Lizzy-square.png" class="corner-char-img" alt="Lizzy">
       </div>
 
       <div class="stage-container">
@@ -1392,12 +1494,12 @@
       </div>
     </section>
 
-    <!-- SCREEN 6: FINAL RESULT PAGE (Aligned with Figma Reference & Revised Specs) -->
+    <!-- SCREEN 6: FINAL RESULT PAGE -->
     <section id="screen-result" class="screen content-page">
       <header class="page-header-nav">
         <a class="logo-link" data-nav="screen-landing" title="Back to Home">
-          <div class="logo-circle">
-            <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+          <div class="logo-square">
+            <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
           </div>
           <span class="logo-brand-text">Mille<span>Race</span></span>
         </a>
@@ -1412,7 +1514,7 @@
 
       <div class="result-page-wrapper">
 
-        <!-- 2. Hero Showcase Section & 1/4 Purple Rectangle Anchored at Bottom -->
+        <!-- 2. Hero Showcase Section & Purple Rectangle Anchored at Bottom -->
         <div class="result-showcase-section">
           <!-- 65% Height Purple Rectangle anchored at the bottom -->
           <div class="result-purple-band"></div>
@@ -1461,8 +1563,8 @@
 
             <!-- Full Size Transparent Avatar Illustration (at least 50% taller than result card) -->
             <div class="result-character-hero">
-              <img id="result-char-img" class="result-hero-avatar-img"
-                src="assets/images/characters/stills/Miller-no-bg.png" alt="Matched Character">
+              <img id="result-char-img" class="result-hero-avatar-img" src="assets/images/characters/stills/Miller.png"
+                alt="Matched Character">
             </div>
 
           </div>
@@ -1565,8 +1667,8 @@
           <div class="landing-footer-container">
             <div class="footer-top">
               <div class="footer-brand">
-                <div class="logo-circle">
-                  <img src="assets/images/icons/Logo.svg" alt="MilleRace Logo">
+                <div class="logo-square">
+                  <img src="assets/images/icons/favicon.svg" alt="MilleRace Logo">
                 </div>
                 <span class="logo-brand-text">Mille<span>Race</span></span>
               </div>
@@ -1625,7 +1727,8 @@
     </div>
 
     <!-- SLIDESHOW IMAGE ENLARGE LIGHTBOX MODAL -->
-    <div id="slideshow-lightbox-modal" class="slideshow-lightbox-modal" aria-hidden="true" role="dialog" aria-label="Enlarged Image Preview">
+    <div id="slideshow-lightbox-modal" class="slideshow-lightbox-modal" aria-hidden="true" role="dialog"
+      aria-label="Enlarged Image Preview">
       <div class="lightbox-backdrop"></div>
       <div class="lightbox-content-wrap">
         <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close enlarged preview">✕</button>

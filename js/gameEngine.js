@@ -553,7 +553,7 @@ const GameEngine = {
     const charImg = document.getElementById('result-char-img');
     if (charImg) {
       charImg.src = charMatch.avatar;
-      charImg.onerror = () => { charImg.src = 'assets/images/characters/stills/Miller-no-bg.png'; };
+      charImg.onerror = () => { charImg.src = 'assets/images/characters/stills/Miller.png'; };
     }
 
     // 6. Misinformation Resources from character-profiles.txt

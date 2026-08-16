@@ -138,7 +138,7 @@ const UI = {
     if (!el) return;
     el.textContent = '';
     let i = 0;
-    
+
     if (this._dialogue.intervalId) {
       clearInterval(this._dialogue.intervalId);
       this._dialogue.intervalId = null;
@@ -148,7 +148,7 @@ const UI = {
     this._dialogue.fullText = text;
     this._dialogue.containerId = containerId;
     this._dialogue.onComplete = onComplete;
-    
+
     this._dialogue.intervalId = setInterval(() => {
       if (i < text.length) {
         el.textContent += text.charAt(i);
@@ -198,7 +198,7 @@ const UI = {
 
     if (titleEl) titleEl.textContent = title;
     if (bodyEl) bodyEl.innerHTML = bodyHtml;
-    
+
     if (confirmBtn) {
       confirmBtn.textContent = buttonText || 'Continue';
 
@@ -249,7 +249,7 @@ const UI = {
       const stored = localStorage.getItem('mille_leaderboard');
       let entries = stored ? JSON.parse(stored) : [];
       if (!Array.isArray(entries)) entries = [];
-      
+
       const newEntry = {
         name: (entry.nickname || 'Racer').trim().slice(0, 25),
         ageGroup: entry.ageGroup || '13-17',
@@ -312,8 +312,8 @@ const UI = {
     const container = document.getElementById('user-history-list');
     if (!container) return;
 
-    const history = (typeof LeaderboardService !== 'undefined' && LeaderboardService.getUserHistory) 
-      ? LeaderboardService.getUserHistory() 
+    const history = (typeof LeaderboardService !== 'undefined' && LeaderboardService.getUserHistory)
+      ? LeaderboardService.getUserHistory()
       : [];
 
     if (history.length === 0) {
@@ -495,7 +495,7 @@ const UI = {
           <!-- 2nd Place -->
           ${renderPodiumCard(second, 2, '2', 'second')}
           <!-- 1st Place -->
-          ${renderPodiumCard(first, 1, '👑 1', 'first')}
+          ${renderPodiumCard(first, 1, '1', 'first')}
           <!-- 3rd Place -->
           ${renderPodiumCard(third, 3, '3', 'third')}
         `;
