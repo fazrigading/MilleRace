@@ -2,12 +2,8 @@
 
 #screen-landing.landing-scrollable {
   background-color: #16141C;
-  background-image: 
-    radial-gradient(circle at 10% 30%, rgba(117, 39, 181, 0.4) 0%, rgba(22, 20, 28, 0) 60%),
-    radial-gradient(circle at 90% 20%, rgba(46, 158, 133, 0.25) 0%, rgba(22, 20, 28, 0) 50%),
-    radial-gradient(circle at 50% 85%, rgba(117, 39, 181, 0.2) 0%, rgba(22, 20, 28, 0) 60%);
-  background-repeat: no-repeat;
   overflow-y: auto;
+  overflow-x: hidden;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -17,17 +13,19 @@
   position: relative;
 }
 
-/* SECTION 1: HERO SECTION */
+/* SECTION 1: HERO SECTION - 100% SCREEN HEIGHT */
 .landing-hero-section {
   width: 100%;
   max-width: 1440px;
-  min-height: 660px;
-  padding: 34px 80px 40px 80px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 34px 80px 48px 80px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-sizing: border-box;
+  z-index: 2;
 }
 
 /* Top Nav Bar */
@@ -38,14 +36,15 @@
   align-items: center;
   z-index: 100;
   gap: 20px;
+  flex-shrink: 0;
 }
-
 
 /* Hero Content */
 .hero-content {
-  margin-top: 140px;
-  margin-bottom: 20px;
-  max-width: 650px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 30px 0;
+  max-width: 680px;
   z-index: 5;
   display: flex;
   flex-direction: column;
@@ -88,9 +87,10 @@
 
 .hero-start-btn {
   align-self: flex-end;
-  margin-top: 20px;
-  margin-bottom: 70px;
+  margin-top: 0;
+  margin-bottom: 24px;
   z-index: 10;
+  flex-shrink: 0;
 }
 
 .start-test-svg-btn .btn-svg-base {
@@ -949,14 +949,21 @@
 
 @media (max-width: 768px) {
   .landing-hero-section {
-    padding: 20px;
-    min-height: auto;
+    padding: 24px 20px 32px 20px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: space-between;
+  }
+  .hero-content {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 10px 0;
   }
   .hero-start-btn {
     align-self: flex-start;
-    margin-top: 20px;
+    margin-top: 0;
     margin-right: 0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .how-to-play-section {
     padding: 20px;
