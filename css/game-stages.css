@@ -253,7 +253,7 @@
   box-shadow: 0 0 20px rgba(46, 158, 133, 0.8) !important;
 }
 
-/* STAGE 3: Textual AIAS Evaluation (Ink Night Background & Paper.svg Container) */
+/* STAGE 3: Textual AIAS Evaluation (Ink Night Background & stage3-paper.svg Container) */
 .stage3-gameplay-wrap {
   width: 100%;
   max-width: 1000px;
@@ -263,7 +263,6 @@
   justify-content: flex-start;
   position: absolute;
   top: 16px;
-  /* Closer to top bar */
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -273,42 +272,37 @@
 }
 
 .stage3-paper-card {
-  background-image: url('../assets/images/ui/questions/level-3/Paper.svg');
+  background-image: url('../assets/images/ui/questions/stage3-paper.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-position: center top;
-  width: 100%;
-  max-width: none;
+  background-position: center bottom;
+  width: min(880px, 94vw);
+  max-width: 920px;
   flex: 1;
-  /* Height follows the screen height dimension down to bottom */
   height: 100%;
-  min-height: 440px;
+  min-height: 480px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 130px 230px 28vh 215px;
+  padding: clamp(60px, 9vh, 95px) clamp(100px, 12vw, 170px) calc(15vh + 110px) clamp(100px, 9vw, 160px);
   box-sizing: border-box;
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.75));
-  margin: 0 auto;
-  transform: rotate(-0.5deg);
+  margin: 10px auto 0 auto;
+  pointer-events: none;
 }
 
 .passage-text {
   font-family: var(--font-body), 'Bona Nova', serif;
-  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+  font-size: clamp(1.15rem, 1.4vw, 1.4rem);
   line-height: 1.65;
   color: #0E0D12;
-  text-align: left;
+  text-align: center;
   max-width: 100%;
   width: 100%;
-  font-weight: 400 !important;
-  /* Regular font weight, not bold */
+  font-weight: 500 !important;
   user-select: text;
   pointer-events: auto;
-}
-
-.stage3-paper-card {
-  pointer-events: none;
+  transform: rotateZ(-6deg);
 }
 
 /* Stage 3 Rating Strip: Delayed entrance until dialogue avatar finishes exiting */
@@ -535,7 +529,7 @@
 }
 
 .stage4-paper-card {
-  background-image: url('../assets/images/ui/questions/level-4/Paper.svg');
+  background-image: url('../assets/images/ui/questions/stage4-paper.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -652,6 +646,16 @@
     opacity: 0.85;
   }
 
+  .stage3-paper-card {
+    width: 96vw;
+    padding: clamp(50px, 8vh, 80px) clamp(50px, 8vw, 90px) calc(15vh + 90px) clamp(50px, 8vw, 90px);
+  }
+
+  .passage-text {
+    font-size: clamp(1rem, 3.2vw, 1.25rem);
+    line-height: 1.55;
+  }
+
   .stage-container {
     margin-top: 70px;
     padding: 0 16px;
@@ -685,6 +689,16 @@
     opacity: 0.35;
     width: 160px;
     height: 160px;
+  }
+
+  .stage3-paper-card {
+    width: 98vw;
+    padding: clamp(70px, 12vh, 100px) clamp(40px, 8vw, 60px) calc(15vh + 80px) clamp(40px, 8vw, 60px);
+  }
+
+  .passage-text {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    line-height: 1.5;
   }
 
   .stage1-cards-grid {
