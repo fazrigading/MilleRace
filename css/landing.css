@@ -155,7 +155,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-bottom: 160px; /* Space for the overhanging cards */
+  margin-bottom: 160px;
+  /* Space for the overhanging cards */
 }
 
 .how-to-play-banner-wrapper {
@@ -163,7 +164,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: -65px; /* Overlaps hero section boundary */
+  margin-top: -65px;
+  /* Overlaps hero section boundary */
   z-index: 20;
 }
 
@@ -574,9 +576,11 @@
     top: 8px;
     right: 8px;
   }
+
   .lightbox-nav-btn.prev {
     left: 8px;
   }
+
   .lightbox-nav-btn.next {
     right: 8px;
   }
@@ -973,14 +977,15 @@
   gap: 16px;
 }
 
-.footer-desc, .footer-copyright {
+.footer-desc,
+.footer-copyright {
   font-family: 'Cutive Mono', monospace;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 
-/* REGISTRATION MODAL USING `Name-and-age-input.svg` DESIGN */
+/* REGISTRATION MODAL USING `name-and-age-input.svg` DESIGN */
 .reg-modal-wrapper {
   position: relative;
   width: 100%;
@@ -1105,78 +1110,97 @@
     min-height: 100dvh;
     justify-content: space-between;
   }
+
   .hero-content {
     margin-top: 24px;
     margin-bottom: 24px;
     padding: 10px 0;
   }
+
   .hero-start-btn {
     align-self: flex-start;
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 16px;
   }
+
   .how-to-play-section {
     padding: 20px;
     height: auto;
     margin-bottom: 20px;
   }
+
   .steps-grid {
     gap: 24px;
     margin-top: 40px;
   }
+
   .triple-dots-row {
     justify-content: center;
     padding-right: 0;
     margin-top: 15px;
     margin-bottom: 30px;
   }
+
   .characters-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+
   .character-intro-card {
     flex-direction: column;
     text-align: center;
     padding: 28px 20px;
     gap: 20px;
   }
+
   .char-door-wrapper {
     width: 165px;
     height: 300px;
   }
+
   .char-door-backdrop {
     border-radius: 80px 80px 20px 20px;
   }
+
   .char-door-backdrop::after {
     border-radius: 80px 80px 20px 20px;
   }
+
   .character-intro-card:hover .char-still-img {
     transform: translateX(-50%) scale(1.05) translateY(-5px);
   }
+
   .char-stage-badge {
     align-self: center;
   }
+
   .char-quote-box {
     border-left: none;
     border-top: 2px solid var(--card-accent, #F3CD50);
     border-radius: 0 0 14px 14px;
     padding: 12px 14px;
   }
+
   .take-test-section {
     padding: 60px 20px 80px 20px;
   }
+
   .landing-footer-wrapper {
     padding: 0 16px 24px 16px;
   }
+
   .landing-footer-container {
     padding: 32px 24px;
     border-radius: 28px;
   }
-  .footer-top, .footer-bottom {
+
+  .footer-top,
+  .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
+
   .reg-modal-form-overlay {
     padding: 20px 30px;
   }
@@ -1187,27 +1211,34 @@
     width: 135px;
     height: 250px;
   }
+
   .char-door-backdrop {
     border-radius: 65px 65px 18px 18px;
   }
+
   .char-door-backdrop::after {
     border-radius: 65px 65px 18px 18px;
   }
+
   .step-card {
     width: 290px;
     height: 388px;
   }
+
   .step-card-content {
     padding: 30px 16px 15px 16px;
     gap: 14px;
   }
+
   .step-num {
     font-size: 1.65rem;
   }
+
   .step-text {
     font-size: 0.92rem;
     line-height: 1.35;
   }
+
   .triple-dots-wrapper img {
     width: 95px;
   }
