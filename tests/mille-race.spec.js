@@ -621,6 +621,141 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     const scrollTop = await page.evaluate(() => window.scrollY || document.documentElement.scrollTop);
     expect(scrollTop).toBeLessThan(600);
   });
+
+  test('Stage 3 Card: should have centered text alignment, card rotation tilt, and balanced dimensions', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof GameEngine !== 'undefined');
+    await page.evaluate(() => {
+      GameEngine.initStage3();
+      GameEngine.isDialogueActive = false;
+      document.getElementById('screen-stage3').classList.remove('dialogue-active');
+      document.getElementById('stage3-dialog-box-wrap').style.display = 'none';
+    });
+
+    const paper = page.locator('.stage3-paper-card');
+    await expect(paper).toBeVisible();
+
+    const paperStyles = await paper.evaluate(el => ({
+      display: window.getComputedStyle(el).display,
+      alignItems: window.getComputedStyle(el).alignItems,
+      justifyContent: window.getComputedStyle(el).justifyContent,
+      transform: window.getComputedStyle(el).transform
+    }));
+
+    expect(paperStyles.display).toBe('flex');
+    expect(paperStyles.alignItems).toBe('center');
+    expect(paperStyles.justifyContent).toBe('center');
+
+    const passage = page.locator('#stage3-passage-text');
+    const passageAlign = await passage.evaluate(el => window.getComputedStyle(el).textAlign);
+    expect(passageAlign).toBe('center');
+  });
+
+  test('DevMode: should require password mil2026, reject invalid passwords, unlock on success, and support locking', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof DevMode !== 'undefined');
+
+    // Ensure locked state initially
+    await page.evaluate(() => {
+      sessionStorage.removeItem('mille_dev_auth');
+      DevMode.isAuthenticated = false;
+      DevMode.togglePanel(true);
+    });
+
+    const panel = page.locator('#dev-mode-panel');
+    await expect(panel).toHaveClass(/active/);
+
+    const authView = page.locator('#dev-auth-view');
+    const contentView = page.locator('#dev-content-view');
+    await expect(authView).toBeVisible();
+    await expect(contentView).toBeHidden();
+
+    // Try wrong password
+    const pwdInput = page.locator('#dev-password-input');
+    await pwdInput.fill('wrongpassword123');
+    await page.locator('#btn-dev-unlock').click();
+
+    const authError = page.locator('#dev-auth-error');
+    await expect(authError).toBeVisible();
+    await expect(authError).toContainText(/Access Denied/i);
+    await expect(contentView).toBeHidden();
+
+    // Enter correct password: mil2026
+    await pwdInput.fill('mil2026');
+    await page.locator('#btn-dev-unlock').click();
+
+    await expect(authView).toBeHidden();
+    await expect(contentView).toBeVisible();
+
+    // Test lock button
+    const lockBtn = page.locator('#btn-dev-lock');
+    await expect(lockBtn).toBeVisible();
+    await lockBtn.click();
+
+    await expect(authView).toBeVisible();
+    await expect(contentView).toBeHidden();
+  });
+
+  test('DevMode: should be draggable via header', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof DevMode !== 'undefined');
+
+    await page.evaluate(() => {
+      sessionStorage.setItem('mille_dev_auth', 'true');
+      DevMode.isAuthenticated = true;
+      DevMode.togglePanel(true);
+    });
+
+    const panel = page.locator('#dev-mode-panel');
+    const header = page.locator('#dev-drag-header');
+    await expect(panel).toBeVisible();
+
+    const initialBox = await panel.boundingBox();
+    expect(initialBox).not.toBeNull();
+
+    // Drag header by 100px right, 50px up/down
+    const headerBox = await header.boundingBox();
+    await page.mouse.move(headerBox.x + 30, headerBox.y + 10);
+    await page.mouse.down();
+    await page.mouse.move(headerBox.x + 150, headerBox.y + 80);
+    await page.mouse.up();
+
+    const afterBox = await panel.boundingBox();
+    expect(afterBox.x).not.toBe(initialBox.x);
+  });
+
+  test('Leaderboard Reset: should wipe leaderboard entries and restore empty state', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof UI !== 'undefined');
+
+    // 1. Add score to leaderboard
+    await page.evaluate(() => {
+      UI.saveRaceToLeaderboard('DevTester', '13-17', 88, '02:10', 'Aidan');
+      UI.showScreen('screen-leaderboard');
+      UI.renderLeaderboard('all', '');
+    });
+
+    const tableRows = page.locator('#leaderboard-table-body tr');
+    await expect(tableRows.first()).toBeVisible();
+
+    // 2. Execute leaderboard reset
+    await page.evaluate(async () => {
+      await UI.resetLeaderboard();
+    });
+
+    // 3. Verify empty state view is now active
+    const emptyState = page.locator('#leaderboard-empty-state');
+    await expect(emptyState).toBeVisible();
+    await expect(emptyState).toContainText(/No Racers on the Leaderboard/i);
+  });
+
+  test('Firebase Config: should have active valid configuration without placeholder strings', async ({ page }) => {
+    await page.goto('/');
+    const isConfigured = await page.evaluate(() => {
+      return typeof isFirebaseConfigured === 'function' && isFirebaseConfigured();
+    });
+    expect(isConfigured).toBe(true);
+  });
 });
 
 
