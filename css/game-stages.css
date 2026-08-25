@@ -174,6 +174,24 @@
 }
 
 /* STAGE 2: Door Passwords (Fill-in-the-Blank) */
+.stage2-header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: clamp(280px, 36vw, 480px);
+  margin-bottom: 12px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
+}
+
+.stage2-banner-img {
+  width: 100%;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+  display: block;
+}
+
 .stage2-puzzle-card {
   background: var(--color-card-bg);
   border: 2px solid var(--color-purple);
@@ -197,7 +215,7 @@
   display: inline-block;
   min-width: 140px;
   padding: 4px 16px;
-  border-bottom: 3px dashed var(--color-yellow);
+  /* border-bottom: 3px dashed var(--color-yellow); */
   color: var(--color-yellow);
   font-weight: bold;
 }
@@ -236,10 +254,6 @@
 }
 
 /* STAGE 3: Textual AIAS Evaluation (Ink Night Background & Paper.svg Container) */
-#screen-stage3 {
-  background: radial-gradient(circle at 50% 35%, rgba(138, 56, 245, 0.2) 0%, #16141C 72%), #16141C !important;
-}
-
 .stage3-gameplay-wrap {
   width: 100%;
   max-width: 1000px;
@@ -506,10 +520,6 @@
 }
 
 /* STAGE 4: PISA Inferential Comprehension (Ink Night Background & Horizontal Paper Container) */
-#screen-stage4 {
-  background: radial-gradient(circle at 50% 35%, rgba(46, 158, 133, 0.18) 0%, #16141C 72%), #16141C !important;
-}
-
 .stage4-gameplay-wrap {
   width: 96vw;
   max-width: 1400px;
@@ -634,6 +644,7 @@
 
 /* Responsive Breakpoints for Stage Layouts */
 @media (max-width: 900px) {
+
   .stage-corner-character,
   .stage3-strip-avatar {
     width: clamp(200px, 25vw, 280px);
@@ -668,6 +679,7 @@
 }
 
 @media (max-width: 600px) {
+
   .stage-corner-character,
   .stage3-strip-avatar {
     opacity: 0.35;
