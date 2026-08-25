@@ -20,9 +20,9 @@ const GAME_CONFIG = {
         id: 1,
         prompt: "Which one of these framed art pieces is NOT a real human creation?",
         options: [
-          { letter: 'A', img: 'assets/images/questions/stage-1/1A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'assets/images/questions/stage-1/1B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'assets/images/questions/stage-1/1C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/stage-1-questions/1A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/stage-1-questions/1B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/stage-1-questions/1C.jpg', label: 'Option C' }
         ],
         correct: 'B'
       },
@@ -30,9 +30,9 @@ const GAME_CONFIG = {
         id: 2,
         prompt: "Which one of these framed art pieces is NOT a real human creation?",
         options: [
-          { letter: 'A', img: 'assets/images/questions/stage-1/2A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'assets/images/questions/stage-1/2B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'assets/images/questions/stage-1/2C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/stage-1-questions/2A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/stage-1-questions/2B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/stage-1-questions/2C.jpg', label: 'Option C' }
         ],
         correct: 'C'
       },
@@ -40,9 +40,9 @@ const GAME_CONFIG = {
         id: 3,
         prompt: "Which one of these photos is NOT a genuine deep space optical capture?",
         options: [
-          { letter: 'A', img: 'assets/images/questions/stage-1/3A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'assets/images/questions/stage-1/3B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'assets/images/questions/stage-1/3C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/stage-1-questions/3A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/stage-1-questions/3B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/stage-1-questions/3C.jpg', label: 'Option C' }
         ],
         correct: 'C'
       },
@@ -50,9 +50,9 @@ const GAME_CONFIG = {
         id: 4,
         prompt: "Which one of these illustrations is NOT a real human creation?",
         options: [
-          { letter: 'A', img: 'assets/images/questions/stage-1/4A.jpg', label: 'Option A' },
-          { letter: 'B', img: 'assets/images/questions/stage-1/4B.jpg', label: 'Option B' },
-          { letter: 'C', img: 'assets/images/questions/stage-1/4C.jpg', label: 'Option C' }
+          { letter: 'A', img: 'assets/images/stage-1-questions/4A.jpg', label: 'Option A' },
+          { letter: 'B', img: 'assets/images/stage-1-questions/4B.jpg', label: 'Option B' },
+          { letter: 'C', img: 'assets/images/stage-1-questions/4C.jpg', label: 'Option C' }
         ],
         correct: 'A'
       }
