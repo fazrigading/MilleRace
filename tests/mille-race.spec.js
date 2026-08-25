@@ -422,7 +422,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     await expect(footerContainer).toBeVisible();
   });
 
-  test('Back to Top: should exist on all content pages, be centered, and trigger smooth scrolling', async ({ page }) => {
+  test('Back to Top: should use global floating button with arrow character and remove page-level buttons', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => typeof UI !== 'undefined');
 
@@ -435,36 +435,34 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
       'screen-result'
     ];
 
+    // Verify static back-to-top wrappers are removed from individual pages
     for (const screenId of screens) {
       await page.evaluate((id) => UI.showScreen(id), screenId);
       const screenEl = page.locator(`#${screenId}`);
       await expect(screenEl).toBeVisible();
 
-      const backToTopBtn = screenEl.locator('.btn-back-to-top');
-      await expect(backToTopBtn).toBeVisible();
-
-      // Check centering
-      const wrapperDisplay = await screenEl.locator('.back-to-top-wrapper').evaluate(el => {
-        const style = window.getComputedStyle(el);
-        return {
-          display: style.display,
-          justifyContent: style.justifyContent
-        };
-      });
-      expect(wrapperDisplay.display).toBe('flex');
-      expect(wrapperDisplay.justifyContent).toBe('center');
-
-      // Click button and verify it doesn't error
-      await backToTopBtn.click();
+      const pageLevelBtn = screenEl.locator('.back-to-top-wrapper');
+      expect(await pageLevelBtn.count()).toBe(0);
     }
 
-    // Verify game stage screens do NOT have back to top buttons
-    const stageScreens = ['screen-stage1', 'screen-stage2', 'screen-stage3', 'screen-stage4'];
-    for (const stageId of stageScreens) {
-      const stageBtn = page.locator(`#${stageId} .btn-back-to-top`);
-      expect(await stageBtn.count()).toBe(0);
-    }
+    // Verify global floating back to top button with arrow character
+    const floatingBtn = page.locator('#floating-back-to-top');
+    await expect(floatingBtn).toBeAttached();
+    const arrowChar = floatingBtn.locator('.floating-arrow-char');
+    await expect(arrowChar).toHaveText('↑');
+
+    // Scroll down and verify floating button becomes visible
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.waitForTimeout(200);
+    await expect(floatingBtn).toHaveClass(/visible/);
+
+    // Click floating button and verify smooth scroll
+    await floatingBtn.click();
+    await page.waitForTimeout(300);
+    const scrollTop = await page.evaluate(() => window.scrollY || document.documentElement.scrollTop);
+    expect(scrollTop).toBeLessThan(600);
   });
+
 
   test('Our Team: should render Social Media & Game Link container with live MilleRace website link and Contact Us button', async ({ page }) => {
     await page.goto('/');
@@ -583,7 +581,48 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     const stageCards = aboutScreen.locator('.stages-flow-grid .stage-step-card');
     expect(await stageCards.count()).toBe(4);
   });
+
+  test('Hidden Scrollbars & Smooth Scrolling: should have smooth scroll behavior, hidden scrollbars (scrollbar-width: none), progress bar, and floating back-to-top', async ({ page }) => {
+    await page.goto('/');
+
+    // 1. Verify scroll-behavior: smooth on html/body
+    const htmlScrollBehavior = await page.evaluate(() => window.getComputedStyle(document.documentElement).scrollBehavior);
+    expect(htmlScrollBehavior).toBe('smooth');
+
+    const bodyScrollBehavior = await page.evaluate(() => window.getComputedStyle(document.body).scrollBehavior);
+    expect(bodyScrollBehavior).toBe('smooth');
+
+    // 2. Verify scrollbar-width is none on html (scrollbar disabled/hidden)
+    const scrollbarWidth = await page.evaluate(() => window.getComputedStyle(document.documentElement).scrollbarWidth);
+    expect(scrollbarWidth).toBe('none');
+
+    // 3. Verify top scroll progress bar exists
+    const progressBar = page.locator('#scroll-progress-bar');
+    await expect(progressBar).toBeAttached();
+
+    // 4. Verify floating back to top button exists
+    const floatingBtn = page.locator('#floating-back-to-top');
+    await expect(floatingBtn).toBeAttached();
+
+    // Scroll down 600px and check progress bar + floating button visibility
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.waitForTimeout(200);
+
+    const progressWidth = await progressBar.evaluate(el => el.style.width);
+    expect(parseFloat(progressWidth)).toBeGreaterThan(0);
+
+    await expect(floatingBtn).toHaveClass(/visible/);
+
+    // Click floating back to top button
+    await floatingBtn.click();
+    await page.waitForTimeout(300);
+
+    // Page should scroll smoothly back towards top
+    const scrollTop = await page.evaluate(() => window.scrollY || document.documentElement.scrollTop);
+    expect(scrollTop).toBeLessThan(600);
+  });
 });
+
 
 
 
