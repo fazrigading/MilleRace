@@ -3,52 +3,36 @@
 [![MilleRace Banner](assets/images/ui/slideshow/banner.webp)](https://millerace.vercel.app)
 
 <p align="center">
-   <a href="https://millerace.vercel.app">
-      <img src="https://img.shields.io/badge/🎮_Play_MilleRace_Now-Click_Here!-6B21A8?style=for-the-badge&labelColor=16141C" alt="Play MilleRace">
-   </a>
+   <a href="https://millerace.vercel.app"><img src="https://img.shields.io/badge/🎮_Play_MilleRace_Now-Click_Here!-6B21A8?style=for-the-badge&labelColor=16141C" alt="Play MilleRace"></a>
 </p>
 
 <p align="center">
-   <a href="https://www.unesco.org/en/articles/unesco-youth-hackathon-2026">
-      <img src="https://img.shields.io/badge/UNESCO_Hackathon-2026_Submission-0072CE.svg" alt="UNESCO Youth Hackathon 2026 Submission">
-   </a>
-   <a href="https://unmul.ac.id/">
-      <img src="https://img.shields.io/badge/Developed_At-Mulawarman_University-059669.svg" alt="Mulawarman University">
-   </a>
-   <a href="LICENSE">
-      <img src="https://img.shields.io/badge/License-MIT-F59E0B.svg" alt="MIT License">
-   </a>
-   <a href="docs/theoretical-frameworks.md">
-      <img src="https://img.shields.io/badge/Framework-AIAS-7C3AED.svg" alt="AIAS Framework">
-   </a>
-   <a href="docs/theoretical-frameworks.md">
-      <img src="https://img.shields.io/badge/Standard-PISA-EA580C.svg" alt="PISA Reading Standard">
-   </a>
-   <a href="docs/theoretical-frameworks.md">
-      <img src="https://img.shields.io/badge/Scale-CEFR-0891B2.svg" alt="CEFR Scale">
-   </a>
-   <a href="docs/architecture-and-tech-stack.md">
-      <img src="https://img.shields.io/badge/Cloud%20Database-Firebase%20Firestore-FF8F00.svg?logo=firebase&logoColor=white" alt="Firebase Firestore">
-   </a>
-   <a href="docs/deployment.md">
-      <img src="https://img.shields.io/badge/Deploy-Vercel%20Edge%20CDN-000000.svg?logo=vercel&logoColor=white" alt="Vercel Deployment">
-   </a>
+   <a href="https://www.unesco.org/en/articles/unesco-youth-hackathon-2026"><img src="https://img.shields.io/badge/UNESCO_Hackathon-2026_Submission-0072CE.svg" alt="UNESCO Youth Hackathon 2026 Submission"></a>
+   <a href="https://unmul.ac.id/"><img src="https://img.shields.io/badge/Developed_At-Mulawarman_University-059669.svg" alt="Mulawarman University"></a>
+   <a href="docs/theoretical-frameworks.md"><img src="https://img.shields.io/badge/Framework-AIAS-7C3AED.svg" alt="AIAS Framework"></a>
+   <a href="docs/theoretical-frameworks.md"><img src="https://img.shields.io/badge/Standard-PISA-EA580C.svg" alt="PISA Reading Standard"></a>
+   <a href="docs/theoretical-frameworks.md"><img src="https://img.shields.io/badge/Scale-CEFR-0891B2.svg" alt="CEFR Scale"></a>
+   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B.svg" alt="MIT License"></a>
+   <a href="docs/architecture-and-tech-stack.md"><img src="https://img.shields.io/badge/Cloud%20Database-Firebase%20Firestore-FF8F00.svg?logo=firebase&logoColor=white" alt="Firebase Firestore"></a>
+   <a href="docs/deployment.md"><img src="https://img.shields.io/badge/Deploy-Vercel%20Edge%20CDN-000000.svg?logo=vercel&logoColor=white" alt="Vercel Deployment"></a>
 </p>
 
 **MilleRace** is an immersive, gamified Media and Information Literacy (MIL) relay race web game. Built for the **UNESCO Youth Hackathon 2026** under the theme *"Play Your Part: Youth Designing the Future of Media Information and Literacy"*, MilleRace challenges players to race against a 3-minute countdown across 4 interactive puzzle stages to outread generative machine algorithms, collect keys, escape the digital maze, and match with an inspiring literary character archetype.
 
 ---
 
-## 📸 Game Preview
+## 🎞️ Gameplay Preview
 
-![MilleRace Gameplay Preview](./assets/images/ui/slideshow/slideshow-animated.webp)
+<p align="center">
+   <a href="https://millerace.vercel.app"><img src="assets/images/ui/slideshow/screenshots-animated.webp" alt="Play MilleRace"></a>
+</p>
 
 ---
 
 ## 📖 Background & Problem Statement
 
 <details>
-   <summary>Read here</summary>
+   <summary>Read Here!</summary>
 
 ### 1. The Indonesian Literacy Paradox
 According to Badan Pusat Statistik (BPS, 2024), only 14 of 34 provinces in Indonesia maintain accessible public libraries with digital catalogue data. With an average borrowing rate of only 2 literacy items per person annually and historically low rankings on triennial PISA reading tests, physical access and format fatigue remain significant bottlenecks.
@@ -215,4 +199,6 @@ The technical details, pedagogical frameworks, and design specifications are doc
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE). Built for educational, research, and non-profit public impact for the **UNESCO Youth Hackathon 2026**.
+This project is licensed under the [MIT License](LICENSE). 
+
+Built for educational, research, and non-profit public impact for the **UNESCO Youth Hackathon 2026**.
