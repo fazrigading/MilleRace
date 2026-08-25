@@ -7,7 +7,7 @@ const GAME_CONFIG = {
   STAGE_1: {
     character: 'Miller',
     avatar: 'assets/images/characters/stills/Miller-square.png',
-    bgImage: 'assets/images/backgrounds/Level 1.png',
+    bgImage: 'assets/images/backgrounds/stage-1.png',
     introSentences: [
       "Each room in this building is interlocked.",
       "To reach the end of the maze, we must obtain keys.",
@@ -63,7 +63,7 @@ const GAME_CONFIG = {
   STAGE_2: {
     character: 'Jen',
     avatar: 'assets/images/characters/stills/Jen-square.png',
-    bgImage: 'assets/images/backgrounds/Level 2.png',
+    bgImage: 'assets/images/backgrounds/stage-2.png',
     introSentences: [
       "There are too many doors to unlock!",
       "Only one way to find out.",
@@ -71,16 +71,16 @@ const GAME_CONFIG = {
       "Fill in the blanks with the correct options."
     ],
     questions: [
-      { id: 1, title: "Anne of Green _____", answer: "Gables", choices: ["Gables", "Hills", "Farms", "Fields"] },
-      { id: 2, title: "Harry Potter and The _____ of The Phoenix", answer: "Order", choices: ["Order", "Secret", "Army", "Flight"] },
-      { id: 3, title: "The _____ Runner", answer: "Kite", choices: ["Kite", "Fast", "Night", "Wind"] },
-      { id: 4, title: "Gulliver's _____", answer: "Travels", choices: ["Travels", "Map", "Island", "Ship"] },
-      { id: 5, title: "_____ Wood", answer: "Norwegian", choices: ["Norwegian", "Dark", "Silent", "Deep"] },
-      { id: 6, title: "The Lion, The Witch & The _____", answer: "Wardrobe", choices: ["Wardrobe", "Mirror", "Door", "Key"] },
-      { id: 7, title: "The _____ in Our Stars", answer: "Fault", choices: ["Fault", "Light", "Wish", "Destiny"] },
+      { id: 1, title: "Anne of Green _____", answer: "Gables", choices: ["Hills", "Farms", "Gables", "Fields"] },
+      { id: 2, title: "Harry Potter and The _____ of The Phoenix", answer: "Order", choices: ["Secret", "Army", "Flight", "Order"] },
+      { id: 3, title: "The _____ Runner", answer: "Kite", choices: ["Fast", "Kite", "Night", "Wind"] },
+      { id: 4, title: "Gulliver's _____", answer: "Travels", choices: ["Map", "Island", "Travels", "Ship"] },
+      { id: 5, title: "_____ Wood", answer: "Norwegian", choices: ["Dark", "Silent", "Deep", "Norwegian"] },
+      { id: 6, title: "The Lion, The Witch & The _____", answer: "Wardrobe", choices: ["Mirror", "Wardrobe", "Door", "Key"] },
+      { id: 7, title: "The _____ in Our Stars", answer: "Fault", choices: ["Light", "Fault", "Wish", "Destiny"] },
       { id: 8, title: "My Year of _____ and Relaxation", answer: "Rest", choices: ["Rest", "Sleep", "Peace", "Solitude"] },
-      { id: 9, title: "Song of The Open _____", answer: "Road", choices: ["Road", "Sky", "Sea", "Mind"] },
-      { id: 10, title: "A Brief History of _____", answer: "Time", choices: ["Time", "Earth", "Stars", "Life"] }
+      { id: 9, title: "Song of The Open _____", answer: "Road", choices: ["Sky", "Road", "Sea", "Mind"] },
+      { id: 10, title: "A Brief History of _____", answer: "Time", choices: ["Earth", "Stars", "Time", "Life"] }
     ]
   },
 
@@ -88,7 +88,7 @@ const GAME_CONFIG = {
   STAGE_3: {
     character: 'Aidan',
     avatar: 'assets/images/characters/stills/Aidan-square.png',
-    bgImage: null,
+    bgImage: 'assets/images/backgrounds/stage-3.png',
     introSentences: [
       "Ah, if this isn't the key to success...",
       "I figure these letters have clues to our next key.",
@@ -158,7 +158,7 @@ const GAME_CONFIG = {
   STAGE_4: {
     character: 'Lizzy',
     avatar: 'assets/images/characters/stills/Lizzy-square.png',
-    bgImage: null,
+    bgImage: 'assets/images/backgrounds/stage-4.png',
     introSentences: [
       "This place is bursting its colors!",
       "We must escape quickly before it lures us into magic!"
