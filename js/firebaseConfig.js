@@ -4,7 +4,7 @@
 
 // Base Firebase config (injected by Vercel build or falling back to local/overrides)
 const DEFAULT_FIREBASE_CONFIG = {
-  apiKey: "__FIREBASE_API_KEY__",
+  apiKey: "AIzaSyBg_YUSum_JQlJyg62m5eKYWKczQJdGS_E",
   authDomain: "millerace-unesco2026.firebaseapp.com",
   projectId: "millerace-unesco2026",
   storageBucket: "millerace-unesco2026.firebasestorage.app",

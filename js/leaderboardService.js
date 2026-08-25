@@ -5,6 +5,7 @@
 const LeaderboardService = {
   db: null,
   isOnline: false,
+  lastResetTime: 0,
 
   // Initialize Cloud Firestore if configured
   async init() {
@@ -29,7 +30,31 @@ const LeaderboardService = {
   async fetchTopScores(ageFilter = 'all') {
     if (this.isOnline && this.db) {
       try {
-        const { collection, getDocs, query, orderBy, limit, where } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+        const { collection, getDocs, doc, getDoc, query, orderBy, limit, where } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+        
+        // Check if there is a global reset cutoff timestamp
+        let resetMillis = 0;
+        try {
+          const metaSnap = await getDoc(doc(this.db, "leaderboard_meta", "config"));
+          if (metaSnap.exists()) {
+            const metaData = metaSnap.data();
+            if (metaData.lastResetAt && typeof metaData.lastResetAt.toMillis === 'function') {
+              resetMillis = metaData.lastResetAt.toMillis();
+            } else if (typeof metaData.lastResetAt === 'number') {
+              resetMillis = metaData.lastResetAt;
+            }
+          }
+        } catch (metaErr) {
+          console.debug("No leaderboard_meta config found or accessible:", metaErr);
+        }
+
+        let localReset = 0;
+        try {
+          localReset = parseInt(localStorage.getItem('mille_leaderboard_reset_at') || '0', 10);
+        } catch (e) {}
+
+        const effectiveReset = Math.max(this.lastResetTime || 0, resetMillis || 0, localReset || 0);
+
         let snapshot;
 
         try {
@@ -64,6 +89,14 @@ const LeaderboardService = {
         }
 
         let rawDocs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        // Filter out entries before the last global reset
+        if (effectiveReset > 0) {
+          rawDocs = rawDocs.filter(d => {
+            const dTime = d.timestamp?.toMillis ? d.timestamp.toMillis() : (Number(d.timestamp) || 0);
+            return dTime > effectiveReset;
+          });
+        }
 
         // If simple fallback query was used, apply in-memory filter & secondary sort
         if (ageFilter !== 'all') {
@@ -142,6 +175,53 @@ const LeaderboardService = {
         console.error("⚠️ Failed to sync score to cloud:", err);
       }
     }
+  },
+
+  // Reset Leaderboard in Cloud Firestore and LocalStorage
+  async resetLeaderboard() {
+    let deletedCount = 0;
+    let cloudResetSuccess = false;
+    this.lastResetTime = Date.now();
+
+    // 1. Clear Local Storage Leaderboard
+    try {
+      localStorage.removeItem('mille_leaderboard');
+      localStorage.setItem('mille_leaderboard_reset_at', Date.now().toString());
+    } catch (e) {
+      console.warn("Could not clear local storage leaderboard:", e);
+    }
+
+    // 2. Clear Cloud Firestore if connected
+    if (this.isOnline && this.db) {
+      try {
+        const { collection, getDocs, doc, deleteDoc, setDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+        
+        // Write global reset timestamp to metadata
+        await setDoc(doc(this.db, "leaderboard_meta", "config"), {
+          lastResetAt: serverTimestamp(),
+          resetBy: "DevController",
+          resetDateString: new Date().toISOString()
+        });
+
+        // Delete all documents in leaderboard collection
+        const snapshot = await getDocs(collection(this.db, "leaderboard"));
+        deletedCount = snapshot.docs.length;
+        
+        const deleteOps = snapshot.docs.map(d => deleteDoc(doc(this.db, "leaderboard", d.id)));
+        await Promise.all(deleteOps);
+
+        cloudResetSuccess = true;
+        console.log(`🔥 Cloud Leaderboard reset completed. Deleted ${deletedCount} score entries.`);
+      } catch (err) {
+        console.error("⚠️ Error resetting Cloud Firestore leaderboard:", err);
+      }
+    }
+
+    return {
+      success: true,
+      cloudReset: cloudResetSuccess,
+      deletedCount: deletedCount
+    };
   },
 
   // Persistent User Run History in browser localStorage

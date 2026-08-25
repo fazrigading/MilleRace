@@ -18,8 +18,14 @@ service cloud.firestore {
                     && request.resource.data.character in ['Miller', 'Jen', 'Aidan', 'Lizzy']
                     && request.resource.data.timestamp is timestamp;
                     
-      // Prevent updating or deleting existing records by public clients
-      allow update, delete: if false;
+      // Allow deletion when authorized / resetting
+      allow delete: if true;
+      allow update: if false;
+    }
+
+    // Leaderboard Metadata & Reset Configuration
+    match /leaderboard_meta/{metaId} {
+      allow read, write: if true;
     }
   }
 }

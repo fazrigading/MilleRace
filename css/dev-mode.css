@@ -30,6 +30,11 @@
   display: flex;
 }
 
+.dev-mode-panel.dragging {
+  user-select: none;
+  box-shadow: 0 16px 50px rgba(138, 56, 245, 0.45);
+}
+
 @keyframes devFadeIn {
   from {
     opacity: 0;
@@ -41,18 +46,63 @@
   }
 }
 
-/* Header */
+/* Header & Drag Handle */
 .dev-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(243, 205, 80, 0.25);
   padding-bottom: 10px;
+  cursor: grab;
+  user-select: none;
+}
+
+.dev-header:active {
+  cursor: grabbing;
+}
+
+.dev-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-drag-indicator {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 1.1rem;
+  letter-spacing: -2px;
+  cursor: grab;
+}
+
+.dev-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dev-header-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.dev-header-btn:hover {
+  background: rgba(243, 205, 80, 0.3);
+  border-color: var(--color-yellow);
 }
 
 .dev-title {
   font-family: var(--font-title);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--color-yellow);
   font-weight: 700;
   display: flex;
@@ -85,6 +135,153 @@
 .dev-close-btn:hover {
   background: #E53E3E;
   border-color: #E53E3E;
+}
+
+/* 1. Auth & Password Protected View */
+.dev-auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 8px;
+  gap: 12px;
+}
+
+.dev-auth-container.shake {
+  animation: devShake 0.4s ease-in-out;
+}
+
+@keyframes devShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.dev-lock-icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 10px rgba(243, 205, 80, 0.6));
+}
+
+.dev-auth-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--color-yellow);
+  font-weight: 700;
+}
+
+.dev-auth-subtitle {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.dev-auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.dev-input-password {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1.5px solid rgba(138, 56, 245, 0.6);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.2s ease;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.dev-input-password:focus {
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 12px rgba(243, 205, 80, 0.35);
+}
+
+.dev-btn-unlock {
+  background: linear-gradient(135deg, #8A38F5, #6721C4);
+  border: 1.5px solid var(--color-yellow);
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-btn-unlock:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(138, 56, 245, 0.5);
+  background: linear-gradient(135deg, #9C4EFF, #7B2FDB);
+}
+
+.dev-auth-error {
+  background: rgba(229, 62, 62, 0.2);
+  border: 1px solid #E53E3E;
+  color: #FC8181;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 2. Main Dev Content Container */
+.dev-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Leaderboard Reset Section */
+.dev-reset-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dev-reset-btn {
+  background: rgba(229, 62, 62, 0.2);
+  border: 1.5px solid #E53E3E;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.dev-reset-btn:hover {
+  background: #E53E3E;
+  border-color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(229, 62, 62, 0.45);
+}
+
+.dev-reset-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dev-reset-status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-yellow);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-align: center;
 }
 
 /* Sections */

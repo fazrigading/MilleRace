@@ -291,6 +291,23 @@ const UI = {
     }
   },
 
+  // Reset Leaderboard (invoked via password-protected DevMode)
+  async resetLeaderboard() {
+    let result = { success: true };
+    if (typeof LeaderboardService !== 'undefined' && LeaderboardService.resetLeaderboard) {
+      result = await LeaderboardService.resetLeaderboard();
+    } else {
+      try {
+        localStorage.removeItem('mille_leaderboard');
+        localStorage.setItem('mille_leaderboard_reset_at', Date.now().toString());
+      } catch (e) {
+        console.warn("Could not clear local storage leaderboard:", e);
+      }
+    }
+    await this.renderLeaderboard(this.activeLeaderboardFilter || 'all', this.activeLeaderboardSearch || '');
+    return result;
+  },
+
   // Switch between "Global Leaderboard" and "Your Results" views
   switchLeaderboardView(viewName) {
     const globalBtn = document.getElementById('btn-view-global-leaderboard');
