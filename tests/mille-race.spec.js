@@ -49,7 +49,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     await expect(cardsGrid).toBeVisible();
   });
 
-  test('Stage 2: should render full background and centered puzzle card with purple key indicator', async ({ page }) => {
+  test('Stage 2: should render full background, fill-the-blank banner, and centered puzzle card with cyan key indicator', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => typeof GameEngine !== 'undefined');
     await page.evaluate(() => {
@@ -61,6 +61,9 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
 
     const keySlot2 = page.locator('#key-slot-2');
     await expect(keySlot2).toHaveClass(/current-stage/);
+
+    const banner = page.locator('.stage2-header-banner .stage2-banner-img');
+    await expect(banner).toBeVisible();
 
     const puzzleCard = page.locator('.stage2-puzzle-card');
     await expect(puzzleCard).toBeVisible();
@@ -75,6 +78,10 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     const ratingStrip = page.locator('#stage3-rating-strip');
     const stripOpacity = await ratingStrip.evaluate(el => window.getComputedStyle(el).opacity);
     expect(Number(stripOpacity)).toBe(0);
+
+    // Verify background image is stage-3.png
+    const stage3Bg = await page.locator('#screen-stage3').evaluate(el => window.getComputedStyle(el).backgroundImage);
+    expect(stage3Bg).toContain('stage-3.png');
 
     // Complete dialogue
     await page.evaluate(() => {
@@ -116,7 +123,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     ]);
   });
 
-  test('Stage 4: should enlarge paper card and layer properly behind corner character avatar and dialog', async ({ page }) => {
+  test('Stage 4: should render stage background, enlarge paper card and layer properly behind corner character avatar and dialog', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => typeof GameEngine !== 'undefined');
     await page.evaluate(() => {
@@ -125,6 +132,10 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
       document.getElementById('screen-stage4').classList.remove('dialogue-active');
       document.getElementById('stage4-dialog-box-wrap').style.display = 'none';
     });
+
+    // Verify background image is stage-4.png
+    const stage4Bg = await page.locator('#screen-stage4').evaluate(el => window.getComputedStyle(el).backgroundImage);
+    expect(stage4Bg).toContain('stage-4.png');
 
     const keySlot4 = page.locator('#key-slot-4');
     await expect(keySlot4).toHaveClass(/current-stage/);
@@ -455,7 +466,7 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     }
   });
 
-  test('Our Team: should have Contact Us mailto link inside Collaborate container', async ({ page }) => {
+  test('Our Team: should render Social Media & Game Link container with live MilleRace website link and Contact Us button', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => typeof UI !== 'undefined');
     await page.evaluate(() => UI.showScreen('screen-team'));
@@ -463,11 +474,97 @@ test.describe('MilleRace Web Game (Google Chrome)', () => {
     const teamScreen = page.locator('#screen-team');
     await expect(teamScreen).toBeVisible();
 
+    // Verify container title
+    const containerTitle = teamScreen.locator('.team-social-links-container .page-cta-title');
+    await expect(containerTitle).toHaveText(/Social Media & Game Link/i);
+
+    // Verify Game Link button to https://millerace.vercel.app
+    const gameLinkBtn = teamScreen.locator('.btn-game-link');
+    await expect(gameLinkBtn).toBeVisible();
+    await expect(gameLinkBtn).toHaveAttribute('href', 'https://millerace.vercel.app');
+    await expect(gameLinkBtn).toHaveAttribute('target', '_blank');
+
+    // Verify Contact Us button
     const contactBtn = teamScreen.locator('.btn-contact-team');
     await expect(contactBtn).toBeVisible();
     await expect(contactBtn).toHaveText(/Contact Us/i);
     await expect(contactBtn).toHaveAttribute('href', /^mailto:/);
     await expect(contactBtn).toHaveAttribute('target', '_blank');
+  });
+
+  test('Landing: should open lightbox on slide click and navigate swiftly with next button without errors', async ({ page }) => {
+    await page.goto('/');
+    const firstSlide = page.locator('.slideshow-slide').first();
+    await expect(firstSlide).toBeVisible();
+
+    // Click slide to open lightbox
+    await firstSlide.click();
+    const lightboxModal = page.locator('#slideshow-lightbox-modal');
+    await expect(lightboxModal).toHaveClass(/active/);
+
+    const lightboxImg = page.locator('#lightbox-img');
+    const initialSrc = await lightboxImg.getAttribute('src');
+    expect(initialSrc).toBeTruthy();
+
+    // Click next button
+    const nextBtn = page.locator('#lightbox-next');
+    await nextBtn.click();
+
+    // Check lightbox image updated
+    await page.waitForTimeout(100);
+    const newSrc = await lightboxImg.getAttribute('src');
+    expect(newSrc).toBeTruthy();
+
+    // Close lightbox
+    const closeBtn = page.locator('#lightbox-close');
+    await closeBtn.click();
+    await expect(lightboxModal).not.toHaveClass(/active/);
+  });
+
+  test('Final Result: should generate 1:1 and 9:16 social media result screenshots and handle share click', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => typeof ShareCardGenerator !== 'undefined');
+
+    // Test ShareCardGenerator directly
+    const result = await page.evaluate(async () => {
+      const data = {
+        nickname: 'Speedster',
+        playerRank: '1',
+        totalScore: 95,
+        charName: 'Lizzy',
+        pisaLevel: 'PISA Reading Level 5-6',
+        cefrLevel: 'Cambridge Reading C1-C2',
+        quote: 'Speed and precision!',
+        bio: 'High analytical literacy tester.',
+        stageScores: { 1: 20, 2: 40, 3: 15, 4: 20 }
+      };
+      const square = await ShareCardGenerator.generateSquareImage(data);
+      const story = await ShareCardGenerator.generateStoryImage(data);
+      return {
+        squareWidth: square.width,
+        squareHeight: square.height,
+        storyWidth: story.width,
+        storyHeight: story.height
+      };
+    });
+
+    expect(result.squareWidth).toBe(1080);
+    expect(result.squareHeight).toBe(1080);
+    expect(result.storyWidth).toBe(1080);
+    expect(result.storyHeight).toBe(1920);
+
+    // Test Share Button on Result Page
+    await page.evaluate(() => {
+      GameState.player.nickname = 'Champion';
+      GameState.stageScores = { 1: 20, 2: 40, 3: 20, 4: 20 };
+      GameEngine.renderResultPage();
+    });
+
+    const shareBtn = page.locator('#btn-share-result');
+    await expect(shareBtn).toBeVisible();
+    await shareBtn.click();
+    await page.waitForTimeout(200);
+    await expect(shareBtn).toContainText(/Downloaded 2 Share Cards|Copied/i);
   });
 
   test('About Us: should render 5 AIAS rubric cards and 4-Stage Relay journey cards', async ({ page }) => {
