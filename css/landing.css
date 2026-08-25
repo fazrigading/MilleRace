@@ -479,6 +479,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  contain: layout;
 }
 
 .lightbox-img {
@@ -490,7 +491,8 @@
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.18);
   object-fit: contain;
   transform: scale(0.94);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
   display: block;
 }
 
@@ -514,9 +516,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
   z-index: 10;
+  will-change: transform;
 }
 
 .lightbox-close-btn:hover {
@@ -535,6 +538,7 @@
   border-radius: 50%;
   background: rgba(22, 20, 28, 0.8);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #FFFFFF;
   font-size: 2rem;
@@ -544,8 +548,9 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.25s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   user-select: none;
+  will-change: transform;
 }
 
 .lightbox-nav-btn:hover {
@@ -666,19 +671,19 @@
 }
 
 .char-card-jen {
-  --card-accent: #2E9E85;
-  --card-accent-border: rgba(46, 158, 133, 0.6);
-  --card-glow: 0 0 32px rgba(46, 158, 133, 0.28);
-  --portal-bg: linear-gradient(180deg, #13332B 0%, #0B1C17 100%);
-  --portal-aura-color: radial-gradient(circle at 50% 30%, rgba(46, 158, 133, 0.5) 0%, rgba(46, 158, 133, 0.12) 60%, transparent 80%);
+  --card-accent: #00D2FF;
+  --card-accent-border: rgba(0, 210, 255, 0.6);
+  --card-glow: 0 0 32px rgba(0, 210, 255, 0.28);
+  --portal-bg: linear-gradient(180deg, #0C2C3E 0%, #061822 100%);
+  --portal-aura-color: radial-gradient(circle at 50% 30%, rgba(0, 210, 255, 0.5) 0%, rgba(0, 210, 255, 0.12) 60%, transparent 80%);
 }
 
 .char-card-aidan {
-  --card-accent: #854EB4;
-  --card-accent-border: rgba(133, 78, 180, 0.6);
-  --card-glow: 0 0 32px rgba(133, 78, 180, 0.28);
-  --portal-bg: linear-gradient(180deg, #2B163E 0%, #150A20 100%);
-  --portal-aura-color: radial-gradient(circle at 50% 30%, rgba(133, 78, 180, 0.5) 0%, rgba(117, 39, 181, 0.12) 60%, transparent 80%);
+  --card-accent: #10B981;
+  --card-accent-border: rgba(16, 185, 129, 0.6);
+  --card-glow: 0 0 32px rgba(16, 185, 129, 0.28);
+  --portal-bg: linear-gradient(180deg, #0E3524 0%, #061C12 100%);
+  --portal-aura-color: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.12) 60%, transparent 80%);
 }
 
 .char-card-lizzy {

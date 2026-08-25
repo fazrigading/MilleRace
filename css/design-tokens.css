@@ -40,9 +40,11 @@
   --color-text-light: #FFFFFF;
   --color-text-muted: #E2E8F0;
   --color-text-dark: #16141C;
+  --color-accent-yellow: #F3CD50;
+  --color-accent-cyan: #00D2FF;
+  --color-accent-green: #10B981;
   --color-accent-pink: #EC4899;
   --color-accent-blue: #3B82F6;
-  --color-accent-green: #10B981;
 
   /* Typography */
   --font-title: 'Cinzel', serif, system-ui;
@@ -51,6 +53,9 @@
 
   /* Shadows & Effects */
   --shadow-glow-yellow: 0 0 20px rgba(243, 205, 80, 0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(0, 210, 255, 0.5);
+  --shadow-glow-green: 0 0 20px rgba(16, 185, 129, 0.5);
+  --shadow-glow-pink: 0 0 20px rgba(236, 72, 153, 0.5);
   --shadow-glow-purple: 0 0 20px rgba(133, 78, 180, 0.5);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
   --glass-border: 1px solid rgba(255, 255, 255, 0.15);
