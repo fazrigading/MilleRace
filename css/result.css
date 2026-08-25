@@ -90,9 +90,9 @@
   text-shadow: 0 0 16px rgba(243, 205, 80, 0.85);
 }
 
-/* Scalloped Ivory Parchment Card (Vector.svg) */
+/* Scalloped Ivory Parchment Card (result-card.svg) */
 .result-parchment-card {
-  background-image: url('../assets/images/ui/result/Vector.svg');
+  background-image: url('../assets/images/ui/result/result-card.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
