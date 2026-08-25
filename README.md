@@ -44,6 +44,7 @@ The technical details, pedagogical frameworks, and design specifications are doc
 | 🛠️ [**Developer Guide**](docs/developer-guide.md) | Local setup, Developer Debug Panel, and troubleshooting workflows. |
 | 🧪 [**Automated Testing & Verification**](docs/testing.md) | Playwright test suite wired to Google Chrome, coverage matrix, and diagnostic verification script. |
 | 🚀 [**Production Deployment Plan**](docs/deployment.md) | Vercel Edge CDN setup, cache policies, HTTP security headers, and GitHub Actions CI/CD automation. |
+| ⚡ [**Web Optimization & Modularization**](docs/web-optimization-plan.md) | Image compression, SVG optimization, CSS/JS bundling, HTTP caching, and build-time component architecture. |
 
 ---
 

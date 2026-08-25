@@ -71,7 +71,7 @@ MilleRace/
 ├── assets/                       # Unified asset library
 │   ├── fonts/                    # Local TTF fonts (bona-nova, cinzel, cutive-mono)
 │   └── images/
-│       ├── backgrounds/          # Stage backgrounds (Level 1.png, Level 2.png)
+│       ├── backgrounds/          # Stage backgrounds (Level 1 - Level 4)
 │       ├── characters/
 │       │   ├── stills/           # Transparent character portraits (Miller, Jen, Aidan, Lizzy)
 │       │   └── animations/       # Walk, jump, talk sprite sequences
