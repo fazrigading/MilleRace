@@ -6,18 +6,11 @@
 
 ## 📌 In Progress
 
-### Easy
-- none
-
-### Medium
-- none
-
-### Hard
-- [ ] Fix Quiz Stage 3 - The question text is not located at the center of the white question card, adjust the size of the card and make sure it can fit all of the question text. If possible, make the question card slightly skewed/leaning, following the card look.
-- [ ] Fix Global Leaderboard Firestore connection in Vercel. Localhost works fine, but Vercel does not.
-- [ ] Add a way to reset leaderboard at `Global Leaderboard` page (password protected by the devMode popup). This needs to be stored in Firestore and need to be manually triggered by dev, we cant let the user to reset it.
-- [ ] Lock the devMode with password: `mil2026`
-- [ ] Make devmode popup draggable
+- [ ] (Easy) Fill the blank svg should be under the question indicators and on top-side of the question box.
+- [ ] (Easy) Recommit assets in the `assets/images/ui/landing/` folder because I have changed the uppercase to lowercase filename.
+- [ ] (Medium) Timer should stop when "Key obtained" modal shows up
+- [ ] (Medium) Resize all question card image (`assets/images/stage-1-questions`) to be same resolution as each other in Stage 1
+- [ ] (Hard) Fix Mobile and Tablet Layout View
 
 ---
 
@@ -48,3 +41,8 @@
 - [x] Add link to `MilleRace` website (https://millerace.vercel.app) to the `Social Media` container at `Our Team` page, change the container to `Social Media & Game Link`.
 - [x] Generate a final result screenshot (png image) with dimensions 1:1 and 9:16 to share to social media that automatically download when user click `Share on Social Media` button in Final Result page. Show MIL Score Badge, Rank, and the character that the user got.
 - [x] Fix 9:16 and 1:1 share image on Final Result page (2x font sizes, circular MIL score progress bar with score at center, all 4 stage indicators, fix top accent leakage, eliminate text overlaps, and proportional avatar).
+- [x] Fix Quiz Stage 3 - Centered question text horizontally & vertically on parchment paper card, adjusted size/padding to fit all passages comfortably, and applied natural leaning/skew card look (-1.75deg).
+- [x] Fix Global Leaderboard Firestore connection in Vercel - Embedded public Firebase web client credentials into `js/firebaseConfig.js` so Vercel production works out-of-the-box.
+- [x] Add Leaderboard Reset feature at `Global Leaderboard` page via DevMode controller - Synchronizes reset marker `lastResetAt` in Firestore `leaderboard_meta/config`, batch deletes leaderboard entries, and clears local cache.
+- [x] Lock DevMode with password: `mil2026` with secure session unlocking and shake error animation.
+- [x] Make DevMode controller popup smoothly draggable across the viewport with boundary constraints.
