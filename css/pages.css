@@ -238,6 +238,65 @@
   font-family: var(--font-mono);
   font-size: 1.05rem;
   color: #F1F5F9;
+  line-height: 1.5;
+}
+
+.team-cta-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-game-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-yellow);
+  color: #16141C !important;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 13px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(243, 205, 80, 0.4);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-game-link:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(243, 205, 80, 0.6);
+  background: var(--color-yellow-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(22, 20, 28, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF !important;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-yellow);
+  color: var(--color-yellow) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 0 16px rgba(243, 205, 80, 0.3);
 }
 
 /* ==========================================================================
@@ -463,6 +522,26 @@
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-glow-yellow);
 }
 
+.stage-1-card:hover {
+  border-color: rgba(243, 205, 80, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-glow-yellow);
+}
+
+.stage-2-card:hover {
+  border-color: rgba(0, 210, 255, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-glow-cyan);
+}
+
+.stage-3-card:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-glow-green);
+}
+
+.stage-4-card:hover {
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-glow-pink);
+}
+
 .stage-1-card::before {
   content: '';
   position: absolute;
@@ -470,7 +549,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--color-yellow);
+  background: var(--color-accent-yellow, #F3CD50);
   z-index: 4;
 }
 
@@ -481,7 +560,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--color-teal);
+  background: var(--color-accent-cyan, #00D2FF);
   z-index: 4;
 }
 
@@ -492,7 +571,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--color-purple);
+  background: var(--color-accent-green, #10B981);
   z-index: 4;
 }
 
@@ -503,7 +582,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: #38BDF8;
+  background: var(--color-accent-pink, #EC4899);
   z-index: 4;
 }
 
@@ -590,21 +669,21 @@
 }
 
 .stage-tag-2 {
-  background: rgba(46, 158, 133, 0.2);
-  border: 1px solid var(--color-teal);
-  color: #5EEAD4;
+  background: rgba(0, 210, 255, 0.2);
+  border: 1px solid var(--color-accent-cyan, #00D2FF);
+  color: #7DD3FC;
 }
 
 .stage-tag-3 {
-  background: rgba(133, 78, 180, 0.25);
-  border: 1px solid var(--color-purple);
-  color: #D8B4FE;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid var(--color-accent-green, #10B981);
+  color: #6EE7B7;
 }
 
 .stage-tag-4 {
-  background: rgba(56, 189, 248, 0.2);
-  border: 1px solid #38BDF8;
-  color: #7DD3FC;
+  background: rgba(236, 72, 153, 0.2);
+  border: 1px solid var(--color-accent-pink, #EC4899);
+  color: #F472B6;
 }
 
 .stage-step-body {
