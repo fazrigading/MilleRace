@@ -52,7 +52,7 @@ graph TD
 ### 1.1 Problem Statement & Audit
 * **Characters (`assets/images/characters/stills/`):** 9 high-resolution PNGs averaging 300 KB – 520 KB each (~3.5 MB total).
 * **Backgrounds (`assets/images/backgrounds/`):** `stage-1.png` (1.2 MB) and `stage-2.png` (856 KB) are heavy lossless PNGs.
-* **Stage 1 Questions (`assets/images/questions/stage-1/`):** 12 JPEG files ranging from 33 KB to 450 KB (~2.8 MB total).
+* **Stage 1 Questions (`assets/images/stage-1-questions/`):** 12 JPEG files ranging from 33 KB to 450 KB (~2.8 MB total).
 * **Vector Assets (`assets/images/ui/`, `assets/images/icons/`):** SVGs contain unoptimized editor metadata, comments, and redundant coordinate precision.
 
 ### 1.2 Action Plan & Conversion Strategy
@@ -69,7 +69,7 @@ graph TD
 # Example batch conversion with sharp-cli
 npx sharp-cli -i "assets/images/characters/stills/*.png" -o "assets/images/characters/stills/" -f webp -q 85
 npx sharp-cli -i "assets/images/backgrounds/*.png" -o "assets/images/backgrounds/" -f webp -q 80
-npx sharp-cli -i "assets/images/questions/stage-1/*.jpg" -o "assets/images/questions/stage-1/" -f webp -q 80
+npx sharp-cli -i "assets/images/stage-1-questions/*.jpg" -o "assets/images/stage-1-questions/" -f webp -q 80
 ```
 
 #### B. SVG Optimization with SVGO

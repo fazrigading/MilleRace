@@ -45,9 +45,9 @@ MilleRace combines three Google Fonts and local font fallbacks for distinct typo
 
 ## 🖼️ UI Container & Component Assets
 
-* **Stage 3 Text Container:** [`assets/images/ui/questions/level-3/Paper.svg`](../assets/images/ui/questions/level-3/Paper.svg) — Custom newspaper/paper frame background for textual AIAS evaluation.
-* **Stage 4 Comprehension Container:** [`assets/images/ui/questions/level-4/Paper.svg`](../assets/images/ui/questions/level-4/Paper.svg) — Parchment container for high-order inferencing questions.
-* **Result Score Badge & Glows:** [`assets/images/ui/result/`](../assets/images/ui/result/) — Vector assets including `Result-with-name.svg`, `yellow-glowing-dots.svg`, `Group 20.svg`, and `Rectangle 80.svg`.
+* **Stage 3 Text Container:** [`assets/images/ui/questions/stage3-paper.svg`](../assets/images/ui/questions/stage3-paper.svg) — Custom newspaper/paper frame background for textual AIAS evaluation.
+* **Stage 4 Comprehension Container:** [`assets/images/ui/questions/stage4-paper.svg`](../assets/images/ui/questions/stage4-paper.svg) — Parchment container for high-order inferencing questions.
+* **Result Score Badge & Glows:** [`assets/images/ui/result/`](../assets/images/ui/result/) — Vector assets including `result-with-name.svg`, `yellow-glowing-dots.svg`, and `result-card.svg`
 * **Stage Keys:** Vector keys #1 through #4 displayed in the upper HUD bar.
 
 ---
