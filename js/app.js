@@ -215,30 +215,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // Result Page "Share your result!" Button Listener
   const shareBtn = document.getElementById('btn-share-result');
   if (shareBtn) {
-    shareBtn.addEventListener('click', () => {
+    shareBtn.addEventListener('click', async () => {
       const totalScore = GameState.getTotalScore();
       const charMatch = GameState.getMatchedCharacter();
       const charName = charMatch ? charMatch.name : 'Miller';
-      const shareText = `🏁 I scored ${totalScore}% in MilleRace and escaped the maze! My Character Match is ${charName}. Can you outread the machine? Play now!`;
+      const shareText = `🏁 I scored ${totalScore}% in MilleRace and escaped the maze! My Character Match is ${charName}. Can you outread the machine? Play now at https://millerace.vercel.app`;
 
+      const originalContent = shareBtn.innerHTML;
+      shareBtn.innerHTML = `<span>Generating Share Cards... ⏳</span>`;
+      shareBtn.style.opacity = '0.85';
+
+      // 1. Copy share text to clipboard
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(shareText).then(() => {
-          const originalContent = shareBtn.innerHTML;
-          shareBtn.innerHTML = `<span>Copied to Clipboard!</span> <span aria-hidden="true">✓</span>`;
-          shareBtn.style.background = '#2E9E85';
-          shareBtn.style.color = '#FFFFFF';
-          setTimeout(() => {
-            shareBtn.innerHTML = originalContent;
-            shareBtn.style.background = '';
-            shareBtn.style.color = '';
-          }, 2400);
-        }).catch(err => {
+        navigator.clipboard.writeText(shareText).catch(err => {
           console.warn('Clipboard write failed:', err);
-          alert(shareText);
         });
-      } else {
-        alert(shareText);
       }
+
+      // 2. Generate and download 1:1 and 9:16 PNG screenshots
+      try {
+        if (typeof ShareCardGenerator !== 'undefined') {
+          await ShareCardGenerator.generateAndDownload({
+            nickname: GameState.player.nickname || 'Racer',
+            totalScore: totalScore,
+            charMatch: charMatch,
+            charName: charName,
+            charAvatar: charMatch ? charMatch.avatar : 'assets/images/characters/stills/Miller.png',
+            pisaLevel: charMatch ? charMatch.pisaLevel : 'PISA Reading Level 1-2',
+            cefrLevel: charMatch ? charMatch.cefrLevel : 'Cambridge Reading A1-A2',
+            quote: charMatch ? charMatch.quote : '',
+            bio: charMatch ? charMatch.bio : '',
+            stageScores: GameState.stageScores || { 1: 0, 2: 0, 3: 0, 4: 0 }
+          });
+        }
+        shareBtn.innerHTML = `<span>Downloaded 2 Share Cards! 📸</span> <span aria-hidden="true">✓</span>`;
+        shareBtn.style.background = '#2E9E85';
+        shareBtn.style.color = '#FFFFFF';
+        shareBtn.style.opacity = '1';
+      } catch (err) {
+        console.error('Screenshot generation failed:', err);
+        shareBtn.innerHTML = `<span>Copied to Clipboard!</span> <span aria-hidden="true">✓</span>`;
+        shareBtn.style.background = '#2E9E85';
+        shareBtn.style.color = '#FFFFFF';
+        shareBtn.style.opacity = '1';
+      }
+
+      setTimeout(() => {
+        shareBtn.innerHTML = originalContent;
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+        shareBtn.style.opacity = '';
+      }, 3200);
     });
   }
 
@@ -320,14 +347,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxNext = document.getElementById('lightbox-next');
     const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
 
+    // Pre-cache and pre-decode slideshow images for instantaneous lightbox transitions
+    const slideImages = slides.map(s => {
+      const img = s.querySelector('img');
+      if (img && img.src) {
+        const preloader = new Image();
+        preloader.src = img.src;
+        if (typeof preloader.decode === 'function') {
+          preloader.decode().catch(() => {});
+        }
+        return { src: img.src, alt: img.alt || 'Enlarged Gameplay Screenshot' };
+      }
+      return { src: '', alt: 'Enlarged Gameplay Screenshot' };
+    });
+
     function openLightbox(index) {
       if (!lightboxModal || !lightboxImg || slides.length === 0) return;
       goToSlide(index);
       stopAutoPlay();
-      const currentImg = slides[currentIndex].querySelector('img');
-      if (currentImg) {
-        lightboxImg.src = currentImg.src;
-        lightboxImg.alt = currentImg.alt || 'Enlarged Gameplay Screenshot';
+      const imgData = slideImages[currentIndex];
+      if (imgData && imgData.src) {
+        lightboxImg.src = imgData.src;
+        lightboxImg.alt = imgData.alt;
       }
       lightboxModal.classList.add('active');
       lightboxModal.setAttribute('aria-hidden', 'false');
@@ -342,10 +383,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLightboxImage() {
       if (!lightboxModal || !lightboxModal.classList.contains('active') || !lightboxImg) return;
-      const currentImg = slides[currentIndex].querySelector('img');
-      if (currentImg) {
-        lightboxImg.src = currentImg.src;
-        lightboxImg.alt = currentImg.alt || 'Enlarged Gameplay Screenshot';
+      const imgData = slideImages[currentIndex];
+      if (imgData && imgData.src && lightboxImg.src !== imgData.src) {
+        requestAnimationFrame(() => {
+          lightboxImg.src = imgData.src;
+          lightboxImg.alt = imgData.alt;
+        });
       }
     }
 
