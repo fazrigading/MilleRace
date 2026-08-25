@@ -411,10 +411,10 @@ const GameEngine = {
     UI.updateHUD();
 
     const keyMessages = {
-      1: "Miller presents you with Key #1! Miller now leads you to Jen's playground of doors.",
-      2: "Jen shouts: 'Old ways won't open new doors!' Key #2 obtained! Moving to Aidan's Room of Letters.",
-      3: "Aidan smiles: 'You've been reading! Key #3 is yours!' Onward to Lizzy's Room of Colors.",
-      4: "Lizzy hands you the Final Key! You unlocked the Maze Exit!"
+      1: "Miller presents you with Gold Key! Miller now leads you to Jen's playground of doors!",
+      2: "Jen shouts: 'Old ways won't open new doors!' Let's move to Aidan's Room of Letters with this Blue Key!",
+      3: "Aidan smiles: 'You've been reading! Green is yours!' Onward to Lizzy's Room of Colors!",
+      4: "Lizzy hands you the Pink Key! You unlocked the Maze Exit door! Hooray~!"
     };
 
     const keyMessage = keyMessages[stageNum] || `Key #${stageNum} obtained!`;
