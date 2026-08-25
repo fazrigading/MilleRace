@@ -80,6 +80,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Universal Scroll Progress Bar & Floating Back-To-Top Indicator
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const floatingBackToTop = document.getElementById('floating-back-to-top');
+
+  function handleScrollUpdate() {
+    const activeScreen = document.querySelector('.screen.active');
+    const winScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || (activeScreen ? activeScreen.scrollTop : 0);
+    const docHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      activeScreen ? activeScreen.scrollHeight : 0
+    );
+    const winHeight = window.innerHeight;
+    const maxScroll = docHeight - winHeight;
+
+    if (progressBar) {
+      if (maxScroll > 10) {
+        const progress = Math.min(100, Math.max(0, (winScroll / maxScroll) * 100));
+        progressBar.style.width = `${progress}%`;
+      } else {
+        progressBar.style.width = '0%';
+      }
+    }
+
+    if (floatingBackToTop) {
+      if (winScroll > 280) {
+        floatingBackToTop.classList.add('visible');
+      } else {
+        floatingBackToTop.classList.remove('visible');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScrollUpdate, { passive: true });
+  document.addEventListener('scroll', handleScrollUpdate, { passive: true, capture: true });
+
   // 5 Strategic Pillars: Interactive Mission Dossier Tab Switching
   const dossierConsole = document.getElementById('mission-dossier-console');
   if (dossierConsole) {

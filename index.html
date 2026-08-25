@@ -26,6 +26,9 @@
 
 <body>
 
+  <!-- Top Ambient Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+
   <div id="app">
 
     <!-- GLOBAL TOP HUD BAR -->
@@ -337,14 +340,6 @@
         </button>
       </div>
 
-      <!-- Back to Top Button -->
-      <div class="back-to-top-wrapper">
-        <button class="btn-back-to-top" aria-label="Back to Top">
-          <span class="back-to-top-arrow">↑</span>
-          <span class="back-to-top-text">Back to Top</span>
-        </button>
-      </div>
-
       <!-- FOOTER: ROUNDED PURPLE CONTAINER -->
       <footer class="landing-footer-wrapper">
         <div class="landing-footer-container">
@@ -613,14 +608,6 @@
           </div>
           <button class="btn-primary btn-trigger-reg">Start the Race 🏁</button>
         </div>
-
-        <!-- Back to Top Button -->
-        <div class="back-to-top-wrapper">
-          <button class="btn-back-to-top" aria-label="Back to Top">
-            <span class="back-to-top-arrow">↑</span>
-            <span class="back-to-top-text">Back to Top</span>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -815,14 +802,6 @@
               <span aria-hidden="true">✉️</span>
             </a>
           </div>
-        </div>
-
-        <!-- Back to Top Button -->
-        <div class="back-to-top-wrapper">
-          <button class="btn-back-to-top" aria-label="Back to Top">
-            <span class="back-to-top-arrow">↑</span>
-            <span class="back-to-top-text">Back to Top</span>
-          </button>
         </div>
       </div>
     </section>
@@ -1268,14 +1247,6 @@
           </div>
           <button class="btn-primary btn-trigger-reg">Start the Race 🏁</button>
         </div>
-
-        <!-- Back to Top Button -->
-        <div class="back-to-top-wrapper">
-          <button class="btn-back-to-top" aria-label="Back to Top">
-            <span class="back-to-top-arrow">↑</span>
-            <span class="back-to-top-text">Back to Top</span>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -1386,14 +1357,6 @@
             <p class="page-cta-desc">Take the test now and score your spot on the<br>MilleRace Hall of Fame.</p>
           </div>
           <button class="btn-primary btn-trigger-reg">Enter the Race 🏁</button>
-        </div>
-
-        <!-- Back to Top Button -->
-        <div class="back-to-top-wrapper">
-          <button class="btn-back-to-top" aria-label="Back to Top">
-            <span class="back-to-top-arrow">↑</span>
-            <span class="back-to-top-text">Back to Top</span>
-          </button>
         </div>
       </div>
     </section>
@@ -1745,14 +1708,6 @@
           </div>
         </div>
 
-        <!-- Back to Top Button -->
-        <div class="back-to-top-wrapper">
-          <button class="btn-back-to-top" aria-label="Back to Top">
-            <span class="back-to-top-arrow">↑</span>
-            <span class="back-to-top-text">Back to Top</span>
-          </button>
-        </div>
-
         <!-- FOOTER: ROUNDED PURPLE CONTAINER -->
         <footer class="landing-footer-wrapper">
           <div class="landing-footer-container">
@@ -1828,6 +1783,11 @@
         <button id="lightbox-next" class="lightbox-nav-btn next" aria-label="Next image">›</button>
       </div>
     </div>
+
+    <!-- FLOATING SMOOTH BACK TO TOP BUTTON -->
+    <button id="floating-back-to-top" class="floating-back-to-top btn-back-to-top" aria-label="Scroll back to top" title="Back to top">
+      <span class="floating-arrow-char" aria-hidden="true">↑</span>
+    </button>
 
   </div>
 

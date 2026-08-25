@@ -36,6 +36,12 @@ const UI = {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
+    // Reset scroll progress indicator and floating controls
+    const progressBar = document.getElementById('scroll-progress-bar');
+    if (progressBar) progressBar.style.width = '0%';
+    const floatingBtn = document.getElementById('floating-back-to-top');
+    if (floatingBtn) floatingBtn.classList.remove('visible');
+
     // Update active nav indicators (yellow round rectangle)
     this.updateNav(screenId);
 

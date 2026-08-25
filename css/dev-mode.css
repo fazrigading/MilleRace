@@ -219,21 +219,16 @@
   border-color: #FFFFFF;
 }
 
-/* Custom Scrollbar for Panel */
+/* Hide Scrollbar for Panel */
+.dev-mode-panel {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
 .dev-mode-panel::-webkit-scrollbar {
-  width: 6px;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-.dev-mode-panel::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
 
-.dev-mode-panel::-webkit-scrollbar-thumb {
-  background: rgba(243, 205, 80, 0.4);
-  border-radius: 10px;
-}
-
-.dev-mode-panel::-webkit-scrollbar-thumb:hover {
-  background: var(--color-yellow);
-}

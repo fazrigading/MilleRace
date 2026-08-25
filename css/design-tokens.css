@@ -63,4 +63,9 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Design System Gradients */
+  --gradient-scroll-bar: linear-gradient(90deg, #854EB4 0%, #2E9E85 50%, #F3CD50 100%);
 }
+
+
