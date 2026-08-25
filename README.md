@@ -1,18 +1,54 @@
 # MilleRace 🏁
-### *Escape the Maze AI Wove for You*
 
-[![UNESCO Youth Hackathon 2026](https://img.shields.io/badge/UNESCO_Hackathon-2026_Submission-854EB4.svg)](https://en.unesco.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-F3CD50.svg)](LICENSE)
-[![Mulawarman University](https://img.shields.io/badge/Developed_At-Mulawarman_University-2E9E85.svg)](https://unmul.ac.id/)
-[![Framework: AIAS & PISA](https://img.shields.io/badge/Standard-AIAS%20%7C%20PISA%20%7C%20CEFR-16141C.svg)](docs/theoretical-frameworks.md)
-[![Firebase Firestore](https://img.shields.io/badge/Cloud%20Database-Firebase%20Firestore-FFCA28.svg?logo=firebase&logoColor=black)](docs/architecture-and-tech-stack.md#-cloud-firestore--persistence-layer)
-[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel%20Edge%20CDN-000000.svg?logo=vercel&logoColor=white)](docs/deployment.md)
+[![MilleRace Banner](assets/images/ui/slideshow/banner.webp)](https://millerace.vercel.app)
+
+<p align="center">
+   <a href="https://millerace.vercel.app">
+      <img src="https://img.shields.io/badge/🎮_Play_MilleRace_Now-Click_Here!-6B21A8?style=for-the-badge&labelColor=16141C" alt="Play MilleRace">
+   </a>
+</p>
+
+<p align="center">
+   <a href="https://www.unesco.org/en/articles/unesco-youth-hackathon-2026">
+      <img src="https://img.shields.io/badge/UNESCO_Hackathon-2026_Submission-0072CE.svg" alt="UNESCO Youth Hackathon 2026 Submission">
+   </a>
+   <a href="https://unmul.ac.id/">
+      <img src="https://img.shields.io/badge/Developed_At-Mulawarman_University-059669.svg" alt="Mulawarman University">
+   </a>
+   <a href="LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-F59E0B.svg" alt="MIT License">
+   </a>
+   <a href="docs/theoretical-frameworks.md">
+      <img src="https://img.shields.io/badge/Framework-AIAS-7C3AED.svg" alt="AIAS Framework">
+   </a>
+   <a href="docs/theoretical-frameworks.md">
+      <img src="https://img.shields.io/badge/Standard-PISA-EA580C.svg" alt="PISA Reading Standard">
+   </a>
+   <a href="docs/theoretical-frameworks.md">
+      <img src="https://img.shields.io/badge/Scale-CEFR-0891B2.svg" alt="CEFR Scale">
+   </a>
+   <a href="docs/architecture-and-tech-stack.md">
+      <img src="https://img.shields.io/badge/Cloud%20Database-Firebase%20Firestore-FF8F00.svg?logo=firebase&logoColor=white" alt="Firebase Firestore">
+   </a>
+   <a href="docs/deployment.md">
+      <img src="https://img.shields.io/badge/Deploy-Vercel%20Edge%20CDN-000000.svg?logo=vercel&logoColor=white" alt="Vercel Deployment">
+   </a>
+</p>
 
 **MilleRace** is an immersive, gamified Media and Information Literacy (MIL) relay race web game. Built for the **UNESCO Youth Hackathon 2026** under the theme *"Play Your Part: Youth Designing the Future of Media Information and Literacy"*, MilleRace challenges players to race against a 3-minute countdown across 4 interactive puzzle stages to outread generative machine algorithms, collect keys, escape the digital maze, and match with an inspiring literary character archetype.
 
 ---
 
+## 📸 Game Preview
+
+![MilleRace Gameplay Preview](./assets/images/ui/slideshow/slideshow-animated.webp)
+
+---
+
 ## 📖 Background & Problem Statement
+
+<details>
+   <summary>Read here</summary>
 
 ### 1. The Indonesian Literacy Paradox
 According to Badan Pusat Statistik (BPS, 2024), only 14 of 34 provinces in Indonesia maintain accessible public libraries with digital catalogue data. With an average borrowing rate of only 2 literacy items per person annually and historically low rankings on triennial PISA reading tests, physical access and format fatigue remain significant bottlenecks.
@@ -24,27 +60,7 @@ The explosion of generative image models and Large Language Models (LLMs) has bl
 
 MilleRace gamifies media discernment, teaching users how to detect AI-generated artifacts, verify sources, and evaluate complex textual inferences under timed pressure.
 
----
-
-## 📚 Documentation Index
-
-The technical details, pedagogical frameworks, and design specifications are documented in dedicated guides:
-
-| Document | Description |
-|---|---|
-| 📐 [**Theoretical Frameworks**](docs/theoretical-frameworks.md) | Deep dive into the 5 AIAS Parameters, PISA Reading Scale Levels 1–6, and Cambridge CEFR A1–C1 mapping. |
-| 🗺️ [**The 4-Stage Relay Journey**](docs/gameplay-and-stages.md) | Comprehensive stage breakdown, settings, puzzle mechanics, and key rewards for Stages 1 to 4. |
-| 🎯 [**Point System & Scoring Matrix**](docs/scoring-system.md) | 100-point scoring breakdown, Stage 3 Graduated Rating Matrix, and Stage 4 Weighted Inferencing rubrics. |
-| 🎭 [**Character Archetypes & Matching**](docs/character-archetypes.md) | Character profiles for Miller, Jen, Aidan, and Lizzy, matching matrices, and personalized reading roadmaps. |
-| ✨ [**Key Features & UI System**](docs/features.md) | Comprehensive breakdown of game features, preview slideshow, leaderboard, and result screen systems. |
-| 🎨 [**Design System & UI Guidelines**](docs/design-system.md) | Design tokens, color palette, font hierarchy, UI container frames, and key asset file locations. |
-| 💻 [**Architecture & Tech Stack**](docs/architecture-and-tech-stack.md) | Zero-framework Vanilla JS architecture, reactive state store, Firebase Firestore cloud persistence, and file structure. |
-| 📅 [**3-Year Strategic Roadmap**](docs/roadmap.md) | Detailed 2026–2028 institutional scaling milestones, school roadshows, and internationalization plans. |
-| 📋 [**Product Requirement Document (PRD)**](docs/prd.md) | Baseline product requirement document and UNESCO Youth Hackathon alignment dossier. |
-| 🛠️ [**Developer Guide**](docs/developer-guide.md) | Local setup, Developer Debug Panel, and troubleshooting workflows. |
-| 🧪 [**Automated Testing & Verification**](docs/testing.md) | Playwright test suite wired to Google Chrome, coverage matrix, and diagnostic verification script. |
-| 🚀 [**Production Deployment Plan**](docs/deployment.md) | Vercel Edge CDN setup, cache policies, HTTP security headers, and GitHub Actions CI/CD automation. |
-| ⚡ [**Web Optimization & Modularization**](docs/web-optimization-plan.md) | Image compression, SVG optimization, CSS/JS bundling, HTTP caching, and build-time component architecture. |
+</details>
 
 ---
 
@@ -63,22 +79,27 @@ Check [docs/features.md](docs/features.md) for more information.
 
 ---
 
-## 🎮 The 4-Stage Relay Journey
+## 🎮 Gameplay Overview
 
 ```mermaid
 flowchart LR
-    A[🏁 Registration & Maze Entry] --> B[Stage 1: Miller<br/>Visual AIAS Gallery<br/>20 Pts]
-    B -->|Key #1| C[Stage 2: Jen<br/>Door Passwords<br/>40 Pts]
-    C -->|Key #2| D[Stage 3: Aidan<br/>Room of Letters<br/>20 Pts]
-    D -->|Key #3| E[Stage 4: Lizzy<br/>Room of Colors<br/>20 Pts]
+    A[🏁 Registration & Maze Entry] --> B[🎨 Stage 1: Miller<br/>Visual AIAS Gallery<br/>20 Pts]
+    B -->|Key #1| C[📚 Stage 2: Jen<br/>Door Passwords<br/>40 Pts]
+    C -->|Key #2| D[🔍 Stage 3: Aidan<br/>Room of Letters<br/>20 Pts]
+    D -->|Key #3| E[🧠 Stage 4: Lizzy<br/>Room of Colors<br/>20 Pts]
     E -->|Final Key| F[🎉 Escape & Character Match<br/>Max 100 Pts]
     F --> G[🏆 Global Leaderboard & Your Results]
 ```
+
+<details>
+<summary>Click to show more about the gameplay overview</summary>
 
 1. **Stage 1 — Miller's Gallery (Visual AIAS):** Spot subtle prompt artifacts and anatomical anomalies to eliminate AI decoy paintings (4 questions $\times$ 5 pts = 20 pts).
 2. **Stage 2 — Jen's Door Passwords (Literary Knowledge):** Complete 10 famous classic and modern book titles to unlock maze doors (10 questions $\times$ 4 pts = 40 pts).
 3. **Stage 3 — Aidan's Room of Letters (Textual AIAS):** Classify text excerpts on a 4-point graduated human-to-synthetic authenticity scale (5 passages, capped at 20 pts).
 4. **Stage 4 — Lizzy's Room of Colors (PISA Reading Scale):** High-order inferential reading comprehension with weighted scoring (4 questions $\times$ 5 pts = 20 pts).
+
+</details>
 
 Check [docs/gameplay-and-stages.md](docs/gameplay-and-stages.md) for more information.
 
@@ -118,7 +139,7 @@ Developed with pride by students of **Mulawarman University**, Samarinda, East K
 
 ## 📅 3-Year Strategic Roadmap
 
-- **Year 1 (2026) — Foundation & Pilot Validation:** Alpha/Beta testing with 30–50 regional users in Samarinda; school tours; user testimonies; public library partnerships.
+- **Year 1 (2026) — Foundation & Pilot Validation:** Alpha/Beta testing with 30-50 regional users in Samarinda; school tours; user testimonies; public library partnerships.
 - **Year 2 (2027) — Regional Scaling across East Kalimantan:** Partnerships with 5+ schools and 5+ public libraries; 1,000+ active racers; curriculum integration.
 - **Year 3 (2028) — National & Global Outreach:** Multi-language support; partnership with UNESCO City of Literature networks; scaling to 5,000+ youth readers globally.
 
@@ -126,10 +147,14 @@ Check [docs/roadmap.md](docs/roadmap.md) for more information.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Developer Quick Start
 
-### 1. Live Web Demo
-Play directly in your browser: **[https://millerace.vercel.app](https://millerace.vercel.app)**
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/fazrigading/MilleRace.git
+cd MilleRace
+```
 
 ### 2. Direct Browser Launch
 Simply open `index.html` in your favorite web browser (Chrome, Edge, Firefox, Safari):
@@ -144,25 +169,47 @@ open index.html
 xdg-open index.html
 ```
 
-### 3. Local HTTP Server (Node.js)
-Start the built-in zero-dependency static server on `http://localhost:8080`:
+### 3. Local HTTP Server
+
 ```bash
-npm start
+npm start # Node.js
+# or
+python -m http.server 8000 # Python
 ```
 
-### 4. Local HTTP Server (Python)
-```bash
-python -m http.server 8000
-```
-Then navigate to `http://localhost:8000` in your browser.
+Start the built-in zero-dependency static server on `http://localhost:8080`.
 
-### 5. Developer Mode Shortcuts
+### 4. Developer Mode Shortcuts
 Open the built-in developer debug panel at any time by pressing `Ctrl + Shift + D`, `Alt + D`, or `~` key (Tilde).
+
 This allows you to jump to any stage, pause the countdown timer, skip narrative dialogues, or simulate archetype scores.
 
-### 6. Automated Testing
-Run the automated Playwright test suite wired to Google Chrome: `npm test`.
+### 5. Automated Testing
+Run the automated Playwright test suite wired to Google Chrome with `npm test`.
+
 Check [docs/testing.md](docs/testing.md) for full testing workflows and diagnostics.
+
+---
+
+## 📚 Documentation Index
+
+The technical details, pedagogical frameworks, and design specifications are documented in dedicated guides below.
+
+| Document | Description |
+|---|---|
+| 📐 [**Theoretical Frameworks**](docs/theoretical-frameworks.md) | Deep dive into the 5 AIAS Parameters, PISA Reading Scale Levels 1–6, and Cambridge CEFR A1–C1 mapping. |
+| 🗺️ [**The 4-Stage Relay Journey**](docs/gameplay-and-stages.md) | Comprehensive stage breakdown, settings, puzzle mechanics, and key rewards for Stages 1 to 4. |
+| 🎯 [**Point System & Scoring Matrix**](docs/scoring-system.md) | 100-point scoring breakdown, Stage 3 Graduated Rating Matrix, and Stage 4 Weighted Inferencing rubrics. |
+| 🎭 [**Character Archetypes & Matching**](docs/character-archetypes.md) | Character profiles for Miller, Jen, Aidan, and Lizzy, matching matrices, and personalized reading roadmaps. |
+| ✨ [**Key Features & UI System**](docs/features.md) | Comprehensive breakdown of game features, preview slideshow, leaderboard, and result screen systems. |
+| 🎨 [**Design System & UI Guidelines**](docs/design-system.md) | Design tokens, color palette, font hierarchy, UI container frames, and key asset file locations. |
+| 💻 [**Architecture & Tech Stack**](docs/architecture-and-tech-stack.md) | Zero-framework Vanilla JS architecture, reactive state store, Firebase Firestore cloud persistence, and file structure. |
+| 📅 [**3-Year Strategic Roadmap**](docs/roadmap.md) | Detailed 2026–2028 institutional scaling milestones, school roadshows, and internationalization plans. |
+| 📋 [**Product Requirement Document (PRD)**](docs/prd.md) | Baseline product requirement document and UNESCO Youth Hackathon alignment dossier. |
+| 🛠️ [**Developer Guide**](docs/developer-guide.md) | Local setup, Developer Debug Panel, and troubleshooting workflows. |
+| 🧪 [**Automated Testing & Verification**](docs/testing.md) | Playwright test suite wired to Google Chrome, coverage matrix, and diagnostic verification script. |
+| 🚀 [**Production Deployment Plan**](docs/deployment.md) | Vercel Edge CDN setup, cache policies, HTTP security headers, and GitHub Actions CI/CD automation. |
+| ⚡ [**Web Optimization & Modularization**](docs/web-optimization-plan.md) | Image compression, SVG optimization, CSS/JS bundling, HTTP caching, and build-time component architecture. |
 
 ---
 
