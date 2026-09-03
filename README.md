@@ -140,7 +140,7 @@ git clone https://github.com/fazrigading/MilleRace.git
 cd MilleRace
 ```
 
-### 2. Direct Browser Launch
+### 2a. Direct Browser Launch
 Simply open `index.html` in your favorite web browser (Chrome, Edge, Firefox, Safari):
 ```bash
 # Windows
@@ -153,7 +153,9 @@ open index.html
 xdg-open index.html
 ```
 
-### 3. Local HTTP Server
+If you feel not fancy doing that, try second option below.
+
+### 2b. Local HTTP Server
 
 ```bash
 npm start # Node.js
@@ -163,12 +165,12 @@ python -m http.server 8000 # Python
 
 Start the built-in zero-dependency static server on `http://localhost:8080`.
 
-### 4. Developer Mode Shortcuts
+### 3. Developer Mode Shortcuts
 Open the built-in developer debug panel at any time by pressing `Ctrl + Shift + D`, `Alt + D`, or `~` key (Tilde).
 
 This allows you to jump to any stage, pause the countdown timer, skip narrative dialogues, or simulate archetype scores.
 
-### 5. Automated Testing
+### 4. Automated Testing
 Run the automated Playwright test suite wired to Google Chrome with `npm test`.
 
 Check [docs/testing.md](docs/testing.md) for full testing workflows and diagnostics.
